@@ -11,10 +11,10 @@ const About = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="About"
+        pageTitle="О компании"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="About"
+        homePageText="Главная"
+        activePageText="О компании"
         bgImage="page-title-one"
       />
 

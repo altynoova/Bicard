@@ -6,10 +6,10 @@ const Doctors = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Meet Our Qualified Doctors"
+        pageTitle="Познакомьтесь с нашими квалифицированными врачами"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Doctors"
+        homePageText="Главная"
+        activePageText="Докторы"
         bgImage="page-title-five"
       />
 
@@ -21,11 +21,11 @@ const Doctors = () => {
                 <div className="doctor-search-item">
                   <div className="form-group">
                     <i className="icofont-doctor-alt"></i>
-                    <label>Search</label>
+                    <label>Поиск</label>
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Doctor Name"
+                      placeholder="Имя доктора"
                     />
                   </div>
                   <button type="submit" className="btn doctor-search-btn">
@@ -38,12 +38,12 @@ const Doctors = () => {
                 <div className="doctor-search-item">
                   <div className="form-group">
                     <i className="icofont-hospital"></i>
-                    <label>Category</label>
+                    <label>Специальность</label>
                     <select className="form-control">
-                      <option>Neurosurgeon</option>
-                      <option>Cardiology</option>
-                      <option>Pathology</option>
-                      <option>Dental Care</option>
+                      <option>Кардиохирург</option>
+                      <option>Кардиолог</option>
+                      <option>Сосудистый хирург (ангиолог)</option>
+                      <option>Кардиолог-аритмолог</option>
                     </select>
                   </div>
                 </div>
@@ -59,15 +59,15 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor1.jpg" alt="Doctor" />
+                  <img src="/images/doctors/doctor1.png" alt="Doctor" />
 
-                  <Link href="/appointment">Get Appointment</Link>
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Babatunde</Link>
+                    <Link href="/doctors/details">Токтосунов А.Н</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Кардиолог</span>
                 </div>
               </div>
             </div>
@@ -75,14 +75,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor2.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor2.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Addition Smith</Link>
+                    <Link href="/doctors/details">Мамбетказиев Н. К</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Кардиохирург</span>
                 </div>
               </div>
             </div>
@@ -90,14 +90,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor3.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor3.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Sarah Taylor</Link>
+                    <Link href="/doctors/details">Мустафа Унал</Link>
                   </h3>
-                  <span>Dental Surgeon</span>
+                  <span>PhD Сердечно-сосудистый хирург</span>
                 </div>
               </div>
             </div>
@@ -105,14 +105,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor4.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor4.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Mac Smith</Link>
+                    <Link href="/doctors/details">Ташмаматов А.Ж</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Кардиохирург</span>
                 </div>
               </div>
             </div>
@@ -120,14 +120,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor5.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor5.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Alinson Backer</Link>
+                    <Link href="/doctors/details">Токтогулова А.С</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Врач-кардиолог</span>
                 </div>
               </div>
             </div>
@@ -135,14 +135,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor6.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor6.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Jas Macham</Link>
+                    <Link href="/doctors/details">Юлдашев Г.А</Link>
                   </h3>
-                  <span>Dental Surgeon</span>
+                  <span>Врач-кардиологn</span>
                 </div>
               </div>
             </div>
@@ -150,14 +150,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor7.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor7.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. John Micheal</Link>
+                    <Link href="/doctors/details">Касымова Д.У</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Врач-анестезиолог</span>
                 </div>
               </div>
             </div>
@@ -165,14 +165,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor8.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor8.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Shane Warne</Link>
+                    <Link href="/doctors/details">Назаров А.К</Link>
                   </h3>
-                  <span>Neurosurgeon</span>
+                  <span>Врач-кардиолог</span>
                 </div>
               </div>
             </div>
@@ -180,14 +180,14 @@ const Doctors = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
-                  <img src="/images/doctors/doctor9.jpg" alt="Doctor" />
-                  <Link href="/appointment">Get Appointment</Link>
+                  <img src="/images/doctors/doctor9.png" alt="Doctor" />
+                  <Link href="/appointment">Записаться</Link>
                 </div>
                 <div className="doctor-bottom">
                   <h3>
-                    <Link href="/doctors/details">Dr. Luis Moris</Link>
+                    <Link href="/doctors/details"> Токтосунова Ж.М</Link>
                   </h3>
-                  <span>Dental Surgeon</span>
+                  <span>врач клинической лабораторной диагностики</span>
                 </div>
               </div>
             </div>

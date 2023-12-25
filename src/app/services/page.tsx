@@ -7,10 +7,10 @@ const Service = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Services"
+        pageTitle="Сервисы"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Services"
+        homePageText="Главная"
+        activePageText="Сервисы"
         bgImage="page-title-one"
       />
 

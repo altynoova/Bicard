@@ -9,7 +9,7 @@ const AboutContent = () => {
             <div className="col-lg-6">
               <div className="about-item">
                 <div className="about-left">
-                  <img src="/images/about1.jpg" alt="About" />
+                  <img src="/images/about1.png" alt="About" />
                 </div>
               </div>
             </div>
@@ -17,25 +17,31 @@ const AboutContent = () => {
             <div className="col-lg-6">
               <div className="about-item about-right">
                 <img src="/images/about-shape1.png" alt="About" />
-                <h2>About Our Hospital</h2>
+                <h2>О нас</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel facilisis.{" "}
+                Клиника международного стандарта «Бикард» — это новейшие методы лечения и высококвалифицированные
+специалисты, доброжелательный и заботливый персонал, приемлемые цены.
+
+<p>ДИАГНОСТИКА</p>
+<p>ПОЛИКЛИНИКА</p>
+<p>СТАЦИОНАРНОЕ ЛЕЧЕНИЕ КАРДИОЛОГИЧЕСКИХ И КАРДИОХИРУРГИЧЕСКИХ ЗАБОЛЕВАНИЙ </p>
+<p>РЕАНИМАЦИЯ</p>
+<p>ОПЕРАЦИОННЫЙ БЛОК</p>
+<p>ВЫСОКОТЕХНОЛОГИЧЕСКАЯ ЛАБОРАТОРИЯ</p>
+<p>АНГИОГРАФИЯ ВСЕХ СОСУДОВ (КОРОНАРОГРАФИЯ)</p>{" "}
                 </p>
                 <ul>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Browse Our Website
+                    Просмотрите наш сайт
                   </li>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Choose Service
+                    Выберите услугу
                   </li>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Send Messege
+                    Отправьте сообщение
                   </li>
                 </ul>
               </div>

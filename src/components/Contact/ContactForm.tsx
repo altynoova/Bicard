@@ -57,7 +57,7 @@ const ContactForm = () => {
             <div className="col-lg-7 p-0">
               <div className="drop-item drop-img">
                 <div className="drop-left">
-                  <h2>Drop your message for any info or question</h2>
+                  <h2>Оставьте свое сообщение для любой информации или вопроса</h2>
 
                   <form onSubmit={handleSubmit}>
                     <div className="row">
@@ -67,7 +67,7 @@ const ContactForm = () => {
                             type="text"
                             name="name"
                             className="form-control"
-                            placeholder="Your name"
+                            placeholder="Ваше имя"
                             value={contact.name}
                             onChange={handleChange}
                             required
@@ -81,7 +81,7 @@ const ContactForm = () => {
                             type="text"
                             name="email"
                             className="form-control"
-                            placeholder="Your email address"
+                            placeholder="Ваша почта"
                             value={contact.email}
                             onChange={handleChange}
                             required
@@ -97,7 +97,7 @@ const ContactForm = () => {
                             className="form-control"
                             value={contact.number}
                             onChange={handleChange}
-                            placeholder="Your Phone"
+                            placeholder="Ваш номер"
                             required
                           />
                         </div>
@@ -109,7 +109,7 @@ const ContactForm = () => {
                             type="text"
                             name="subject"
                             className="form-control"
-                            placeholder="Your Subject"
+                            placeholder="Ваш пол"
                             value={contact.subject}
                             onChange={handleChange}
                             required
@@ -124,7 +124,7 @@ const ContactForm = () => {
                             cols={30}
                             rows={6}
                             className="form-control"
-                            placeholder="Your message..."
+                            placeholder="Ваше сообщение..."
                             value={contact.text}
                             onChange={handleChange}
                             required
@@ -134,7 +134,7 @@ const ContactForm = () => {
 
                       <div className="col-lg-12 col-md-12 col-sm-12">
                         <button type="submit" className="drop-btn">
-                          Send Message
+                          Отправить
                         </button>
                       </div>
                     </div>
@@ -152,8 +152,8 @@ const ContactForm = () => {
                     <i className="icofont-ui-call"></i>
                   </div>
 
-                  <h3>Emergency Call</h3>
-                  <p>+07 554 332 322</p>
+                  <h3>Экстренный звонок</h3>
+                  <p>+996 554 332 322</p>
                 </div>
               </div>
             </div>

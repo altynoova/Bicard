@@ -1,15 +1,16 @@
 import React from "react";
 import AppointmentFormTwo from "@/components/Common/AppointmentFormTwo";
 import PageBanner from "@/components/Common/PageBanner";
+import AppointmentFormq from "@/components/Appointment/AppointmentForm";
 
 const DoctorsDetails = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Dr. Sarah Taylor (Neurosurgeon)"
+        pageTitle="Токтосунов Азимбек Нурбековиич (Кардиолог)"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Doctor Details"
+        homePageText="Главная"
+        activePageText="Докторы"
         bgImage="page-title-five"
       />
 
@@ -18,10 +19,10 @@ const DoctorsDetails = () => {
           <div className="row">
             <div className="col-lg-5">
               <div className="doctor-details-item doctor-details-left">
-                <img src="/images/doctors/doctor3.jpg" alt="Doctor" />
+                <img src="/images/doctors/doctor1.png" alt="Doctor" />
 
                 <div className="doctor-details-contact">
-                  <h3>Contact info</h3>
+                  <h3>Контакты</h3>
                   <ul>
                     <li>
                       <i className="icofont-ui-call"></i>
@@ -39,7 +40,7 @@ const DoctorsDetails = () => {
                 </div>
 
                 <div className="doctor-details-work">
-                  <h3>Working hours</h3>
+                  <h3>Рабочие часы</h3>
                   <div className="appointment-item-two-right">
                     <div className="appointment-item-content">
                       <ul>
@@ -66,71 +67,47 @@ const DoctorsDetails = () => {
               <div className="doctor-details-item">
                 <div className="doctor-details-right">
                   <div className="doctor-details-biography">
-                    <h3>Dr. Sarah Taylor (Neurosurgeon)</h3>
-                    <p>MBBS in Neurology, PHD in Neurosurgeon</p>
+                    <h3>Токтосунов А.Н Кардиолог </h3>
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Biography</h3>
+                    <h3>Биография</h3>
 
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
+                    Придя к нему на прием вы сможете получить:
+
+🩺 Полную консультацию
+🩺 Пройти Тредмил тест
+🩺 Получить Расшифровку суточного монитора по Холтеру
+🩺 Пройти Коронарографию с последующим стентированием
+🩺 Стационарное наблюдение
+
+А также выявить свой диагноз и получить нужную терапию👌
                     </p>
 
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                      enim ipsam voluptatem quia voluptas sit aspernatur aut
-                      odit aut fugit, sed quia consequuntur magni dolores eos
-                      qui ratione voluptatem sequi nesciunt.
-                    </p>
-
-                    <p>
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you a complete account of the system, and expound the
-                      actual teachings of the great explorer of the truth, the
-                      master-builder of human happiness. No one rejects,
-                      dislikes, or avoids pleasure itself, because it is
-                      pleasure, but because those who do not know how to pursue
-                      pleasure rationally encounter consequences that are
-                      extremely painful.
-                    </p>
-
+                    
                     <p></p>
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Education</h3>
+                    <h3>Образование</h3>
                     <ul>
                       <li>
-                        PHD Degree in Neurology at University of UCLan School of
-                        Medicine Preston (2006)
+                      2018 г. — Диплом, «Лечебное дело», Кыргызско-Российский славянский университет, медицинский факультет, Бишкек
+
+
                       </li>
                       <li>
-                        Master of Neurosurgery at University of University of
-                        Exeter Medical School Exeter (2002)
+                      2021 г. — Ординатура, «Кардиолог», Кыргызский государственный медицинский институт переподготовки и повышения квалификации (КГМИПиПК)
+
                       </li>
                     </ul>
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Experience</h3>
+                    <h3>Опыт</h3>
                     <p>
-                      At vero eos et accusamus et iusto odio dignissimos ducimus
-                      qui blanditiis praesentium voluptatum deleniti atque
-                      corrupti quos dolores et quas molestias excepturi sint
-                      occaecati cupiditate non provident, similique sunt in
-                      culpa.
+                    Бикард — Отделение кардиологии, Кардиолог
                     </p>
                   </div>
                 </div>
@@ -141,7 +118,7 @@ const DoctorsDetails = () => {
       </div>
 
       <div className="pb-100">
-        <AppointmentFormTwo />
+      <AppointmentFormq />
       </div>
     </div>
   );

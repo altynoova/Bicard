@@ -13,18 +13,18 @@ const TopHeader = () => {
                     <li>
                       <a href="tel:+07554332322">
                         <i className="icofont-ui-call"></i>
-                        Call : +07 554 332 322
+                        +996 552 552 552
                       </a>
                     </li>
                     <li>
                       <a href="mailto:hello@disin.com">
                         <i className="icofont-ui-message"></i>
-                        hello@disin.com
+                        supportbicard@gmail.com
                       </a>
                     </li>
                     <li>
                       <i className="icofont-location-pin"></i>
-                      210-27 Quadra, Canada
+                      улица Тыныстанова2, г. Бишкек
                     </li>
                   </ul>
                 </div>
@@ -36,10 +36,10 @@ const TopHeader = () => {
                 <div className="header-top-right">
                   <ul className="lang-list">
                     <li>
-                      <a href="/">EN</a>
+                      <a href="/">RU</a>
                     </li>
                     <li>
-                      <a href="/ar">AR</a>
+                      <a href="/ar">KG</a>
                     </li>
                   </ul>
 

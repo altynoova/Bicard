@@ -6,10 +6,10 @@ const Blog = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Blog"
+        pageTitle="Блоги"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Blog"
+        homePageText="Главная"
+        activePageText="Блоги"
         bgImage="page-title-four"
       />
 

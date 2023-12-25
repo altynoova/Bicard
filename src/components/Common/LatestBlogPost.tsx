@@ -7,7 +7,7 @@ const LatestBlogPost = () => {
       <div className="blog-area pt-100 pb-70">
         <div className="container">
           <div className="section-title">
-            <h2>Our Latest Blogs</h2>
+            <h2>Последние блоги</h2>
           </div>
 
           <div className="row justify-content-center">
@@ -15,28 +15,28 @@ const LatestBlogPost = () => {
               <div className="blog-item">
                 <div className="blog-top">
                   <Link href="/blog-details">
-                    <img src="/images/blog/blog1.jpg" alt="Blog" />
+                    <img src="/images/blog11.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
                     <Link href="/blog-details">
-                      In this hospital there are special surgeon
+                    В клинике БИКАРД провели операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана) .
                     </Link>
                   </h3>
                   <p>
-                    Lorem ipsum is dolor sit amet, csectetur adipiscing elit,
-                    dolore smod tempor incididunt ut labore et..
+                  В клинике БИКАРД провели операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана) .
+И это уже второй успех кардиологов Кыргызстана, которые провели высокотехнологичную операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана).
                   </p>
                   <ul>
                     <li>
                       <Link href="/blog-details">
-                        Read More <i className="icofont-long-arrow-right"></i>
+                        Читать...<i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
                     <li>
                       <i className="icofont-calendar"></i>
-                      Jan 03, 2022
+                      18.07.2023
                     </li>
                   </ul>
                 </div>
@@ -47,28 +47,31 @@ const LatestBlogPost = () => {
               <div className="blog-item">
                 <div className="blog-top">
                   <Link href="/blog-details">
-                    <img src="/images/blog/blog2.jpg" alt="Blog" />
+                    <img src="/images/blog22.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
                     <Link href="/blog-details">
-                      World AIDS Day, designated on 1 December
+                    Эл тараза, Эл сынчы
                     </Link>
                   </h3>
                   <p>
-                    Lorem ipsum is dolor sit amet, csectetur adipiscing elit,
-                    dolore smod tempor incididunt ut labore et..
+                  Хотим под этим постом поблагодарить всех наших пациентов за выбор и доверие🙏🏼
+
+Наша клиника всегда работает во благо и здоровье пациентов🫀
+
+Получать второй год подряд премию в номинации «Клиника Года» для нас большая честь и радость🫀🙏🏼
                   </p>
                   <ul>
                     <li>
                       <Link href="/blog-details">
-                        Read More <i className="icofont-long-arrow-right"></i>
+                      Читать... <i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
                     <li>
                       <i className="icofont-calendar"></i>
-                      Jan 03, 2022
+                      24.12.2023
                     </li>
                   </ul>
                 </div>
@@ -79,28 +82,29 @@ const LatestBlogPost = () => {
               <div className="blog-item">
                 <div className="blog-top">
                   <Link href="/blog-details">
-                    <img src="/images/blog/blog3.jpg" alt="Blog" />
+                    <img src="/images/blog33.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
                     <Link href="/blog-details">
-                      More than 80 clinical trials launch to test coronavirus
+                    Коронарография 
                     </Link>
                   </h3>
                   <p>
-                    Lorem ipsum is dolor sit amet, csectetur adipiscing elit,
-                    dolore smod tempor incididunt ut labore et..
+                  Коронарография — рентгеноконтрастный метод исследования, который является наиболее точным и достоверным способом диагностики ишемической болезни сердца (ИБС), позволяя точно определить характер, место и степень сужения коронарной артерии.
+
+Этот метод является «золотым стандартом» в диагностике ИБС и позволяет решить вопрос о выборе и объёме проведения в дальнейшем таких лечебных процедур, как баллонная ангиопластика, стентирование и коронарное шунтирование.
                   </p>
                   <ul>
                     <li>
                       <Link href="/blog-details">
-                        Read More <i className="icofont-long-arrow-right"></i>
+                      Читать... <i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
                     <li>
                       <i className="icofont-calendar"></i>
-                      Jan 03, 2022
+                      03.02.2023
                     </li>
                   </ul>
                 </div>

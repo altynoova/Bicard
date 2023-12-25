@@ -11,18 +11,18 @@ const BlogGrid = () => {
               <div className="blog-item">
                 <div className="blog-top">
                   <Link href="/blog-details">
-                    <img src="/images/blog/blog1.jpg" alt="Blog" />
+                    <img src="/images/blog11.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
                     <Link href="/blog-details">
-                      In this hospital there are special surgeon.
+                  Транскатетерная имплантация аортального клапана
                     </Link>
                   </h3>
                   <p>
-                    Lorem ipsum is dolor sit amet, csectetur adipiscing elit,
-                    dolore smod tempor incididunt ut labore et....
+                  В клинике БИКАРД провели операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана) .
+И это уже второй успех кардиологов Кыргызстана, которые провели высокотехнологичную операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана).
                   </p>
                   <ul>
                     <li>

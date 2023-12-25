@@ -9,8 +9,8 @@ const FunFacts = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-patient-bed"></i>
-                <h3 className="counter">850</h3>
-                <p>Patients Beds</p>
+                <h3 className="counter">60</h3>
+                <p>Коек</p>
               </div>
             </div>
 
@@ -20,23 +20,23 @@ const FunFacts = () => {
                 <h3>
                   <span className="counter">25000</span>+
                 </h3>
-                <p>Happy Patients</p>
+                <p>Счастливых пациентов</p>
               </div>
             </div>
 
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-doctor-alt"></i>
-                <h3 className="counter">750</h3>
-                <p>Doctors & Nurse</p>
+                <h3 className="counter">75</h3>
+                <p>Сотрудников</p>
               </div>
             </div>
 
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-badge"></i>
-                <h3 className="counter">18</h3>
-                <p>Year Experience</p>
+                <h3 className="counter">7</h3>
+                <p>Лет опыта</p>
               </div>
             </div>
           </div>

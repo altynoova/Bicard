@@ -12,8 +12,8 @@ const AppointmentFormq = () => {
                   <img src="/images/hart-img1.png" alt="Shape" />
                 </div>
 
-                <h2>Book your appointment</h2>
-                <span>We will confirm your appointment within 2 hours</span>
+                <h2>Запишитесь онлайн</h2>
+                <span>Мы подтвердим вашу запись в течение 2 часов.</span>
 
                 <div className="appointment-form">
                   <form>
@@ -21,11 +21,11 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-business-man-alt-1"></i>
-                          <label>Name</label>
+                          <label>Имя</label>
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Enter Your Name"
+                            placeholder="Введите ваше имя"
                           />
                         </div>
                       </div>
@@ -33,11 +33,11 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-ui-message"></i>
-                          <label>Email</label>
+                          <label>Почта</label>
                           <input
                             type="email"
                             className="form-control"
-                            placeholder="Enter Your Email"
+                            placeholder="Введите адрес электронной почты"
                           />
                         </div>
                       </div>
@@ -45,11 +45,11 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-ui-call"></i>
-                          <label>Phone</label>
+                          <label>Номер</label>
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Enter Your Number"
+                            placeholder="Введите свой номер"
                           />
                         </div>
                       </div>
@@ -57,16 +57,16 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-hospital"></i>
-                          <label>Services</label>
+                          <label>Услуги</label>
                           <select
                             className="form-control"
                             id="exampleFormControlSelect1"
                           >
-                            <option>Dental Care</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option>Выберите услугу</option>
+                            <option>Кардиология</option>
+                            <option>Микрохирургия</option>
+                            <option>Хирургия</option>
+                            
                           </select>
                         </div>
                       </div>
@@ -74,15 +74,15 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-doctor"></i>
-                          <label>Doctor</label>
+                          <label>Доктор</label>
                           <select
                             className="form-control"
                             id="exampleFormControlSelect2"
                           >
-                            <option>Choose Your Doctor</option>
-                            <option>John Smith</option>
-                            <option>Sarah Taylor</option>
-                            <option>Stevn King</option>
+                            <option>Выберите своего врача</option>
+                            <option>Назаров Асан Кубанычбекович</option>
+                            <option>Ташмаматов Адиашим Жаныбаевич</option>
+                            <option>Токтогулова Аида Сабыржанова</option>
                           </select>
                         </div>
                       </div>
@@ -90,11 +90,11 @@ const AppointmentFormq = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <i className="icofont-business-man"></i>
-                          <label>Age</label>
+                          <label>Возраст</label>
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Your Age"
+                            placeholder="Ваш возраст"
                           />
                         </div>
                       </div>
@@ -102,7 +102,7 @@ const AppointmentFormq = () => {
 
                     <div className="text-center">
                       <button type="submit" className="btn appointment-btn">
-                        Submit
+                        Отправить
                       </button>
                     </div>
                   </form>
@@ -113,25 +113,28 @@ const AppointmentFormq = () => {
             <div className="col-lg-5">
               <div className="appointment-item-two-right">
                 <div className="appointment-item-content">
-                  <h2>Working Hours</h2>
+                  <h2>Часы работы</h2>
                   <ul>
                     <li>
-                      Monday <span>9:00 AM - 8:00 PM</span>
+                    Понедельник <span>9:00 AM - 8:00 PM</span>
                     </li>
                     <li>
-                      Tuesday <span>9:00 AM - 8:00 PM</span>
+                      Вторние <span>9:00 AM - 8:00 PM</span>
                     </li>
                     <li>
-                      Wednesday <span>9:00 AM - 8:00 PM</span>
+                      Среда <span>9:00 AM - 8:00 PM</span>
                     </li>
                     <li>
-                      Thursday <span>9:00 AM - 8:00 PM</span>
+                      Четверг <span>9:00 AM - 8:00 PM</span>
                     </li>
                     <li>
-                      Friday <span>9:00 AM - 8:00 PM</span>
+                      Пятница <span>9:00 AM - 8:00 PM</span>
                     </li>
                     <li>
-                      Saturday <span>9:00 AM - 8:00 PM</span>
+                      Суббота <span>9:00 AM - 5:00 PM</span>
+                    </li>
+                    <li>
+                      Воскресенье <span>9:00 AM - 5:00 PM</span>
                     </li>
                   </ul>
                 </div>

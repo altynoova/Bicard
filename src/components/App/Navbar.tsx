@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="container">
             <nav className="navbar navbar-expand-md navbar-light">
               <Link href="/" className="navbar-brand">
-                <img src="/images/logo.png" alt="logo" />
+                <img src="/images/logo3.png" alt="logo" />
               </Link>
 
               <button
@@ -72,7 +72,7 @@ const Navbar = () => {
                         currentPath == "/about/" && "active"
                       }`}
                     >
-                      About
+                      Главная
                     </Link>
                   </li>
 
@@ -93,7 +93,7 @@ const Navbar = () => {
                             currentPath == "/appointment/" && "active"
                           }`}
                         >
-                          Appointment
+                          Онлайн запись
                         </Link>
                       </li>
 
@@ -104,7 +104,7 @@ const Navbar = () => {
                             currentPath == "/departments/" && "active"
                           }`}
                         >
-                          Departments
+                          Отделения
                         </Link>
                       </li>
 
@@ -115,7 +115,7 @@ const Navbar = () => {
                             currentPath == "/testimonials/" && "active"
                           }`}
                         >
-                          Testimonials
+                          Пациентам
                         </Link>
                       </li>
 
@@ -126,7 +126,7 @@ const Navbar = () => {
                             currentPath == "/sign-up/" && "active"
                           }`}
                         >
-                          Sign Up
+                          Регистрация
                         </Link>
                       </li>
 
@@ -137,7 +137,7 @@ const Navbar = () => {
                             currentPath == "/sign-in/" && "active"
                           }`}
                         >
-                          Sign In
+                          Вход
                         </Link>
                       </li>
 
@@ -159,7 +159,7 @@ const Navbar = () => {
                             currentPath == "/coming-soon/" && "active"
                           }`}
                         >
-                          Coming Soon
+                          Новинки
                         </Link>
                       </li>
 
@@ -193,7 +193,7 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Services
+                      Услуги
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -204,7 +204,7 @@ const Navbar = () => {
                             currentPath == "/services/" && "active"
                           }`}
                         >
-                          Services
+                          Услуги
                         </Link>
                       </li>
 
@@ -215,7 +215,7 @@ const Navbar = () => {
                             currentPath == "/service-details/" && "active"
                           }`}
                         >
-                          Service Details
+                          Узнать поподробнее
                         </Link>
                       </li>
                     </ul>
@@ -227,7 +227,7 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Doctors
+                      Докторы
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -238,7 +238,7 @@ const Navbar = () => {
                             currentPath == "/doctors/" && "active"
                           }`}
                         >
-                          Doctors
+                          Докторы
                         </Link>
                       </li>
 
@@ -249,7 +249,7 @@ const Navbar = () => {
                             currentPath == "/doctor-details/" && "active"
                           }`}
                         >
-                          Doctor Details
+                          Узнать поподробнее
                         </Link>
                       </li>
                     </ul>
@@ -261,7 +261,7 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Blog
+                      Блоги
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -272,7 +272,7 @@ const Navbar = () => {
                             currentPath == "/blog/" && "active"
                           }`}
                         >
-                          Blog
+                          Блоги
                         </Link>
                       </li>
 
@@ -283,7 +283,7 @@ const Navbar = () => {
                             currentPath == "/blog-details/" && "active"
                           }`}
                         >
-                          Blog Details
+                          Узнать поподробнее
                         </Link>
                       </li>
                     </ul>
@@ -296,7 +296,7 @@ const Navbar = () => {
                         currentPath == "/blog/" && "active"
                       }`}
                     >
-                      Contact
+                      Контакты
                     </Link>
                   </li>
                 </ul>
