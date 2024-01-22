@@ -1,7 +1,31 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
+import { UserLogin, UserRegister } from "@/entities/User";
+import { Login, Register } from "@/libs/requests/AuthRequests";
+import { Simulate } from "react-dom/test-utils";
 
 const SignInForm = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [rememberMe, setRememeberMe] = useState<boolean>(false);
+
+  const toggleRememberMe = () => {
+    setRememeberMe((prev) => !prev);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data: UserLogin = {
+      userName: username,
+      password,
+      rememberMe,
+    };
+
+    const response = await Login(data);
+    console.log(response);
+  };
   return (
     <>
       <div className="signup-area ptb-100">
@@ -23,42 +47,70 @@ const SignInForm = () => {
                   </p>
                 </div>
                 <div className="signup-form">
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="row">
-                      <div className="col-lg-6">
+                      {/*<div className="col-lg-6">*/}
+                      {/*  <div className="form-group">*/}
+                      {/*    <input*/}
+                      {/*      type="text"*/}
+                      {/*      className="form-control"*/}
+                      {/*      placeholder="First Name"*/}
+                      {/*    />*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
+                      <div className="col-lg-12">
                         <div className="form-group">
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="First Name"
+                            placeholder="Your Username"
+                            value={username}
+                            onChange={(event) =>
+                              setUsername(event.target.value)
+                            }
                           />
                         </div>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Your Email"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
+                      <div className="col-lg-12">
                         <div className="form-group">
                           <input
                             type="password"
                             className="form-control"
                             placeholder="Password"
+                            value={password}
+                            onChange={(event) =>
+                              setPassword(event.target.value)
+                            }
                           />
                         </div>
                       </div>
-                      <div className="col-lg-6">
+                      {/*<div className="col-lg-6">*/}
+                      {/*  <div className="form-group">*/}
+                      {/*    <input*/}
+                      {/*      type="password"*/}
+                      {/*      className="form-control"*/}
+                      {/*      placeholder="Confirm Password"*/}
+                      {/*    />*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
+
+                      <div className="col-lg-12">
                         <div className="form-group">
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Confirm Password"
-                          />
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="gridCheck"
+                              defaultChecked={false}
+                              onChange={toggleRememberMe}
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="gridCheck"
+                            >
+                              Remember me
+                            </label>
+                          </div>
                         </div>
                       </div>
 

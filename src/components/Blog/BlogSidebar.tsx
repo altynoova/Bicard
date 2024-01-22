@@ -19,7 +19,7 @@ const BlogSidebar = () => {
           <ul>
             <li>
               <img src="/images/blog/blog1.jpg" alt="Recent" />
-              <Link href="/blog-details">
+              <Link href="/blog/details">
                 World AIDS Day, designated on 1 December.
               </Link>
               <ul>
@@ -35,7 +35,7 @@ const BlogSidebar = () => {
             </li>
             <li>
               <img src="/images/blog/blog2.jpg" alt="Recent" />
-              <Link href="/blog-details">
+              <Link href="/blog/details">
                 World AIDS Day, designated on 1 December.
               </Link>
               <ul>
@@ -51,7 +51,7 @@ const BlogSidebar = () => {
             </li>
             <li>
               <img src="/images/blog/blog3.jpg" alt="Recent" />
-              <Link href="/blog-details">
+              <Link href="/blog/details">
                 World AIDS Day, designated on 1 December.
               </Link>
               <ul>

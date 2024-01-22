@@ -1,7 +1,34 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
+import { UserRegister } from "@/entities/User";
+import { Register } from "@/libs/requests/AuthRequests";
 
 const SignUpForm = () => {
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+
+  const isPasswordValid = () => password === passwordConfirm;
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!isPasswordValid()) {
+      return;
+    }
+
+    const data: UserRegister = {
+      userName: username,
+      email,
+      password,
+    };
+
+    const response = await Register(data);
+    console.log(response);
+  };
+
   return (
     <>
       <div className="signup-area ptb-100">
@@ -18,40 +45,53 @@ const SignUpForm = () => {
                 <div className="signup-head">
                   <h2>Sign Up Here</h2>
                   <p>
-                    Already have an account?{" "}
-                    <Link href="/sign-in">Sign In</Link>
+                    Already have an account? <Link href="/signin">Sign In</Link>
                   </p>
                 </div>
 
                 <div className="signup-form">
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="First Name"
-                          />
-                        </div>
-                      </div>
+                      {/*<div className="col-lg-6">*/}
+                      {/*  <div className="form-group">*/}
+                      {/*    <input*/}
+                      {/*      type="text"*/}
+                      {/*      className="form-control"*/}
+                      {/*      placeholder="First Name"*/}
+                      {/*    />*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
+
+                      {/*<div className="col-lg-6">*/}
+                      {/*  <div className="form-group">*/}
+                      {/*    <input*/}
+                      {/*      type="text"*/}
+                      {/*      className="form-control"*/}
+                      {/*      placeholder="Last Name"*/}
+                      {/*    />*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
+
+                      {/*<div className="col-lg-6">*/}
+                      {/*  <div className="form-group">*/}
+                      {/*    <input*/}
+                      {/*      type="text"*/}
+                      {/*      className="form-control"*/}
+                      {/*      placeholder="Phone Number"*/}
+                      {/*    />*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
 
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Last Name"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Phone Number"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(event) =>
+                              setUsername(event.target.value)
+                            }
                           />
                         </div>
                       </div>
@@ -62,6 +102,8 @@ const SignUpForm = () => {
                             type="email"
                             className="form-control"
                             placeholder="Your Email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                           />
                         </div>
                       </div>
@@ -72,6 +114,13 @@ const SignUpForm = () => {
                             type="password"
                             className="form-control"
                             placeholder="Password"
+                            value={password}
+                            onChange={(event) =>
+                              setPassword(event.target.value)
+                            }
+                            style={{
+                              borderColor: !isPasswordValid() ? "red" : "gray",
+                            }}
                           />
                         </div>
                       </div>
@@ -82,9 +131,22 @@ const SignUpForm = () => {
                             type="password"
                             className="form-control"
                             placeholder="Confirm Password"
+                            value={passwordConfirm}
+                            onChange={(event) =>
+                              setPasswordConfirm(event.target.value)
+                            }
+                            style={{
+                              borderColor: !isPasswordValid() ? "red" : "gray",
+                            }}
                           />
                         </div>
                       </div>
+
+                      {!isPasswordValid() ? (
+                        <span style={{ color: "red", marginBottom: "20px" }}>
+                          Пароли не совпадают
+                        </span>
+                      ) : null}
 
                       <div className="col-lg-12">
                         <div className="form-group">

@@ -14,13 +14,13 @@ const LatestBlogPost = () => {
             <div className="col-md-6 col-lg-4">
               <div className="blog-item">
                 <div className="blog-top">
-                  <Link href="/blog-details">
+                  <Link href="/blog/details">
                     <img src="/images/blog11.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
-                    <Link href="/blog-details">
+                    <Link href="/blog/details">
                     В клинике БИКАРД провели операцию на сердце с использованием технологии TAVI (транскатетерная имплантация аортального клапана) .
                     </Link>
                   </h3>
@@ -30,7 +30,7 @@ const LatestBlogPost = () => {
                   </p>
                   <ul>
                     <li>
-                      <Link href="/blog-details">
+                      <Link href="/blog/details">
                         Читать...<i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
@@ -46,13 +46,13 @@ const LatestBlogPost = () => {
             <div className="col-md-6 col-lg-4">
               <div className="blog-item">
                 <div className="blog-top">
-                  <Link href="/blog-details">
+                  <Link href="/blog/details">
                     <img src="/images/blog22.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
-                    <Link href="/blog-details">
+                    <Link href="/blog/details">
                     Эл тараза, Эл сынчы
                     </Link>
                   </h3>
@@ -65,7 +65,7 @@ const LatestBlogPost = () => {
                   </p>
                   <ul>
                     <li>
-                      <Link href="/blog-details">
+                      <Link href="/blog/details">
                       Читать... <i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
@@ -81,13 +81,13 @@ const LatestBlogPost = () => {
             <div className="col-md-6 col-lg-4">
               <div className="blog-item">
                 <div className="blog-top">
-                  <Link href="/blog-details">
+                  <Link href="/blog/details">
                     <img src="/images/blog33.png" alt="Blog" />
                   </Link>
                 </div>
                 <div className="blog-bottom">
                   <h3>
-                    <Link href="/blog-details">
+                    <Link href="/blog/details">
                     Коронарография 
                     </Link>
                   </h3>
@@ -98,7 +98,7 @@ const LatestBlogPost = () => {
                   </p>
                   <ul>
                     <li>
-                      <Link href="/blog-details">
+                      <Link href="/blog/details">
                       Читать... <i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
