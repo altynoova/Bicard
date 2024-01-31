@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import ModalVideo from "react-modal-video"
+import React, { useState } from 'react'
+import ModalVideo from 'react-modal-video'
 import {
   Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemPanel,
-  AccordionItemButton,
-} from "react-accessible-accordion";
+} from 'react-accessible-accordion'
+import AccordionItem from '@/components/Common/Accordion/AccordionItem'
+import Image from 'next/image'
 
 const FaqSection = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   return (
     <>
@@ -21,13 +19,13 @@ const FaqSection = () => {
 
         <div className="container">
           <div className="section-title">
-            <h2>Frequently Asked & Queastions</h2>
+            <h2>Frequently Asked & Questions</h2>
           </div>
 
           <div className="row">
             <div className="col-lg-6">
               <div className="faq-img">
-                <img src="/images/faq-main.jpg" alt="Faq" />
+                <Image src="/images/faq-main.jpg" alt="Faq" />
 
                 <div onClick={() => setOpen(true)} className="popup-youtube">
                   <i className="icofont-ui-play"></i>
@@ -36,102 +34,62 @@ const FaqSection = () => {
             </div>
 
             <div className="col-lg-6">
-              <Accordion allowZeroExpanded preExpanded={["a"]}>
-                <AccordionItem uuid="a">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>What is the source of the virus?</span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>
-                      Coronaviruses are a large family of viruses. Some cause
-                      illness in people, and others, such as canine and feline
-                      coronaviruses, only infect animals. Rarely, animal
-                      coronaviruses that infect animals have emerged to infect
-                      people and can spread between people
-                    </p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+              <Accordion allowZeroExpanded preExpanded={['a']}>
+                <AccordionItem
+                  id={'a'}
+                  heading={'What is the source of the virus?'}
+                  text={`Coronaviruses are a large family of viruses. Some cause 
+                                            illness in people, and others, such as canine and feline 
+                                            coronaviruses, only infect animals. Rarely, animal 
+                                            coronaviruses that infect animals have emerged to infect 
+                                            people and can spread between people`}
+                />
 
-                <AccordionItem uuid="b">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>How does the virus spread?</span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>
-                      Coronaviruses are a large family of viruses. Some cause
-                      illness in people, and others, such as canine and feline
-                      coronaviruses, only infect animals. Rarely, animal
-                      coronaviruses that infect animals have emerged to infect
-                      people and can spread between people
-                    </p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+                <AccordionItem
+                  id={'b'}
+                  heading={'How does the virus spread?'}
+                  text={`Coronaviruses are a large family of viruses. Some cause
+                                            illness in people, and others, such as canine and feline
+                                            coronaviruses, only infect animals. Rarely, animal
+                                            coronaviruses that infect animals have emerged to infect
+                                            people and can spread between people`}
+                />
 
-                <AccordionItem uuid="c">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>
-                        Who has had COVID-19 spread the illness to others?
-                      </span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>
-                      Coronaviruses are a large family of viruses. Some cause
-                      illness in people, and others, such as canine and feline
-                      coronaviruses, only infect animals. Rarely, animal
-                      coronaviruses that infect animals have emerged to infect
-                      people and can spread between people
-                    </p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+                <AccordionItem
+                  id={'c'}
+                  heading={'Who has had COVID-19 spread the illness to others?'}
+                  text={`Coronaviruses are a large family of viruses. Some cause
+                                            illness in people, and others, such as canine and feline
+                                            coronaviruses, only infect animals. Rarely, animal
+                                            coronaviruses that infect animals have emerged to infect
+                                            people and can spread between people`}
+                />
 
-                <AccordionItem uuid="d">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>
-                        Will warm weather stop the outbreak of COVID-19?
-                      </span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>
-                      Coronaviruses are a large family of viruses. Some cause
-                      illness in people, and others, such as canine and feline
-                      coronaviruses, only infect animals. Rarely, animal
-                      coronaviruses that infect animals have emerged to infect
-                      people and can spread between people
-                    </p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+                <AccordionItem
+                  id={'d'}
+                  heading={'Will warm weather stop the outbreak of COVID-19?'}
+                  text={`Coronaviruses are a large family of viruses. Some cause
+                                            illness in people, and others, such as canine and feline
+                                            coronaviruses, only infect animals. Rarely, animal
+                                            coronaviruses that infect animals have emerged to infect
+                                            people and can spread between people`}
+                />
 
-                <AccordionItem uuid="e">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>What is community spread?</span>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>
-                      Coronaviruses are a large family of viruses. Some cause
-                      illness in people, and others, such as canine and feline
-                      coronaviruses, only infect animals. Rarely, animal
-                      coronaviruses that infect animals have emerged to infect
-                      people and can spread between people
-                    </p>
-                  </AccordionItemPanel>
-                </AccordionItem>
+                <AccordionItem
+                  id={'e'}
+                  heading={'What is community spread?'}
+                  text={`Coronaviruses are a large family of viruses. Some cause
+                                            illness in people, and others, such as canine and feline
+                                            coronaviruses, only infect animals. Rarely, animal
+                                            coronaviruses that infect animals have emerged to infect
+                                            people and can spread between people`}
+                />
               </Accordion>
             </div>
           </div>
         </div>
       </div>
 
-      {/* If you want to change the video need to update videoID */}
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}
@@ -139,7 +97,7 @@ const FaqSection = () => {
         onClose={() => setOpen(false)}
       />
     </>
-  );
-};
+  )
+}
 
-export default FaqSection;
+export default FaqSection

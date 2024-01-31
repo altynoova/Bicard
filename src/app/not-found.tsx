@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const NotFound = () => {
   return (
@@ -23,7 +23,7 @@ const NotFound = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

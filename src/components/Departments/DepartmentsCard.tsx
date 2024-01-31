@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const DepartmentsCard = () => {
   return (
@@ -108,7 +108,7 @@ const DepartmentsCard = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default DepartmentsCard;
+export default DepartmentsCard

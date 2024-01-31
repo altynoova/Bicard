@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Stats = () => {
   return (
@@ -43,7 +43,7 @@ const Stats = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Stats;
+export default Stats

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const GoogleMap = () => {
   return (
@@ -10,7 +10,7 @@ const GoogleMap = () => {
         ></iframe>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default GoogleMap;
+export default GoogleMap

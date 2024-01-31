@@ -1,11 +1,11 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
-import AboutContent1 from "@/components/About/AboutContent";
-import FunFacts from "@/components/Common/FunFacts";
-import OurExpertise from "@/components/HomeOne/OurExpertise";
-import Services from "@/components/HomeOne/Services";
-import TestimonialSlider from "@/components/Common/TestimonialSlider";
-import LatestBlogPost from "@/components/Common/LatestBlogPost";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import FunFacts from '@/components/Common/FunFacts'
+import TestimonialSlider from '@/components/Common/TestimonialSlider'
+import LatestBlogPost from '@/components/Common/LatestBlogPost'
+import AboutContent from '@/components/About/AboutContent'
+import OurExpertise from '@/components/HomeOne/OurExpertise'
+import Services from '@/components/HomeOne/Services'
 
 const About = () => {
   return (
@@ -17,20 +17,14 @@ const About = () => {
         activePageText="О компании"
         bgImage="page-title-one"
       />
-
-      <AboutContent1 />
-
+      <AboutContent />
       <FunFacts />
-
       <OurExpertise />
-
       <Services />
-
       <TestimonialSlider />
-
       <LatestBlogPost />
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

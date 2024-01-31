@@ -1,6 +1,6 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
-import DepartmentsCard from "@/components/Departments/DepartmentsCard";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import DepartmentsCard from '@/components/Departments/DepartmentsCard'
 
 const Departments = () => {
   return (
@@ -15,7 +15,7 @@ const Departments = () => {
 
       <DepartmentsCard />
     </div>
-  );
-};
+  )
+}
 
-export default Departments;
+export default Departments

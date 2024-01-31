@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const CommentForm = () => {
   return (
@@ -67,7 +67,7 @@ const CommentForm = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CommentForm;
+export default CommentForm

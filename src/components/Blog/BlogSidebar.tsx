@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const BlogSidebar = () => {
   return (
@@ -132,7 +132,7 @@ const BlogSidebar = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BlogSidebar;
+export default BlogSidebar

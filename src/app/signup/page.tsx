@@ -1,9 +1,6 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
-import TopHeader from "@/components/App/TopHeader";
-import Navbar from "@/components/App/Navbar";
-import SignUpForm from "@/components/authentication/SignUpForm";
-import Footer from "@/components/App/Footer";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import SignUpForm from '@/components/Authentication/SignUpForm'
 
 const SignUp = () => {
   return (
@@ -18,7 +15,7 @@ const SignUp = () => {
 
       <SignUpForm />
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

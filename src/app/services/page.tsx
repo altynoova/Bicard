@@ -1,7 +1,7 @@
-import React from "react";
-import OurExpertise from "@/components/Services/OurExpertise";
-import PageBanner from "@/components/Common/PageBanner";
-import ServicesCard from "@/components/Services/ServicesCard";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import OurExpertise from '@/components/Services/OurExpertise'
+import ServicesCard from '@/components/Services/ServicesCard'
 
 const Service = () => {
   return (
@@ -18,7 +18,7 @@ const Service = () => {
 
       <OurExpertise />
     </div>
-  );
-};
+  )
+}
 
-export default Service;
+export default Service

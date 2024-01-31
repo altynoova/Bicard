@@ -1,5 +1,5 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
 
 const PrivacyPolicy = () => {
   return (
@@ -109,7 +109,7 @@ const PrivacyPolicy = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

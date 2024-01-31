@@ -1,9 +1,9 @@
 'use client'
-import React from "react";
-import GoogleMap from "@/components/Contact/GoogleMap";
-import PageBanner from "@/components/Common/PageBanner";
-import ContactInfo from "@/components/Contact/ContactInfo";
-import ContactForm from "@/components/Contact/ContactForm";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import GoogleMap from '@/components/Contact/GoogleMap'
+import ContactInfo from '@/components/Contact/ContactInfo'
+import ContactForm from '@/components/Contact/ContactForm'
 
 const Contact = () => {
   return (
@@ -22,7 +22,7 @@ const Contact = () => {
 
       <GoogleMap />
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -1,5 +1,5 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
 
 const TermsAndConditions = () => {
   return (
@@ -109,7 +109,7 @@ const TermsAndConditions = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TermsAndConditions;
+export default TermsAndConditions

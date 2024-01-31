@@ -1,13 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import ModalVideo from "react-modal-video";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+'use client'
+import React, { useState } from 'react'
+import ModalVideo from 'react-modal-video'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 const VideoIntro = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   const openModal = () => {
-      setOpen(true)
+    setOpen(true)
   }
 
   return (
@@ -34,7 +34,7 @@ const VideoIntro = () => {
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. Quis ipsum suspendisse ultrices
                           gravida. Risus commodo viverra maecenas accumsan lacus
-                          vel facilisis.{" "}
+                          vel facilisis.{' '}
                         </p>
                       </div>
                     </div>
@@ -52,8 +52,8 @@ const VideoIntro = () => {
                     <div className="video-item">
                       <div
                         onClick={(e) => {
-                          e.preventDefault();
-                          openModal();
+                          e.preventDefault()
+                          openModal()
                         }}
                         className="popup-youtube"
                       >
@@ -85,8 +85,8 @@ const VideoIntro = () => {
                     <div className="video-item">
                       <div
                         onClick={(e) => {
-                          e.preventDefault();
-                          openModal();
+                          e.preventDefault()
+                          openModal()
                         }}
                         className="popup-youtube"
                       >
@@ -117,8 +117,8 @@ const VideoIntro = () => {
                     <div className="video-item">
                       <div
                         onClick={(e) => {
-                          e.preventDefault();
-                          openModal();
+                          e.preventDefault()
+                          openModal()
                         }}
                         className="popup-youtube"
                       >
@@ -149,8 +149,8 @@ const VideoIntro = () => {
                     <div className="video-item">
                       <div
                         onClick={(e) => {
-                          e.preventDefault();
-                          openModal();
+                          e.preventDefault()
+                          openModal()
                         }}
                         className="popup-youtube"
                       >
@@ -163,7 +163,7 @@ const VideoIntro = () => {
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. Quis ipsum suspendisse ultrices
                           gravida. Risus commodo viverra maecenas accumsan lacus
-                          vel facilisis.{" "}
+                          vel facilisis.{' '}
                         </p>
                       </div>
                     </div>
@@ -191,7 +191,7 @@ const VideoIntro = () => {
         onClose={() => setOpen(false)}
       />
     </>
-  );
-};
+  )
+}
 
-export default VideoIntro;
+export default VideoIntro

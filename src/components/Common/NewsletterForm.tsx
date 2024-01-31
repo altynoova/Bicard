@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const NewsletterForm = () => {
   return (
@@ -38,7 +38,7 @@ const NewsletterForm = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NewsletterForm;
+export default NewsletterForm

@@ -1,6 +1,6 @@
-import React from "react";
-import BlogGrid from "@/components/Blog/BlogGrid";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import BlogGrid from '@/components/Blog/BlogGrid'
+import PageBanner from '@/components/Common/PageBanner'
 
 const Blog = () => {
   return (
@@ -12,10 +12,9 @@ const Blog = () => {
         activePageText="Блоги"
         bgImage="page-title-four"
       />
-
       <BlogGrid />
     </div>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog

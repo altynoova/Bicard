@@ -1,33 +1,33 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import { UserRegister } from "@/entities/User";
-import { Register } from "@/libs/requests/AuthRequests";
+'use client'
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { UserRegister } from '@/entities/User'
+import { Register } from '@/libs/requests/AuthRequests'
 
 const SignUpForm = () => {
-  const [username, setUsername] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [passwordConfirm, setPasswordConfirm] = useState<string>('')
 
-  const isPasswordValid = () => password === passwordConfirm;
+  const isPasswordValid = () => password === passwordConfirm
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (!isPasswordValid()) {
-      return;
+      return
     }
 
     const data: UserRegister = {
       userName: username,
       email,
       password,
-    };
+    }
 
-    const response = await Register(data);
-    console.log(response);
-  };
+    const response = await Register(data)
+    console.log(response)
+  }
 
   return (
     <>
@@ -119,7 +119,7 @@ const SignUpForm = () => {
                               setPassword(event.target.value)
                             }
                             style={{
-                              borderColor: !isPasswordValid() ? "red" : "gray",
+                              borderColor: !isPasswordValid() ? 'red' : 'gray',
                             }}
                           />
                         </div>
@@ -136,14 +136,14 @@ const SignUpForm = () => {
                               setPasswordConfirm(event.target.value)
                             }
                             style={{
-                              borderColor: !isPasswordValid() ? "red" : "gray",
+                              borderColor: !isPasswordValid() ? 'red' : 'gray',
                             }}
                           />
                         </div>
                       </div>
 
                       {!isPasswordValid() ? (
-                        <span style={{ color: "red", marginBottom: "20px" }}>
+                        <span style={{ color: 'red', marginBottom: '20px' }}>
                           Пароли не совпадают
                         </span>
                       ) : null}
@@ -160,7 +160,7 @@ const SignUpForm = () => {
                               className="form-check-label"
                               htmlFor="gridCheck"
                             >
-                              Yes, I agree with all{" "}
+                              Yes, I agree with all{' '}
                               <Link href="/terms-condition">
                                 Terms & Conditions
                               </Link>
@@ -185,7 +185,7 @@ const SignUpForm = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

@@ -1,6 +1,6 @@
-import React from "react";
-import ServiceDetailsContent from "@/components/Services/ServiceDetailsContent";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import ServiceDetailsContent from '@/components/Services/ServiceDetailsContent'
+import PageBanner from '@/components/Common/PageBanner'
 
 const ServiceDetails = () => {
   return (
@@ -15,7 +15,7 @@ const ServiceDetails = () => {
 
       <ServiceDetailsContent />
     </div>
-  );
-};
+  )
+}
 
-export default ServiceDetails;
+export default ServiceDetails

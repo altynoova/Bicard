@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const OurDoctors = () => {
   return (
@@ -63,7 +63,7 @@ const OurDoctors = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default OurDoctors;
+export default OurDoctors

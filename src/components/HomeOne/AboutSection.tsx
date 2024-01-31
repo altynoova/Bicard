@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const AboutSection = () => {
   return (
@@ -23,7 +23,7 @@ const AboutSection = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel facilisis.{" "}
+                  maecenas accumsan lacus vel facilisis.{' '}
                 </p>
 
                 <ul>
@@ -48,7 +48,7 @@ const AboutSection = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AboutSection;
+export default AboutSection

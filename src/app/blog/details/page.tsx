@@ -1,7 +1,7 @@
-import React from "react";
-import LatestBlogPost from "@/components/Blog/LatestBlogPost";
-import PageBanner from "@/components/Common/PageBanner";
-import BlogDetailsContent from "@/components/Blog/BlogDetailsContent";
+import React from 'react'
+import LatestBlogPost from '@/components/Blog/LatestBlogPost'
+import PageBanner from '@/components/Common/PageBanner'
+import BlogDetailsContent from '@/components/Blog/BlogDetailsContent'
 
 const BlogDetails = () => {
   return (
@@ -13,12 +13,10 @@ const BlogDetails = () => {
         activePageText="Blog Details"
         bgImage="page-title-four"
       />
-
       <BlogDetailsContent />
-
       <LatestBlogPost />
     </div>
-  );
-};
+  )
+}
 
-export default BlogDetails;
+export default BlogDetails

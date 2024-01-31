@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
   return (
     <>
       <footer className="pt-100 pb-70">
@@ -132,7 +132,7 @@ const Footer = () => {
         <div className="container">
           <div className="copyright-item">
             <p>
-              Copyright &copy; {currentYear} Design & Developed by{" "}
+              Copyright &copy; {currentYear} Design & Developed by{' '}
               <a href="https://hibootstrap.com/" target="_blank">
                 HiBootstrap
               </a>
@@ -141,7 +141,7 @@ const Footer = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const TopHeader = () => {
   return (
@@ -72,7 +72,7 @@ const TopHeader = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default TopHeader;
+export default TopHeader

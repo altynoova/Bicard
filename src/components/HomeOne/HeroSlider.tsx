@@ -1,8 +1,8 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 // @ts-ignore
-import { Pagination, Navigation } from "swiper";
-import Link from "next/link";
+import { Pagination, Navigation } from 'swiper'
+import Link from 'next/link'
 
 const HeroSlider = () => {
   return (
@@ -130,7 +130,7 @@ const HeroSlider = () => {
         </SwiperSlide>
       </Swiper>
     </>
-  );
-};
+  )
+}
 
-export default HeroSlider;
+export default HeroSlider

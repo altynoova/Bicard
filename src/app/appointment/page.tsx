@@ -1,6 +1,6 @@
-import React from "react";
-import AppointmentFormq from "@/components/Appointment/AppointmentForm";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import AppointmentForm from '@/components/Appointment/AppointmentForm'
+import PageBanner from '@/components/Common/PageBanner'
 
 const Appointment = () => {
   return (
@@ -12,10 +12,9 @@ const Appointment = () => {
         activePageText="Онлайн запись"
         bgImage="page-title-one"
       />
-
-      <AppointmentFormq />
+      <AppointmentForm />
     </div>
-  );
-};
+  )
+}
 
-export default Appointment;
+export default Appointment

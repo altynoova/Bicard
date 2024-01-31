@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import CommentForm from "./CommentForm";
-import BlogSidebar from "./BlogSidebar";
+import React from 'react'
+import Link from 'next/link'
+import CommentForm from './CommentForm'
+import BlogSidebar from './BlogSidebar'
 
 const BlogDetailsContent = () => {
   return (
@@ -38,7 +38,7 @@ const BlogDetailsContent = () => {
                     ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Quis ipsum suspendisse ultrices gravida. Risus commodo
-                    viverra maecenas accumsan lacus vel facilisis.{" "}
+                    viverra maecenas accumsan lacus vel facilisis.{' '}
                   </p>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -57,7 +57,7 @@ const BlogDetailsContent = () => {
 
                 <div className="blog-details-previous">
                   <h3>
-                      {/* eslint-disable-next-line react/no-unescaped-entities */}
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                     Section 1.10.32 of "de Finibus Bonorum et Malo rum", written
                     by Cicero in 45 BC
                   </h3>
@@ -97,19 +97,17 @@ const BlogDetailsContent = () => {
                 </div>
               </div>
 
-              {/* CommentForm */}
               <CommentForm />
             </div>
 
             <div className="col-lg-4">
-              {/* BlogSidebar */}
               <BlogSidebar />
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BlogDetailsContent;
+export default BlogDetailsContent

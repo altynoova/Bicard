@@ -1,9 +1,6 @@
 import React from "react";
-import TopHeader from "@/components/App/TopHeader";
-import Navbar from "@/components/App/Navbar";
 import PageBanner from "@/components/Common/PageBanner";
-import Footer from "@/components/App/Footer";
-import SignInForm from "@/components/authentication/SignInForm";
+import SignInForm from "@/components/Authentication/SignInForm";
 
 const SignIn = () => {
   return (

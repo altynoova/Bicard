@@ -1,41 +1,41 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+'use client'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const Navbar = () => {
-  const [currentPath, setCurrentPath] = useState("");
-  const router = useRouter();
+  const [currentPath, setCurrentPath] = useState('')
+  const router = useRouter()
 
   // useEffect(() => {
   //   setCurrentPath(router.asPath);
   // }, [router]);
 
-  const [menu, setMenu] = React.useState(true);
+  const [menu, setMenu] = React.useState(true)
 
   const toggleNavbar = () => {
-    setMenu(!menu);
-  };
+    setMenu(!menu)
+  }
 
   React.useEffect(() => {
-    let elementId = document.getElementById("navbar");
-    document.addEventListener("scroll", () => {
+    let elementId = document.getElementById('navbar')
+    document.addEventListener('scroll', () => {
       if (window.scrollY > 170) {
         // @ts-ignore
-        elementId.classList.add("is-sticky");
+        elementId.classList.add('is-sticky')
       } else {
         // @ts-ignore
-        elementId.classList.remove("is-sticky");
+        elementId.classList.remove('is-sticky')
       }
-    });
-  });
+    })
+  })
 
   const classOne = menu
-    ? "collapse navbar-collapse"
-    : "collapse navbar-collapse show";
+    ? 'collapse navbar-collapse'
+    : 'collapse navbar-collapse show'
   const classTwo = menu
-    ? "navbar-toggler navbar-toggler-right collapsed"
-    : "navbar-toggler navbar-toggler-right";
+    ? 'navbar-toggler navbar-toggler-right collapsed'
+    : 'navbar-toggler navbar-toggler-right'
 
   return (
     <>
@@ -64,12 +64,11 @@ const Navbar = () => {
 
               <div className={classOne} id="navbarSupportedContent">
                 <ul className="navbar-nav">
-
                   <li className="nav-item">
                     <Link
                       href="/about/"
                       className={`nav-link ${
-                        currentPath == "/about/" && "active"
+                        currentPath == '/about/' && 'active'
                       }`}
                     >
                       Главная
@@ -90,7 +89,7 @@ const Navbar = () => {
                         <Link
                           href="/appointment/"
                           className={`nav-link ${
-                            currentPath == "/appointment/" && "active"
+                            currentPath == '/appointment/' && 'active'
                           }`}
                         >
                           Онлайн запись
@@ -101,7 +100,7 @@ const Navbar = () => {
                         <Link
                           href="/departments/"
                           className={`nav-link ${
-                            currentPath == "/departments/" && "active"
+                            currentPath == '/departments/' && 'active'
                           }`}
                         >
                           Отделения
@@ -112,7 +111,7 @@ const Navbar = () => {
                         <Link
                           href="/testimonials/"
                           className={`nav-link ${
-                            currentPath == "/testimonials/" && "active"
+                            currentPath == '/testimonials/' && 'active'
                           }`}
                         >
                           Пациентам
@@ -123,7 +122,7 @@ const Navbar = () => {
                         <Link
                           href="/signup/"
                           className={`nav-link ${
-                            currentPath == "/sign-up/" && "active"
+                            currentPath == '/sign-up/' && 'active'
                           }`}
                         >
                           Регистрация
@@ -134,7 +133,7 @@ const Navbar = () => {
                         <Link
                           href="/signin/"
                           className={`nav-link ${
-                            currentPath == "/sign-in/" && "active"
+                            currentPath == '/sign-in/' && 'active'
                           }`}
                         >
                           Вход
@@ -145,7 +144,7 @@ const Navbar = () => {
                         <Link
                           href="/faq/"
                           className={`nav-link ${
-                            currentPath == "/faq/" && "active"
+                            currentPath == '/faq/' && 'active'
                           }`}
                         >
                           FAQ&apos;s
@@ -156,7 +155,7 @@ const Navbar = () => {
                         <Link
                           href="/coming-soon/"
                           className={`nav-link ${
-                            currentPath == "/coming-soon/" && "active"
+                            currentPath == '/coming-soon/' && 'active'
                           }`}
                         >
                           Новинки
@@ -167,7 +166,7 @@ const Navbar = () => {
                         <Link
                           href="/privacy-policy/"
                           className={`nav-link ${
-                            currentPath == "/privacy-policy/" && "active"
+                            currentPath == '/privacy-policy/' && 'active'
                           }`}
                         >
                           Privacy Policy
@@ -178,7 +177,7 @@ const Navbar = () => {
                         <Link
                           href="/terms-condition/"
                           className={`nav-link ${
-                            currentPath == "/terms-condition/" && "active"
+                            currentPath == '/terms-condition/' && 'active'
                           }`}
                         >
                           Terms & Conditions
@@ -201,7 +200,7 @@ const Navbar = () => {
                         <Link
                           href="/services/"
                           className={`nav-link ${
-                            currentPath == "/services/" && "active"
+                            currentPath == '/services/' && 'active'
                           }`}
                         >
                           Услуги
@@ -212,7 +211,7 @@ const Navbar = () => {
                         <Link
                           href="/service-details/"
                           className={`nav-link ${
-                            currentPath == "/service-details/" && "active"
+                            currentPath == '/service-details/' && 'active'
                           }`}
                         >
                           Узнать поподробнее
@@ -235,7 +234,7 @@ const Navbar = () => {
                         <Link
                           href="/doctors/"
                           className={`nav-link ${
-                            currentPath == "/doctors/" && "active"
+                            currentPath == '/doctors/' && 'active'
                           }`}
                         >
                           Докторы
@@ -246,7 +245,7 @@ const Navbar = () => {
                         <Link
                           href="/doctors/details/"
                           className={`nav-link ${
-                            currentPath == "/doctor-details/" && "active"
+                            currentPath == '/doctor-details/' && 'active'
                           }`}
                         >
                           Узнать поподробнее
@@ -269,7 +268,7 @@ const Navbar = () => {
                         <Link
                           href="/blog/"
                           className={`nav-link ${
-                            currentPath == "/blog/" && "active"
+                            currentPath == '/blog/' && 'active'
                           }`}
                         >
                           Блоги
@@ -280,7 +279,7 @@ const Navbar = () => {
                         <Link
                           href="/blog/details/"
                           className={`nav-link ${
-                            currentPath == "/blog-details/" && "active"
+                            currentPath == '/blog-details/' && 'active'
                           }`}
                         >
                           Узнать поподробнее
@@ -293,7 +292,7 @@ const Navbar = () => {
                     <Link
                       href="/contact"
                       className={`nav-link ${
-                        currentPath == "/blog/" && "active"
+                        currentPath == '/blog/' && 'active'
                       }`}
                     >
                       Контакты
@@ -321,7 +320,7 @@ const Navbar = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

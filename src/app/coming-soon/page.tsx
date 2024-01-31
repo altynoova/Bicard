@@ -1,45 +1,47 @@
-"use client";
-import React from "react";
+'use client'
+import React from 'react'
 
 const ComingSoon = () => {
-  const [days, setDays] = React.useState("");
-  const [hours, setHours] = React.useState("");
-  const [minutes, setMinutes] = React.useState("");
-  const [seconds, setSeconds] = React.useState("");
+  const [days, setDays] = React.useState('')
+  const [hours, setHours] = React.useState('')
+  const [minutes, setMinutes] = React.useState('')
+  const [seconds, setSeconds] = React.useState('')
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      commingSoonTime();
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+      commingSoonTime()
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   const commingSoonTime = () => {
-    let endTime = new Date("August 23, 2024 17:00:00 PDT");
-    let endTimeParse = Date.parse(endTime.toString()) / 1000;
-    let now = new Date();
-    let nowParse = Date.parse(now.toString()) / 1000;
-    let timeLeft = endTimeParse - nowParse;
-    let days: number | string = Math.floor(timeLeft / 86400);
-    let hours: number | string = Math.floor((timeLeft - days * 86400) / 3600);
-    let minutes: number | string = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60);
+    let endTime = new Date('August 23, 2024 17:00:00 PDT')
+    let endTimeParse = Date.parse(endTime.toString()) / 1000
+    let now = new Date()
+    let nowParse = Date.parse(now.toString()) / 1000
+    let timeLeft = endTimeParse - nowParse
+    let days: number | string = Math.floor(timeLeft / 86400)
+    let hours: number | string = Math.floor((timeLeft - days * 86400) / 3600)
+    let minutes: number | string = Math.floor(
+      (timeLeft - days * 86400 - hours * 3600) / 60,
+    )
     let seconds: number | string = Math.floor(
       timeLeft - days * 86400 - hours * 3600 - minutes * 60,
-    );
-    if (hours.toString() < "10") {
-      hours = "0" + hours;
+    )
+    if (hours.toString() < '10') {
+      hours = '0' + hours
     }
-    if (minutes.toString() < "10") {
-      minutes = "0" + minutes;
+    if (minutes.toString() < '10') {
+      minutes = '0' + minutes
     }
-    if (seconds.toString() < "10") {
-      seconds = "0" + seconds;
+    if (seconds.toString() < '10') {
+      seconds = '0' + seconds
     }
-    setDays(days.toString());
-    setHours(hours.toString());
-    setMinutes(minutes.toString());
-    setSeconds(seconds.toString());
-  };
+    setDays(days.toString())
+    setHours(hours.toString())
+    setMinutes(minutes.toString())
+    setSeconds(seconds.toString())
+  }
 
   return (
     <div>
@@ -117,7 +119,7 @@ const ComingSoon = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ComingSoon;
+export default ComingSoon

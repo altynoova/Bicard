@@ -1,31 +1,33 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import { UserLogin, UserRegister } from "@/entities/User";
-import { Login, Register } from "@/libs/requests/AuthRequests";
-import { Simulate } from "react-dom/test-utils";
+'use client'
+import React, { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { UserLogin } from '@/entities/User'
+import { Login } from '@/libs/requests/AuthRequests'
+import { SetCookie } from '@/libs/cookie'
 
 const SignInForm = () => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [rememberMe, setRememeberMe] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [rememberMe, setRememeberMe] = useState<boolean>(false)
 
   const toggleRememberMe = () => {
-    setRememeberMe((prev) => !prev);
-  };
+    setRememeberMe((prev) => !prev)
+  }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const data: UserLogin = {
       userName: username,
       password,
       rememberMe,
-    };
+    }
 
-    const response = await Login(data);
-    console.log(response);
-  };
+    const response = await Login(data)
+    SetCookie('Bicard-Web-API-Access-Token', response.data.accessToken)
+    console.log(response)
+  }
   return (
     <>
       <div className="signup-area ptb-100">
@@ -33,7 +35,12 @@ const SignInForm = () => {
           <div className="row">
             <div className="col-lg-6 pl-0">
               <div className="login-left">
-                <img src="/images/login-bg.jpg" alt="Login" />
+                <Image
+                  width={100}
+                  height={100}
+                  src="/images/login-bg.jpg"
+                  alt="Login"
+                />
               </div>
             </div>
 
@@ -42,8 +49,8 @@ const SignInForm = () => {
                 <div className="signup-head">
                   <h2>Login Here</h2>
                   <p>
-                    Didn&apos;t you account yet?{" "}
-                    <Link href="/sign-up">Sign Up Here</Link>
+                    Didn&apos;t you account yet?{' '}
+                    <Link href="/signup">Sign Up Here</Link>
                   </p>
                 </div>
                 <div className="signup-form">
@@ -138,7 +145,7 @@ const SignInForm = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SignInForm;
+export default SignInForm

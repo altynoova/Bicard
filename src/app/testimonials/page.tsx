@@ -1,8 +1,8 @@
-import React from "react";
-import PageBanner from "@/components/Common/PageBanner";
-import OurExpertise from "@/components/HomeOne/OurExpertise";
-import TestimonialSlider from "@/components/Common/TestimonialSlider";
-import OurDoctors from "@/components/Common/OurDoctors";
+import React from 'react'
+import PageBanner from '@/components/Common/PageBanner'
+import OurExpertise from '@/components/HomeOne/OurExpertise'
+import TestimonialSlider from '@/components/Common/TestimonialSlider'
+import OurDoctors from '@/components/Common/OurDoctors'
 
 const Testimonials = () => {
   return (
@@ -23,7 +23,7 @@ const Testimonials = () => {
 
       <OurDoctors />
     </div>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

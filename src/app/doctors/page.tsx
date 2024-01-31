@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import PageBanner from "@/components/Common/PageBanner";
+import React from 'react'
+import Link from 'next/link'
+import PageBanner from '@/components/Common/PageBanner'
 
 const Doctors = () => {
   return (
@@ -195,7 +195,7 @@ const Doctors = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Doctors;
+export default Doctors

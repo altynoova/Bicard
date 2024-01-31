@@ -1,53 +1,36 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-const MySwal = withReactContent(Swal);
-import { BASE_URL } from "@/config";
+import React, { useState } from 'react'
+import Swal from 'sweetalert2'
+
+const MySwal = withReactContent(Swal)
+import withReactContent from 'sweetalert2-react-content'
+import { SendContactInfo } from '@/libs/requests/ContactRequests'
 
 const alertContent = () => {
   MySwal.fire({
-    title: "Congratulations!",
-    text: "Your message was successfully send and will back to you soon",
-    icon: "success",
+    title: 'Congratulations!',
+    text: 'Your message was successfully send and will back to you soon',
+    icon: 'success',
     timer: 2000,
     timerProgressBar: true,
     showConfirmButton: false,
-  });
-};
-
-// Form initial state
-const INITIAL_STATE = {
-  name: "",
-  email: "",
-  number: "",
-  subject: "",
-  text: "",
-};
+  })
+}
 
 const ContactForm = () => {
-  const [contact, setContact] = useState(INITIAL_STATE);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState<string>('')
+  const [number, setNumber] = useState<string>('')
+  const [subject, setSubject] = useState<string>('')
+  const [text, setText] = useState<string>('')
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-    setContact((prevState) => ({ ...prevState, [name]: value }));
-    // console.log(contact)
-  };
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    try {
-      const url = `${BASE_URL}/api/contact`;
-      const { name, email, number, subject, text } = contact;
-      const payload = { name, email, number, subject, text };
-      const response = await axios.post(url, payload);
-      console.log(response);
-      setContact(INITIAL_STATE);
-      alertContent();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const data = { name, email, number, subject, text }
+    const response = await SendContactInfo(data)
+
+    alertContent()
+  }
 
   return (
     <>
@@ -57,7 +40,9 @@ const ContactForm = () => {
             <div className="col-lg-7 p-0">
               <div className="drop-item drop-img">
                 <div className="drop-left">
-                  <h2>Оставьте свое сообщение для любой информации или вопроса</h2>
+                  <h2>
+                    Оставьте свое сообщение для любой информации или вопроса
+                  </h2>
 
                   <form onSubmit={handleSubmit}>
                     <div className="row">
@@ -68,8 +53,8 @@ const ContactForm = () => {
                             name="name"
                             className="form-control"
                             placeholder="Ваше имя"
-                            value={contact.name}
-                            onChange={handleChange}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             required
                           />
                         </div>
@@ -82,8 +67,8 @@ const ContactForm = () => {
                             name="email"
                             className="form-control"
                             placeholder="Ваша почта"
-                            value={contact.email}
-                            onChange={handleChange}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                           />
                         </div>
@@ -95,8 +80,8 @@ const ContactForm = () => {
                             type="text"
                             name="number"
                             className="form-control"
-                            value={contact.number}
-                            onChange={handleChange}
+                            value={number}
+                            onChange={(e) => setNumber(e.target.value)}
                             placeholder="Ваш номер"
                             required
                           />
@@ -110,8 +95,8 @@ const ContactForm = () => {
                             name="subject"
                             className="form-control"
                             placeholder="Ваш пол"
-                            value={contact.subject}
-                            onChange={handleChange}
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
                             required
                           />
                         </div>
@@ -125,8 +110,8 @@ const ContactForm = () => {
                             rows={6}
                             className="form-control"
                             placeholder="Ваше сообщение..."
-                            value={contact.text}
-                            onChange={handleChange}
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
                             required
                           ></textarea>
                         </div>
@@ -161,7 +146,7 @@ const ContactForm = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm
