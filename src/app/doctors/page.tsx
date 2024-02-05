@@ -13,8 +13,10 @@ const Doctors = () => {
   const FetchDoctors = useDoctorStore().FetchDoctors
   const doctors = useDoctorStore().doctors
   const currentUser = useUserStore().user
+
   console.log('current user', currentUser)
   console.log(doctors)
+
   useEffect(() => {
     FetchDoctors()
   }, [])
@@ -89,9 +91,10 @@ const Doctors = () => {
                 </div>
               </div>
             ))}
-            {currentUser?.roleName === "admin" ? <div className="common-btn"> <Link href="/createdoctor">Добавить доктора</Link>
-            </div> : <div className="common-btn"> <Link href="/createdoctor">Удалить доктора</Link>
-            </div>
+            {currentUser?.roleName === 'admin' ?
+              <div className="common-btn"><Link href="/createdoctor">Добавить доктора</Link>
+              </div> : <div className="common-btn"><Link href="/createdoctor">Удалить доктора</Link>
+              </div>
             }
             {/* <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { UserRegister } from '@/entities/User'
 import { Register } from '@/libs/requests/AuthRequests'
+import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 
 const SignUpForm = () => {
   const [username, setUsername] = useState<string>('')
@@ -26,6 +27,13 @@ const SignUpForm = () => {
     }
 
     const response = await Register(data)
+    if (response.status === 200) {
+      SuccessAlert('Вы успешно зарегистрировались.')
+    } else if (response.status === 400) {
+      ErrorAlert('Неверные данные!')
+    } else {
+      ErrorAlert('Неизвестная ошибка.')
+    }
     console.log(response)
   }
 

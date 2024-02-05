@@ -20,7 +20,7 @@ This files table contents are outlined below>>>>>
 ** - Services CSS
 ** - Expertise CSS
 ** - Video CSS
-** - Doctors CSS
+** - DoctorsList CSS
 ** - Blog CSS
 ** - Newsletter CSS
 ** - Footer CSS
@@ -72,6 +72,7 @@ body {
   background-color: $white-color;
   font-size: $all-size;
 }
+
 h1,
 h2,
 h3,
@@ -80,52 +81,66 @@ h5,
 h6 {
   color: #232323;
 }
+
 p {
   line-height: 1.7;
 }
+
 a {
   transition: $transition;
   text-decoration: none;
+
   &:hover {
     text-decoration: none;
   }
 }
+
 img {
   max-width: 100%;
 }
+
 .plr-15 {
   padding-left: 15px;
   padding-right: 15px;
 }
+
 .d-table {
   width: 100%;
   height: 100%;
 }
+
 .d-table-cell {
   vertical-align: middle;
 }
+
 .ptb-100 {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+
 .pt-100 {
   padding-top: 100px;
 }
+
 .pb-70 {
   padding-bottom: 70px;
 }
+
 .pb-100 {
   padding-bottom: 100px;
 }
+
 button {
   &:focus {
     outline: 0;
   }
 }
+
 .btn.focus,
 .btn:focus {
   box-shadow: none;
 }
+
 /*-- End Default CSS --*/
 
 /*----- Home Page One -----*/
@@ -137,6 +152,7 @@ button {
   background-color: $white-color;
   z-index: 1;
 }
+
 .header-top-item {
   .header-top-left {
     ul {
@@ -158,9 +174,11 @@ button {
           top: 2px;
           margin-right: 6px;
         }
+
         &:last-child {
           margin-right: 0;
         }
+
         a {
           display: inline-block;
           color: #4a6f8a;
@@ -168,6 +186,7 @@ button {
           &:hover {
             color: $main-color;
           }
+
           i {
             color: $main-color;
             font-size: 18px;
@@ -179,12 +198,15 @@ button {
       }
     }
   }
+
   .header-top-right {
     text-align: right;
+
     .lang-list {
       margin-right: 30px;
       position: relative;
       top: -2px;
+
       li {
         a {
           padding: 0 10px;
@@ -194,6 +216,7 @@ button {
         }
       }
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -207,6 +230,7 @@ button {
         &:last-child {
           margin-right: 0;
         }
+
         a {
           display: block;
           width: 25px;
@@ -228,6 +252,7 @@ button {
     }
   }
 }
+
 /*-- End Header Top --*/
 
 /*-- Navbar --*/
@@ -254,6 +279,7 @@ button {
             color: $main-color;
           }
         }
+
         .dropdown-menu {
           background: $white-color;
           box-shadow: 0px 0px 15px 0px #ddd;
@@ -272,6 +298,7 @@ button {
                 color: $main-color;
               }
             }
+
             &:hover {
               a {
                 color: $main-color;
@@ -285,6 +312,7 @@ button {
             }
           }
         }
+
         a {
           font-weight: 500;
           font-size: 15px;
@@ -301,6 +329,7 @@ button {
     }
   }
 }
+
 .search-icon {
   font-size: 16px;
   border: 0;
@@ -318,15 +347,19 @@ button {
     color: $white-color;
   }
 }
+
 .search-toggle .search-icon.icon-close {
   display: none;
 }
+
 .search-toggle.opened .search-icon.icon-search {
   display: none;
 }
+
 .search-toggle.opened .search-icon.icon-close {
   display: block;
 }
+
 .nav-srh {
   position: relative;
 
@@ -335,6 +368,7 @@ button {
       font-size: 15px;
       height: 40px;
     }
+
     .icon-search {
       position: absolute;
       top: 0;
@@ -343,6 +377,7 @@ button {
     }
   }
 }
+
 .is-sticky {
   box-shadow: 0px 0px 15px 0px #ddd;
 
@@ -357,9 +392,11 @@ button {
   border: none;
   border-radius: 0;
   padding: 0;
+
   &:focus {
     outline: 0;
   }
+
   &:hover {
     box-shadow: none;
   }
@@ -372,36 +409,43 @@ button {
     display: block;
     border-radius: 3px;
   }
+
   .top-bar {
     transform: rotate(45deg);
     transform-origin: 10% 10%;
     left: 4px;
     position: relative;
   }
+
   .middle-bar {
     opacity: 0;
     margin: 5px 0;
   }
+
   .bottom-bar {
     transform: rotate(-45deg);
     transform-origin: 10% 90%;
     left: 4px;
     position: relative;
   }
+
   &.collapsed {
     .top-bar {
       transform: rotate(0);
       left: 0;
     }
+
     .middle-bar {
       opacity: 1;
     }
+
     .bottom-bar {
       transform: rotate(0);
       left: 0;
     }
   }
 }
+
 /*-- End Navbar --*/
 
 /*-- Home Slider --*/
@@ -420,6 +464,7 @@ button {
       max-width: 730px;
     }
   }
+
   .slider-shape-two {
     img {
       position: absolute;
@@ -428,6 +473,7 @@ button {
       max-width: 730px;
     }
   }
+
   .slider-shape-three {
     img {
       position: absolute;
@@ -436,6 +482,7 @@ button {
       max-width: 730px;
     }
   }
+
   &::before {
     position: absolute;
     content: "";
@@ -446,6 +493,7 @@ button {
     background-color: $main-color;
     opacity: 0.8;
   }
+
   .slider-text {
     position: relative;
     margin-top: -160px;
@@ -460,6 +508,7 @@ button {
       margin-left: 0;
       line-height: 1.4;
     }
+
     p {
       color: $white-color;
       font-weight: 40;
@@ -469,6 +518,7 @@ button {
     }
   }
 }
+
 .common-btn {
   a {
     display: inline-block;
@@ -486,10 +536,12 @@ button {
       border: 2px solid $white-color;
       color: $white-color;
     }
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   .cmn-btn-right {
     background-color: transparent;
     color: $white-color;
@@ -503,6 +555,7 @@ button {
     }
   }
 }
+
 .home-slider {
   .swiper-button-prev,
   .swiper-button-next {
@@ -523,8 +576,10 @@ button {
       background-color: $black-color;
     }
   }
+
   .swiper-pagination {
     bottom: 150px;
+
     .swiper-pagination-bullet {
       width: 20px;
       height: 5px;
@@ -542,11 +597,13 @@ button {
     }
   }
 }
+
 .home-slider-five {
   .swiper-pagination {
     bottom: 30px;
   }
 }
+
 /*-- End Home Slider --*/
 
 /*-- Counter --*/
@@ -564,6 +621,7 @@ button {
   position: relative;
   z-index: 1;
 }
+
 .counter-item {
   margin-bottom: 30px;
   text-align: center;
@@ -574,18 +632,21 @@ button {
     font-size: 45px;
     margin-bottom: 20px;
   }
+
   h3 {
     font-weight: 700;
     font-size: 48px;
     color: $main-color;
     margin-bottom: 8px;
   }
+
   p {
     margin-bottom: 0;
     font-weight: 600;
     font-size: 18px;
   }
 }
+
 /*-- End Counter --*/
 
 /*-- About --*/
@@ -597,9 +658,11 @@ button {
     font-weight: 700;
     margin-bottom: 20px;
   }
+
   p {
     margin-bottom: 25px;
   }
+
   ul {
     margin: 0;
     padding: 0;
@@ -616,6 +679,7 @@ button {
       &:last-child {
         margin-bottom: 0;
       }
+
       i {
         display: inline-block;
         margin-right: 10px;
@@ -626,6 +690,7 @@ button {
       }
     }
   }
+
   a {
     display: inline-block;
     font-size: $all-size;
@@ -641,6 +706,7 @@ button {
     }
   }
 }
+
 .about-left {
   position: relative;
 
@@ -650,6 +716,7 @@ button {
     border-radius: 10px;
     animation: a-seven 10s infinite linear;
   }
+
   &:before {
     position: absolute;
     content: "";
@@ -662,6 +729,7 @@ button {
     animation: a-one 5s infinite linear;
     background-color: $main-color;
   }
+
   &:after {
     position: absolute;
     content: "";
@@ -675,6 +743,7 @@ button {
     background-color: $main-color;
   }
 }
+
 @keyframes a-one {
   0% {
     transform: translate(0, 0);
@@ -686,6 +755,7 @@ button {
     transform: translate(0, 0);
   }
 }
+
 @keyframes a-two {
   0% {
     transform: translate(0, 0);
@@ -697,6 +767,7 @@ button {
     transform: translate(0, 0);
   }
 }
+
 .about-right {
   padding-left: 40px;
   position: relative;
@@ -710,6 +781,7 @@ button {
     animation: a-three 5s infinite linear;
   }
 }
+
 @keyframes a-three {
   0% {
     transform: translate(0, 0);
@@ -721,6 +793,7 @@ button {
     transform: translate(0, 0);
   }
 }
+
 /*-- End About --*/
 
 /*-- Services --*/
@@ -747,6 +820,7 @@ button {
     }
   }
 }
+
 .service-item {
   margin-bottom: 30px;
   box-shadow: 0px 0px 25px 0px #ddddddbf;
@@ -767,11 +841,13 @@ button {
       font-size: 65px;
       margin-bottom: 20px;
     }
+
     h3 {
       font-weight: 600;
       font-size: 20px;
       margin-bottom: 12px;
     }
+
     p {
       margin-bottom: 0;
     }
@@ -782,12 +858,14 @@ button {
     box-shadow: none;
     border-bottom: 2px solid #e7e7e7;
   }
+
   &.style-3 {
     background-color: #f5f5f5;
     box-shadow: none;
     padding: 30px 25px;
     border-bottom: 2px solid $main-color;
   }
+
   &.style-5 {
     padding: 30px 25px;
     box-shadow: none;
@@ -795,6 +873,7 @@ button {
     border-radius: 10px;
   }
 }
+
 /*-- End Services --*/
 
 /*-- Expertise --*/
@@ -804,6 +883,7 @@ button {
   a {
     color: #fff;
   }
+
   .expertise-inner {
     background-color: $main-color;
     padding: 42px 25px 35px 25px;
@@ -815,6 +895,7 @@ button {
         box-shadow: none;
       }
     }
+
     i {
       display: block;
       width: 70px;
@@ -832,17 +913,20 @@ button {
       position: relative;
       top: 8px;
     }
+
     h3 {
       color: $white-color;
       font-weight: 600;
       font-size: 22px;
       margin-bottom: 14px;
     }
+
     p {
       margin-bottom: 0;
       color: $white-color;
     }
   }
+
   .expertise-right {
     padding-left: 80px;
     position: relative;
@@ -859,6 +943,7 @@ button {
       animation: a-one 5s infinite linear;
       background-color: $main-color;
     }
+
     &:after {
       position: absolute;
       content: "";
@@ -871,6 +956,7 @@ button {
       animation: a-two 5s infinite linear;
       background-color: $main-color;
     }
+
     img {
       width: 100%;
       z-index: 1;
@@ -878,6 +964,7 @@ button {
     }
   }
 }
+
 @keyframes a-seven {
   0% {
     transform: scale(1);
@@ -889,6 +976,7 @@ button {
     transform: scale(1);
   }
 }
+
 /*-- End Expertise --*/
 
 /*-- Video --*/
@@ -900,6 +988,7 @@ button {
   height: 560px;
   text-align: center;
 }
+
 .video-item {
   .popup-youtube {
     display: inline-block;
@@ -918,6 +1007,7 @@ button {
       background-color: $black-color;
     }
   }
+
   .video-content {
     margin-top: 90px;
     text-align: left;
@@ -935,18 +1025,21 @@ button {
       height: 130px;
       background-color: $white-color;
     }
+
     h3 {
       color: $white-color;
       font-weight: 600;
       font-size: 36px;
       margin-bottom: 15px;
     }
+
     p {
       color: $white-color;
       margin-bottom: 0;
     }
   }
 }
+
 .video-wrap {
   .react-tabs__tab-list {
     background-color: $white-color;
@@ -974,9 +1067,10 @@ button {
     }
   }
 }
+
 /*-- End Video --*/
 
-/*-- Doctors --*/
+/*-- DoctorsList --*/
 .doctor-item {
   margin-bottom: 30px;
   background-color: $white-color;
@@ -990,12 +1084,14 @@ button {
         opacity: 0.6;
         transform: scale(1);
       }
+
       a {
         opacity: 1;
         bottom: 20px;
       }
     }
   }
+
   .doctor-top {
     position: relative;
     border-radius: 10px;
@@ -1022,11 +1118,13 @@ button {
         background-color: $black-color;
       }
     }
+
     img {
       width: 100%;
       border-radius: 10px;
     }
   }
+
   .doctor-bottom {
     padding-top: 25px;
     padding-bottom: 25px;
@@ -1044,6 +1142,7 @@ button {
         }
       }
     }
+
     span {
       display: block;
       color: $grey-color;
@@ -1051,6 +1150,7 @@ button {
     }
   }
 }
+
 .doctor-btn {
   text-align: center;
 
@@ -1070,12 +1170,14 @@ button {
     }
   }
 }
-/*-- End Doctors --*/
+
+/*-- End DoctorsList --*/
 
 /*-- Blog --*/
 .blog-area {
   background-color: #f8fbff;
 }
+
 .blog-item {
   margin-bottom: 30px;
   border-radius: 10px;
@@ -1089,6 +1191,7 @@ button {
       transform: scale(1.1);
     }
   }
+
   .blog-top {
     overflow: hidden;
 
@@ -1097,10 +1200,12 @@ button {
       border-radius: 10px;
       transition: $transition;
     }
+
     a {
       display: block;
     }
   }
+
   .blog-bottom {
     padding: {
       top: 25px;
@@ -1108,6 +1213,7 @@ button {
       right: 20px;
       bottom: 25px;
     }
+
     h3 {
       margin-bottom: 0;
 
@@ -1125,11 +1231,13 @@ button {
         }
       }
     }
+
     p {
       color: #232323;
       margin-bottom: 0;
       padding-bottom: 20px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -1146,6 +1254,7 @@ button {
         i {
           color: #0046c0;
         }
+
         &:last-child {
           float: right;
 
@@ -1154,6 +1263,7 @@ button {
             margin-right: 6px;
           }
         }
+
         a {
           display: block;
           color: #0046c0;
@@ -1167,6 +1277,7 @@ button {
               color: $black-color;
             }
           }
+
           i {
             display: inline-block;
             font-size: 22px;
@@ -1179,6 +1290,7 @@ button {
     }
   }
 }
+
 /*-- End Blog --*/
 
 /*-- Newsletter --*/
@@ -1188,12 +1300,14 @@ button {
   background-color: $white-color;
   border-radius: 10px;
 }
+
 .newsletter-item {
   h2 {
     font-weight: 600;
     font-size: 36px;
     margin-bottom: 15px;
   }
+
   p {
     margin-bottom: 0;
     color: #676767;
@@ -1201,8 +1315,10 @@ button {
     max-width: 550px;
     margin-left: 0;
   }
+
   .newsletter-form {
     position: relative;
+
     .form-control {
       height: 75px;
       border-radius: 10px;
@@ -1215,9 +1331,11 @@ button {
         border: 1px solid $black-color;
       }
     }
+
     ::placeholder {
       color: #333333;
     }
+
     .newsletter-btn {
       border-radius: 10px;
       padding: 16px 30px;
@@ -1234,12 +1352,14 @@ button {
         background-color: $black-color;
       }
     }
+
     .validation-danger {
       color: #dc3545;
       margin-top: 10px;
     }
   }
 }
+
 /*-- End Newsletter --*/
 
 /*-- Footer --*/
@@ -1251,6 +1371,7 @@ footer {
   background-color: #0843aa;
   position: relative;
 }
+
 .footer-item {
   margin-bottom: 30px;
 
@@ -1261,6 +1382,7 @@ footer {
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -1283,6 +1405,7 @@ footer {
             top: 2px;
           }
         }
+
         a {
           display: block;
           color: $white-color;
@@ -1291,6 +1414,7 @@ footer {
           &:last-child {
             margin-bottom: 0;
           }
+
           &:hover {
             margin-left: 5px;
 
@@ -1299,6 +1423,7 @@ footer {
             }
           }
         }
+
         i {
           position: absolute;
           top: 2px;
@@ -1309,6 +1434,7 @@ footer {
       }
     }
   }
+
   .footer-quick {
     h3 {
       color: $white-color;
@@ -1316,6 +1442,7 @@ footer {
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -1328,6 +1455,7 @@ footer {
         &:last-child {
           margin-bottom: 0;
         }
+
         a {
           display: block;
           font-weight: 500;
@@ -1341,6 +1469,7 @@ footer {
       }
     }
   }
+
   .footer-feedback {
     h3 {
       color: $white-color;
@@ -1348,6 +1477,7 @@ footer {
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     .form-group {
       margin-bottom: 20px;
 
@@ -1367,10 +1497,12 @@ footer {
           border-bottom: 1px solid #ffffffc7;
         }
       }
+
       ::placeholder {
         color: #ffffffc7;
       }
     }
+
     .feedback-btn {
       font-weight: 600;
       font-size: 14px;
@@ -1387,6 +1519,7 @@ footer {
     }
   }
 }
+
 /*-- End Footer --*/
 
 /*-- Copyright --*/
@@ -1415,6 +1548,7 @@ footer {
     }
   }
 }
+
 /*-- End Copyright --*/
 /*----- End Home Page One -----*/
 
@@ -1424,6 +1558,7 @@ footer {
 .home-slider-two.owl-theme .owl-dots .owl-dot:hover span {
   background: #9dbdfc;
 }
+
 .home-slider-two {
   &.owl-theme {
     .owl-nav {
@@ -1447,16 +1582,20 @@ footer {
         z-index: -1;
       }
     }
+
     &::before {
       background-color: transparent;
     }
+
     .slider-text {
       h1 {
         color: #232323;
       }
+
       p {
         color: #000000;
       }
+
       .common-btn {
         a {
           border: 2px solid $main-color;
@@ -1469,6 +1608,7 @@ footer {
             background-color: transparent;
           }
         }
+
         .cmn-btn-right {
           background-color: transparent;
           color: $main-color;
@@ -1482,6 +1622,7 @@ footer {
     }
   }
 }
+
 /*-- End Home Slider --*/
 
 /*-- Emergency --*/
@@ -1490,6 +1631,7 @@ footer {
   position: relative;
   z-index: 1;
 }
+
 .emergency-bg {
   background-image: url(/images/contact-info-bg1.png);
   background-size: cover;
@@ -1498,6 +1640,7 @@ footer {
   padding: 45px 0 15px 110px;
   border-radius: 10px;
 }
+
 .emergency-item {
   margin-bottom: 30px;
   position: relative;
@@ -1517,6 +1660,7 @@ footer {
     box-shadow: 0px 0px 0px 4px #ffffff9c;
     background-color: $white-color;
   }
+
   .emergency-inner {
     padding-left: 75px;
 
@@ -1526,6 +1670,7 @@ footer {
       font-size: 22px;
       font-weight: 600;
     }
+
     p {
       color: $white-color;
       margin-bottom: 0;
@@ -1533,6 +1678,7 @@ footer {
     }
   }
 }
+
 /*-- End Emergency --*/
 
 /*-- Welcome --*/
@@ -1550,6 +1696,7 @@ footer {
     display: none;
   }
 }
+
 .welcome-item {
   ul {
     margin: 0;
@@ -1567,9 +1714,11 @@ footer {
           box-shadow: 0px 0px 0px 10px $black-color;
         }
       }
+
       &:last-child {
         margin-bottom: 0;
       }
+
       i {
         display: inline-block;
         position: absolute;
@@ -1586,6 +1735,7 @@ footer {
         background-color: #f1f1f1;
         transition: $transition;
       }
+
       .welcome-inner {
         padding-left: 110px;
 
@@ -1595,6 +1745,7 @@ footer {
           color: #232323;
           margin-bottom: 10px;
         }
+
         p {
           margin-bottom: 0;
         }
@@ -1602,10 +1753,12 @@ footer {
     }
   }
 }
+
 .welcome-right {
   padding-left: 70px;
   padding-top: 0;
 }
+
 .section-title-two {
   max-width: 430px;
   margin-left: 0;
@@ -1619,12 +1772,14 @@ footer {
     font-weight: 600;
     margin-bottom: 5px;
   }
+
   h2 {
     font-size: 38px;
     font-weight: 700;
     color: #232323;
   }
 }
+
 /*-- End Welcome --*/
 
 /*-- Speciality --*/
@@ -1634,6 +1789,7 @@ footer {
     padding-left: 15px;
   }
 }
+
 .speciality-item {
   .speciality-inner {
     border-radius: 10px;
@@ -1647,6 +1803,7 @@ footer {
         background-color: #6096fd;
       }
     }
+
     i {
       display: block;
       color: #6096fd;
@@ -1660,16 +1817,19 @@ footer {
       margin-bottom: 18px;
       transition: $transition;
     }
+
     h3 {
       font-weight: 600;
       font-size: 22px;
       margin-bottom: 12px;
     }
+
     p {
       margin-bottom: 0;
     }
   }
 }
+
 .speciality-right {
   background-image: url("/images/about4.jpg");
   background-size: cover;
@@ -1683,6 +1843,7 @@ footer {
   img {
     display: none;
   }
+
   .speciality-emergency {
     position: absolute;
     bottom: 20px;
@@ -1711,6 +1872,7 @@ footer {
         left: 12px;
       }
     }
+
     h3 {
       font-weight: 500;
       color: $white-color;
@@ -1720,6 +1882,7 @@ footer {
       top: 23px;
       right: 70px;
     }
+
     p {
       margin-bottom: 0;
       color: $white-color;
@@ -1729,10 +1892,12 @@ footer {
     }
   }
 }
+
 .speciality-left {
   padding-left: 55px;
   padding-right: 120px;
 }
+
 /*-- End Speciality --*/
 
 /*-- Video --*/
@@ -1740,6 +1905,7 @@ footer {
   .video-area {
     background-image: url("/images/home-two/7.jpg");
   }
+
   .video-nav {
     .video-nav-item {
       a {
@@ -1748,15 +1914,18 @@ footer {
       }
     }
   }
+
   .video-item {
     a {
       color: $main-color;
     }
   }
+
   .nav-pills .nav-link,
   .nav-pills .show > .nav-link {
     border-top: 0;
   }
+
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
     border-top: 0;
@@ -1764,6 +1933,7 @@ footer {
     color: $white-color;
   }
 }
+
 /*-- End Video --*/
 
 /*-- Counter --*/
@@ -1773,6 +1943,7 @@ footer {
     bottom: 0;
   }
 }
+
 /*-- End Counter --*/
 
 /*-- Appointment --*/
@@ -1782,6 +1953,7 @@ footer {
   background-position: center center;
   background-repeat: no-repeat;
 }
+
 .appointment-item {
   max-width: 770px;
   margin-left: auto;
@@ -1800,6 +1972,7 @@ footer {
     font-size: 30px;
     margin-bottom: 15px;
   }
+
   span {
     display: block;
     color: $grey-color;
@@ -1807,6 +1980,7 @@ footer {
     font-weight: 600;
     margin-bottom: 50px;
   }
+
   .appointment-form {
     .form-group {
       padding-left: 70px;
@@ -1821,12 +1995,14 @@ footer {
         left: 0;
         font-size: 50px;
       }
+
       label {
         margin-bottom: 10px;
         color: $grey-color;
         font-size: $all-size;
         font-weight: 500;
       }
+
       .form-control {
         border-radius: 0;
         border: 0;
@@ -1842,10 +2018,12 @@ footer {
           border-bottom: 1px solid #0046c09e;
         }
       }
+
       ::placeholder {
         color: $grey-color;
       }
     }
+
     .appointment-btn {
       color: $white-color;
       background-color: $main-color;
@@ -1862,6 +2040,7 @@ footer {
     }
   }
 }
+
 /*-- End Appointment --*/
 /*----- End Home Page Two -----*/
 
@@ -1880,6 +2059,7 @@ footer {
     }
   }
 }
+
 .banner-item {
   position: relative;
 
@@ -1890,12 +2070,14 @@ footer {
     max-width: 575px;
     margin-left: 0;
   }
+
   p {
     color: #616263;
     margin-bottom: 35px;
     max-width: 575px;
     margin-left: 0;
   }
+
   .common-btn-two {
     a {
       display: inline-block;
@@ -1913,10 +2095,12 @@ footer {
         border: 2px solid $main-color;
         color: $main-color;
       }
+
       &:last-child {
         margin-right: 0;
       }
     }
+
     .cmn-btn-right-two {
       background-color: transparent;
       color: $main-color;
@@ -1930,6 +2114,7 @@ footer {
       }
     }
   }
+
   .banner-right {
     img {
       position: absolute;
@@ -1942,6 +2127,7 @@ footer {
         margin-left: auto;
         margin-right: auto;
       }
+
       &:nth-child(2) {
         top: -125px;
         right: 20px;
@@ -1950,6 +2136,7 @@ footer {
         margin-left: auto;
         margin-right: auto;
       }
+
       &:nth-child(3) {
         top: -125px;
         right: 0px;
@@ -1958,6 +2145,7 @@ footer {
         margin-left: auto;
         margin-right: auto;
       }
+
       &:nth-child(4) {
         bottom: 215px;
         left: 50px;
@@ -1968,6 +2156,7 @@ footer {
     }
   }
 }
+
 @keyframes a-eight {
   0% {
     transform: translate(0, 0);
@@ -1979,6 +2168,7 @@ footer {
     transform: translate(0, 0);
   }
 }
+
 @keyframes a-four {
   0% {
     transform: translate(0, 0);
@@ -1990,6 +2180,7 @@ footer {
     transform: translate(0, 0);
   }
 }
+
 @keyframes a-five {
   0% {
     transform: translate(0, 0);
@@ -2001,6 +2192,7 @@ footer {
     transform: translate(0, 0);
   }
 }
+
 /*-- End Banner --*/
 
 /*-- About --*/
@@ -2017,6 +2209,7 @@ footer {
     }
   }
 }
+
 @keyframes a-six {
   0% {
     transform: translate(0, 0);
@@ -2028,6 +2221,7 @@ footer {
     transform: translate(0, 0);
   }
 }
+
 .hospital-item {
   margin-bottom: 30px;
   position: relative;
@@ -2055,14 +2249,17 @@ footer {
       background-color: $black-color;
     }
   }
+
   h2 {
     font-weight: 700;
     font-size: 38px;
     margin-bottom: 15px;
   }
+
   p {
     margin-bottom: 40px;
   }
+
   ul {
     margin: 0;
     padding: 0;
@@ -2079,6 +2276,7 @@ footer {
       &:last-child {
         margin-bottom: 0;
       }
+
       i {
         color: #6096fd;
         font-size: 22px;
@@ -2088,6 +2286,7 @@ footer {
       }
     }
   }
+
   .hospital-btn {
     display: inline-block;
     color: $white-color;
@@ -2102,6 +2301,7 @@ footer {
       background-color: $black-color;
     }
   }
+
   .hospital-left-one {
     margin-top: 100px;
     position: relative;
@@ -2118,11 +2318,13 @@ footer {
       border-radius: 10px;
       background-color: $main-color;
     }
+
     img {
       width: 100%;
       z-index: 1;
     }
   }
+
   .hospital-left-two {
     margin-left: 15px;
     margin-bottom: 100px;
@@ -2140,16 +2342,19 @@ footer {
       border-radius: 10px;
       background-color: $main-color;
     }
+
     img {
       width: 100%;
       z-index: 1;
     }
   }
 }
+
 .hospital-right {
   max-width: 525px;
   margin-left: 85px;
 }
+
 /*-- End About --*/
 
 /*-- Speciality --*/
@@ -2167,6 +2372,7 @@ footer {
     background-color: $main-color;
   }
 }
+
 /*-- End Speciality --*/
 
 /*-- Welcome --*/
@@ -2174,6 +2380,7 @@ footer {
   position: relative;
   z-index: 1;
 }
+
 /*-- End Welcome --*/
 
 /*-- Counter --*/
@@ -2183,6 +2390,7 @@ footer {
     bottom: 0;
   }
 }
+
 /*-- End Counter --*/
 
 /*-- Review Slider --*/
@@ -2193,6 +2401,7 @@ footer {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
   &:before {
     position: absolute;
     content: "";
@@ -2204,6 +2413,7 @@ footer {
     background-color: $main-color;
   }
 }
+
 .main {
   max-width: 770px;
   display: block;
@@ -2225,9 +2435,11 @@ footer {
     background-color: $white-color;
   }
 }
+
 .slick-dotted.slick-slider {
   margin-bottom: 25px;
 }
+
 .slider-nav {
   margin-bottom: 30px;
   position: relative;
@@ -2248,6 +2460,7 @@ footer {
           color: $grey-color;
         }
       }
+
       &.slick-active {
         button {
           &:before {
@@ -2258,9 +2471,11 @@ footer {
       }
     }
   }
+
   .slick-track {
     padding-top: 2px;
   }
+
   div {
     text-align: center;
 
@@ -2282,35 +2497,42 @@ footer {
         cursor: pointer;
       }
     }
+
     h3 {
       font-size: 24px;
       font-weight: 600;
       margin-bottom: 12px;
     }
+
     span {
       display: block;
       color: #3776d0;
     }
   }
 }
+
 .slick-slide .review-details {
   opacity: 0;
 }
+
 .slick-slide {
   &:focus {
     outline: 0;
   }
 }
+
 .slick-slide.slick-center {
   .review-details {
     opacity: 1;
   }
+
   .review-img {
     img {
       transform: scale(1.3);
     }
   }
 }
+
 .slider-for {
   div {
     p {
@@ -2337,6 +2559,7 @@ footer {
       font-size: 20px;
     }
   }
+
   &.owl-theme {
     .owl-nav {
       .owl-prev,
@@ -2351,6 +2574,7 @@ footer {
     }
   }
 }
+
 .feedback-item {
   max-width: 770px;
   width: 100%;
@@ -2366,20 +2590,24 @@ footer {
       height: 90px;
       margin: auto;
     }
+
     h3 {
       margin-top: 20px;
       font-size: 22px;
     }
   }
+
   p {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
+
 /*-- End Review Slider --*/
 /*----- End Home Page Three -----*/
 
@@ -2388,6 +2616,7 @@ footer {
 .page-title-one {
   background-image: url("/images/page-banner1.jpg");
 }
+
 .page-title-area {
   background-size: cover;
   background-position: center center;
@@ -2407,14 +2636,17 @@ footer {
     background-color: $main-color;
   }
 }
+
 .page-title-item {
   position: relative;
+
   h2 {
     color: #f8f8f8;
     font-weight: 700;
     font-size: 48px;
     margin-bottom: 20px;
   }
+
   ul {
     margin: 0;
     padding: 0;
@@ -2454,6 +2686,7 @@ footer {
     }
   }
 }
+
 /*-- End Page Title --*/
 
 /*-- Doctor Search --*/
@@ -2470,6 +2703,7 @@ footer {
   margin-right: auto;
   margin-left: auto;
 }
+
 .doctor-search-item {
   margin-bottom: 30px;
   position: relative;
@@ -2490,11 +2724,13 @@ footer {
       top: 8px;
       left: 0;
     }
+
     label {
       color: $grey-color;
       font-size: $all-size;
       margin-bottom: 5px;
     }
+
     .form-control {
       font-weight: 600;
       font-size: $all-size;
@@ -2510,10 +2746,12 @@ footer {
         box-shadow: none;
       }
     }
+
     ::placeholder {
       color: $grey-color;
     }
   }
+
   .doctor-search-btn {
     position: absolute;
     bottom: 0;
@@ -2522,6 +2760,7 @@ footer {
     font-size: 18px;
   }
 }
+
 /*-- End Doctor Search --*/
 
 /*-- Doctor --*/
@@ -2535,6 +2774,7 @@ footer {
     animation: a-six 5s infinite linear;
   }
 }
+
 /*-- End Doctor --*/
 /*----- End Doctor Page -----*/
 
@@ -2543,6 +2783,7 @@ footer {
 .page-title-two {
   background-image: url("/images/page-banner2.jpg");
 }
+
 /*-- End Page Title --*/
 
 /*-- Appointment --*/
@@ -2561,6 +2802,7 @@ footer {
     animation: a-six 5s infinite linear;
   }
 }
+
 .appointment-item-two-right {
   background-image: url("/images/appointment1.jpg");
   background-size: cover;
@@ -2582,6 +2824,7 @@ footer {
       font-size: 24px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2594,6 +2837,7 @@ footer {
         font-size: 14px;
         border-bottom: 1px solid #eee;
         padding: 10px 0;
+
         span {
           float: right;
         }
@@ -2601,6 +2845,7 @@ footer {
     }
   }
 }
+
 /*-- End Appointment --*/
 /*----- End Apoointment Page -----*/
 
@@ -2609,6 +2854,7 @@ footer {
 .page-title-three {
   background-image: url("/images/page-banner3.jpg");
 }
+
 .page-title-item-two {
   position: relative;
   text-align: left;
@@ -2621,12 +2867,14 @@ footer {
     color: $white-color;
     margin-bottom: 14px;
   }
+
   h3 {
     font-weight: 600;
     font-size: 32px;
     color: #fefefe;
     margin-bottom: 15px;
   }
+
   p {
     margin-bottom: 0;
     font-size: 20px;
@@ -2634,6 +2882,7 @@ footer {
     padding-bottom: 55px;
   }
 }
+
 /*-- End Page Title --*/
 
 /*-- Doctor Details --*/
@@ -2641,6 +2890,7 @@ footer {
   box-shadow: 0px 0px 10px 0px #ddd;
   border-radius: 10px;
 }
+
 .doctor-details-item {
   margin-bottom: 30px;
 
@@ -2649,6 +2899,7 @@ footer {
     border-radius: 10px;
     margin-bottom: 50px;
   }
+
   .doctor-details-contact {
     padding: 0 40px;
     margin-bottom: 50px;
@@ -2659,6 +2910,7 @@ footer {
       color: $grey-color;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2674,6 +2926,7 @@ footer {
         &:last-child {
           margin-bottom: 0;
         }
+
         i {
           display: inline-block;
           color: $main-color;
@@ -2685,6 +2938,7 @@ footer {
       }
     }
   }
+
   .doctor-details-work {
     padding: 0 40px;
     padding-bottom: 50px;
@@ -2695,6 +2949,7 @@ footer {
       color: $grey-color;
       margin-bottom: 30px;
     }
+
     .appointment-item-two-right {
       background-image: none;
       padding-top: 0;
@@ -2718,6 +2973,7 @@ footer {
       }
     }
   }
+
   .doctor-details-biography {
     padding-left: 30px;
     margin-bottom: 40px;
@@ -2732,11 +2988,13 @@ footer {
       color: #2f60bd;
       margin-bottom: 25px;
     }
+
     p {
       &:last-child {
         margin-bottom: 0;
       }
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2753,6 +3011,7 @@ footer {
     }
   }
 }
+
 /*-- End Doctor Details --*/
 
 /*-- Appointment --*/
@@ -2770,10 +3029,12 @@ footer {
       width: 250px;
     }
   }
+
   .speciality-right-three {
     background-image: url("/images/appointment1.jpg");
   }
 }
+
 /*-- End Appointment --*/
 /*----- End Doctor Details Page -----*/
 
@@ -2782,6 +3043,7 @@ footer {
 .page-title-four {
   background-image: url("/images/page-banner4.jpg");
 }
+
 /*-- End Page Title --*/
 
 /*-- Blog Details --*/
@@ -2793,6 +3055,7 @@ footer {
       width: 100%;
       margin-bottom: 30px;
     }
+
     h2 {
       color: #232323;
       font-weight: 600;
@@ -2800,6 +3063,7 @@ footer {
       margin-bottom: 16px;
       line-height: 1.4;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2821,9 +3085,11 @@ footer {
             color: $black-color;
           }
         }
+
         &:last-child {
           margin-right: 0;
         }
+
         i {
           display: inline-block;
           font-size: 20px;
@@ -2831,11 +3097,13 @@ footer {
         }
       }
     }
+
     p {
       font-size: 15px;
       margin-bottom: 22px;
     }
   }
+
   .blog-details-previous {
     h3 {
       color: #232323;
@@ -2844,6 +3112,7 @@ footer {
       font-size: $all-size;
       margin-bottom: 25px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2859,6 +3128,7 @@ footer {
         }
       }
     }
+
     .prev-next {
       ul {
         margin: 0;
@@ -2871,6 +3141,7 @@ footer {
           &:last-child {
             float: right;
           }
+
           a {
             display: block;
             font-size: $all-size;
@@ -2889,6 +3160,7 @@ footer {
       }
     }
   }
+
   .blog-details-search {
     position: relative;
     margin-bottom: 40px;
@@ -2903,6 +3175,7 @@ footer {
         box-shadow: none;
       }
     }
+
     .blog-details-btn {
       color: $white-color;
       background-color: $main-color;
@@ -2918,10 +3191,12 @@ footer {
         background-color: $grey-color;
       }
     }
+
     ::placeholder {
       color: $grey-color;
     }
   }
+
   .blog-details-recent {
     margin-bottom: 40px;
 
@@ -2930,6 +3205,7 @@ footer {
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -2944,6 +3220,7 @@ footer {
         &:last-child {
           padding-bottom: 0;
         }
+
         img {
           position: absolute;
           top: 0;
@@ -2951,6 +3228,7 @@ footer {
           width: 100px;
           height: 95px;
         }
+
         a {
           display: block;
           font-weight: 600;
@@ -2963,6 +3241,7 @@ footer {
             color: $main-color;
           }
         }
+
         ul {
           li {
             display: inline-block;
@@ -2981,11 +3260,13 @@ footer {
                 color: $black-color;
               }
             }
+
             i {
               font-size: 20px;
               margin-right: 2px;
               display: inline-block;
             }
+
             &:last-child {
               margin-right: 0;
             }
@@ -2994,6 +3275,7 @@ footer {
       }
     }
   }
+
   .blog-details-category {
     margin-bottom: 40px;
 
@@ -3002,6 +3284,7 @@ footer {
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -3019,10 +3302,12 @@ footer {
           a {
             color: $white-color;
           }
+
           &:before {
             width: 100%;
           }
         }
+
         &:before {
           position: absolute;
           content: "";
@@ -3034,9 +3319,11 @@ footer {
           transition: $transition;
           background-color: #2362bc;
         }
+
         &:last-child {
           margin-bottom: 0;
         }
+
         a {
           display: block;
           z-index: 1;
@@ -3046,12 +3333,14 @@ footer {
       }
     }
   }
+
   .blog-details-tags {
     h3 {
       font-weight: 600;
       font-size: 22px;
       margin-bottom: 30px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -3079,6 +3368,7 @@ footer {
     }
   }
 }
+
 .blog-details-form {
   position: relative;
 
@@ -3089,6 +3379,7 @@ footer {
     width: 360px;
     animation: a-six 5s infinite linear;
   }
+
   .blog-details-form-wrap {
     max-width: 770px;
 
@@ -3097,6 +3388,7 @@ footer {
       font-size: 25px;
       margin-bottom: 30px;
     }
+
     .form-group {
       margin-bottom: 30px;
 
@@ -3106,6 +3398,7 @@ footer {
         z-index: 1;
         position: relative;
       }
+
       .form-control {
         height: 50px;
         padding-left: 20px;
@@ -3114,10 +3407,12 @@ footer {
         background-color: #fafafa;
         box-shadow: none;
       }
+
       ::placeholder {
         color: $grey-color;
       }
     }
+
     .blog-details-form-btn {
       color: $white-color;
       font-weight: 600;
@@ -3133,6 +3428,7 @@ footer {
     }
   }
 }
+
 /*-- End Blog Details --*/
 
 /*-- Blog --*/
@@ -3152,6 +3448,7 @@ footer {
     }
   }
 }
+
 /*-- End Blog --*/
 /*----- End Blog Details Page -----*/
 
@@ -3160,6 +3457,7 @@ footer {
 .page-title-five {
   background-image: url("/images/page-banner3.jpg");
 }
+
 /*-- End Page Title --*/
 
 /*-- Location --*/
@@ -3182,14 +3480,17 @@ footer {
       margin-bottom: 25px;
       background-color: $main-color;
     }
+
     h3 {
       font-weight: 600;
       font-size: 25px;
       margin-bottom: 15px;
     }
+
     p {
       margin-bottom: 0;
     }
+
     a {
       display: inline-block;
       color: $main-color;
@@ -3200,6 +3501,7 @@ footer {
     }
   }
 }
+
 /*-- End Location --*/
 
 /*-- Drop --*/
@@ -3215,11 +3517,13 @@ footer {
     display: none;
   }
 }
+
 .drop-area {
   .speciality-right-three {
     border-radius: 0;
   }
 }
+
 .drop-item {
   .drop-left {
     max-width: 560px;
@@ -3227,6 +3531,7 @@ footer {
     margin-right: auto;
     padding-top: 100px;
     padding-bottom: 100px;
+
     h2 {
       font-weight: 600;
       font-size: 32px;
@@ -3234,6 +3539,7 @@ footer {
       padding-right: 50px;
       line-height: 1.4;
     }
+
     .form-group {
       margin-bottom: 30px;
 
@@ -3244,11 +3550,13 @@ footer {
         border: none;
         box-shadow: 0px 0px 15px 0px #dddddda3;
       }
+
       textarea {
         padding-top: 20px;
         height: auto !important;
       }
     }
+
     .drop-btn {
       font-weight: 600;
       font-size: $all-size;
@@ -3258,22 +3566,26 @@ footer {
       background-color: $main-color;
       box-shadow: none;
       border: 0;
+
       &:hover {
         color: $white-color;
         background-color: $grey-color;
       }
     }
+
     .list-unstyled {
       color: #dc3545;
       font-size: 13px;
       margin-top: 10px;
     }
+
     .text-danger {
       color: #dc3545;
       margin-top: 25px;
       margin-bottom: 0;
       font-size: 24px;
     }
+
     .text-success {
       color: #28a745;
       margin-top: 25px;
@@ -3281,12 +3593,14 @@ footer {
     }
   }
 }
+
 /*-- End Drop --*/
 
 /*-- Map --*/
 #map {
   height: 600px;
 }
+
 /*-- End Map --*/
 /*----- End Contact Page -----*/
 
@@ -3299,6 +3613,7 @@ footer {
     font-size: 25px;
   }
 }
+
 .faq-wrap {
   margin-bottom: 50px;
 
@@ -3306,12 +3621,14 @@ footer {
     margin-bottom: 30px;
   }
 }
+
 /*-- End Faq --*/
 
 /*-- Footer --*/
 .footer-two {
   padding-top: 100px;
 }
+
 /*-- End Footer --*/
 /*----- END FAQ PAGE -----*/
 
@@ -3327,15 +3644,18 @@ footer {
     font-weight: 700;
     margin-bottom: 0;
   }
+
   p {
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 35px;
     color: #000000;
   }
+
   span {
     display: block;
   }
+
   a {
     display: inline-block;
     color: $white-color;
@@ -3350,6 +3670,7 @@ footer {
     }
   }
 }
+
 /*-- End 404 --*/
 /*----- END ERROR PAGE -----*/
 
@@ -3365,12 +3686,14 @@ footer {
     font-style: italic;
     margin-bottom: 20px;
   }
+
   p {
     margin-bottom: 40px;
     max-width: 865px;
     margin-left: auto;
     margin-right: auto;
   }
+
   .coming-wrap {
     max-width: 700px;
     margin-left: auto;
@@ -3393,6 +3716,7 @@ footer {
         color: #232323;
         margin-bottom: 5px;
       }
+
       span {
         font-size: 16px;
         font-style: italic;
@@ -3401,6 +3725,7 @@ footer {
       }
     }
   }
+
   ul {
     margin: 0;
     padding: 0;
@@ -3428,6 +3753,7 @@ footer {
     }
   }
 }
+
 /*-- End Coming --*/
 /*----- END COMING SOON PAGE -----*/
 
@@ -3451,9 +3777,11 @@ footer {
     background-color: $main-color;
     opacity: 0.5;
   }
+
   .owl-theme .owl-nav {
     margin-top: 25px;
   }
+
   .testimonial-wrap {
     background-color: $white-color;
     border-radius: 10px;
@@ -3468,6 +3796,7 @@ footer {
       font-size: 38px;
       margin-bottom: 50px;
     }
+
     .testimonial-slider {
       .owl-prev {
         width: 40px;
@@ -3483,6 +3812,7 @@ footer {
           background-color: $main-color !important;
         }
       }
+
       .owl-next {
         width: 40px;
         height: 40px;
@@ -3497,6 +3827,7 @@ footer {
           background-color: $main-color !important;
         }
       }
+
       .testimonial-item {
         img {
           width: 120px;
@@ -3506,11 +3837,13 @@ footer {
           margin-right: auto;
           margin-bottom: 30px;
         }
+
         h3 {
           font-weight: 600;
           font-size: 26px;
           margin-bottom: 15px;
         }
+
         p {
           margin-bottom: 0;
           max-width: 620px;
@@ -3521,6 +3854,7 @@ footer {
     }
   }
 }
+
 /*-- End Testimonial --*/
 /*----- END TESTIMONIAL PAGE -----*/
 
@@ -3538,6 +3872,7 @@ footer {
     display: none;
   }
 }
+
 .signup-item {
   max-width: 590px;
   margin-left: auto;
@@ -3564,6 +3899,7 @@ footer {
         border-radius: 5px;
       }
     }
+
     p {
       font-weight: 500;
       font-size: 16px;
@@ -3579,6 +3915,7 @@ footer {
       }
     }
   }
+
   .signup-form {
     .form-group {
       margin-bottom: 30px;
@@ -3594,6 +3931,7 @@ footer {
           box-shadow: none;
         }
       }
+
       .form-check {
         .form-check-input {
           width: 15px !important;
@@ -3601,6 +3939,7 @@ footer {
           top: 3px;
           margin-top: 0;
         }
+
         label {
           color: $grey-color;
 
@@ -3614,9 +3953,11 @@ footer {
           }
         }
       }
+
       ::placeholder {
         color: $grey-color;
       }
+
       .forgot-pass {
         a {
           color: $grey-color;
@@ -3629,6 +3970,7 @@ footer {
         }
       }
     }
+
     .signup-btn {
       color: $white-color;
       background-color: $main-color;
@@ -3648,6 +3990,7 @@ footer {
     }
   }
 }
+
 /*-- End Sign Up --*/
 /*----- END SIGN UP PAGE -----*/
 
@@ -3665,6 +4008,7 @@ footer {
     display: none;
   }
 }
+
 /*-- End Login --*/
 /*----- END LOGIN PAGE -----*/
 
@@ -3676,21 +4020,26 @@ footer {
     margin-bottom: 15px;
     font-weight: 600;
   }
+
   p {
     margin-bottom: 15px;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   ul {
     li {
       margin-bottom: 15px;
+
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
 }
+
 /*-- End Privacy --*/
 /*----- END PRIVACY POLICY PAGE -----*/
 
@@ -3717,6 +4066,7 @@ footer {
     background-color: $main-color;
     transition: $transition;
   }
+
   &:after {
     position: absolute;
     content: "";
@@ -3728,10 +4078,12 @@ footer {
     background-color: $main-color;
     transition: $transition;
   }
+
   &:hover {
     &:before {
       width: 51%;
     }
+
     &:after {
       width: 50%;
     }
@@ -3739,13 +4091,16 @@ footer {
     i {
       color: $white-color;
     }
+
     h3 {
       color: $white-color;
     }
+
     p {
       color: $white-color;
     }
   }
+
   i {
     font-size: 45px;
     display: block;
@@ -3753,12 +4108,14 @@ footer {
     color: $main-color;
     transition: $transition;
   }
+
   h3 {
     margin-bottom: 12px;
     font-size: 26px;
     font-weight: 600;
     transition: $transition;
   }
+
   p {
     margin-bottom: 0;
     padding-left: 15px;
@@ -3766,6 +4123,7 @@ footer {
     transition: $transition;
   }
 }
+
 /*-- End Department --*/
 /*----- END DEPARTMENTS PAGE -----*/
 
@@ -3778,14 +4136,17 @@ footer {
     width: 100%;
     margin-bottom: 30px;
   }
+
   h2 {
     font-weight: 600;
     font-size: 28px;
     margin-bottom: 16px;
   }
+
   P {
     margin-bottom: 20px;
   }
+
   blockquote {
     font-size: $all-size;
     color: $grey-color;
@@ -3804,6 +4165,7 @@ footer {
     }
   }
 }
+
 .service-details-inner-left {
   background-image: url("/images/signup-bg.jpg");
   background-size: cover;
@@ -3816,6 +4178,7 @@ footer {
     display: none;
   }
 }
+
 .service-details-inner {
   max-width: 580px;
   margin-left: auto;
@@ -3826,10 +4189,12 @@ footer {
     font-size: 30px;
     margin-bottom: 15px;
   }
+
   p {
     margin-bottom: 0;
   }
 }
+
 /*-- End Service Details --*/
 /*----- END SERVICES DETAILS PAGE -----*/
 
@@ -3839,6 +4204,7 @@ footer {
   margin-top: 0;
   margin-bottom: 100px;
 }
+
 /*-- End Counter --*/
 /*----- END ABOUT PAGE -----*/
 
@@ -3851,6 +4217,7 @@ footer {
   display: none;
   z-index: 10;
 }
+
 .go-top {
   position: fixed;
   right: 10px;
@@ -3858,9 +4225,11 @@ footer {
   transform: scale(0);
   transition: 0.5s;
   cursor: pointer;
+
   &.active {
     transform: scale(1);
   }
+
   i {
     background-color: $main-color;
     color: $white-color;
@@ -3882,6 +4251,7 @@ footer {
     }
   }
 }
+
 /*-- End Back To Top --*/
 
 /*----- Home Four CSS -----*/
@@ -3891,6 +4261,7 @@ footer {
   &:before {
     background-color: #000111;
   }
+
   .slider-shape {
     img {
       top: -75px;
@@ -3898,6 +4269,7 @@ footer {
       animation: item-two-ani 35s infinite linear;
     }
   }
+
   .slider-text {
     h1 {
       margin-bottom: 25px;
@@ -3905,6 +4277,7 @@ footer {
     }
   }
 }
+
 @keyframes item-two-ani {
   0% {
     transform: rotate(0deg);
@@ -3916,21 +4289,25 @@ footer {
     transform: rotate(360deg);
   }
 }
+
 .about-area-two {
   .about-item {
     p {
       margin-bottom: 10px;
     }
+
     a {
       margin-top: 20px;
     }
   }
 }
+
 .service-area-two {
   .section-title {
     max-width: 415px;
   }
 }
+
 .symptoms-img {
   margin-bottom: 30px;
 
@@ -3939,16 +4316,20 @@ footer {
     width: 100%;
   }
 }
+
 .symptoms-content {
   .section-title {
     margin-bottom: 30px;
   }
+
   .section-title-two {
     max-width: 100%;
   }
+
   p {
     margin-bottom: 20px;
   }
+
   ul {
     margin: 0;
     padding: 0;
@@ -3985,11 +4366,13 @@ footer {
           i {
             color: $white-color;
           }
+
           &:before {
             height: 100%;
             border-radius: 5px;
           }
         }
+
         &:before {
           position: absolute;
           content: "";
@@ -4003,6 +4386,7 @@ footer {
           z-index: -1;
           transition: $transition;
         }
+
         i {
           display: inline-block;
           color: $main-color;
@@ -4016,6 +4400,7 @@ footer {
     }
   }
 }
+
 .faq-area-two {
   background-color: #4f87fb;
   position: relative;
@@ -4028,12 +4413,14 @@ footer {
         top: 0;
         right: 0;
       }
+
       &:nth-child(2) {
         left: 0;
         bottom: 0;
       }
     }
   }
+
   .section-title {
     text-align: center;
 
@@ -4046,6 +4433,7 @@ footer {
       }
     }
   }
+
   .faq-img {
     margin-bottom: 30px;
     background-image: url("/images/faq-main.jpg");
@@ -4061,6 +4449,7 @@ footer {
       width: 100%;
       display: none;
     }
+
     .popup-youtube {
       display: inline-block;
       width: 80px;
@@ -4090,6 +4479,7 @@ footer {
 
 .accordion {
   border: none;
+
   .accordion__item {
     -webkit-box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
     box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
@@ -4102,6 +4492,7 @@ footer {
       margin-bottom: 0;
     }
   }
+
   .accordion__button {
     border-bottom: none;
     color: #fff;
@@ -4123,9 +4514,11 @@ footer {
       color: #fff;
       border: 1px solid $main-color;
     }
+
     &:focus {
       outline: 0;
     }
+
     span {
       &::before {
         position: absolute;
@@ -4150,6 +4543,7 @@ footer {
       top: 25%;
       z-index: 1;
     }
+
     &::after {
       content: "";
       margin-right: 0;
@@ -4168,6 +4562,7 @@ footer {
     &[aria-selected="true"]::after {
       display: none;
     }
+
     &[aria-expanded="true"]::before,
     &[aria-selected="true"]::before {
       transform: rotate(0deg);
@@ -4176,14 +4571,17 @@ footer {
 
   .accordion__panel {
     padding: 15px;
+
     p {
       color: #fff;
+
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
 }
+
 /*----- End Home Four CSS -----*/
 
 /*----- Home Five CSS -----*/
@@ -4192,12 +4590,14 @@ footer {
     display: none !important;
   }
 }
+
 .slider-item-three {
   overflow: hidden;
 
   &:before {
     display: none;
   }
+
   .slider-text {
     margin-top: -30px;
 
@@ -4221,17 +4621,20 @@ footer {
         border-radius: 10px;
       }
     }
+
     h1 {
       font-size: 60px;
       margin-bottom: 25px;
       color: #111111;
     }
+
     p {
       font-weight: 500;
       margin-bottom: 30px;
       font-size: 22px;
       color: #111111;
     }
+
     .common-btn {
       a {
         color: #fff;
@@ -4242,6 +4645,7 @@ footer {
           background-color: #111111;
         }
       }
+
       .cmn-btn-right {
         background-color: transparent;
         color: #0046c0;
@@ -4255,6 +4659,7 @@ footer {
       }
     }
   }
+
   .slider-shape {
     img {
       top: -65px;
@@ -4263,6 +4668,7 @@ footer {
     }
   }
 }
+
 .spread-area {
   .spread-img {
     margin-bottom: 30px;
@@ -4272,14 +4678,17 @@ footer {
       width: 100%;
     }
   }
+
   .spread-content {
     .section-title-two {
       margin-bottom: 25px;
       max-width: 100%;
     }
+
     p {
       margin-bottom: 25px;
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -4296,6 +4705,7 @@ footer {
             animation: item-two-ani 5s infinite linear;
           }
         }
+
         img {
           position: absolute;
           top: 0;
@@ -4303,10 +4713,12 @@ footer {
           animation: none;
           transition: $transition;
         }
+
         h3 {
           font-weight: 600;
           font-size: 20px;
         }
+
         p {
           margin-bottom: 0;
         }
@@ -4314,6 +4726,7 @@ footer {
     }
   }
 }
+
 /*----- End Home Five CSS -----*/
 
 .map-area {
@@ -4349,6 +4762,7 @@ footer {
         &:before {
           border-bottom: 3px solid #fff;
         }
+
         &:after {
           border-right: 3px solid #fff;
         }
@@ -4357,13 +4771,16 @@ footer {
       &:before {
         border-bottom: 3px solid #232323;
       }
+
       &:after {
         border-right: 3px solid #232323;
       }
     }
+
     .accordion__item {
       margin-bottom: 25px;
     }
+
     .accordion__panel p {
       color: #344c5d;
     }

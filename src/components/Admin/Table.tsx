@@ -1,45 +1,17 @@
 'use client'
-import React, { useEffect } from 'react'
-import useAppointmentsStore from '@/store/useAppointmentsStore'
+import React from 'react'
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import { AppointmentConfirmationModel } from '@/entities/Appoinment'
-import { CancelAppointment, ConfirmAppointment } from '@/libs/requests/AppointmentRequests'
 import CloseIcon from '@mui/icons-material/Close'
 import DoneIcon from '@mui/icons-material/Done'
-import Swal from 'sweetalert2'
+import { AppointmentConfirmationModel, AppointmentRequest } from '@/entities/Appoinment'
 
-const AppointmentsTable = () => {
-  const initAppointments = useAppointmentsStore().fetchAppointments
-  const removeAppointment = useAppointmentsStore().removeAppointment
-  const data = useAppointmentsStore().appointments
+interface IAppointmentsTable {
+  data: AppointmentRequest[];
+  handleAccept: (data: AppointmentConfirmationModel) => void;
+  handleDelete: (id: number) => void;
+}
 
-  const handleAccept = async (data: AppointmentConfirmationModel) => {
-    const response = await ConfirmAppointment(data)
-    console.log(response)
-  }
-
-  const handleDelete = async (id: number) => {
-    const responseStatus = await removeAppointment(id)
-    if (responseStatus === 200) {
-      Swal.fire({
-        title: 'Success',
-        text: 'Appointment was deleted!',
-        icon: 'success',
-        confirmButtonText: 'Ok',
-      })
-    } else {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-      })
-    }
-  }
-
-  useEffect(() => {
-    initAppointments()
-  }, [])
+const AppointmentsTable = ({ data, handleAccept, handleDelete }: IAppointmentsTable) => {
 
   return <div style={{ height: 400, width: '100%', margin: '20px' }}>
     <TableContainer component={Paper}>

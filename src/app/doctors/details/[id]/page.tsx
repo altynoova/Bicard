@@ -6,16 +6,17 @@ import AppointmentForm from '@/components/Appointment/AppointmentForm'
 import useDoctorStore from '@/store/useDoctorStore'
 
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
-  // const params = useParams()
   const GetDoctor = useDoctorStore().GetDoctor
-  const currentDoctor  = useDoctorStore().currentDoctor
+  const currentDoctor = useDoctorStore().currentDoctor
+
   useEffect(() => {
     GetDoctor(params.id)
   }, [])
+
   return (
     <div>
       <PageBanner
-        pageTitle= {currentDoctor?.name || ""}
+        pageTitle={currentDoctor?.name || ''}
         homePageUrl="/"
         homePageText="Главная"
         activePageText="Докторы"
@@ -26,7 +27,8 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-lg-5">
               <div className="doctor-details-item doctor-details-left">
-              <Image width={250} height={400} src={`data:image/png;base64, ${currentDoctor?.photoBase64}`} alt="Doctor" />
+                <Image width={250} height={400} src={`data:image/png;base64, ${currentDoctor?.photoBase64}`}
+                       alt="Doctor" />
                 <div className="doctor-details-contact">
                   <h3>Контакты</h3>
                   <ul>
@@ -77,7 +79,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                     <h3>Биография</h3>
 
                     <p>
-                     {currentDoctor?.bio}
+                      {currentDoctor?.bio}
                     </p>
 
                     <p></p>
