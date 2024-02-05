@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { MakeAppointment } from '@/libs/requests/AppointmentRequests'
 import { Appointment } from '@/entities/Appoinment'
 
-const AppointmentFormq = () => {
+const AppointmentForm = () => {
   const [name, setName] = useState<string>('')
   const [age, setAge] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -15,6 +15,7 @@ const AppointmentFormq = () => {
     event.preventDefault()
 
     const data: Appointment = {
+      id: 0,
       name,
       email,
       phoneNumber,
@@ -191,4 +192,4 @@ const AppointmentFormq = () => {
   )
 }
 
-export default AppointmentFormq
+export default AppointmentForm

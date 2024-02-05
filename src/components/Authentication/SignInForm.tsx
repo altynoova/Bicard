@@ -5,8 +5,15 @@ import Image from 'next/image'
 import { UserLogin } from '@/entities/User'
 import { Login } from '@/libs/requests/AuthRequests'
 import { SetCookie } from '@/libs/cookie'
+import useUserStore from '@/store/useUserStore'
+import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation';
+
 
 const SignInForm = () => {
+  const router = useRouter();
+  const methodSignIn = useUserStore().SignIn
+
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [rememberMe, setRememeberMe] = useState<boolean>(false)
@@ -24,9 +31,30 @@ const SignInForm = () => {
       rememberMe,
     }
 
-    const response = await Login(data)
-    SetCookie('Bicard-Web-API-Access-Token', response.data.accessToken)
-    console.log(response)
+    console.log(data)
+
+    const responseStatus = await methodSignIn(data)
+
+    if (responseStatus === 200) {
+      router.push('/');
+    }
+    else if (responseStatus === 500) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Ошибка на стороне сервера',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    }
+    else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Проверьте корректность ваших данных',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    }
+    console.log(responseStatus)
   }
   return (
     <>

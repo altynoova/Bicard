@@ -1,11 +1,12 @@
 import React from 'react'
+import AppointmentsTable from '@/components/Admin/Table'
 
-const Admin = () => {
+const Doctors = () => {
   return (
     <div>
-      admin
+      
     </div>
   )
 }
 
-export default Admin
+export default Doctors

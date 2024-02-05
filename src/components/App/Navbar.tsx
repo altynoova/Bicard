@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import useUserStore from '@/store/useUserStore'
 
 const Navbar = () => {
   const [currentPath, setCurrentPath] = useState('')
   const router = useRouter()
+  const user = useUserStore().user
 
   // useEffect(() => {
   //   setCurrentPath(router.asPath);

@@ -1,8 +1,24 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import PageBanner from '@/components/Common/PageBanner'
+import { FetchDoctors } from '@/libs/requests/DoctorRequests'
+import useDoctorStore from '@/store/useDoctorStore'
+import useUserStore from '@/store/useUserStore'
+import SignIn from '../signin/page'
+
 
 const Doctors = () => {
+  const FetchDoctors = useDoctorStore().FetchDoctors
+  const doctors = useDoctorStore().doctors
+  const currentUser = useUserStore().user
+  console.log('current user', currentUser)
+  console.log(doctors)
+  useEffect(() => {
+    FetchDoctors()
+  }, [])
+
   return (
     <div>
       <PageBanner
@@ -56,23 +72,28 @@ const Doctors = () => {
       <div className="doctors-area doctors-area-two pt-100 pb-70">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-sm-6 col-lg-4">
-              <div className="doctor-item">
-                <div className="doctor-top">
-                  <img src="/images/doctors/doctor1.png" alt="Doctor" />
+            {doctors.map((doctor) => (
+              <div key={doctor.id} className="col-sm-6 col-lg-4">
+                <div className="doctor-item">
+                  <div className="doctor-top">
+                    <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Doctor" />
 
-                  <Link href="/appointment">Записаться</Link>
-                </div>
-                <div className="doctor-bottom">
-                  <h3>
-                    <Link href="/doctors/details">Токтосунов А.Н</Link>
-                  </h3>
-                  <span>Кардиолог</span>
+                    <Link href="/appointment">Записаться</Link>
+                  </div>
+                  <div className="doctor-bottom">
+                    <h3>
+                      <Link href={`/doctors/details/${doctor.id}`}>{doctor.name}</Link>
+                    </h3>
+                    <span>{doctor.speciality}</span>
+                  </div>
                 </div>
               </div>
+            ))}
+            {currentUser?.roleName === "admin" ? <div className="common-btn"> <Link href="/createdoctor">Добавить доктора</Link>
+            </div> : <div className="common-btn"> <Link href="/createdoctor">Удалить доктора</Link>
             </div>
-
-            <div className="col-sm-6 col-lg-4">
+            }
+            {/* <div className="col-sm-6 col-lg-4">
               <div className="doctor-item">
                 <div className="doctor-top">
                   <img src="/images/doctors/doctor2.png" alt="Doctor" />
@@ -190,7 +211,7 @@ const Doctors = () => {
                   <span>врач клинической лабораторной диагностики</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
