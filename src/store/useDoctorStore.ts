@@ -1,6 +1,13 @@
 import { create } from 'zustand'
 import { Doctor, DoctorRequestModel } from '@/entities/Doctor'
-import { DeleteDoctor, EditDoctor, FetchDoctors, GetDoctor, GetUsersByRole } from '@/libs/requests/DoctorRequests'
+import {
+  CreateDoctor,
+  DeleteDoctor,
+  EditDoctor,
+  FetchDoctors,
+  GetDoctor,
+  GetUsersByRole,
+} from '@/libs/requests/DoctorRequests'
 
 interface IDoctorStore {
   doctors: Doctor[];
@@ -8,9 +15,10 @@ interface IDoctorStore {
   userReferences: { id: number, userName: string }[]
   FetchDoctors: () => void;
   GetDoctor: (id: number) => Promise<any>;
+  CreateDoctor: (data: DoctorRequestModel) => Promise<number>;
   EditDoctor: (data: DoctorRequestModel, id: number) => Promise<number>;
   DeleteDoctor: (id: number) => Promise<number>;
-  GetUsersByRole: (role: string) => void;
+  GetUsersByRole: (role: string) => Promise<number>;
 }
 
 const useDoctorStore = create<IDoctorStore>()((set) => ({
@@ -26,6 +34,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     phoneNumber: '',
     email: '',
     address: '',
+    userId: 0,
   },
   userReferences: [],
 
@@ -41,6 +50,13 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     console.log('current doctor in state', response)
     set(() => ({ currentDoctor: response.data }))
     return response.data
+  },
+
+  async CreateDoctor(data) {
+    const response = await CreateDoctor(data)
+    console.log(response)
+    set(() => ({ currentDoctor: response.data }))
+    return response.status
   },
 
   async EditDoctor(data, id) {
@@ -62,6 +78,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
   async GetUsersByRole(role) {
     const response = await GetUsersByRole(role)
     set(() => ({ userReferences: response.data }))
+    return response.status
   },
 }))
 

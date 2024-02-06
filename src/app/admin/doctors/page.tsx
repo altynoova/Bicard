@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import PageBanner from '@/components/Common/PageBanner'
 import useDoctorStore from '@/store/useDoctorStore'
-import useUserStore from '@/store/useUserStore'
 import DoctorSearchPanel from '@/components/Admin/Doctor/DoctorSearchPanel'
 import DoctorsList from '@/components/Admin/Doctor/DoctorsList'
 
 const Doctors = () => {
   const FetchDoctors = useDoctorStore().FetchDoctors
-  const currentUser = useUserStore().user
   const doctors = useDoctorStore().doctors
 
   const [search, setSearch] = useState<string>('')
@@ -35,7 +33,7 @@ const Doctors = () => {
       <div className="doctors-area doctors-area-two pt-100 pb-70">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="common-btn float-right">
+            <div className="d-flex justify-content-center mb-5">
               <Link href="doctors/create">Добавить доктора</Link>
             </div>
             <DoctorsList doctors={filteredDoctors} />

@@ -16,10 +16,10 @@ const DoctorsList = ({ doctors }: { doctors: Doctor[] }) => {
   }
 
   return (
-    <div>
+    <div className="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center gap-2">
       {doctors.map(doctor => (
-        <Link key={doctor.id} href={`/admin/doctors/edit/${doctor.id}`}>
-          <div className="col-sm-6 col-lg-4" style={{ position: 'relative' }}>
+        <div className="col-sm-6 col-lg-4" key={doctor.id}>
+          <div style={{ position: 'relative' }}>
             <button
               style={{
                 position: 'absolute',
@@ -31,20 +31,24 @@ const DoctorsList = ({ doctors }: { doctors: Doctor[] }) => {
               }}
               onClick={() => handleDelete(doctor.id)}
             >
-              <img width="48" height="48" src="https://img.icons8.com/color/48/close-window.png" alt="close-window" />
+              <Image width="48" height="48" src="https://img.icons8.com/color/48/close-window.png" alt="close-window" />
             </button>
-            <div className="doctor-item">
-              <div className="doctor-top">
-                <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Doctor" />
+            <Link
+              onClick={(event) => event.stopPropagation()} key={doctor.id}
+              href={`/admin/doctors/edit/${doctor.id}`}
+            >
+              <div className="doctor-item">
+                <div className="doctor-top">
+                  <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Doctor" />
+                </div>
+                <div className="doctor-bottom">
+                  <h3>{doctor.name}</h3>
+                  <span>{doctor.speciality}</span>
+                </div>
               </div>
-              <div className="doctor-bottom">
-                <h3>{doctor.name}</h3>
-                <span>{doctor.speciality}</span>
-              </div>
-            </div>
+            </Link>
           </div>
-        </Link>
-
+        </div>
       ))}
     </div>
   )

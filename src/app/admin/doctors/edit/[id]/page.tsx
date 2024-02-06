@@ -4,24 +4,24 @@ import useDoctorStore from '@/store/useDoctorStore'
 import PageBanner from '@/components/Common/PageBanner'
 import { DoctorRequestModel } from '@/entities/Doctor'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import { useRouter } from 'next/navigation'
 
 const Edit = ({ params }: { params: { id: number } }) => {
+  const router = useRouter()
   const GetCurrentDoctor = useDoctorStore(state => state.GetDoctor)
   const EditDoctor = useDoctorStore((state) => state.EditDoctor)
   const GetUsersByRole = useDoctorStore((state) => state.GetUsersByRole)
   const currentDoctor = useDoctorStore(state => (state.currentDoctor))
-  const userReferences = useDoctorStore(state => state.userReferences)
 
   const [name, setName] = useState<string>(currentDoctor?.name || '')
   const [speciality, setSpeciality] = useState<string>(currentDoctor?.speciality || '')
   const [bio, setBio] = useState<string>(currentDoctor?.bio || '')
   const [education, setEducation] = useState<string>(currentDoctor?.education || '')
   const [experience, setExperience] = useState<string>(currentDoctor?.experience || '')
-  const [photo, setPhoto] = useState<File>()
+  const [photo, setPhoto] = useState<File | null>(null)
   const [phoneNumber, setPhoneNumber] = useState<string>(currentDoctor?.phoneNumber || '')
   const [email, setEmail] = useState<string>(currentDoctor?.email || '')
   const [address, setAddress] = useState<string>(currentDoctor?.address || '')
-  const [userId, setUserId] = useState<number>(0)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -36,12 +36,13 @@ const Edit = ({ params }: { params: { id: number } }) => {
       phoneNumber,
       email,
       address,
-      userId,
+      userId: currentDoctor.userId,
     }
 
     const status = await EditDoctor(data, currentDoctor?.id || 0)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
+      router.push('/admin/doctors')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -74,151 +75,161 @@ const Edit = ({ params }: { params: { id: number } }) => {
         bgImage="page-title-five"
       />
       <div className="doctor-details-area pt-100 pb-70">
-        <div className="container" style={{ maxWidth: 500 }}>
+        <div className="container">
           <div className="row">
-            <div className="doctor-details-item">
-              <div className="doctor-details-right">
-                <form id="edit-doctor-form" onSubmit={handleSubmit}>
-                  <div className="doctor-details-biography">
-                    <h3>Имя</h3>
-
+            <div className="col-md-4 col-12 d-flex justify-content-center mb-3">
+              <div className="image">
+                <img src={`data:image/png;base64, ${currentDoctor.photoBase64}`} alt="" />
+              </div>
+            </div>
+            <div className="doctor-details-right col-md-8 col-12">
+              <div className="container pb-1 mb-5">
+                <form id="contactForm" onSubmit={handleSubmit}>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="name">Имя</label>
                     <input
-                      type="text"
-                      name="name"
                       className="form-control"
-                      placeholder="Name"
+                      id="name"
+                      type="text"
+                      placeholder="Имя"
+                      data-sb-validations="required"
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="имя:required">Имя is required.</div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Специальность</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="speciality">Специальность</label>
                     <input
-                      type="text"
-                      name="speciality"
                       className="form-control"
-                      placeholder="Speciality"
+                      id="speciality"
+                      type="text"
+                      placeholder="Специальность"
+                      data-sb-validations="required"
                       value={speciality}
                       onChange={(event) => setSpeciality(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="специальность:required">Специальность is
+                      required.
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Биография</h3>
-
-                    <input
-                      type="text"
-                      name="bio"
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="bio">Биография</label>
+                    <textarea
                       className="form-control"
-                      placeholder="Bio"
+                      id="bio"
+                      placeholder="Биография"
+                      style={{ height: '10rem' }}
+                      data-sb-validations="required"
                       value={bio}
                       onChange={(event) => setBio(event.target.value)}
-                    />
-
-                    <p></p>
+                    ></textarea>
+                    <div className="invalid-feedback" data-sb-feedback="биография:required">Биография is required.
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Образование</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="education">Образование</label>
                     <input
-                      type="text"
-                      name="education"
                       className="form-control"
-                      placeholder="Education"
+                      id="education"
+                      type="text"
+                      placeholder="Образование"
+                      data-sb-validations="required"
                       value={education}
                       onChange={(event) => setEducation(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="образование:required">Образование is
+                      required.
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Опыт</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="experience">Опыт</label>
                     <input
-                      type="text"
-                      name="experience"
                       className="form-control"
-                      placeholder="Experience"
+                      id="experience"
+                      type="text"
+                      placeholder="Опыт"
+                      data-sb-validations="required"
                       value={experience}
                       onChange={(event) => setExperience(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="опыт:required">Опыт is required.</div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Фото</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="photo">Фото</label>
                     <input
+                      className="form-control"
+                      id="photo"
                       type="file"
-                      multiple={false}
-                      name="experience"
-                      className="form-control"
-                      placeholder="Experience"
-                      onChange={(event) => setPhoto(event.target.files[0])}
+                      placeholder="Фото"
+                      data-sb-validations="required"
+                      onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="номерТелефона:required">Номер телефона is
+                      required.
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Номер телефона</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="phoneNumber">Номер телефона</label>
                     <input
-                      type="text"
-                      name="phoneNumber"
                       className="form-control"
-                      placeholder="Phone Number"
+                      id="phoneNumber"
+                      type="text"
+                      placeholder="Номер телефона"
+                      data-sb-validations="required"
                       value={phoneNumber}
                       onChange={(event) => setPhoneNumber(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="номерТелефона:required">Номер телефона is
+                      required.
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Email</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="email">Email</label>
                     <input
-                      type="email"
-                      name="email"
                       className="form-control"
+                      id="email"
+                      type="email"
                       placeholder="Email"
+                      data-sb-validations="required,email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
+                    <div className="invalid-feedback" data-sb-feedback="email:email">Email Email is not valid.</div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>Адрес</h3>
-
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="address">Адрес</label>
                     <input
-                      type="text"
-                      name="address"
                       className="form-control"
-                      placeholder="Address"
+                      id="address"
+                      type="text"
+                      placeholder="Адрес"
+                      data-sb-validations="required"
                       value={address}
                       onChange={(event) => setAddress(event.target.value)}
                     />
+                    <div className="invalid-feedback" data-sb-feedback="адрес:required">Адрес is required.</div>
                   </div>
-
-                  <div className="doctor-details-biography">
-                    <h3>User</h3>
-
-                    <select
-                      className="form-select"
-                      aria-label="Default select example"
-                      onChange={(event) => setUserId(+event.target.value)}
-                    >
-                      {userReferences.map(user => (
-                        <option key={user.id} value={user.id}>{user.userName}</option>
-                      ))}
-                    </select>
+                  <div className="d-none" id="submitSuccessMessage">
+                    <div className="text-center mb-3">
+                      <div className="fw-bolder">Form submission successful!</div>
+                      <p>To activate this form, sign up at</p>
+                      <a
+                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
                   </div>
-
-                  <div className="doctor-details-biography">
+                  <div className="d-none" id="submitErrorMessage">
+                    <div className="text-center text-danger mb-3">Error sending message!</div>
+                  </div>
+                  <div className="d-grid">
                     <input className="btn btn-primary" type="submit" value={'Сохранить'} />
                   </div>
                 </form>
               </div>
             </div>
           </div>
+          {/*</div>*/}
         </div>
       </div>
     </div>

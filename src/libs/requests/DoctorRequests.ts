@@ -9,6 +9,21 @@ export const GetDoctor = async (id: number) => {
   return await $http.get(`/doctors/getdoctorbyid?id=${id}`)
 }
 
+export const CreateDoctor = async (data: DoctorRequestModel) => {
+  try {
+    return await $http({
+      method: 'post',
+      url: `/doctors/create`,
+      data,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+  } catch (error: any) {
+    return error.status
+  }
+}
+
 export const EditDoctor = async (data: DoctorRequestModel, id: number) => {
   try {
     return await $http({

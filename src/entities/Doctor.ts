@@ -9,6 +9,7 @@ export type Doctor = {
   phoneNumber: string;
   email: string;
   address: string;
+  userId: number;
 };
 
 export type DoctorRequestModel = {
@@ -17,7 +18,7 @@ export type DoctorRequestModel = {
   bio: string;
   education: string;
   experience: string;
-  photo: File | undefined;
+  photo: File | null;
   phoneNumber: string;
   email: string;
   address: string;
