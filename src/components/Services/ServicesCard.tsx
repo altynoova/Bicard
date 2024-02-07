@@ -11,7 +11,7 @@ const ServicesCard = () => {
               <div className="service-item">
                 <div className="service-front">
                   <i className="icofont-doctor"></i>
-                  <Link href="/service-details">
+                  <Link href="/services/details">
                     <h3>Докторы</h3>
                   </Link>
                   <p>
@@ -31,7 +31,7 @@ const ServicesCard = () => {
               <div className="service-item">
                 <div className="service-front">
                   <i className="icofont-prescription"></i>
-                  <Link href="/service-details">
+                  <Link href="/services/details">
                     <h3>Диагностика</h3>
                   </Link>
                   <p>
@@ -51,7 +51,7 @@ const ServicesCard = () => {
               <div className="service-item">
                 <div className="service-front">
                   <i className="icofont-patient-file"></i>
-                  <Link href="/service-details">
+                  <Link href="/services/details">
                     <h3>Амбулаторно-поликлиническая помощь </h3>
                   </Link>
                   <p>
@@ -69,7 +69,7 @@ const ServicesCard = () => {
               <div className="service-item">
                 <div className="service-front">
                   <i className="icofont-dna-alt-1"></i>
-                  <Link href="/service-details">
+                  <Link href="/services/details">
                     <h3>Диагностика рентгенэндоваскулярными методами</h3>
                   </Link>
                   <p>
