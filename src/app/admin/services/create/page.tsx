@@ -2,8 +2,10 @@
 import React, { useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
+import {useRouter} from "next/navigation";
 
 const CreateService = () => {
+  const router = useRouter()
   const { CreateMedService } = useMedServicesStore()
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
@@ -13,7 +15,8 @@ const CreateService = () => {
     const response = await CreateMedService({ name, shortDescription, longDescription })
 
     if (response === 200) {
-      SuccessAlert('Роль успешно создана')
+      SuccessAlert('Сервис успешно создана')
+      router.push("/admin/services")
     } else {
       ErrorAlert('Произошла ошибка')
     }

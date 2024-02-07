@@ -13,7 +13,7 @@ export type SubMedService = {
   name: string
   price: string
   medServiceId: number
-  medService: MedService
+  medService: MedService | null
   subMedServiceDoctors: Doctor[]
 }
 

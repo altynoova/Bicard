@@ -1,7 +1,7 @@
 import React from 'react'
 import AppointmentsTable from '@/components/Admin/Table'
 
-const Doctors = () => {
+const Admin = () => {
   return (
     <div>
       
@@ -9,4 +9,4 @@ const Doctors = () => {
   )
 }
 
-export default Doctors
+export default Admin

@@ -1,19 +1,19 @@
 import { $http } from '@/libs/axios'
 import { MedServiceModel, SubMedServiceModel } from '@/entities/Service'
 
-export const GetServiceById = async (id: number) => {
+export const GetMedServiceById = async (id: number) => {
   return await $http.get(`/medservices/getmedservicebyid/${id}`)
 }
 
-export const GetSubServiceById = async (id: number) => {
+export const GetSubMedServiceById = async (id: number) => {
   return await $http.get(`/medservices/getsubmedservicebyid/${id}`)
 }
-export const GetServices = async () => {
+export const GetListOfMedServices = async () => {
   return await $http.get('/medservices/getlistofmedservices')
 }
 
-export const GetSubServices = async () => {
-  return await $http.get('/medservices/getlistofsubmedservices')
+export const GetListOfSubMedServices = async (id: number) => {
+  return await $http.get(`/medservices/getlistofsubmedservices?medserviceid=${id}`)
 }
 
 export const CreateService = async (data: MedServiceModel) => {

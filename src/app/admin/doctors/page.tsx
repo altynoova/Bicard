@@ -20,14 +20,6 @@ const Doctors = () => {
 
   return (
     <div>
-      <PageBanner
-        pageTitle="Познакомьтесь с нашими квалифицированными врачами"
-        homePageUrl="/"
-        homePageText="Главная"
-        activePageText="Докторы"
-        bgImage="page-title-five"
-      />
-
       <DoctorSearchPanel search={search} setSearch={setSearch} />
 
       <div className="doctors-area doctors-area-two pt-100 pb-70">
