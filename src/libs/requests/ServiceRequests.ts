@@ -13,7 +13,13 @@ export const GetListOfMedServices = async () => {
 }
 
 export const GetListOfSubMedServices = async (id: number) => {
-  return await $http.get(`/medservices/getlistofsubmedservices?medserviceid=${id}`)
+  return await $http.get(
+    `/medservices/getlistofsubmedservices?medserviceid=${id}`
+  )
+}
+
+export const GetAllSubMedServices = async () => {
+  return await $http.get('/medservices/getallsubmedservices')
 }
 
 export const CreateService = async (data: MedServiceModel) => {
@@ -25,11 +31,11 @@ export const CreateSubService = async (data: SubMedServiceModel) => {
 }
 
 export const EditService = async (data: MedServiceModel, id: number) => {
-  return await $http.put(`/medservices/createmedservice?id=${id}`, data)
+  return await $http.put(`/medservices/updatemedservice?id=${id}`, data)
 }
 
 export const EditSubService = async (data: SubMedServiceModel, id: number) => {
-  return await $http.put(`/medservices/createsubmedservice?id=${id}`, data)
+  return await $http.put(`/medservices/updatesubmedservice?id=${id}`, data)
 }
 
 export const DeleteService = async (id: number) => {

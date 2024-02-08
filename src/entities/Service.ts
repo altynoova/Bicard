@@ -5,7 +5,7 @@ export type MedService = {
   name: string
   shortDescription: string
   longDescription: string
-  subMedServices: SubMedService[]
+  subMedServices: SubMedService[] | null
 }
 
 export type SubMedService = {
@@ -17,6 +17,12 @@ export type SubMedService = {
   subMedServiceDoctors: Doctor[]
 }
 
-export type MedServiceModel = Pick<MedService, 'name' | 'shortDescription' | 'longDescription'>
+export type MedServiceModel = Pick<
+  MedService,
+  'name' | 'shortDescription' | 'longDescription'
+>
 
-export type SubMedServiceModel = Pick<SubMedService, 'name' | 'price' | 'medServiceId'>
+export type SubMedServiceModel = Pick<
+  SubMedService,
+  'name' | 'price' | 'medServiceId'
+>
