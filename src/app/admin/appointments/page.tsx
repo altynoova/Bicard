@@ -2,19 +2,11 @@
 import React, { useEffect } from 'react'
 import AppointmentsTable from '@/components/Admin/Table'
 import useAppointmentsStore from '@/store/useAppointmentsStore'
-import { AppointmentConfirmationModel } from '@/entities/Appoinment'
-import { ConfirmAppointment } from '@/libs/requests/AppointmentRequests'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 
 const Appointments = () => {
-  const initAppointments = useAppointmentsStore().fetchAppointments
-  const removeAppointment = useAppointmentsStore().removeAppointment
+  const removeAppointment = useAppointmentsStore().CancelAppointment
   const data = useAppointmentsStore().appointments
-
-  const handleAccept = async (data: AppointmentConfirmationModel) => {
-    const response = await ConfirmAppointment(data)
-    console.log(response)
-  }
 
   const handleDelete = async (id: number) => {
     const responseStatus = await removeAppointment(id)
@@ -25,13 +17,13 @@ const Appointments = () => {
     }
   }
 
-  useEffect(() => {
-    initAppointments()
-  }, [])
-
   return (
     <div>
-      <AppointmentsTable data={data} handleAccept={handleAccept} handleDelete={handleDelete} />
+      {/*<AppointmentsTable*/}
+      {/*  data={data}*/}
+      {/*  handleAccept={handleAccept}*/}
+      {/*  handleDelete={handleDelete}*/}
+      {/*/>*/}
     </div>
   )
 }

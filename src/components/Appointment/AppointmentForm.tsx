@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import { MakeAppointment } from '@/libs/requests/AppointmentRequests'
 import { Appointment } from '@/entities/Appoinment'
 
 const AppointmentForm = () => {
@@ -25,8 +24,8 @@ const AppointmentForm = () => {
       timeStamp: new Date(Date.now()).toISOString(),
     }
 
-    const result = await MakeAppointment(data)
-    console.log(result)
+    // const result = await MakeAppointment(data)
+    // console.log(result)
   }
 
   return (

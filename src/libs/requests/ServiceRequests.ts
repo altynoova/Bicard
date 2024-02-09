@@ -19,7 +19,7 @@ export const GetListOfSubMedServices = async (id: number) => {
 }
 
 export const GetAllSubMedServices = async () => {
-  return await $http.get('/medservices/getallsubmedservices')
+  return await $http.get('/medservices/getlistofallsubmedservices')
 }
 
 export const CreateService = async (data: MedServiceModel) => {

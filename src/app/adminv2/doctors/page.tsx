@@ -59,6 +59,11 @@ const Doctors = () => {
                 <TableRow>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
+                      Id
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
                       Name
                     </Typography>
                   </TableCell>
@@ -83,26 +88,18 @@ const Doctors = () => {
                 {filteredDoctors.map((doctor) => (
                   <TableRow key={doctor.name}>
                     <TableCell>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
+                      <Typography
+                        color="textSecondary"
+                        variant="subtitle2"
+                        fontWeight={400}
                       >
-                        <Box>
-                          <Typography variant="subtitle2" fontWeight={600}>
-                            {doctor.name}
-                          </Typography>
-                          <Typography
-                            color="textSecondary"
-                            sx={{
-                              fontSize: '13px',
-                            }}
-                          >
-                            {doctor.speciality}
-                          </Typography>
-                        </Box>
-                      </Box>
+                        {doctor.id}
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant="subtitle2" fontWeight={600}>
+                        {doctor.name == null ? <i>null</i> : doctor.name}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography
@@ -110,7 +107,7 @@ const Doctors = () => {
                         variant="subtitle2"
                         fontWeight={400}
                       >
-                        {doctor.email}
+                        {doctor.email == null ? <i>null</i> : doctor.email}
                       </Typography>
                     </TableCell>
                     <TableCell>
