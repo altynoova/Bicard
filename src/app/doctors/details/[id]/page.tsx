@@ -4,10 +4,11 @@ import Image from 'next/image'
 import PageBanner from '@/components/Common/PageBanner'
 import AppointmentForm from '@/components/Appointment/AppointmentForm'
 import useDoctorStore from '@/store/useDoctorStore'
+import useUserStore from '@/store/useUserStore'
 
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
-  const GetDoctor = useDoctorStore().GetDoctor
-  const currentDoctor = useDoctorStore().currentDoctor
+  const { GetDoctor, currentDoctor } = useDoctorStore()
+  const { user } = useUserStore()
 
   useEffect(() => {
     GetDoctor(params.id)
@@ -106,7 +107,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
       </div>
 
       <div className="pb-100">
-        <AppointmentForm />
+        <AppointmentForm doctorId={params.id} />
       </div>
     </div>
   )

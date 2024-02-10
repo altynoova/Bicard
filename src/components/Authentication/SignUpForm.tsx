@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { UserRegister } from '@/entities/User'
 import { Register } from '@/libs/requests/AuthRequests'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import { useRouter } from 'next/navigation'
 
 const SignUpForm = () => {
+  const router = useRouter()
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -17,6 +19,7 @@ const SignUpForm = () => {
     event.preventDefault()
 
     if (!isPasswordValid()) {
+      ErrorAlert("Пароли не совпадают")
       return
     }
 
@@ -29,12 +32,12 @@ const SignUpForm = () => {
     const response = await Register(data)
     if (response.status === 200) {
       SuccessAlert('Вы успешно зарегистрировались.')
+      router.push('/signin')
     } else if (response.status === 400) {
       ErrorAlert('Неверные данные!')
     } else {
       ErrorAlert('Неизвестная ошибка.')
     }
-    console.log(response)
   }
 
   return (

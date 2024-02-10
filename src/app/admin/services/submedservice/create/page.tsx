@@ -30,7 +30,7 @@ const CreateService = () => {
 
     if (response === 200) {
       SuccessAlert('Сервис успешно создана')
-      router.push('/adminv2/services')
+      router.push('/admin/services')
     } else {
       ErrorAlert('Произошла ошибка')
     }

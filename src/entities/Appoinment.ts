@@ -4,7 +4,7 @@ export type Appointment = {
   age: string
   email: string
   phoneNumber: string
-  serviceType: string
+  subMedServiceId: string
   doctorName: string
   timeStamp: string
 }

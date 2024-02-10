@@ -29,7 +29,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
     )
     if (response === 200) {
       SuccessAlert('Сервис успешно обновлен')
-      router.push('/adminv2/services')
+      router.push('/admin/services')
     } else {
       ErrorAlert('Произошла ошибка')
     }
