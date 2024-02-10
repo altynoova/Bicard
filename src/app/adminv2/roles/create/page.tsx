@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import useRoleStore from '@/store/useRoleStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 
 const CreateRole = () => {
-  const { GetRoles, CreateRole } = useRoleStore()
+  const { CreateRole } = useRoleStore()
   const router = useRouter()
   const [role, setRole] = useState<string>('')
 

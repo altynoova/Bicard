@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material'
+import { MenuItem, Select } from '@mui/material'
 
 const CreateService = () => {
   const router = useRouter()
   const {
     GetListOfMedServices,
-    CreateMedService,
     CreateSubMedService,
     medServices,
   } = useMedServicesStore()

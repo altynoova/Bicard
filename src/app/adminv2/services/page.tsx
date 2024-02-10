@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import PageBanner from '@/components/Common/PageBanner'
 import Link from 'next/link'
-import useRoleStore from '@/store/useRoleStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import DashboardCard from '@/components/Adminv2/Shared/DashboardCard'
@@ -27,15 +25,9 @@ import { MedService, SubMedService } from '@/entities/Service'
 const Services = () => {
   const {
     medServices,
-    currentMedService,
     allSubMedServices,
     GetListOfMedServices,
-    GetSubMedServiceById,
     GetAllSubMedServices,
-    CreateMedService,
-    CreateSubMedService,
-    EditMedService,
-    EditSubMedService,
     RemoveMedService,
     RemoveSubMedService,
   } = useMedServicesStore()

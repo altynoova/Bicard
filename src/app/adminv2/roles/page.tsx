@@ -14,7 +14,6 @@ import {
   TableRow,
   Typography,
 } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 
 const Page = () => {
@@ -22,7 +21,6 @@ const Page = () => {
 
   const deleteRole = async (roleName: string) => {
     const response = await RemoveRole(roleName)
-
     if (response === 200) {
       SuccessAlert('Роль удалена')
     } else {

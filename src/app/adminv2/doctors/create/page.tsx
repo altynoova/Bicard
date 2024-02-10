@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import useDoctorStore from '@/store/useDoctorStore'
-import PageBanner from '@/components/Common/PageBanner'
 import { DoctorRequestModel } from '@/entities/Doctor'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'

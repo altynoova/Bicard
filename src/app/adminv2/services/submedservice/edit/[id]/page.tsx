@@ -1,28 +1,15 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import PageBanner from '@/components/Common/PageBanner'
-import Link from 'next/link'
-import useRoleStore from '@/store/useRoleStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
 
 const EditService = ({ params }: { params: { id: number } }) => {
   const {
-    medServices,
     currentSubMedService,
     currentMedService,
-    currentSubMedServices,
-    GetListOfMedServices,
     GetSubMedServiceById,
-    GetMedServiceById,
-    GetListOfSubMedServices,
-    CreateMedService,
-    CreateSubMedService,
-    EditMedService,
     EditSubMedService,
-    RemoveMedService,
-    RemoveSubMedService,
   } = useMedServicesStore()
 
   const router = useRouter()

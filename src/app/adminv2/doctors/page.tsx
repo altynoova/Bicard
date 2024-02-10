@@ -4,7 +4,6 @@ import Link from 'next/link'
 import {
   Box,
   Button,
-  Chip,
   Table,
   TableBody,
   TableCell,
@@ -19,14 +18,13 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
 
 const Doctors = () => {
-  const FetchDoctors = useDoctorStore().FetchDoctors
-  const DeleteDoctor = useDoctorStore().DeleteDoctor
-  const doctors = useDoctorStore().doctors
+  const { FetchDoctors, DeleteDoctor } = useDoctorStore()
+  const { doctors } = useDoctorStore()
 
   const [search, setSearch] = useState<string>('')
 
   const filteredDoctors = doctors.filter(
-    (doctor) => doctor?.name?.includes(search) || doctor.name == null
+    (doctor) => doctor?.name?.includes(search) || doctor.name == null,
   )
 
   const handleDelete = async (id: number) => {
