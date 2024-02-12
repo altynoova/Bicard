@@ -13,9 +13,7 @@ export const GetListOfMedServices = async () => {
 }
 
 export const GetListOfSubMedServices = async (id: number) => {
-  return await $http.get(
-    `/medservices/getlistofsubmedservices?medserviceid=${id}`
-  )
+  return await $http.get(`/medservices/getlistofsubmedservices/${id}`)
 }
 
 export const GetAllSubMedServices = async () => {

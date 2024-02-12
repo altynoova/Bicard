@@ -5,6 +5,8 @@ import PageBanner from '@/components/Common/PageBanner'
 import AppointmentForm from '@/components/Appointment/AppointmentForm'
 import useDoctorStore from '@/store/useDoctorStore'
 import useUserStore from '@/store/useUserStore'
+import FeedbackForm from '@/components/Doctors/FeedbackForm'
+import { GetCookie } from '@/libs/cookie'
 
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
   const { GetDoctor, currentDoctor } = useDoctorStore()
@@ -28,8 +30,12 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-lg-5">
               <div className="doctor-details-item doctor-details-left">
-                <Image width={250} height={400} src={`data:image/png;base64, ${currentDoctor?.photoBase64}`}
-                       alt="Doctor" />
+                <Image
+                  width={250}
+                  height={400}
+                  src={`data:image/png;base64, ${currentDoctor?.photoBase64}`}
+                  alt="Doctor"
+                />
                 <div className="doctor-details-contact">
                   <h3>Контакты</h3>
                   <ul>
@@ -79,9 +85,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   <div className="doctor-details-biography">
                     <h3>Биография</h3>
 
-                    <p>
-                      {currentDoctor?.bio}
-                    </p>
+                    <p>{currentDoctor?.bio}</p>
 
                     <p></p>
                   </div>
@@ -89,9 +93,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   <div className="doctor-details-biography">
                     <h3>Образование</h3>
                     <ul>
-                      <li>
-                        {currentDoctor?.education}
-                      </li>
+                      <li>{currentDoctor?.education}</li>
                     </ul>
                   </div>
 
@@ -108,6 +110,10 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
 
       <div className="pb-100">
         <AppointmentForm doctorId={params.id} />
+      </div>
+
+      <div>
+        <FeedbackForm doctorId={params.id} userId={user.userId} />
       </div>
     </div>
   )

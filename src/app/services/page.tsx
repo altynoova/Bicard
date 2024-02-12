@@ -1,7 +1,7 @@
 import React from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import OurExpertise from '@/components/Services/OurExpertise'
-import ServicesCard from '@/components/Services/ServicesCard'
+import ServicesList from '@/components/Services/ServicesList'
 
 const Service = () => {
   return (
@@ -14,7 +14,7 @@ const Service = () => {
         bgImage="page-title-one"
       />
 
-      <ServicesCard />
+      <ServicesList />
 
       <OurExpertise />
     </div>
