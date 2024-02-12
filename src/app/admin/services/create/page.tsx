@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
-import {useRouter} from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 const CreateService = () => {
   const router = useRouter()
@@ -12,11 +12,15 @@ const CreateService = () => {
   const [longDescription, setLongDescription] = useState('')
 
   const handleCreate = async () => {
-    const response = await CreateMedService({ name, shortDescription, longDescription })
+    const response = await CreateMedService({
+      name,
+      shortDescription,
+      longDescription,
+    })
 
     if (response === 200) {
       SuccessAlert('Сервис успешно создана')
-      router.push("/admin/services")
+      router.push('/admin/services')
     } else {
       ErrorAlert('Произошла ошибка')
     }
@@ -27,7 +31,9 @@ const CreateService = () => {
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
         <h3>Create med service</h3>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Name
+          </label>
           <input
             type="text"
             className="form-control"
@@ -37,7 +43,9 @@ const CreateService = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Short Description</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Short Description
+          </label>
           <input
             type="text"
             className="form-control"
@@ -47,7 +55,9 @@ const CreateService = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Long Description</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Long Description
+          </label>
           <input
             type="text"
             className="form-control"
@@ -56,7 +66,13 @@ const CreateService = () => {
             onChange={(event) => setLongDescription(event.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleCreate}>Создать</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleCreate}
+        >
+          Создать
+        </button>
       </div>
     </div>
   )

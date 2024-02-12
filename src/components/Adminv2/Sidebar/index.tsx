@@ -14,12 +14,12 @@ import Home from '@mui/icons-material/Home'
 import Link from 'next/link'
 
 const data = [
-  { link: '/adminv2/appointments', label: 'Appointments', icon: '' },
-  { link: '/adminv2/doctors', label: 'Doctors', icon: '' },
-  { link: '/adminv2/services', label: 'Services', icon: '' },
-  { link: '/adminv2/roles', label: 'Roles', icon: '' },
-  { link: '/adminv2/users', label: 'Users', icon: '' },
-  { link: '/adminv2/feedbacks', label: 'Feedbacks', icon: '' },
+  { link: '/admin/appointments', label: 'Appointments', icon: '' },
+  { link: '/admin/doctors', label: 'Doctors', icon: '' },
+  { link: '/admin/services', label: 'Services', icon: '' },
+  { link: '/admin/roles', label: 'Roles', icon: '' },
+  { link: '/admin/users', label: 'Users', icon: '' },
+  { link: '/admin/feedbacks', label: 'Feedbacks', icon: '' },
 ]
 
 const Nav = styled(List)<{ component?: React.ElementType }>({

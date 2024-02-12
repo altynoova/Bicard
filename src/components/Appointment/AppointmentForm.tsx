@@ -1,193 +1,171 @@
 'use client'
-import React, { useState } from 'react'
-import { Appointment } from '@/entities/Appoinment'
+import React, { useEffect, useState } from 'react'
+import { CreateAppointmentModel } from '@/entities/Appoinment'
+import useMedServicesStore from '@/store/useMedServicesStore'
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import dayjs, { Dayjs } from 'dayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import useAppointmentsStore from '@/store/useAppointmentsStore'
+import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 
-const AppointmentForm = () => {
+interface IAppointmentForm {
+  doctorId: number
+}
+
+const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
+  const { CreateAppointment } = useAppointmentsStore()
+  const { GetAllSubMedServices, allSubMedServices } = useMedServicesStore()
+
   const [name, setName] = useState<string>('')
   const [age, setAge] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const [serviceType, setServiceType] = useState<string>('')
-  const [doctorName, setDoctorName] = useState<string>('')
+  const [subMedServiceId, setSubMedServiceId] = useState(0)
+  const [timeAtSchedule, setTimeAtSchedule] = useState<Dayjs | null>(dayjs('2022-04-17T15:30'))
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    const data: Appointment = {
-      id: 0,
+  const handleSubmit = async () => {
+    const data: CreateAppointmentModel = {
       name,
       email,
       phoneNumber,
-      serviceType,
-      doctorName,
+      subMedServiceId,
+      doctorId,
       age,
-      timeStamp: new Date(Date.now()).toISOString(),
+      timeAtSchedule: dayjs(timeAtSchedule).add(6, 'hours').toJSON(),
     }
 
-    // const result = await MakeAppointment(data)
-    // console.log(result)
+    const status = await CreateAppointment(data)
+    if (status == 200) {
+      SuccessAlert('Successfully created')
+    } else {
+      ErrorAlert('Произошла ошибка!')
+    }
+    console.log(data)
   }
 
+  useEffect(() => {
+    GetAllSubMedServices()
+  }, [])
+
   return (
-    <>
-      <div className="appointment-area-two ptb-100">
-        <div className="container">
-          <div className="row align-items-center appointment-wrap-two">
-            <div className="col-lg-7">
-              <div className="appointment-item appointment-item-two">
-                <div className="appointment-shape">
-                  <img src="/images/hart-img1.png" alt="Shape" />
-                </div>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Box sx={{
+          maxWidth: 600,
+          boxShadow: '-11px 13px 41px 4px rgba(34, 60, 80, 0.2)',
+          padding: 5,
+          margin: 5,
+          borderRadius: '15px',
+        }}>
+          <h2>Запишитесь онлайн</h2>
+          <span>Мы подтвердим вашу запись в течение 2 часов.</span>
 
-                <h2>Запишитесь онлайн</h2>
-                <span>Мы подтвердим вашу запись в течение 2 часов.</span>
+          <Grid sx={{ width: '100%', marginTop: 3 }} container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                id="standard-basic"
+                label="Name"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                id="standard-basic"
+                label="Email"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                value={phoneNumber}
+                onChange={(event) => setPhoneNumber(event.target.value)}
+                id="standard-basic"
+                label="Phone Number"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                id="outlined-select-currency"
+                label="Service"
+                select
+                variant="outlined"
+                defaultValue={0}
+                onChange={(event) => setSubMedServiceId(event.target.value as unknown as number)}
+              >
+                {allSubMedServices.map((s) => (
+                  <MenuItem key={s.id} value={s.id}>
+                    {s.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl fullWidth>
+                <DateTimePicker
+                  sx={{ width: '100%' }}
+                  value={timeAtSchedule}
+                  format="DD.MM.YYYY HH:mm"
+                  onChange={(newValue) => setTimeAtSchedule(newValue)}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                value={age}
+                onChange={(event) => setAge(event.target.value)}
+                id="standard-basic"
+                label="Age"
+                variant="outlined"
+              />
+            </Grid>
+          </Grid>
+          <Button sx={{ marginTop: 5 }} variant="contained" onClick={() => handleSubmit()}>Submit</Button>
+        </Box>
 
-                <div className="appointment-form">
-                  <form onSubmit={handleSubmit}>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-business-man-alt-1"></i>
-                          <label>Имя</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Введите ваше имя"
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-ui-message"></i>
-                          <label>Почта</label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Введите адрес электронной почты"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-ui-call"></i>
-                          <label>Номер</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Введите свой номер"
-                            value={phoneNumber}
-                            onChange={(event) =>
-                              setPhoneNumber(event.target.value)
-                            }
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-hospital"></i>
-                          <label>Услуги</label>
-                          <select
-                            className="form-control"
-                            id="exampleFormControlSelect1"
-                            // value={name}
-                            onChange={(event) =>
-                              setServiceType(event.target.value)
-                            }
-                          >
-                            <option>Выберите услугу</option>
-                            <option>Кардиология</option>
-                            <option>Микрохирургия</option>
-                            <option>Хирургия</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-doctor"></i>
-                          <label>Доктор</label>
-                          <select
-                            className="form-control"
-                            id="exampleFormControlSelect2"
-                            // value={name}
-                            onChange={(event) =>
-                              setDoctorName(event.target.value)
-                            }
-                          >
-                            <option>Выберите своего врача</option>
-                            <option>Назаров Асан Кубанычбекович</option>
-                            <option>Ташмаматов Адиашим Жаныбаевич</option>
-                            <option>Токтогулова Аида Сабыржанова</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <i className="icofont-business-man"></i>
-                          <label>Возраст</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Ваш возраст"
-                            value={age}
-                            onChange={(event) => setAge(event.target.value)}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="text-center">
-                      <button type="submit" className="btn appointment-btn">
-                        Отправить
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-5">
-              <div className="appointment-item-two-right">
-                <div className="appointment-item-content">
-                  <h2>Часы работы</h2>
-                  <ul>
-                    <li>
-                      Понедельник <span>9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                      Вторние <span>9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                      Среда <span>9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                      Четверг <span>9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                      Пятница <span>9:00 AM - 8:00 PM</span>
-                    </li>
-                    <li>
-                      Суббота <span>9:00 AM - 5:00 PM</span>
-                    </li>
-                    <li>
-                      Воскресенье <span>9:00 AM - 5:00 PM</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <div className="col-lg-5">
+          <div className="appointment-item-two-right">
+            <div className="appointment-item-content">
+              <h2>Часы работы</h2>
+              <ul>
+                <li>
+                  Понедельник <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                  Вторние <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                  Среда <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                  Четверг <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                  Пятница <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                  Суббота <span>9:00 AM - 5:00 PM</span>
+                </li>
+                <li>
+                  Воскресенье <span>9:00 AM - 5:00 PM</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </Box>
+    </LocalizationProvider>
   )
 }
 

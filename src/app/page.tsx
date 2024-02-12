@@ -9,19 +9,22 @@ import VideoIntro from '@/components/Common/VideoIntro'
 import OurDoctors from '@/components/Common/OurDoctors'
 import LatestBlogPost from '@/components/Common/LatestBlogPost'
 import NewsletterForm from '@/components/Common/NewsletterForm'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
 
 export default function Home() {
   return (
     <div>
-      <HeroSlider />
-      <Stats />
-      <AboutSection />
-      <Services />
-      <OurExpertise />
-      <VideoIntro />
-      <OurDoctors />
-      <LatestBlogPost />
-      <NewsletterForm />
+          <HeroSlider />
+          <Stats />
+          <AboutSection />
+          <Services />
+          <OurExpertise />
+          <VideoIntro />
+          <OurDoctors />
+          <LatestBlogPost />
+          <NewsletterForm />
     </div>
   )
 }

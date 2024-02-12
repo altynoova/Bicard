@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material'
+import { MenuItem, Select } from '@mui/material'
 
 const CreateService = () => {
   const router = useRouter()
   const {
     GetListOfMedServices,
-    CreateMedService,
     CreateSubMedService,
     medServices,
   } = useMedServicesStore()
@@ -31,7 +30,7 @@ const CreateService = () => {
 
     if (response === 200) {
       SuccessAlert('Сервис успешно создана')
-      router.push('/adminv2/services')
+      router.push('/admin/services')
     } else {
       ErrorAlert('Произошла ошибка')
     }
