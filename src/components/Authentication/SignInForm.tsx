@@ -8,6 +8,7 @@ import { SetCookie } from '@/libs/cookie'
 import useUserStore from '@/store/useUserStore'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation';
+import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 
 
 const SignInForm = () => {
@@ -36,25 +37,15 @@ const SignInForm = () => {
     const responseStatus = await methodSignIn(data)
 
     if (responseStatus === 200) {
+      SuccessAlert('Вы вошли в свой аккаунт!')
       router.push('/');
     }
     else if (responseStatus === 500) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Ошибка на стороне сервера',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-      })
+      ErrorAlert('Ошибка на стороне сервера')
     }
     else {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Проверьте корректность ваших данных',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-      })
+      ErrorAlert('Проверьте корректность ваших данных')
     }
-    console.log(responseStatus)
   }
   return (
     <>

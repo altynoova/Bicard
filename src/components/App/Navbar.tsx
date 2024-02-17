@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import useUserStore from '@/store/useUserStore'
+import { GetCookie } from '@/libs/cookie'
 
 const Navbar = () => {
   const [currentPath, setCurrentPath] = useState('')
@@ -300,6 +301,19 @@ const Navbar = () => {
                       Контакты
                     </Link>
                   </li>
+
+                  {GetCookie('userRole') === 'Admin' &&
+                    <li className="nav-item">
+                      <Link
+                        href="/admin"
+                        className={`nav-link ${
+                          currentPath == '/blog/' && 'active'
+                        }`}
+                      >
+                        Admin
+                      </Link>
+                    </li>
+                  }
                 </ul>
               </div>
 

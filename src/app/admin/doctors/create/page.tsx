@@ -7,9 +7,7 @@ import { useRouter } from 'next/navigation'
 
 const Create = () => {
   const router = useRouter()
-  const CreateDoctor = useDoctorStore((state) => state.CreateDoctor)
-  const GetUsersByRole = useDoctorStore((state) => state.GetUsersByRole)
-  const userReferences = useDoctorStore((state) => state.userReferences)
+  const { CreateDoctor, GetUsersByRole, userReferences } = useDoctorStore()
 
   const [name, setName] = useState<string>('')
   const [speciality, setSpeciality] = useState<string>('')

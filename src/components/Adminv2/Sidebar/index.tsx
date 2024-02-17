@@ -20,6 +20,7 @@ const data = [
   { link: '/admin/roles', label: 'Roles', icon: '' },
   { link: '/admin/users', label: 'Users', icon: '' },
   { link: '/admin/feedbacks', label: 'Feedbacks', icon: '' },
+  { link: '/admin/schedules', label: 'Schedule', icon: '' },
 ]
 
 const Nav = styled(List)<{ component?: React.ElementType }>({

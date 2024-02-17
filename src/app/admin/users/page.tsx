@@ -24,7 +24,7 @@ const Users = ({ ...props }: Config) => {
   const { GetUsersByRole, userReferences } = useDoctorStore()
   const { roles, GetRoles } = useRoleStore()
   const [roleName, setRoleName] = useState<string>('')
-  const [filter, setFilter] = useState('Doctor')
+  const [filter, setFilter] = useState('Patient')
 
   const handleAssignRole = async (userName: string) => {
     const response = await AssignRole({ roleName, userName })

@@ -2,11 +2,12 @@ import { create } from 'zustand'
 import { User } from '@/entities/User'
 import { Login } from '@/libs/requests/AuthRequests'
 import { UserLogin } from '@/entities/User'
-import { SetCookie } from '@/libs/cookie'
+import { RemoveCookie, SetCookie } from '@/libs/cookie'
 
 interface IUserStore {
   user: User
   SignIn: (data: UserLogin) => Promise<number>
+  SignOut: () => void;
 }
 
 const useUserStore = create<IUserStore>()((set) => ({
@@ -22,9 +23,15 @@ const useUserStore = create<IUserStore>()((set) => ({
     console.log(response)
     SetCookie('Bicard-Web-API-Access-Token', response?.data?.accessToken)
     SetCookie('userId', response?.data?.userId)
+    SetCookie('userRole', response?.data?.roleName)
     set(() => ({ user: response?.data }))
     return response.status
   },
+  SignOut() {
+    RemoveCookie('Bicard-Web-API-Access-Token')
+    RemoveCookie('userId')
+    RemoveCookie('userRole')
+  }
 }))
 
 export default useUserStore
