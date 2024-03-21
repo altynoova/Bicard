@@ -6,10 +6,10 @@ const SignUp = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Sign Up"
+        pageTitle="Регистрация"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Sign Up"
+        homePageText="Главная"
+        activePageText="Зарегистрироваться"
         bgImage="page-title-one"
       />
 

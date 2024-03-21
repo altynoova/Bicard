@@ -21,8 +21,8 @@ const About = () => {
       <FunFacts />
       <OurExpertise />
       <Services />
-      <TestimonialSlider />
       <LatestBlogPost />
+      <TestimonialSlider />
     </div>
   )
 }

@@ -6,7 +6,6 @@ export type Feedback = {
 }
 
 export type CreateFeedbackModel = {
+  phone: string
   message: string
-  userId: number
-  doctorId: number
 }

@@ -44,7 +44,7 @@ const Doctors = () => {
     <div>
       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">
-          Search by doctor name
+        Поиск по имени пользователя
         </InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
@@ -62,9 +62,9 @@ const Doctors = () => {
         />
       </FormControl>
       {filteredFeedbacks.length < 1 ? (
-        <div>No results</div>
+        <div>Нет результатов</div>
       ) : (
-        <DashboardCard title="Feedbacks">
+        <DashboardCard title="Отзывы">
           <Box sx={{ overflow: 'auto' }}>
             <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
               <Table
@@ -81,22 +81,22 @@ const Doctors = () => {
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        Username
+                      Имя пользователя
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        Message
+                      Сообщение
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        Date
+                      Дата
                       </Typography>
                     </TableCell>
                     <TableCell align="right">
                       <Typography variant="subtitle2" fontWeight={600}>
-                        Delete
+                      Удалить
                       </Typography>
                     </TableCell>
                   </TableRow>
@@ -115,7 +115,7 @@ const Doctors = () => {
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={600}>
-                          {f.message == null ? <i>null</i> : f.message}
+                          {f.userName == null ? <i>null</i> : f.userName}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -124,7 +124,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {f.userName == null ? <i>null</i> : f.userName}
+                          {f.message == null ? <i>null</i> : f.message}
                         </Typography>
                       </TableCell>
                       <TableCell>

@@ -6,10 +6,10 @@ const SignIn = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Sign In"
+        pageTitle="Вход"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Sign In"
+        homePageText="Главая"
+        activePageText="Вход"
         bgImage="page-title-one"
       />
 

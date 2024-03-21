@@ -1,6 +1,24 @@
-import React from 'react'
-
+'use client'
+import React, { use, useEffect, useState } from 'react'
+import useUserStore from '@/store/useUserStore'
 const TopHeader = () => {
+  const { user } = useUserStore(); 
+  const [signed, setSigned] = useState(false);
+  const [username, setUsername] = useState(user.userName);
+
+  useEffect(() => {
+    setSigned(!!user.accessToken);
+  }, [user.accessToken]);
+
+  useEffect(() => {
+    setUsername(user.userName);
+  }, [user.userName]);
+
+  const handleAuthentication = () => {
+    if (!signed) {
+      setUsername("");
+    }
+  }
   return (
     <>
       <div className="header-top">
@@ -10,10 +28,25 @@ const TopHeader = () => {
               <div className="header-top-item">
                 <div className="header-top-left">
                   <ul>
+                  <li>
+                      {signed ? (
+                        <a href="/signout" onClick={handleAuthentication}>
+                          <i className="icofont-user"></i>
+                          {username}
+                        </a>
+                      ) : (
+                        <a href="/signin" onClick={handleAuthentication}> 
+                          <i className="icofont-user"></i>
+                          Войти
+                        </a>
+                      )}
+                      
+                    </li>
+                   
                     <li>
-                      <a href="tel:+07554332322">
+                      <a >
                         <i className="icofont-ui-call"></i>
-                        +996 552 552 552
+                        +996 559 860 688
                       </a>
                     </li>
                     <li>
@@ -41,26 +74,19 @@ const TopHeader = () => {
                     <li>
                       <a href="/ar">KG</a>
                     </li>
+                    <li>
+                      <a href="/ar">EN</a>
+                    </li>
                   </ul>
 
                   <ul>
                     <li>
-                      <a href="https://www.facebook.com/" target="_blank">
+                      <a href="https://www.facebook.com/Bicardclinic/" target="_blank">
                         <i className="icofont-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://twitter.com/" target="_blank">
-                        <i className="icofont-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.linkedin.com/" target="_blank">
-                        <i className="icofont-linkedin"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.instagram.com/" target="_blank">
+                      <a href="https://www.instagram.com/bicard_official/" target="_blank">
                         <i className="icofont-instagram"></i>
                       </a>
                     </li>

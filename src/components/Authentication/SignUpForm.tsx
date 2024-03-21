@@ -54,9 +54,9 @@ const SignUpForm = () => {
             <div className="col-lg-6 ptb-100">
               <div className="signup-item">
                 <div className="signup-head">
-                  <h2>Sign Up Here</h2>
+                  <h2>Зарегистрируйтесь здесь</h2>
                   <p>
-                    Already have an account? <Link href="/signin">Sign In</Link>
+                  Уже есть аккаунт? <Link href="/signin">Войти</Link>
                   </p>
                 </div>
 
@@ -98,7 +98,7 @@ const SignUpForm = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Username"
+                            placeholder="Имя пользователя"
                             value={username}
                             onChange={(event) =>
                               setUsername(event.target.value)
@@ -112,7 +112,7 @@ const SignUpForm = () => {
                           <input
                             type="email"
                             className="form-control"
-                            placeholder="Your Email"
+                            placeholder="Ваш адрес электронной почты"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                           />
@@ -124,7 +124,7 @@ const SignUpForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Password"
+                            placeholder="Пароль"
                             value={password}
                             onChange={(event) =>
                               setPassword(event.target.value)
@@ -141,7 +141,7 @@ const SignUpForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Confirm Password"
+                            placeholder="Подтвердите пароль"
                             value={passwordConfirm}
                             onChange={(event) =>
                               setPasswordConfirm(event.target.value)
@@ -171,9 +171,9 @@ const SignUpForm = () => {
                               className="form-check-label"
                               htmlFor="gridCheck"
                             >
-                              Yes, I agree with all{' '}
+                              Да, я согласен{' '}
                               <Link href="/terms-condition">
-                                Terms & Conditions
+                              Условия использования
                               </Link>
                             </label>
                           </div>

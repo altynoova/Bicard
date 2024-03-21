@@ -38,7 +38,7 @@ const SignInForm = () => {
 
     if (responseStatus === 200) {
       SuccessAlert('Вы вошли в свой аккаунт!')
-      router.push('/');
+      router.push('/about');
     }
     else if (responseStatus === 500) {
       ErrorAlert('Ошибка на стороне сервера')
@@ -66,10 +66,10 @@ const SignInForm = () => {
             <div className="col-lg-6 ptb-100">
               <div className="signup-item">
                 <div className="signup-head">
-                  <h2>Login Here</h2>
+                  <h2>Войти</h2>
                   <p>
-                    Didn&apos;t you account yet?{' '}
-                    <Link href="/signup">Sign Up Here</Link>
+                   Вы еще не зарегистрировались?{' '}
+                    <Link href="/signup">Зарегистрируйтесь здесь</Link>
                   </p>
                 </div>
                 <div className="signup-form">
@@ -89,7 +89,7 @@ const SignInForm = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Your Username"
+                            placeholder="Ваш логин"
                             value={username}
                             onChange={(event) =>
                               setUsername(event.target.value)
@@ -102,7 +102,7 @@ const SignInForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Password"
+                            placeholder="Пароль"
                             value={password}
                             onChange={(event) =>
                               setPassword(event.target.value)
@@ -134,7 +134,7 @@ const SignInForm = () => {
                               className="form-check-label"
                               htmlFor="gridCheck"
                             >
-                              Remember me
+                             Запомнить меня
                             </label>
                           </div>
                         </div>
@@ -143,7 +143,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="form-group">
                           <div className="forgot-pass">
-                            <Link href="#">Forgot Password?</Link>
+                            <Link href="#">Забыли пароль?</Link>
                           </div>
                         </div>
                       </div>
@@ -151,7 +151,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="text-center">
                           <button type="submit" className="btn signup-btn">
-                            Login
+                          Войти
                           </button>
                         </div>
                       </div>

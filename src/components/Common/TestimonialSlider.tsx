@@ -1,10 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // @ts-ignore
 import { Navigation } from 'swiper'
+import useFeedbackStore from '@/store/useFeedbackStore'
 
 const TestimonialSlider = () => {
+  const { GetAllFeedbacks, feedbacks } = useFeedbackStore()
+
+  useEffect(() => {
+    GetAllFeedbacks()
+  }, [])
+
   return (
     <>
       <div className="review-area ptb-100">
@@ -14,81 +21,17 @@ const TestimonialSlider = () => {
             modules={[Navigation]}
             className="feedback-slider"
           >
-            <SwiperSlide>
-              <div className="feedback-item">
-                <div className="client-img">
-                  <img src="/images/clients/client1.png" alt="Feedback" />
-                  <h3>Nazgul B</h3>
+            {feedbacks.map((feedback, index) => (
+              <SwiperSlide key={index}>
+                <div className="feedback-item">
+                  <div className="client-img">
+                    <img src="#" alt={feedback.userName} />
+                    <h3>{feedback.userName}</h3>
+                  </div>
+                  <p>{feedback.message}</p>
                 </div>
-                <p>
-                  В этой клинике прооперировали нашего папу Барпиева Т, сейчас
-                  он чувствует себя хорошо. Хотим выразить благодарность всему
-                  персоналу клиники "Бикард" за внимательное, грамотное
-                  отношение, сервис обслуживания просто на высшем уровне. Желаем
-                  вам процветания и дальнейших вам успехов!!! Дети Барпиева
-                  Токтоналы
-                </p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="feedback-item">
-                <div className="client-img">
-                  <img src="/images/clients/client2.png" alt="Feedback" />
-                  <h3>Юлия П</h3>
-                </div>
-                <p>
-                  Отличная клиника! Внимательный и заботливый персонал. Все
-                  организовано на высоком уровне. В палатах чисто, есть все для
-                  того, чтобы чувствовать себя комфортно. Особая благодарность
-                  лечащему врачу - Юлдашеву Гайрату Абдусаламовичу. Добрый,
-                  снисходительный, отзывчивый человек. Профессионал своего дела!
-                  Всем советую эту клинику! И будьте здоровы!
-                </p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="feedback-item">
-                <div className="client-img">
-                  <img src="/images/clients/client3.png" alt="Feedback" />
-                  <h3>Nura K</h3>
-                </div>
-                <p>
-                  Моему сыну 15 лет в 2018 году в октябре неожиданно для нас
-                  всех, у него случился сердечный приступ ,после приезда с
-                  соревнований по баскетболу .И я очень правильно сделала что
-                  привезла моего сына в эту клинику бикард. Здесь спасли ему
-                  жизнь .Главный врач клиники Осмонов Дамир Асылбекович точно
-                  поставил диагноз"Желудочковая аритмия" и был имплантирован
-                  такой аппарат , который держит круглосуточно ритм сердца и
-                  регулирует когда надо ,эту аритмию. Аритмия это когда бешенно
-                  бьется сердце ,у моего сына 220 ударов было , хотя в норме
-                  сердце делает 60ударов в мин .Клиника оснащена
-                  высокотехнологическим оборудованием , очень опытные врачи,
-                  персонал клиники человечные очень, а санитарки убирают на
-                  совесть ,я сама все видела ,так как все время находилась в
-                  палате рядом с сыном.И самое главное они оказывают свою помощь
-                  , независимо от твоего соц положения, от родства и так далее.
-                  Они не ставят во главе деньги ,как в других больницах и
-                  клиниках.И спасают жизни несмотря ни на что.Огромная
-                  благодарность и низкий поклон всему персоналу клиники .Дай
-                  бог, чтоб у нас в кыргызстане было побольше таких врачей
-                  .профессионалов своего дела и очень человечных, с душой
-                  относящееся к людям.Мама сына красавчика Баямана.
-                </p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="feedback-item">
-                <div className="client-img">
-                  <img src="/images/clients/client4.png" alt="Feedback" />
-                  <h3>Фархад Юбузов</h3>
-                </div>
-                <p>Высшая больница мне сдесь кардио стимуляторы поставили</p>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
