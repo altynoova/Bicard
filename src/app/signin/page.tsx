@@ -8,7 +8,7 @@ const SignIn = () => {
       <PageBanner
         pageTitle="Вход"
         homePageUrl="/"
-        homePageText="Главая"
+        homePageText="Главная"
         activePageText="Вход"
         bgImage="page-title-one"
       />

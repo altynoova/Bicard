@@ -11,8 +11,10 @@ const ContactInfo = () => {
                 <i className="icofont-location-pin"></i>
                 <h3>Локация</h3>
                 <p>
+                  <a href='https://2gis.kg/bishkek/firm/70000001022019440?m=74.604169%2C42.838768%2F16'>
                   Бишкекская Кардиохирургическая Клиника БИКАРД Bicard, 2 улица
                   Тыныстанова, <br /> Bishkek 720020
+                  </a>
                 </p>
               </div>
             </div>

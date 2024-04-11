@@ -104,3 +104,11 @@
   left: auto;
   right: 0;
 }
+.WhatsAppButton {
+  position: fixed; /* фиксированное положение */
+  bottom: 20px; 
+  width: 80px;
+  height: 80px;
+  right: 20px; /* расположение справа */
+  z-index: 1000; /* устанавливаем z-index, чтобы кнопка находилась поверх других элементов */
+}

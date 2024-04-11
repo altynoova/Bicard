@@ -21,6 +21,8 @@ const data = [
   { link: '/admin/users', label: 'Users', icon: '' },
   { link: '/admin/feedbacks', label: 'Feedbacks', icon: '' },
   { link: '/admin/schedules', label: 'Schedule', icon: '' },
+  { link: '/admin/blogs', label: 'Blog', icon: '' },
+
 ]
 
 const Nav = styled(List)<{ component?: React.ElementType }>({

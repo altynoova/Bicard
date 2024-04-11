@@ -12,12 +12,12 @@ const ServicesList = () => {
 
   return (
     <>
-      <div className="services-area pt-100 pb-70">
+      <div className="departments-area pt-100 pb-70">
         <div className="container">
-          <div className="row align-items-center justify-content-center">
+          <div className="row justify-content-center">
             {medServices.map((s) => (
-              <div key={s.id} className="col-sm-6 col-lg-3">
-                <ServiceCard id={s.id} shortDescription={s.shortDescription} />
+              <div key={s.id} className="col-sm-6 col-lg-4">
+                <ServiceCard id={s.id} name={s.name} shortDescription={s.shortDescription} />
               </div>
             ))}
           </div>

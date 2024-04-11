@@ -9,10 +9,10 @@ const Contact = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Contact Us"
+        pageTitle="Свяжитесь с нами"
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Contact Us"
+        homePageText="Главная"
+        activePageText="Свяжитесь с нами"
         bgImage="page-title-one"
       />
 

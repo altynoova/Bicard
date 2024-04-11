@@ -70,9 +70,8 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link
                       href="/about/"
-                      className={`nav-link ${
-                        currentPath == '/about/' && 'active'
-                      }`}
+                      className={`nav-link ${currentPath == '/about/' && 'active'
+                        }`}
                     >
                       Главная
                     </Link>
@@ -91,9 +90,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/appointment/"
-                          className={`nav-link ${
-                            currentPath == '/appointment/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/appointment/' && 'active'
+                            }`}
                         >
                           Онлайн запись
                         </Link>
@@ -102,9 +100,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/departments/"
-                          className={`nav-link ${
-                            currentPath == '/departments/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/departments/' && 'active'
+                            }`}
                         >
                           Отделения
                         </Link>
@@ -113,9 +110,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/testimonials/"
-                          className={`nav-link ${
-                            currentPath == '/testimonials/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/testimonials/' && 'active'
+                            }`}
                         >
                           Пациентам
                         </Link>
@@ -124,9 +120,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/signup/"
-                          className={`nav-link ${
-                            currentPath == '/sign-up/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/sign-up/' && 'active'
+                            }`}
                         >
                           Регистрация
                         </Link>
@@ -135,9 +130,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/signin/"
-                          className={`nav-link ${
-                            currentPath == '/sign-in/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/sign-in/' && 'active'
+                            }`}
                         >
                           Вход
                         </Link>
@@ -146,9 +140,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/faq/"
-                          className={`nav-link ${
-                            currentPath == '/faq/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/faq/' && 'active'
+                            }`}
                         >
                           FAQ&apos;s
                         </Link>
@@ -157,9 +150,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/coming-soon/"
-                          className={`nav-link ${
-                            currentPath == '/coming-soon/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/coming-soon/' && 'active'
+                            }`}
                         >
                           Новинки
                         </Link>
@@ -168,9 +160,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/privacy-policy/"
-                          className={`nav-link ${
-                            currentPath == '/privacy-policy/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/privacy-policy/' && 'active'
+                            }`}
                         >
                           Privacy Policy
                         </Link>
@@ -179,9 +170,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/terms-condition/"
-                          className={`nav-link ${
-                            currentPath == '/terms-condition/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/terms-condition/' && 'active'
+                            }`}
                         >
                           Terms & Conditions
                         </Link>
@@ -202,9 +192,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/services/"
-                          className={`nav-link ${
-                            currentPath == '/services/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/services/' && 'active'
+                            }`}
                         >
                           Услуги
                         </Link>
@@ -213,9 +202,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/service-details/"
-                          className={`nav-link ${
-                            currentPath == '/service-details/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/service-details/' && 'active'
+                            }`}
                         >
                           Узнать поподробнее
                         </Link>
@@ -236,9 +224,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/doctors/"
-                          className={`nav-link ${
-                            currentPath == '/doctors/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/doctors/' && 'active'
+                            }`}
                         >
                           Докторы
                         </Link>
@@ -247,9 +234,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/doctors/details/"
-                          className={`nav-link ${
-                            currentPath == '/doctor-details/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/doctor-details/' && 'active'
+                            }`}
                         >
                           Узнать поподробнее
                         </Link>
@@ -270,9 +256,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/blog/"
-                          className={`nav-link ${
-                            currentPath == '/blog/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/blog/' && 'active'
+                            }`}
                         >
                           Блоги
                         </Link>
@@ -281,9 +266,8 @@ const Navbar = () => {
                       <li className="nav-item">
                         <Link
                           href="/blog/details/"
-                          className={`nav-link ${
-                            currentPath == '/blog-details/' && 'active'
-                          }`}
+                          className={`nav-link ${currentPath == '/blog-details/' && 'active'
+                            }`}
                         >
                           Узнать поподробнее
                         </Link>
@@ -294,9 +278,8 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link
                       href="/contact"
-                      className={`nav-link ${
-                        currentPath == '/blog/' && 'active'
-                      }`}
+                      className={`nav-link ${currentPath == '/blog/' && 'active'
+                        }`}
                     >
                       Контакты
                     </Link>
@@ -306,9 +289,8 @@ const Navbar = () => {
                     <li className="nav-item">
                       <Link
                         href="/admin"
-                        className={`nav-link ${
-                          currentPath == '/blog/' && 'active'
-                        }`}
+                        className={`nav-link ${currentPath == '/blog/' && 'active'
+                          }`}
                       >
                         Admin
                       </Link>
@@ -330,6 +312,12 @@ const Navbar = () => {
                     <i className="icofont-search-1"></i>
                   </button>
                 </form>
+                <div className="WhatsAppButton">
+                  <a href="https://wa.me/996501880688" target="_blank">
+                    <img src="/images/wa.png" alt="WhatsApp Button"></img> 
+                  </a>
+                </div>
+
               </div>
             </nav>
           </div>

@@ -5,7 +5,7 @@ export type MedService = {
   name: string
   shortDescription: string
   longDescription: string
-  subMedServices: SubMedService[] | null
+  files:  File | null;
 }
 
 export type SubMedService = {
@@ -19,7 +19,7 @@ export type SubMedService = {
 
 export type MedServiceModel = Pick<
   MedService,
-  'name' | 'shortDescription' | 'longDescription'
+  'name' | 'shortDescription' | 'longDescription' | 'files'
 >
 
 export type SubMedServiceModel = Pick<

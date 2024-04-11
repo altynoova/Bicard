@@ -112,9 +112,6 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
         <AppointmentForm doctorId={params.id} />
       </div>
 
-      <div>
-        <FeedbackForm doctorId={params.id} userId={user.userId} />
-      </div>
     </div>
   )
 }

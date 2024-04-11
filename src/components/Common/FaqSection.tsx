@@ -25,7 +25,7 @@ const FaqSection = () => {
           <div className="row">
             <div className="col-lg-6">
               <div className="faq-img">
-                <Image src="/images/faq-main.jpg" alt="Faq" />
+                <Image src="/images/faq-main.jpg" alt="Faq" width={100} height={100}/>
 
                 <div onClick={() => setOpen(true)} className="popup-youtube">
                   <i className="icofont-ui-play"></i>

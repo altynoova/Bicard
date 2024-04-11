@@ -10,12 +10,15 @@ const CreateService = () => {
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [longDescription, setLongDescription] = useState('')
+  const [files, setFiles] = useState<FileList | null>(null);
+
 
   const handleCreate = async () => {
     const response = await CreateMedService({
       name,
       shortDescription,
       longDescription,
+      files
     })
 
     if (response === 200) {
@@ -65,6 +68,16 @@ const CreateService = () => {
             value={longDescription}
             onChange={(event) => setLongDescription(event.target.value)}
           />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputRole" className="form-label">
+            Files
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="exampleInputRole"
+            multiple onChange={(event) => setFiles(event.target.files)} />
         </div>
         <button
           type="submit"

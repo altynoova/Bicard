@@ -5,38 +5,23 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions } from '@mui/material'
 import Link from 'next/link'
+import { SubMedService } from '@/entities/Service'
 
 interface IServiceItem {
   id: number
+  name: string
   shortDescription: string
+  subMedservice : SubMedService[] 
 }
 
-export default function ServiceCard({ id, shortDescription }: IServiceItem) {
+export default function ServiceCard({ id, name, shortDescription, subMedservice }: IServiceItem) {
   return (
-    <Card
-      sx={{
-        maxWidth: 345,
-        backgroundColor: '#0046c0',
-        color: 'white',
-        padding: '20px',
-      }}
-    >
+    <div className='department-item'>
       <Link href={`/services/details/${id}`}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/public/images/service-details-bg.jpg"
-            alt="Service"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="white">
-              {shortDescription}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <i className="icofont-heart-beat-alt"></i>
+        <h3>{name}</h3>
+        <p>{shortDescription}</p>
       </Link>
-      <CardActions></CardActions>
-    </Card>
+    </div>
   )
 }
