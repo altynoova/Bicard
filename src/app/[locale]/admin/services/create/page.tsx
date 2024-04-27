@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
@@ -10,25 +10,40 @@ const CreateService = () => {
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [longDescription, setLongDescription] = useState('')
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
 
-
-  const handleCreate = async () => {
-    const response = await CreateMedService({
-      name,
-      shortDescription,
-      longDescription,
-      files
+  const handleSubmit = async () => {
+    if (files.length < 1) {
+      ErrorAlert('Добавьте фотографии!')
+      return
+    }
+  
+    const data = new FormData()
+    data.append('name', name)
+    data.append('shortDescription', shortDescription)
+    data.append('longDescription', longDescription)
+  
+    files.forEach((file, index) => {
+      data.append(`Files`, file)
     })
-
+  
+    const response = await CreateMedService(data)
+  
     if (response === 200) {
-      SuccessAlert('Сервис успешно создана')
-      router.push('/admin/services')
+      SuccessAlert('Аватар обновлен')
     } else {
       ErrorAlert('Произошла ошибка')
     }
   }
 
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const fileList = event.target.files
+  
+    if (fileList) {
+      setFiles(Array.from(fileList))
+    }
+  }
   return (
     <div className="d-flex justify-content-center mb-5">
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
@@ -77,12 +92,13 @@ const CreateService = () => {
             type="file"
             className="form-control"
             id="exampleInputRole"
-            multiple onChange={(event) => setFiles(event.target.files)} />
+            multiple 
+            onChange={handleFileChange} />
         </div>
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={handleCreate}
+          onClick={handleSubmit}
         >
           Создать
         </button>

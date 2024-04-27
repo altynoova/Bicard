@@ -33,7 +33,7 @@ interface IMedServicerStore {
   GetSubMedServiceById: (id: number) => Promise<number>
   GetAllSubMedServices: () => Promise<number>
 
-  CreateMedService: (data: MedServiceModel) => Promise<number>
+  CreateMedService: (data: FormData) => Promise<number>
   CreateSubMedService: (data: SubMedServiceModel) => Promise<number>
 
   EditMedService: (data: MedServiceModel, id: number) => Promise<number>
@@ -96,7 +96,11 @@ const useMedServicesStore = create<IMedServicerStore>()((set) => ({
 
   async CreateMedService(data) {
     console.log(data)
-    const response =  await $http.post('/medservices/createmedservice', data)
+    const response =  await $http.post('/medservices/createmedservice', data, {
+      headers:{
+        "Content-Type": 'multipart/form-data'
+      }
+    })
     set(() => ({medServices: response.data}))
     return response.status
   },

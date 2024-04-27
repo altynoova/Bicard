@@ -11,7 +11,7 @@ const Create = () => {
 
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
-  const [authorId, setAuthorId] = useState<string>('')
+  const [authorId, setAuthorId] = useState<string>('1')
   const [photo, setPhoto] = useState<File | null>(null)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ const Create = () => {
     console.log("In view ",data)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
-      router.push('/admin/Blogs')
+      router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -69,7 +69,7 @@ const Create = () => {
                       <textarea
                         className="form-control"
                         id="bio"
-                        placeholder="Биография"
+                        placeholder="Описание"
                         style={{ height: '10rem' }}
                         data-sb-validations="required"
                         value={text}
@@ -77,7 +77,7 @@ const Create = () => {
                       ></textarea>
                       <div
                         className="invalid-feedback"
-                        data-sb-feedback="биография:required"
+                        data-sb-feedback="Описание:required"
                       >
                         Text is required.
                       </div>

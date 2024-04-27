@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-
+import useBlogStore from '@/store/useBlogStore'
+import Image from 'next/image';
+import useMedServicesStore from '@/store/useMedServicesStore';
 const BlogSidebar = () => {
+  const LatestBlogs = useBlogStore().LatestBlogs
+  const zzz = useMedServicesStore().GetAllSubMedServices
+
+  const { Blogs } = useBlogStore()
+  const { allSubMedServices } = useMedServicesStore()
+  const [filter, setFilter] = useState('')
+
+  const filteredBlogs = Blogs.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()))
+  useEffect(() => {
+    LatestBlogs()
+    zzz()
+  }, [])
+
   return (
     <>
       <div className="blog-details-item">
@@ -17,54 +32,24 @@ const BlogSidebar = () => {
         <div className="blog-details-recent">
           <h3>Recent Blogs</h3>
           <ul>
-            <li>
-              <img src="/images/blog/blog1.jpg" alt="Recent" />
-              <Link href="/blog/details">
-                World AIDS Day, designated on 1 December.
-              </Link>
-              <ul>
-                <li>
-                  <Link href="/blog">
-                    <i className="icofont-businessman"></i> Admin
-                  </Link>
-                </li>
-                <li>
-                  <i className="icofont-calendar"></i> Jan 03, 2022
-                </li>
-              </ul>
-            </li>
-            <li>
-              <img src="/images/blog/blog2.jpg" alt="Recent" />
-              <Link href="/blog/details">
-                World AIDS Day, designated on 1 December.
-              </Link>
-              <ul>
-                <li>
-                  <Link href="/blog">
-                    <i className="icofont-businessman"></i> Admin
-                  </Link>
-                </li>
-                <li>
-                  <i className="icofont-calendar"></i> Jan 03, 2022
-                </li>
-              </ul>
-            </li>
-            <li>
-              <img src="/images/blog/blog3.jpg" alt="Recent" />
-              <Link href="/blog/details">
-                World AIDS Day, designated on 1 December.
-              </Link>
-              <ul>
-                <li>
-                  <Link href="/blog">
-                    <i className="icofont-businessman"></i> Admin
-                  </Link>
-                </li>
-                <li>
-                  <i className="icofont-calendar"></i> Jan 03, 2022
-                </li>
-              </ul>
-            </li>
+            {filteredBlogs.map((blog) => (
+              <li>
+
+                <Image width={100} height={300} src={`data:image/png;base64, ${blog.photoPath}`} alt="Blog" />
+                <Link href={`/blog/details/${blog.id}`}>{blog.title}</Link>
+                <ul>
+                  <li>
+                    <Link href={`/blog/details/${blog.id}`}>
+                      <i className="icofont-businessman"></i> Admin
+                    </Link>
+                  </li>
+                  <li>
+                    <i className="icofont-calendar"></i> {new Date(blog.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                  </li>
+                </ul>
+              </li>
+            ))
+            }
           </ul>
         </div>
 
@@ -104,30 +89,11 @@ const BlogSidebar = () => {
         <div className="blog-details-tags">
           <h3>Tags</h3>
           <ul>
+          {allSubMedServices.map((subservice) => (
             <li>
-              <Link href="/blog">Dental</Link>
+              <Link href="/services/">{subservice.name}</Link>
             </li>
-            <li>
-              <Link href="/blog">Health</Link>
-            </li>
-            <li>
-              <Link href="/blog">Child</Link>
-            </li>
-            <li>
-              <Link href="/blog">Medicine</Link>
-            </li>
-            <li>
-              <Link href="/blog">Caveti</Link>
-            </li>
-            <li>
-              <Link href="/blog">AIDS</Link>
-            </li>
-            <li>
-              <Link href="/blog">Dental</Link>
-            </li>
-            <li>
-              <Link href="/blog">Health</Link>
-            </li>
+          ))}
           </ul>
         </div>
       </div>

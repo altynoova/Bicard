@@ -9,13 +9,14 @@ import VideoIntro from '@/components/Common/VideoIntro'
 import OurDoctors from '@/components/Common/OurDoctors'
 import LatestBlogPost from '@/components/Common/LatestBlogPost'
 import NewsletterForm from '@/components/Common/NewsletterForm'
-import { LocalizationProvider } from '@mui/x-date-pickers'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
+import {useTranslations} from 'next-intl';
+
 
 export default function Home() {
+  const t = useTranslations('Index');
   return (
     <div>
+       <h1>{t('title')}</h1>
           <HeroSlider />
           <Stats />
           <AboutSection />

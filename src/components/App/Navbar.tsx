@@ -4,11 +4,13 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import useUserStore from '@/store/useUserStore'
 import { GetCookie } from '@/libs/cookie'
+import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
   const [currentPath, setCurrentPath] = useState('')
   const router = useRouter()
   const user = useUserStore().user
+  const { t } = useTranslation();
 
   // useEffect(() => {
   //   setCurrentPath(router.asPath);
@@ -73,7 +75,7 @@ const Navbar = () => {
                       className={`nav-link ${currentPath == '/about/' && 'active'
                         }`}
                     >
-                      Главная
+                     {t('Home')}
                     </Link>
                   </li>
 

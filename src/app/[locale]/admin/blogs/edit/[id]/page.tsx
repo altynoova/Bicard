@@ -15,7 +15,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const [text, setText] = useState<string>(
     currentBlog?.text || ''
   )
-  const [authorId, setAuthorId] = useState<string>(currentBlog?.authorId || '')
+  const [authorId, setAuthorId] = useState<string>(currentBlog?.authorId || '1')
   const [photo, setPhoto] = useState<File | null>(null)
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -30,7 +30,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     const status = await EditBlog(data, currentBlog?.id || 0)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
-      router.push('/admin/Blogs')
+      router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }

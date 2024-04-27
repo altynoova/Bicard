@@ -4,17 +4,24 @@ import Image from 'next/image';
 import Link from 'next/link'
 import useBlogStore from '@/store/useBlogStore'
 import Blog from '../Adminv2/Dashboard/Blog'
+import Pagination from '../Pagination';
+
 const BlogGrid = () => {
   const FetchBlogs = useBlogStore().FetchBlogs
-  const { Blogs } = useBlogStore()
+  const { Blogs, pagenumber, pagesize, totalelements, totalpages } = useBlogStore()
   const [filter, setFilter] = useState('')
 
   const filteredBlogs = Blogs.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()))
-console.log(filteredBlogs)
+  console.log(filteredBlogs)
 
   useEffect(() => {
-    FetchBlogs()
+    FetchBlogs(pagenumber, pagesize)
   }, [])
+
+  useEffect(() => {
+    FetchBlogs(pagenumber, pagesize)
+    console.log(pagenumber)
+  }, [pagenumber, pagesize])
 
 
 
@@ -23,40 +30,39 @@ console.log(filteredBlogs)
       <div className="blog-area-two pt-100 pb-70">
         <div className="container">
           <div className="row justify-content-center">
-          {filteredBlogs.map((blog) => (
-            <div key={blog.id} className="col-md-6 col-lg-4">
-              <div className="blog-item">
-                <div className="blog-top">
-                  <Link href="/blog/details">
-                  <Image width={100} height={300} src={`data:image/png;base64, ${blog.photoPath}`} alt="Blog" />
-                  </Link>
-                </div>
-                <div className="blog-bottom">
-                  <h3>
-                    <Link href="/blog/details">
-                      {blog.title}
+            {filteredBlogs.map((blog) => (
+              <div key={blog.id} className="col-md-6 col-lg-4">
+                <div className="blog-item">
+                  <div className="blog-top">
+                    <Link href={`/blog/details/${blog.id}`}>
+                      <Image width={100} height={300} src={`data:image/png;base64, ${blog.photoPath}`} alt="Blog" />
                     </Link>
-                  </h3>
-                  <p>
-                    {blog.text}
-                  </p>
-                  <ul>
-                    <li>
-                      <Link href="/blog/details">
-                        Read More <i className="icofont-long-arrow-right"></i>
+                  </div>
+                  <div className="blog-bottom">
+                    <h3>
+                      <Link href={`/blog/details/${blog.id}`}>
+                        {blog.title}
                       </Link>
-                    </li>
-                    <li>
-                      <i className="icofont-calendar"></i>
-                      {blog.timestamp.toString()}
-                    </li>
-                  </ul>
+                    </h3>
+                    <div className='text-wrap' dangerouslySetInnerHTML={{ __html: blog.text }}></div>
+                    <ul>
+                      <li>
+                        <Link href={`/blog/details/${blog.id}`}>
+                          Read More <i className="icofont-long-arrow-right"></i>
+                        </Link>
+                      </li>
+                      <li>
+                        <i className="icofont-calendar"></i>
+                        {new Date(blog.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
             ))}
 
           </div>
+          <Pagination pagenumber={pagenumber} totalpages={totalpages}/>
         </div>
       </div>
     </>

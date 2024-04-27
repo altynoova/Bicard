@@ -3,6 +3,7 @@ export type Blog = {
   title: string;
   text: string;
   authorId: string;
+  authorName: string;
   photoPath: string;
   timestamp: Date
 };

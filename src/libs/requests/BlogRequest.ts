@@ -1,8 +1,11 @@
 import { $http } from '../axios'
 import { BlogRequestModel } from '@/entities/Blog'
 
-export const FetchBlogs = async () => {
-  return await $http.get('/blogs/getall')
+export const FetchBlogs = async (pagenumber: number, pagesize: number) => {
+  return await $http.get(`/blogs/getall?pagenumber=${pagenumber}&pagesize=${pagesize}`)
+}
+export const LatestBlogs = async () => {
+  return await $http.get(`/blogs/getall`)
 }
 
 export const GetBlog = async (id: number) => {

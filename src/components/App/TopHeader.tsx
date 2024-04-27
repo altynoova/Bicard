@@ -1,10 +1,22 @@
 'use client'
-import React, { use, useEffect, useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react'
 import useUserStore from '@/store/useUserStore'
+import { usePathname, useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { SelectChangeEvent } from '@mui/material';
+
 const TopHeader = () => {
-  const { user } = useUserStore(); 
+  const { user } = useUserStore();
   const [signed, setSigned] = useState(false);
   const [username, setUsername] = useState(user.userName);
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale()
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const nextlocale = e.target.value;
+    router.replace(`/${nextlocale}`);
+  };
 
   useEffect(() => {
     setSigned(!!user.accessToken);
@@ -19,6 +31,12 @@ const TopHeader = () => {
       setUsername("");
     }
   }
+
+  // Function to handle language change
+  // const changeLanguage = (locale: string) => {
+  //   setLocale(locale); // Call setLocale with the desired locale
+  // }
+
   return (
     <>
       <div className="header-top">
@@ -28,23 +46,21 @@ const TopHeader = () => {
               <div className="header-top-item">
                 <div className="header-top-left">
                   <ul>
-                  <li>
+                    <li>
                       {signed ? (
                         <a href="/signout" onClick={handleAuthentication}>
                           <i className="icofont-user"></i>
                           {username}
                         </a>
                       ) : (
-                        <a href="/signin" onClick={handleAuthentication}> 
+                        <a href="/signin" onClick={handleAuthentication}>
                           <i className="icofont-user"></i>
                           Войти
                         </a>
                       )}
-                      
                     </li>
-                   
                     <li>
-                      <a >
+                      <a>
                         <i className="icofont-ui-call"></i>
                         +996 559 860 688
                       </a>
@@ -56,9 +72,9 @@ const TopHeader = () => {
                       </a>
                     </li>
                     <li>
-                    <a href="https://2gis.kg/bishkek/firm/70000001022019440?m=74.604169%2C42.838768%2F16" target="_blank"> 
-                      <i className="icofont-location-pin"></i>
-                      улица Тыныстанова2, г. Бишкек
+                      <a href="https://2gis.kg/bishkek/firm/70000001022019440?m=74.604169%2C42.838768%2F16" target="_blank">
+                        <i className="icofont-location-pin"></i>
+                        улица Тыныстанова2, г. Бишкек
                       </a>
                     </li>
                   </ul>
@@ -69,17 +85,22 @@ const TopHeader = () => {
             <div className="col-sm-4 col-lg-3">
               <div className="header-top-item">
                 <div className="header-top-right">
-                  <ul className="lang-list">
+                  <select value={locale} onChange={handleChange}>
+                    <option value="en">English</option>
+                    <option value="ru">Russian</option>
+                    <option value="ky">Kyrgyz</option>
+                  </select>
+                  {/* <ul className="lang-list">
                     <li>
-                      <a href="/">RU</a>
+                      <button onClick={() => changeLanguage('ru')}>RU</button>
                     </li>
                     <li>
-                      <a href="/ar">KG</a>
+                      <button onClick={() => changeLanguage('kg')}>KG</button>
                     </li>
                     <li>
-                      <a href="/ar">EN</a>
+                      <button onClick={() => changeLanguage('en')}>EN</button>
                     </li>
-                  </ul>
+                  </ul> */}
 
                   <ul>
                     <li>
@@ -103,4 +124,4 @@ const TopHeader = () => {
   )
 }
 
-export default TopHeader
+export default TopHeader;
