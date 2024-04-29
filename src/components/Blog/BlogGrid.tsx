@@ -5,9 +5,11 @@ import Link from 'next/link'
 import useBlogStore from '@/store/useBlogStore'
 import Blog from '../Adminv2/Dashboard/Blog'
 import Pagination from '../Pagination';
+import { useTranslations } from 'next-intl';
 
 const BlogGrid = () => {
   const FetchBlogs = useBlogStore().FetchBlogs
+  const t = useTranslations('Blogs');
   const { Blogs, pagenumber, pagesize, totalelements, totalpages } = useBlogStore()
   const [filter, setFilter] = useState('')
 
@@ -48,7 +50,7 @@ const BlogGrid = () => {
                     <ul>
                       <li>
                         <Link href={`/blog/details/${blog.id}`}>
-                          Read More <i className="icofont-long-arrow-right"></i>
+                        {t('Read More')} <i className="icofont-long-arrow-right"></i>
                         </Link>
                       </li>
                       <li>

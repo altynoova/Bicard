@@ -5,11 +5,11 @@ import PageBanner from '@/components/Common/PageBanner'
 import AppointmentForm from '@/components/Appointment/AppointmentForm'
 import useDoctorStore from '@/store/useDoctorStore'
 import useUserStore from '@/store/useUserStore'
-import FeedbackForm from '@/components/Doctors/FeedbackForm'
-import { GetCookie } from '@/libs/cookie'
-
+import { useTranslations } from 'next-intl'
+import LatestArticles from '@/components/Common/LatestArticles'
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
   const { GetDoctor, currentDoctor } = useDoctorStore()
+  const t = useTranslations('Doctors');
   const { user } = useUserStore()
 
   useEffect(() => {
@@ -21,8 +21,8 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
       <PageBanner
         pageTitle={currentDoctor?.name || ''}
         homePageUrl="/"
-        homePageText="Главная"
-        activePageText="Докторы"
+        homePageText={t('Home')}
+        activePageText={t('Doctors')}
         bgImage="page-title-five"
       />
       <div className="doctor-details-area pt-100 pb-70">
@@ -37,7 +37,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   alt="Doctor"
                 />
                 <div className="doctor-details-contact">
-                  <h3>Контакты</h3>
+                  <h3>{t('Contacts')}</h3>
                   <ul>
                     <li>
                       <i className="icofont-ui-call"></i>
@@ -51,7 +51,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                 </div>
 
                 <div className="doctor-details-work">
-                  <h3>Рабочие часы</h3>
+                  <h3>{t('WorkHours')}</h3>
                   <div className="appointment-item-two-right">
                     <div className="appointment-item-content">
                       <ul>
@@ -83,7 +83,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Биография</h3>
+                    <h3>{t('Biography')}</h3>
 
                     <p>{currentDoctor?.bio}</p>
 
@@ -91,14 +91,14 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Образование</h3>
+                    <h3>{t('Education')}</h3>
                     <ul>
                       <li>{currentDoctor?.education}</li>
                     </ul>
                   </div>
 
                   <div className="doctor-details-biography">
-                    <h3>Опыт</h3>
+                    <h3>{t('Experience')}</h3>
                     <p>{currentDoctor?.experience}</p>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
       <div className="pb-100">
         <AppointmentForm doctorId={params.id} />
       </div>
-
+      <LatestArticles />
     </div>
   )
 }

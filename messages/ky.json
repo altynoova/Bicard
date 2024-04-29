@@ -1,5 +1,92 @@
 {
-    "Index": {
-      "title": "Hello, kyrgyz"
-    }
+  "About": {
+    "AboutCompany": "Компания жөнүндө",
+    "Home": "Башкы бет",
+    "AboutUs": "Биз жөнүндө",
+    "AboutBicard": "Эл аралык стандарт клиникасы Бикард - акыркы дарылоо ыкмалары жана жогорку квалификациялуу адистер, достук жана камкор кызматкерлер, ынгайлуу баалар.",
+    "Browse our site": "Биздин сайтты карап чыгыңыз",
+    "Select a service": "Кызматты тандаңыз",
+    "Send a message": "Билдирүү жөнөтүңүз",
+    "Beds": "Орун",
+    "Patients": "Бактылуу бейтаптар",
+    "Employees": "Кызматкерлер",
+    "Years of experience": "Жылдык тажрыйба"
+
+  },
+  "TopHeader": {
+    "Login": "Кирүү",
+    "English": "Англисче",
+    "Russian": "Орусча",
+    "Kyrgyz": "Кыргызча"
+  },
+  "Navbar": {
+    "Home": "Башкы",
+    "Services": "Кызматтар",
+    "Learn More": "Көбүрөөк билүү",
+    "Doctors": "Дарыгерлер",
+    "Blogs": "Блогдор",
+    "Contacts": "Байланышуу"
+  },
+  "Doctors": {
+    "OurDoctors": "Биздин квалификациялуу дарыгерлер менен таанышыңыз",
+    "Home": "Башкы бет",
+    "Search": "Издөө",
+    "DoctorsName": "Дарыгердин аты",
+    "Doctors": "Дарыгерлер",
+    "Specialty": "Адистик",
+    "Contacts": "Байланышуу",
+    "WorkHours": "Жумуш убактысы",
+    "Biography": "Өмүр баяны",
+    "Education": "Билими",
+    "Experience": "Тажрыйбасы"
+  },
+  "Blogs": {
+    "Blogs": "Блогдор",
+    "Home": "Башкы бет",
+    "Read More": "Кененирээк окуу",
+    "Blogs Details": "Блогдор жөнүндө маалымат",
+    "Previous": "Мурунку",
+    "Next": "Кийинки",
+    "Recent Blogs": "Акыркы блогдор",
+    "Tags": "Тегдер",
+    "Our Latest Blogs": "Биздин акыркы блогдор",
+    "Latest Articles": "Акыркы макалалар"
+  },
+  "Contact": {
+    "Contact us": "Бизге кайрылыңыз",
+    "Home": "Башкы бет",
+    "Location": "Жайгашкан жери",
+    "Mail": "Mail",
+    "Number": "Номер",
+    "Your message": "Ар кандай маалымат же суроо үчүн билдирүүңүздү калтырыңыз",
+    "Send": "Жөнөтүү",
+    "Emergency call": "Шашылыш чалуу",
+    "Write to us": "Бизге жазыңыз",
+    "AboutUs": "Биз жөнүндө",
+    "Blogs": "Блогдор",
+    "Quick links": "Ыкчам шилтемелер",
+    "FAQ": "Көп берилүүчү суроолор",
+    "Online registration": "Онлайн катталуу",
+    "Doctors": "Дарыгерлер",
+    "Contacts": "Байланышуу",
+    "Services": "Кызматтар",
+    "Feedbacks": "Пикирлер",
+    "Name": "Аты-жөнүнүз",
+    "Message": "Сообщение",
+    "Login": "Кирүү",
+    "Have you registered yet": "Каттала элексизби?",
+    "Register here": "Бул жерден катталыңыз",
+    "Your login": "Сиздин логиниңиз",
+    "Password": "Сырсөз",
+    "Remember me": "Эстеп кал",
+    "Forgot your password?": "Сыр сөзүңүздү унуттуңузбу?",
+    "Registration": "Катталуу",
+    "Already have an account?": "Катталган аккаунтуңуз барбы?",
+    "Confirm the password": "Confirm the password",
+    "Password mismatch": "Сырсөз дал келбей калды",
+    "Yes, I agree": "Ооба, мен макулмун",
+    "Terms of Use": "Пайдалануу шарттары",
+    "Sign Up": "Катталуу",
+    "Latest Articles": "Акыркы макалалар"
   }
+}

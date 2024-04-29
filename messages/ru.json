@@ -1,5 +1,91 @@
 {
-    "Index": {
-      "title": "Hello, russ!"
-    }
+  "About": {
+    "AboutCompany": "О компании",
+    "Home": "Главная",
+    "AboutUs": "О нас",
+    "AboutBicard": "Клиника международного стандарта Бикард — это новейшие методы лечения и высококвалифицированные специалисты, доброжелательный и заботливый персонал, приемлемые цены",
+    "Browse our site": "Просмотрите наш сайт",
+    "Select a service": "Выберите услугу",
+    "Send a message": "Отправьте сообщение",
+    "Beds": "Коек",
+    "Patients": "Счастливых пациентов",
+    "Employees": "Сотрудников",
+    "Years of experience": "Лет опыта"
+  },
+  "TopHeader": {
+    "Login": "Войти",
+    "English": "Английский",
+    "Russian": "Русский",
+    "Kyrgyz": "Кыргызский"
+  },
+  "Navbar": {
+    "Home": "Главная",
+    "Services": "Услуги",
+    "Learn More": "Узнать поподробнее",
+    "Doctors": "Докторы",
+    "Blogs": "Блоги",
+    "Contacts": "Контакты"
+  },
+  "Doctors": {
+    "OurDoctors": "Познакомьтесь с нашими квалифицированными врачами",
+    "Home": "Главная",
+    "Search": "Поиск",
+    "DoctorsName": "Имя доктора",
+    "Doctors": "Докторы",
+    "Specialty": "Специальность",
+    "Contacts": "Контакты",
+    "WorkHours": "Рабочие часы",
+    "Biography": "Биография",
+    "Education": "Образование",
+    "Experience": "Опыт"
+  },
+  "Blogs": {
+    "Blogs": "Блоги",
+    "Home": "Главная",
+    "Read More": "Читать далее",
+    "Blogs Details": "Детали блога",
+    "Previous": "Предыдущий",
+    "Next": "Следующий",
+    "Recent Blogs": "Недавние блоги",
+    "Tags": "Теги",
+    "Our Latest Blogs": "Наши последние блоги",
+    "Latest Articles": "Последние статьи"
+  },
+  "Contact": {
+    "Contact us": "Свяжитесь с нами",
+    "Home": "Главная",
+    "Location": "Локация",
+    "Mail": "Почта",
+    "Number": "Номер",
+    "Your message": " Оставьте свое сообщение для любой информации или вопроса",
+    "Send": "Отправить",
+    "Emergency call": "Экстренный звонок",
+    "Write to us": "Напишите нам",
+    "AboutUs": "О нас",
+    "Blogs": "Блоги",
+    "Quick links": "Быстрые ссылки",
+    "FAQ": "Часто задаваемые вопросы",
+    "Online registration": "Онлайн запись",
+    "Doctors": "Докторы",
+    "Contacts": "Контакты",
+    "Services": "Услуги",
+    "Feedbacks": "Отзывы",
+    "Name": "Имя",
+    "Message": "Сообщение",
+    "Login": "Войти",
+    "Have you registered yet": "Вы еще не зарегистрировались?",
+    "Register here": "Зарегистрируйтесь здесь",
+    "Your login": "Ваш логин",
+    "Password": "Пароль",
+    "Remember me": "Запомнить меня",
+    "Forgot your password?": "Забыли пароль?",
+    "Registration": "Регистрация",
+    "Already have an account?": "Уже есть аккаунт?",
+    "Confirm the password": "Confirm the password",
+    "Password mismatch": "Пароли не совпадают",
+    "Yes, I agree": "Да, я согласен",
+    "Terms of Use": "Условия использования",
+    "Sign Up": "Зарегистрироваться",
+    "Latest Articles": "Последние статьи"
   }
+}

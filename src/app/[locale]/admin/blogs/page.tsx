@@ -18,9 +18,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
 
 const Blogs = () => {
-  const { FetchBlogs, DeleteBlog } = useBlogStore()
-  const { Blogs } = useBlogStore()
-
+  const { FetchBlogs, DeleteBlog, Blogs, pagenumber, pagesize } = useBlogStore()
   const [search, setSearch] = useState<string>('')
 
   const filteredBlogs = Blogs.filter(
@@ -37,7 +35,7 @@ const Blogs = () => {
   }
 
   useEffect(() => {
-    FetchBlogs()
+    FetchBlogs(pagesize, pagenumber)
   }, [])
 
   return (

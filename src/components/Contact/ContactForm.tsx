@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 const MySwal = withReactContent(Swal)
 import withReactContent from 'sweetalert2-react-content'
 import { SendContactInfo } from '@/libs/requests/ContactRequests'
+import { useTranslations } from 'next-intl'
 
 const alertContent = () => {
   MySwal.fire({
@@ -31,7 +32,7 @@ const ContactForm = () => {
 
     alertContent()
   }
-
+  const t = useTranslations('Contact');
   return (
     <>
       <div className="drop-area">
@@ -41,7 +42,7 @@ const ContactForm = () => {
               <div className="drop-item drop-img">
                 <div className="drop-left">
                   <h2>
-                    Оставьте свое сообщение для любой информации или вопроса
+                  {t('Your message')}
                   </h2>
 
                   <form onSubmit={handleSubmit}>
@@ -119,7 +120,7 @@ const ContactForm = () => {
 
                       <div className="col-lg-12 col-md-12 col-sm-12">
                         <button type="submit" className="drop-btn">
-                          Отправить
+                        {t('Send')}
                         </button>
                       </div>
                     </div>
@@ -137,7 +138,7 @@ const ContactForm = () => {
                     <i className="icofont-ui-call"></i>
                   </div>
 
-                  <h3>Экстренный звонок</h3>
+                  <h3>{t('Emergency call')}</h3>
                   <p>+996 554 332 322</p>
                 </div>
               </div>

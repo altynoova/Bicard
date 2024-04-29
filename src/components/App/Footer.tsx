@@ -1,14 +1,20 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import useFeedbackStore from '@/store/useFeedbackStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import { useTranslations } from 'next-intl'
+import useMedServicesStore from '@/store/useMedServicesStore'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const methodFeedbackCreate = useFeedbackStore().CreateFeedback
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const t = useTranslations('Contact');
+  const zzz = useMedServicesStore().GetAllSubMedServices
+  const { allSubMedServices } = useMedServicesStore()
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,6 +35,9 @@ const Footer = () => {
     else {
       ErrorAlert('Ошибка')
     }
+    useEffect(() => {
+      zzz()
+    }, [])
   }
   return (
     <>
@@ -38,7 +47,7 @@ const Footer = () => {
             <div className="col-sm-6 col-lg-4">
               <div className="footer-item">
                 <div className="footer-contact pe-2">
-                  <h3>Напишите нам</h3>
+                  <h3>{t('Write to us')}</h3>
                   <ul>
                     <li>
                       <i className="icofont-ui-message"></i>
@@ -61,25 +70,25 @@ const Footer = () => {
             <div className="col-sm-6 col-lg-2">
               <div className="footer-item">
                 <div className="footer-quick">
-                  <h3>Быстрые ссылки</h3>
+                  <h3>{t('Quick links')}</h3>
                   <ul>
                     <li>
-                      <Link href="/about">О нас </Link>
+                      <Link href="/about">{t('AboutUs')}</Link>
                     </li>
                     <li>
-                      <Link href="/blog">Блоги </Link>
+                      <Link href="/blog">{t('Blogs')}</Link>
                     </li>
                     <li>
-                      <Link href="/blog-details">Онлайн запись</Link>
+                      <Link href="/blog-details">{t('Online registration')}</Link>
                     </li>
                     <li>
-                      <Link href="/faq">Часто задаваемые вопросы</Link>
+                      <Link href="/faq">{t('FAQ')}</Link>
                     </li>
                     <li>
-                      <Link href="/doctors">Докторы</Link>
+                      <Link href="/doctors">{t('Doctors')}</Link>
                     </li>
                     <li>
-                      <Link href="/contact">Контакты</Link>
+                      <Link href="/contact">{t('Contacts')}</Link>
                     </li>
                   </ul>
                 </div>
@@ -89,26 +98,13 @@ const Footer = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="footer-item">
                 <div className="footer-quick">
-                  <h3>Услуги</h3>
+                  <h3>{t('Services')}</h3>
                   <ul>
+                  {allSubMedServices.map((subservice) => (
                     <li>
-                      <Link href="/service-details">Диагностика</Link>
+                      <Link href="/service-details">{subservice.name}</Link>
                     </li>
-                    <li>
-                      <Link href="/service-details">Поликлиника</Link>
-                    </li>
-                    <li>
-                      <Link href="/service-details">Стационарное лечение</Link>
-                    </li>
-                    <li>
-                      <Link href="/service-details">Реанимация</Link>
-                    </li>
-                    <li>
-                      <Link href="/service-details">Операционный блок</Link>
-                    </li>
-                    <li>
-                      <Link href="/service-details">Высокотехнологическая лаборатория</Link>
-                    </li>
+                  ))}
                   </ul>
                 </div>
               </div>
@@ -117,20 +113,20 @@ const Footer = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="footer-item">
                 <div className="footer-feedback">
-                  <h3>Отзывы</h3>
+                  <h3>{t('Feedbacks')}</h3>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Имя"
+                        placeholder={t('Name')}
                       />
                     </div>
                     <div className="form-group">
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Номер"
+                        placeholder={t('Number')}
                         value={phone}
                         onChange={(event) =>
                           setPhone(event.target.value)
@@ -142,7 +138,7 @@ const Footer = () => {
                         className="form-control"
                         id="your_message"
                         rows={3}
-                        placeholder="Сообщение"
+                        placeholder={t('Message')}
                         value={message}
                         onChange={(event) =>
                           setMessage(event.target.value)
@@ -151,7 +147,7 @@ const Footer = () => {
                     </div>
                     <div className="text-left">
                       <button type="submit" className="btn feedback-btn">
-                        Отправить
+                      {t('Send')}
                       </button>
                     </div>
                   </form>

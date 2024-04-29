@@ -9,11 +9,13 @@ import useUserStore from '@/store/useUserStore'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation';
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import { useTranslations } from 'next-intl'
 
 
 const SignInForm = () => {
   const router = useRouter();
   const methodSignIn = useUserStore().SignIn
+  const t = useTranslations('Contact');
 
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -66,10 +68,11 @@ const SignInForm = () => {
             <div className="col-lg-6 ptb-100">
               <div className="signup-item">
                 <div className="signup-head">
-                  <h2>Войти</h2>
+                  <h2>{t('Login')}</h2>
                   <p>
-                   Вы еще не зарегистрировались?{' '}
-                    <Link href="/signup">Зарегистрируйтесь здесь</Link>
+                  {t('Have you registered yet')}
+                   {' '}
+                    <Link href="/signup">{t('Register here')}</Link>
                   </p>
                 </div>
                 <div className="signup-form">
@@ -89,7 +92,7 @@ const SignInForm = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Ваш логин"
+                            placeholder={t('Your login')}
                             value={username}
                             onChange={(event) =>
                               setUsername(event.target.value)
@@ -102,7 +105,7 @@ const SignInForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Пароль"
+                            placeholder={t('Password')}
                             value={password}
                             onChange={(event) =>
                               setPassword(event.target.value)
@@ -134,7 +137,7 @@ const SignInForm = () => {
                               className="form-check-label"
                               htmlFor="gridCheck"
                             >
-                             Запомнить меня
+                              {t('Remember me')}
                             </label>
                           </div>
                         </div>
@@ -143,7 +146,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="form-group">
                           <div className="forgot-pass">
-                            <Link href="#">Забыли пароль?</Link>
+                            <Link href="#">{t('Forgot your password?')}</Link>
                           </div>
                         </div>
                       </div>
@@ -151,7 +154,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="text-center">
                           <button type="submit" className="btn signup-btn">
-                          Войти
+                          {t('Login')}
                           </button>
                         </div>
                       </div>

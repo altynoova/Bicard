@@ -5,16 +5,14 @@ import Link from 'next/link'
 import useUserStore from '@/store/useUserStore'
 import { GetCookie } from '@/libs/cookie'
 import { useTranslation } from 'react-i18next'
+import { useTranslations } from 'next-intl'
 
 const Navbar = () => {
   const [currentPath, setCurrentPath] = useState('')
   const router = useRouter()
   const user = useUserStore().user
-  const { t } = useTranslation();
+  const t = useTranslations('Navbar');
 
-  // useEffect(() => {
-  //   setCurrentPath(router.asPath);
-  // }, [router]);
 
   const [menu, setMenu] = React.useState(true)
 
@@ -75,7 +73,7 @@ const Navbar = () => {
                       className={`nav-link ${currentPath == '/about/' && 'active'
                         }`}
                     >
-                     {t('Home')}
+                      {t('Home')}
                     </Link>
                   </li>
 
@@ -187,7 +185,7 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Услуги
+                      {t('Services')}
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -197,7 +195,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/services/' && 'active'
                             }`}
                         >
-                          Услуги
+                          {t('Services')}
                         </Link>
                       </li>
 
@@ -207,7 +205,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/service-details/' && 'active'
                             }`}
                         >
-                          Узнать поподробнее
+                          {t('Learn More')}
                         </Link>
                       </li>
                     </ul>
@@ -219,7 +217,8 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Докторы
+                      {t('Doctors')}
+
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -229,7 +228,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/doctors/' && 'active'
                             }`}
                         >
-                          Докторы
+                          {t('Doctors')}
                         </Link>
                       </li>
 
@@ -239,7 +238,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/doctor-details/' && 'active'
                             }`}
                         >
-                          Узнать поподробнее
+                          {t('Learn More')}
                         </Link>
                       </li>
                     </ul>
@@ -251,7 +250,8 @@ const Navbar = () => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link dropdown-toggle"
                     >
-                      Блоги
+                      {t('Blogs')}
+
                     </Link>
 
                     <ul className="dropdown-menu">
@@ -261,7 +261,8 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/blog/' && 'active'
                             }`}
                         >
-                          Блоги
+                          {t('Blogs')}
+
                         </Link>
                       </li>
 
@@ -271,7 +272,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/blog-details/' && 'active'
                             }`}
                         >
-                          Узнать поподробнее
+                            {t('Learn More')}
                         </Link>
                       </li>
                     </ul>
@@ -283,7 +284,8 @@ const Navbar = () => {
                       className={`nav-link ${currentPath == '/blog/' && 'active'
                         }`}
                     >
-                      Контакты
+                        {t('Contacts')}
+                      
                     </Link>
                   </li>
 
@@ -316,7 +318,7 @@ const Navbar = () => {
                 </form>
                 <div className="WhatsAppButton">
                   <a href="https://wa.me/996501880688" target="_blank">
-                    <img src="/images/wa.png" alt="WhatsApp Button"></img> 
+                    <img src="/images/wa.png" alt="WhatsApp Button"></img>
                   </a>
                 </div>
 

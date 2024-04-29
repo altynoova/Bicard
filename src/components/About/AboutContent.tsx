@@ -1,7 +1,16 @@
-import React from 'react'
-
+'use client'
+import useMedServicesStore from '@/store/useMedServicesStore';
+import { useTranslations } from 'next-intl';
+import React, { useEffect } from 'react'
 const AboutContent = () => {
+const t = useTranslations('About');
+const zzz = useMedServicesStore().GetAllSubMedServices
+const { allSubMedServices } = useMedServicesStore()
+useEffect(() => {
+  zzz()
+}, [])
   return (
+    
     <>
       <div className="about-area pt-100 pb-70">
         <div className="container">
@@ -17,34 +26,26 @@ const AboutContent = () => {
             <div className="col-lg-6">
               <div className="about-item about-right">
                 <img src="/images/about-shape1.png" alt="About" />
-                <h2>О нас</h2>
+                <h2>{t('AboutUs')}</h2>
                 <p>
-                  Клиника международного стандарта «Бикард» — это новейшие
-                  методы лечения и высококвалифицированные специалисты,
-                  доброжелательный и заботливый персонал, приемлемые цены.
-                  <p>ДИАГНОСТИКА</p>
-                  <p>ПОЛИКЛИНИКА</p>
-                  <p>
-                    СТАЦИОНАРНОЕ ЛЕЧЕНИЕ КАРДИОЛОГИЧЕСКИХ И КАРДИОХИРУРГИЧЕСКИХ
-                    ЗАБОЛЕВАНИЙ{' '}
-                  </p>
-                  <p>РЕАНИМАЦИЯ</p>
-                  <p>ОПЕРАЦИОННЫЙ БЛОК</p>
-                  <p>ВЫСОКОТЕХНОЛОГИЧЕСКАЯ ЛАБОРАТОРИЯ</p>
-                  <p>АНГИОГРАФИЯ ВСЕХ СОСУДОВ (КОРОНАРОГРАФИЯ)</p>{' '}
-                </p>
+                {t('AboutBicard')}
+                 </p>
+                 {allSubMedServices.map((subservice) => (
+                  <p>{subservice.name.toUpperCase()}</p>
+                 ))}
                 <ul>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Просмотрите наш сайт
+                    {t('Browse our site')}
+                    
                   </li>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Выберите услугу
+                    {t('Select a service')}
                   </li>
                   <li>
                     <i className="icofont-check-circled"></i>
-                    Отправьте сообщение
+                    {t('Send a message')}
                   </li>
                 </ul>
               </div>

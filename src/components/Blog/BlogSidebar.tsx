@@ -3,6 +3,7 @@ import Link from 'next/link'
 import useBlogStore from '@/store/useBlogStore'
 import Image from 'next/image';
 import useMedServicesStore from '@/store/useMedServicesStore';
+import { useTranslations } from 'next-intl';
 const BlogSidebar = () => {
   const LatestBlogs = useBlogStore().LatestBlogs
   const zzz = useMedServicesStore().GetAllSubMedServices
@@ -10,6 +11,7 @@ const BlogSidebar = () => {
   const { Blogs } = useBlogStore()
   const { allSubMedServices } = useMedServicesStore()
   const [filter, setFilter] = useState('')
+  const t = useTranslations('Blogs')
 
   const filteredBlogs = Blogs.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()))
   useEffect(() => {
@@ -30,7 +32,7 @@ const BlogSidebar = () => {
         </div>
 
         <div className="blog-details-recent">
-          <h3>Recent Blogs</h3>
+          <h3>{t('Recent Blogs')}</h3>
           <ul>
             {filteredBlogs.map((blog) => (
               <li>
@@ -87,7 +89,7 @@ const BlogSidebar = () => {
         </div>
 
         <div className="blog-details-tags">
-          <h3>Tags</h3>
+          <h3>{t('Tags')}</h3>
           <ul>
           {allSubMedServices.map((subservice) => (
             <li>

@@ -1,5 +1,91 @@
 {
-    "Index": {
-      "title": "Hello world!"
-    }
+  "About": {
+    "AboutCompany": "About Company",
+    "Home": "Home page",
+    "AboutUs": "About us",
+    "AboutBicard": "International standard clinic Bicard - the latest treatment methods and highly qualified specialists, friendly and caring staff, reasonable prices.",
+    "Browse our site": "Browse our siteBrowse our site",
+    "Select a service": "Select a service",
+    "Send a message": "Send a message",
+    "Beds": "Beds",
+    "Patients": "Happy patients",
+    "Employees": "Employees",
+    "Years of experience": "Years of experience"
+    
+  },
+  "TopHeader": {
+    "Login": "Login",
+    "English": "English",
+    "Russian": "Russian",
+    "Kyrgyz": "Kyrgyz"
+  },
+  "Navbar": {
+    "Home": "Home",
+    "Services": "Services",
+    "Learn More": "Learn More",
+    "Doctors": "Doctors",
+    "Blogs": "Blogs",
+    "Contacts": "Contacts"
+  },
+  "Doctors": {
+    "OurDoctors": "Meet our qualified doctors",
+    "Home": "Home page",
+    "Search": "Search",
+    "DoctorsName": "Doctor's name",
+    "Doctors": "Doctors",
+    "Specialty": "Specialty",
+    "Contacts": "Contacts",
+    "WorkHours": "Working hours",
+    "Biography": "Biography",
+    "Education": "Education",
+    "Experience": "Experience"
+  },
+  "Blogs": {
+    "Blogs": "Blogs",
+    "Home": "Home page",
+    "Read More": "Read More",
+    "Blogs Details": "Blogs Details",
+    "Previous": "Previous",
+    "Next": "Next",
+    "Recent Blogs": "Recent Blogs",
+    "Tags": "Tags",
+    "Our Latest Blogs": "Our Latest Blogs",
+    "Latest Articles": "Latest Articles"
+  },
+  "Contact": {
+    "Contact us": "Contact us",
+    "Home": "Home page",
+    "Location": "Location",
+    "Mail": "Mail",
+    "Number": "Number",
+    "Your message": "Leave your message for any information or question",
+    "Send": "Send",
+    "Emergency call": "Emergency call",
+    "Write to us": "Write to us",
+    "Quick links": "Quick links",
+    "FAQ": "Frequently asked Questions",
+    "Online registration": "Online registration",
+    "Doctors": "Doctors",
+    "Contacts": "Contacts",
+    "Services": "Services",
+    "Feedbacks": "Feedbacks",
+    "Name": "Name",
+    "Message": "Message",
+    "Login": "Login",
+    "Have you registered yet": "Have you registered yet?",
+    "Register here": "Register here",
+    "Your login": "Your login",
+    "Password": "Password",
+    "Remember me": "Remember me",
+    "Forgot your password?": "Forgot your password?",
+    "Registration": "Registration",
+    "Already have an account?": "Already have an account?",
+    "Confirm the password": "Confirm the password",
+    "Password mismatch": "Password mismatch",
+    "Yes, I agree": "Yes, I agree",
+    "Terms of Use": "Terms of Use",
+    "Sign Up": "Sign Up",
+    "Our Latest Blogs": "Our Latest Blogs",
+    "Latest Articles": "Latest Articles"
   }
+}

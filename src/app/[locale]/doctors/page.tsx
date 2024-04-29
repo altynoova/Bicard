@@ -3,36 +3,47 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import PageBanner from '@/components/Common/PageBanner'
-import { FetchDoctors } from '@/libs/requests/DoctorRequests'
 import useDoctorStore from '@/store/useDoctorStore'
 import useUserStore from '@/store/useUserStore'
-import SignIn from '../signin/page'
-
+import { useTranslations } from 'next-intl'
+import useSpecialityStore from '@/store/useSpecialityStore'
 
 const Doctors = () => {
   const FetchDoctors = useDoctorStore().FetchDoctors
+  const GetSpecialities = useSpecialityStore().GetSpecialities
+
   const { doctors } = useDoctorStore()
   const { user } = useUserStore()
+  const { Specialities } = useSpecialityStore()
+
   const [filter, setFilter] = useState('')
+  const [selectedSpeciality, setSelectedSpeciality] = useState('') // State to store selected speciality
 
-  const filteredDoctors = doctors.filter(d => d.name.toLowerCase().includes(filter.toLowerCase()))
+  const t = useTranslations('Doctors')
 
-  console.log('current user', user)
-  console.log(doctors)
+  const filteredDoctors = doctors.filter((doctor) =>
+    doctor.name.toLowerCase().includes(filter.toLowerCase())
+  ).filter((doctor) =>
+    // Filter by selected speciality if one is selected
+    !selectedSpeciality || doctor.speciality === selectedSpeciality
+  )
 
   useEffect(() => {
     FetchDoctors()
+    GetSpecialities()
   }, [])
 
-
+  const handleSpecialityChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+    setSelectedSpeciality(event.target.value) // Update selected speciality
+  }
 
   return (
     <div>
       <PageBanner
-        pageTitle="Познакомьтесь с нашими квалифицированными врачами"
+        pageTitle={t('OurDoctors')}
         homePageUrl="/"
-        homePageText="Главная"
-        activePageText="Докторы"
+        homePageText={t('Home')}
+        activePageText={t('Doctors')}
         bgImage="page-title-five"
       />
 
@@ -44,11 +55,11 @@ const Doctors = () => {
                 <div className="doctor-search-item">
                   <div className="form-group">
                     <i className="icofont-doctor-alt"></i>
-                    <label>Поиск</label>
+                    <label>{t('Search')}</label>
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Имя доктора"
+                      placeholder={t('DoctorsName')}
                       value={filter}
                       onChange={(event) => setFilter(event.target.value)}
                     />
@@ -63,12 +74,18 @@ const Doctors = () => {
                 <div className="doctor-search-item">
                   <div className="form-group">
                     <i className="icofont-hospital"></i>
-                    <label>Специальность</label>
-                    <select className="form-control">
-                      <option>Кардиохирург</option>
-                      <option>Кардиолог</option>
-                      <option>Сосудистый хирург (ангиолог)</option>
-                      <option>Кардиолог-аритмолог</option>
+                    <label>{t('Specialty')}</label>
+                    <select
+                      className="form-control"
+                      value={selectedSpeciality}
+                      onChange={handleSpecialityChange} // Handle speciality change
+                    >
+                      <option value="">{t('AllSpecialities')}</option>
+                      {Specialities.map((speciality) => (
+                        <option key={speciality} value={speciality}>
+                          {speciality}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -85,7 +102,12 @@ const Doctors = () => {
               <div key={doctor.id} className="col-sm-6 col-lg-4">
                 <div className="doctor-item">
                   <div className="doctor-top">
-                    <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Doctor" />
+                    <Image
+                      width={100}
+                      height={300}
+                      src={`data:image/png;base64, ${doctor.photoBase64}`}
+                      alt="Doctor"
+                    />
                   </div>
                   <div className="doctor-bottom">
                     <h3>

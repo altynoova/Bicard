@@ -5,7 +5,7 @@ export const FetchBlogs = async (pagenumber: number, pagesize: number) => {
   return await $http.get(`/blogs/getall?pagenumber=${pagenumber}&pagesize=${pagesize}`)
 }
 export const LatestBlogs = async () => {
-  return await $http.get(`/blogs/getall`)
+  return await $http.get(`/blogs/getlatest`)
 }
 
 export const GetBlog = async (id: number) => {

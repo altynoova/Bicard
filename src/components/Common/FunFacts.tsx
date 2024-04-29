@@ -1,6 +1,8 @@
+import { useTranslations } from 'next-intl';
 import React from 'react'
 
 const FunFacts = () => {
+  const t = useTranslations('About');
   return (
     <>
       <div className="counter-area counter-bg counter-area-four">
@@ -10,7 +12,7 @@ const FunFacts = () => {
               <div className="counter-item">
                 <i className="icofont-patient-bed"></i>
                 <h3 className="counter">60</h3>
-                <p>Коек</p>
+                <p>{t('Beds')}</p>
               </div>
             </div>
 
@@ -20,7 +22,7 @@ const FunFacts = () => {
                 <h3>
                   <span className="counter">25000</span>+
                 </h3>
-                <p>Счастливых пациентов</p>
+                <p>{t('Patients')}</p>
               </div>
             </div>
 
@@ -28,7 +30,7 @@ const FunFacts = () => {
               <div className="counter-item">
                 <i className="icofont-doctor-alt"></i>
                 <h3 className="counter">75</h3>
-                <p>Сотрудников</p>
+                <p>{t('Employees')}</p>
               </div>
             </div>
 
@@ -36,7 +38,7 @@ const FunFacts = () => {
               <div className="counter-item">
                 <i className="icofont-badge"></i>
                 <h3 className="counter">7</h3>
-                <p>Лет опыта</p>
+                <p>{t('Years of experience')} </p>
               </div>
             </div>
           </div>

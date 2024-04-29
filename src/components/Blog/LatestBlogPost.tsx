@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import useBlogStore from '@/store/useBlogStore'
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 const LatestBlogPost = () => {
   const LatestBlogs = useBlogStore().LatestBlogs
   const { Blogs } = useBlogStore()
   const [filter, setFilter] = useState('')
-
+  const t = useTranslations('Blogs')
   const filteredBlogs = Blogs.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()))
   useEffect(() => {
     LatestBlogs()
@@ -18,7 +19,7 @@ const LatestBlogPost = () => {
       <div className="blog-area-two pb-70">
         <div className="container">
           <div className="section-title">
-            <h2>Our Latest Blogs</h2>
+            <h2>{t('Our Latest Blogs')} </h2>
           </div>
 
           <div className="row">
@@ -42,7 +43,7 @@ const LatestBlogPost = () => {
                   <ul>
                     <li>
                       <Link href={`/blog/details/${blog.id}`}>
-                        Read More <i className="icofont-long-arrow-right"></i>
+                      {t('Read More')} <i className="icofont-long-arrow-right"></i>
                       </Link>
                     </li>
                     <li>

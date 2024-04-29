@@ -1,15 +1,17 @@
 import React from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import SignUpForm from '@/components/Authentication/SignUpForm'
+import { useTranslations } from 'next-intl';
 
 const SignUp = () => {
+  const t = useTranslations('Contact');
   return (
     <div>
       <PageBanner
-        pageTitle="Регистрация"
+        pageTitle= {t('Registration')}
         homePageUrl="/"
-        homePageText="Главная"
-        activePageText="Зарегистрироваться"
+        homePageText={t('Home')}
+        activePageText={t('Registration')}
         bgImage="page-title-one"
       />
 

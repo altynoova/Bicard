@@ -1,21 +1,25 @@
 'use client'
-import React, { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, useEffect, useState, useTransition } from 'react'
 import useUserStore from '@/store/useUserStore'
 import { usePathname, useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SelectChangeEvent } from '@mui/material';
 
 const TopHeader = () => {
   const { user } = useUserStore();
+  const t = useTranslations('TopHeader');
   const [signed, setSigned] = useState(false);
   const [username, setUsername] = useState(user.userName);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale()
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const nextlocale = e.target.value;
-    router.replace(`/${nextlocale}`);
+    startTransition(() => {
+      router.replace(`/${nextlocale}`);
+    })
   };
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const TopHeader = () => {
                       ) : (
                         <a href="/signin" onClick={handleAuthentication}>
                           <i className="icofont-user"></i>
-                          Войти
+                          {t('Login')}
                         </a>
                       )}
                     </li>
@@ -86,9 +90,9 @@ const TopHeader = () => {
               <div className="header-top-item">
                 <div className="header-top-right">
                   <select value={locale} onChange={handleChange}>
-                    <option value="en">English</option>
-                    <option value="ru">Russian</option>
-                    <option value="ky">Kyrgyz</option>
+                    <option value="en"> {t('English')}</option>
+                    <option value="ru">{t('Russian')}</option>
+                    <option value="ky">{t('Kyrgyz')}</option>
                   </select>
                   {/* <ul className="lang-list">
                     <li>

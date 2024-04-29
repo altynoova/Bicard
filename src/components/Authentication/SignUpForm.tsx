@@ -5,13 +5,16 @@ import { UserRegister } from '@/entities/User'
 import { Register } from '@/libs/requests/AuthRequests'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const SignUpForm = () => {
   const router = useRouter()
+  const t = useTranslations('Contact');
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [passwordConfirm, setPasswordConfirm] = useState<string>('')
+
 
   const isPasswordValid = () => password === passwordConfirm
 
@@ -54,9 +57,10 @@ const SignUpForm = () => {
             <div className="col-lg-6 ptb-100">
               <div className="signup-item">
                 <div className="signup-head">
-                  <h2>Зарегистрируйтесь здесь</h2>
+                  <h2>{t('Register here')}</h2>
                   <p>
-                  Уже есть аккаунт? <Link href="/signin">Войти</Link>
+                  {t('Already have an account?')}
+                  <Link href="/signin">{t('Login')}</Link>
                   </p>
                 </div>
 
@@ -98,7 +102,7 @@ const SignUpForm = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Имя пользователя"
+                            placeholder={t('Name')}
                             value={username}
                             onChange={(event) =>
                               setUsername(event.target.value)
@@ -112,7 +116,7 @@ const SignUpForm = () => {
                           <input
                             type="email"
                             className="form-control"
-                            placeholder="Ваш адрес электронной почты"
+                            placeholder={t('Mail')}
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                           />
@@ -124,7 +128,7 @@ const SignUpForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Пароль"
+                            placeholder={t('Password')}
                             value={password}
                             onChange={(event) =>
                               setPassword(event.target.value)
@@ -141,7 +145,7 @@ const SignUpForm = () => {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Подтвердите пароль"
+                            placeholder={t('Confirm the password')}
                             value={passwordConfirm}
                             onChange={(event) =>
                               setPasswordConfirm(event.target.value)
@@ -155,7 +159,7 @@ const SignUpForm = () => {
 
                       {!isPasswordValid() ? (
                         <span style={{ color: 'red', marginBottom: '20px' }}>
-                          Пароли не совпадают
+                          {t('Password mismatch')}
                         </span>
                       ) : null}
 
@@ -171,9 +175,9 @@ const SignUpForm = () => {
                               className="form-check-label"
                               htmlFor="gridCheck"
                             >
-                              Да, я согласен{' '}
+                              {t('Yes, I agree')}{' '}
                               <Link href="/terms-condition">
-                              Условия использования
+                              {t('Terms of Use')}
                               </Link>
                             </label>
                           </div>
@@ -183,7 +187,7 @@ const SignUpForm = () => {
                       <div className="col-lg-12">
                         <div className="text-center">
                           <button type="submit" className="btn signup-btn">
-                            Sign Up
+                          {t('Sign Up')} 
                           </button>
                         </div>
                       </div>

@@ -1,15 +1,17 @@
 import React from 'react'
 import BlogGrid from '@/components/Blog/BlogGrid'
 import PageBanner from '@/components/Common/PageBanner'
+import { useTranslations } from 'next-intl';
 
 const Blog = () => {
+  const t = useTranslations('Blogs');
   return (
     <div>
       <PageBanner
-        pageTitle="Блоги"
+        pageTitle={t('Blogs')}
         homePageUrl="/"
-        homePageText="Главная"
-        activePageText="Блоги"
+        homePageText={t('Home')}
+        activePageText={t('Blogs')}
         bgImage="page-title-four"
       />
       <BlogGrid />

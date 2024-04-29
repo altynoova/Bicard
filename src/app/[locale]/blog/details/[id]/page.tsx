@@ -8,10 +8,12 @@ import Link from 'next/link'
 import CommentForm from '@/components/Blog/CommentForm'
 import BlogSidebar from '@/components/Blog/BlogSidebar'
 import Image from 'next/image';
+import { useTranslations } from 'next-intl'
 
 const BlogDetails = ({ params }: { params: { id: number } }) => {
   const { GetBlog, currentBlog } = useBlogStore()
-  console.log('current Blog in state', currentBlog)
+  const t = useTranslations('Blogs')
+
 
   useEffect(() => {
     GetBlog(params.id)
@@ -20,10 +22,10 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
   return (
     <div>
       <PageBanner
-        pageTitle="Blog Details"
+        pageTitle={t('Blogs Details')}
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Blog Details"
+        homePageText={t('Home')}
+        activePageText={t('Blogs Details')}
         bgImage="page-title-four"
       />
       <div className="blog-details-area pt-100">
@@ -54,10 +56,10 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
                   <div className="prev-next">
                     <ul>
                       <li>
-                      <a href={`/blog/details/${currentBlog.id-1}`}>Previous</a>
+                      <a href={`/blog/details/${currentBlog.id-1}`}>{t('Previous')}</a>
                       </li>
                       <li>
-                        <a href={`/blog/details/${currentBlog.id+1}`}>Next</a>
+                        <a href={`/blog/details/${currentBlog.id+1}`}>{t('Next')}</a>
                       </li>
                     </ul>
                   </div>
