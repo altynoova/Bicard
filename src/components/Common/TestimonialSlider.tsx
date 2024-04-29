@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css';
 // @ts-ignore
 import { Navigation } from 'swiper'
 import useFeedbackStore from '@/store/useFeedbackStore'
@@ -25,7 +26,7 @@ const TestimonialSlider = () => {
               <SwiperSlide key={index}>
                 <div className="feedback-item">
                   <div className="client-img">
-                    <img src="#" alt={feedback.userName} />
+                    <img src="/images/user.jpg" alt={feedback.userName} />
                     <h3>{feedback.userName}</h3>
                   </div>
                   <p>{feedback.message}</p>
