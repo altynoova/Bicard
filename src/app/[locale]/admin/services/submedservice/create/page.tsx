@@ -4,6 +4,7 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
 import { MenuItem, Select } from '@mui/material'
+import { SelectChangeEvent } from '@mui/material/Select'
 
 const CreateService = () => {
   const router = useRouter()
@@ -36,10 +37,10 @@ const CreateService = () => {
     }
   }
 
-  const handleChangeSelect = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const value = event.target.value as number
-    setMedServiceId(value)
-  }
+  const handleChangeSelect = (event: SelectChangeEvent<number>) => {
+    const value = event.target.value;
+    setMedServiceId(value);
+  };
 
   useEffect(() => {
     GetListOfMedServices()
@@ -53,7 +54,7 @@ const CreateService = () => {
           <Select
             size="small"
             value={medServiceId}
-            onChange={(event) => handleChangeSelect}
+            onChange={handleChangeSelect}
           >
             {medServices.map((service) => (
               <MenuItem key={service.name} value={service.id}>

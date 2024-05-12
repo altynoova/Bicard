@@ -30,7 +30,8 @@ const CreateService = () => {
     const response = await CreateMedService(data)
   
     if (response === 200) {
-      SuccessAlert('Аватар обновлен')
+      SuccessAlert('Успешно добавлен');
+      router.push('/admin/services');
     } else {
       ErrorAlert('Произошла ошибка')
     }

@@ -17,13 +17,12 @@ const BlogGrid = () => {
   console.log(filteredBlogs)
 
   useEffect(() => {
-    FetchBlogs(pagenumber, pagesize)
+    FetchBlogs(pagesize, pagenumber )
   }, [])
 
   useEffect(() => {
-    FetchBlogs(pagenumber, pagesize)
-    console.log(pagenumber)
-  }, [pagenumber, pagesize])
+    FetchBlogs(pagesize, pagenumber)
+  }, [pagesize, pagenumber])
 
 
 

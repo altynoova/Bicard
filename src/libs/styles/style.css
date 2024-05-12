@@ -2906,6 +2906,9 @@ li:first-child {
 .page-title-four {
     background-image: url("/images/page-banner4.jpg");
 }
+.page-title-four1 {
+    background-image: url("/images/1.jpg");
+}
 
 /*-- End Page Title --*/
 /*-- Blog Details --*/
@@ -4571,5 +4574,38 @@ li:first-child {
 .faq-content .accordion .accordion__panel p {
     color: #344c5d;
 }
-
+.vacancy-card {
+    background-color: #f0f5ff; /* Light blue */
+    margin-bottom: 16px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+  
+    &:hover {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .vacancy-card-header {
+    padding: 16px;
+    border-bottom: 1px solid #cfd8dc; /* Blue Grey */
+  }
+  
+  .vacancy-card-header h4 {
+    color: #1a237e; /* Dark blue */
+    font-weight: bold;
+  }
+  
+  .vacancy-card-content {
+    padding: 16px;
+  }
+  
+  .vacancy-card-content p {
+    color: #1a237e; /* Dark blue */
+  }
+  
+  .vacancy-card-content p strong {
+    font-weight: bold;
+  }
+  
 /*# sourceMappingURL=style.css.map */

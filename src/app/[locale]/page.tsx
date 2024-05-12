@@ -23,7 +23,6 @@ export default function Home() {
           <VideoIntro />
           <OurDoctors />
           <LatestBlogPost />
-          <NewsletterForm />
     </div>
   )
 }

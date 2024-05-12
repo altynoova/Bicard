@@ -1,29 +1,37 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import PageBanner from '@/components/Common/PageBanner'
-import OurExpertise from '@/components/HomeOne/OurExpertise'
-import TestimonialSlider from '@/components/Common/TestimonialSlider'
-import OurDoctors from '@/components/Common/OurDoctors'
+import { useTranslations } from 'next-intl';
+import useArticleStore from '@/store/useArticleStore';
+import useForPatientsStore from '@/store/ForPatients';
 
-const Testimonials = () => {
+const testimonials = () => {
+  const t = useTranslations('Blogs');
+  const Infos = useForPatientsStore().FetchForPatientss
+  const { ForPatientss } = useForPatientsStore()
+  const filteredInfos = ForPatientss.filter(d => d.title.toLowerCase())
+  useEffect(() => {
+    Infos()
+  }, [])
   return (
     <div>
       <PageBanner
-        pageTitle="Testimonials"
+        pageTitle="Privacy Policy"
         homePageUrl="/"
         homePageText="Home"
-        activePageText="Testimonials"
+        activePageText="Privacy Policy"
         bgImage="page-title-one"
       />
 
-      <div className="pt-100">
-        <OurExpertise />
+      <div className="privacy-area ptb-100">
+        <div className="container">
+        {filteredInfos.map((info) => (
+          <><h2>{info.id} {info.title}</h2><div dangerouslySetInnerHTML={{ __html: info.content }}></div></>
+        ))}
+        </div>
       </div>
-
-      <TestimonialSlider />
-
-      <OurDoctors />
     </div>
   )
 }
 
-export default Testimonials
+export default testimonials

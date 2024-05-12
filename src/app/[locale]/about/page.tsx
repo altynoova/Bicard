@@ -7,6 +7,8 @@ import AboutContent from '@/components/About/AboutContent'
 import OurExpertise from '@/components/HomeOne/OurExpertise'
 import Services from '@/components/HomeOne/Services'
 import { useTranslations } from 'next-intl'
+import VideoIntro from '@/components/Common/VideoIntro'
+import NewsletterForm from '@/components/Common/NewsletterForm'
 
 const About = () => {
   const t = useTranslations('About');
@@ -20,6 +22,7 @@ const About = () => {
         bgImage="page-title-one"
       />
       <AboutContent />
+      <VideoIntro />
       <FunFacts />
       <OurExpertise />
       <Services />

@@ -24,7 +24,7 @@ const Blogs = () => {
   const filteredBlogs = Blogs.filter(
     (Blog) => Blog?.title?.includes(search) || Blog.title == null,
   )
-
+console.log("blogs", filteredBlogs)
   const handleDelete = async (id: number) => {
     const status = await DeleteBlog(id)
     if (status == 200) {

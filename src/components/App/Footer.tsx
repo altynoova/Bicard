@@ -5,6 +5,7 @@ import useFeedbackStore from '@/store/useFeedbackStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useTranslations } from 'next-intl'
 import useMedServicesStore from '@/store/useMedServicesStore'
+import router from 'next/router'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -30,10 +31,13 @@ const Footer = () => {
       setMessage('');
     }
     else if (responseStatus === 500) {
-      ErrorAlert('Ошибка на стороне сервера')
+      router.push('/signin');
+    }
+    else if (responseStatus === 401) {
+      router.push('/signin');
     }
     else {
-      ErrorAlert('Ошибка')
+      router.push('/signin');
     }
     useEffect(() => {
       zzz()

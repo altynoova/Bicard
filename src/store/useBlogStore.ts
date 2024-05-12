@@ -18,7 +18,7 @@ interface IBlogStore {
   totalpages: number;
   totalelements: number;
 
-  FetchBlogs: (pagenumber: number, pagesize: number) => void;
+  FetchBlogs: ( pagesize: number, pagenumber: number) => void;
   LatestBlogs: () => void;
   GetBlog: (id: number) => Promise<any>;
   CreateBlog: (data: BlogRequestModel) => Promise<number>;
@@ -47,8 +47,8 @@ const useBlogStore = create<IBlogStore>()((set) => ({
   totalpages: 10,
   totalelements: 0,
 
-  async FetchBlogs(pagenumber, pagesize) {
-    const response = await FetchBlogs(pagenumber, pagesize)
+  async FetchBlogs(pagesize, pagenumber ) {
+    const response = await FetchBlogs(pagesize, pagenumber )
     console.log(response)
     set(() => ({ Blogs: response.data }))
     return response.status

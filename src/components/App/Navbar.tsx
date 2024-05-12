@@ -116,6 +116,15 @@ const Navbar = () => {
                           Пациентам
                         </Link>
                       </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/vacancies/"
+                          className={`nav-link ${currentPath == '/vacancies/' && 'active'
+                            }`}
+                        >
+                          Вакансии
+                        </Link>
+                      </li>
 
                       <li className="nav-item">
                         <Link
@@ -265,7 +274,16 @@ const Navbar = () => {
 
                         </Link>
                       </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/article/"
+                          className={`nav-link ${currentPath == '/blog/' && 'active'
+                            }`}
+                        >
+                          {t('Articles')}
 
+                        </Link>
+                      </li>
                       <li className="nav-item">
                         <Link
                           href="/blog/details/"
