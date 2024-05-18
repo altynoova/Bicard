@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material'
 import DashboardCard from '@/components/Adminv2/Shared/DashboardCard'
-import useBlogStore from '@/store/useBlogStore'
+import useArticletore from '@/store/useArticleStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
@@ -23,17 +23,17 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
 
 
-const Blogs = () => {
-  const { FetchBlogs, DeleteBlog, Blogs, pagenumber, pagesize } = useBlogStore();
+const Article = () => {
+  const { FetchArticles,  Articles, DeleteArticle} = useArticletore();
   const [search, setSearch] = useState<string>('');
-  const [openBlogs, setOpenBlogs] = useState<boolean[]>(Array(Blogs.length).fill(false)); // Array to track the collapse/expand state of each blog
+  const [openArticle, setOpenArticle] = useState<boolean[]>(Array(Article.length).fill(false)); 
 
-  const filteredBlogs = Blogs.filter(
-    (Blog) => Blog?.title?.includes(search) || Blog.title == null
+  const filteredArticle = Articles.filter(
+    (Article) => Article?.title?.includes(search) || Article.title == null
   );
 
   const handleDelete = async (id: number) => {
-    const status = await DeleteBlog(id);
+    const status = await DeleteArticle(id);
     if (status == 200) {
       SuccessAlert('Successfully deleted');
     } else {
@@ -42,23 +42,23 @@ const Blogs = () => {
   };
 
   useEffect(() => {
-    FetchBlogs(pagesize, pagenumber);
+    FetchArticles();
   }, []);
 
   const toggleOpen = (index: number) => {
-    setOpenBlogs((prevOpenBlogs) => {
-      const newOpenBlogs = [...prevOpenBlogs];
-      newOpenBlogs[index] = !newOpenBlogs[index]; // Toggle the collapse/expand state of the clicked blog
-      return newOpenBlogs;
+    setOpenArticle((prevOpenArticle) => {
+      const newOpenArticle = [...prevOpenArticle];
+      newOpenArticle[index] = !newOpenArticle[index]; // Toggle the collapse/expand state of the clicked Article
+      return newOpenArticle;
     });
   };
 
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="blogs/create">Добавить блог</Link>
+        <Link href="articles/create">Добавить статью</Link>
       </div>
-      <DashboardCard title="Blogs">
+      <DashboardCard title="Article">
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -81,6 +81,16 @@ const Blogs = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
+                      Author
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                      Date
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
                       Edit
                     </Typography>
                   </TableCell>
@@ -92,16 +102,16 @@ const Blogs = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredBlogs.map((Blog, index) => (
-                  <React.Fragment key={Blog.title}>
+                {filteredArticle.map((Article, index) => (
+                  <React.Fragment key={Article.title}>
                     <TableRow>
                       <TableCell>
                         <IconButton
                           aria-label="expand service"
                           size="small"
-                          onClick={() => toggleOpen(index)} // Toggle the collapse/expand state of the clicked blog
+                          onClick={() => toggleOpen(index)} // Toggle the collapse/expand state of the clicked Article
                         >
-                          {openBlogs[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                          {openArticle[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                         </IconButton>
                       </TableCell>
                       <TableCell>
@@ -110,37 +120,39 @@ const Blogs = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {Blog.id}
+                          {Article.id}
                         </Typography>
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={600}>
-                          {Blog.title == null ? <i>null</i> : Blog.title}
+                          {Article.title == null ? <i>null</i> : Article.title}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/blogs/edit/${Blog.id}`}>
+                        <Typography variant="subtitle2" fontWeight={600}>
+                          {Article.authorName == null ? <i>null</i> : Article.authorName}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="subtitle2" fontWeight={600}>
+                        {new Date(Article.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                        </Typography> 
+                      </TableCell>
+                      <TableCell>
+                        <Link href={`/admin/articles/edit/${Article.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>
                       <TableCell align="right">
-                        <Button onClick={() => handleDelete(Blog.id)}>
+                        <Button onClick={() => handleDelete(Article.id)}>
                           <DeleteOutlineIcon color={'error'} />
                         </Button>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
-                        <Collapse in={openBlogs[index]} timeout="auto" unmountOnExit>
-                          <Image width={50} height={50} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
-                          <Typography
-                            sx={{ marginY: 2 }}
-                            variant="h6"
-                            gutterBottom
-                            component="div"
-                          >
-                            {Blog.text}
-                          </Typography>
+                        <Collapse in={openArticle[index]} timeout="auto" unmountOnExit>
+                        <embed src={`https://localhost:7120/TempFileStorage/${Article.filePath}#toolbar=0`} className="w-100" height={400} />
                         </Collapse>
                       </TableCell>
                     </TableRow>
@@ -155,5 +167,5 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Article;
 

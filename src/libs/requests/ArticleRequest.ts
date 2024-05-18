@@ -9,7 +9,7 @@ export const LatestArticles = async (authorName:string) => {
 }
 
 export const GetArticle = async (id: number) => {
-  return await $http.get(`/Articles/get?id=${id}`)
+  return await $http.get(`/Articles/Get?id=${id}`)
 }
 
 export const CreateArticle = async (data: ArticleRequestModel) => {

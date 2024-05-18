@@ -12,7 +12,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const currentBlog = useBlogStore((state) => state.currentBlog)
 
   const [title, setTitle] = useState<string>(currentBlog?.title || '')
-  const [id, setId] = useState<number>(currentBlog?.id || 0)
   const [text, setText] = useState<string>(
     currentBlog?.text || ''
   )
@@ -22,7 +21,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
-      id,
       title,
       text,
       authorId,
@@ -40,7 +38,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
   async function init() {
     const response = await GetCurrentBlog(params.id)
-    setId(response.id)
     setTitle(response.title)
     setText(response.text)
     setAuthorId(response.authorId)
@@ -57,7 +54,10 @@ const Edit = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-md-4 col-12 d-flex justify-content-center mb-3">
               <div className="image">
-               
+                <img
+                  src={`data:image/png;base64, ${currentBlog.photo}`}
+                  alt=""
+                />
               </div>
             </div>
             <div className="Blog-details-right col-md-8 col-12">
@@ -107,10 +107,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
-                    <img
-                    src={`data:image/png;base64, ${currentBlog.photoPath}`}
-                    alt=""
-                  />
                     <input
                       className="form-control"
                       id="photo"

@@ -18,6 +18,7 @@ const useRoleStore = create<IRoleStore>()((set) => ({
 
   async GetRoles() {
     const response = await GetRoles()
+    console.log("roles",response.data)
     set(() => ({ roles: response.data }))
     return response.status
   },

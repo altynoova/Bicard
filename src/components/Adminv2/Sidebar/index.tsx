@@ -21,7 +21,9 @@ const data = [
   { link: '/admin/users', label: 'Users', icon: '' },
   { link: '/admin/feedbacks', label: 'Feedbacks', icon: '' },
   { link: '/admin/schedules', label: 'Schedule', icon: '' },
-  { link: '/admin/blogs', label: 'Blog', icon: '' },
+  { link: '/admin/blogs', label: 'Blogs', icon: '' },
+  { link: '/admin/articles', label: 'Articles', icon: '' },
+  { link: '/admin/vacancies', label: 'Vacancies', icon: '' },
 
 ]
 

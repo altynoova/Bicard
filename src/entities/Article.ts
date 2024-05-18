@@ -3,12 +3,11 @@ export type Article = {
   title: string;
   filePath: string;
   authorName: string;
-  timestamp: Date
+  timestamp: string
 };
 
 export type ArticleRequestModel = {
   title: string;
-  filePath: string;
-  authorName: string;
-  timestamp: Date
+  File: File | null;
+  authorName: string
  }

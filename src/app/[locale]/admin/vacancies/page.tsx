@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material'
 import DashboardCard from '@/components/Adminv2/Shared/DashboardCard'
-import useBlogStore from '@/store/useBlogStore'
+import useVacancyStore from '@/store/useVacancyStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
@@ -23,17 +23,16 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
 
 
-const Blogs = () => {
-  const { FetchBlogs, DeleteBlog, Blogs, pagenumber, pagesize } = useBlogStore();
+const Vacancys = () => {
+  const { FetchVacancies, DeleteVacancy, Vacancies } = useVacancyStore();
   const [search, setSearch] = useState<string>('');
-  const [openBlogs, setOpenBlogs] = useState<boolean[]>(Array(Blogs.length).fill(false)); // Array to track the collapse/expand state of each blog
+  const [openVacancys, setOpenVacancys] = useState<boolean[]>(Array(Vacancys.length).fill(false)); // Array to track the collapse/expand state of each Vacancy
 
-  const filteredBlogs = Blogs.filter(
-    (Blog) => Blog?.title?.includes(search) || Blog.title == null
-  );
+  const filteredVacancys = Vacancies.filter(
+    (Vacancies) => Vacancies?.id);
 
   const handleDelete = async (id: number) => {
-    const status = await DeleteBlog(id);
+    const status = await DeleteVacancy(id);
     if (status == 200) {
       SuccessAlert('Successfully deleted');
     } else {
@@ -42,23 +41,23 @@ const Blogs = () => {
   };
 
   useEffect(() => {
-    FetchBlogs(pagesize, pagenumber);
+    FetchVacancies();
   }, []);
 
   const toggleOpen = (index: number) => {
-    setOpenBlogs((prevOpenBlogs) => {
-      const newOpenBlogs = [...prevOpenBlogs];
-      newOpenBlogs[index] = !newOpenBlogs[index]; // Toggle the collapse/expand state of the clicked blog
-      return newOpenBlogs;
+    setOpenVacancys((prevOpenVacancys) => {
+      const newOpenVacancys = [...prevOpenVacancys];
+      newOpenVacancys[index] = !newOpenVacancys[index]; // Toggle the collapse/expand state of the clicked Vacancy
+      return newOpenVacancys;
     });
   };
 
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="blogs/create">Добавить блог</Link>
+        <Link href="Vacancys/create">Добавить блог</Link>
       </div>
-      <DashboardCard title="Blogs">
+      <DashboardCard title="Vacancies">
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -76,32 +75,37 @@ const Blogs = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Title
+                      Position
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                      Requirements
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                      Description
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                      Timestamp
                     </Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredBlogs.map((Blog, index) => (
-                  <React.Fragment key={Blog.title}>
+                {filteredVacancys.map((Vacancy, index) => (
+                  <React.Fragment key={Vacancy.id}>
                     <TableRow>
                       <TableCell>
                         <IconButton
                           aria-label="expand service"
                           size="small"
-                          onClick={() => toggleOpen(index)} // Toggle the collapse/expand state of the clicked blog
+                          onClick={() => toggleOpen(index)}
                         >
-                          {openBlogs[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                          {openVacancys[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                         </IconButton>
                       </TableCell>
                       <TableCell>
@@ -110,37 +114,59 @@ const Blogs = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {Blog.id}
+                          {Vacancy.id}
                         </Typography>
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={600}>
-                          {Blog.title == null ? <i>null</i> : Blog.title}
+                          {Vacancy.position == null ? <i>null</i> : Vacancy.position}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/blogs/edit/${Blog.id}`}>
+                        <Typography variant="subtitle2" fontWeight={600}>
+                          {new Date(Vacancy.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Link href={`/admin/vacancies/edit/${Vacancy.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>
                       <TableCell align="right">
-                        <Button onClick={() => handleDelete(Blog.id)}>
+                        <Button onClick={() => handleDelete(Vacancy.id)}>
                           <DeleteOutlineIcon color={'error'} />
                         </Button>
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
-                        <Collapse in={openBlogs[index]} timeout="auto" unmountOnExit>
-                          <Image width={50} height={50} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
-                          <Typography
-                            sx={{ marginY: 2 }}
-                            variant="h6"
-                            gutterBottom
-                            component="div"
-                          >
-                            {Blog.text}
-                          </Typography>
+                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display: "flex", justifyContent: "space-between" }} colSpan={6} >
+                        <Collapse in={openVacancys[index]} timeout="auto" unmountOnExit>
+                          <Table>
+                            <TableHead>
+                              <TableCell>
+                                <Typography variant="subtitle2" fontWeight={600}>
+                                  Requirements  :  {Vacancy.requirements}
+                                </Typography>
+                              </TableCell>
+                            </TableHead>
+                            <TableHead>
+                              <TableCell>
+                                <Typography variant="subtitle2" fontWeight={600}>
+                                  Description  :  {Vacancy.description}
+                                </Typography>
+                              </TableCell>
+                            </TableHead>
+                            <TableHead>
+                              <TableCell>
+
+                              </TableCell>
+                            </TableHead>
+                            <TableHead>
+                              <TableCell>
+
+                              </TableCell>
+                            </TableHead>
+                          </Table>
                         </Collapse>
                       </TableCell>
                     </TableRow>
@@ -155,5 +181,5 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Vacancys;
 

@@ -28,7 +28,7 @@ const useArticleStore = create<IArticleStore>()((set) => ({
     title: '',
     filePath: '',
     authorName: ' ',
-    timestamp: date,
+    timestamp: '',
 
   },
 
@@ -46,7 +46,8 @@ const useArticleStore = create<IArticleStore>()((set) => ({
   },
   async GetArticle(id) {
     const response = await GetArticle(id)
-    set(() => ({ currentArticle: response.data }))
+    set(() => ({ currentArticle: response.data}))
+    console.log("currentArticle", response.data)
     return response.data
   },
 
