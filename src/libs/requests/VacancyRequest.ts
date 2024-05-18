@@ -15,9 +15,6 @@ export const CreateVacancy = async (data: VacancyRequestModel) => {
       method: 'post',
       url: `/vacancies/create`,
       data,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
     })
   } catch (error: any) {
     return error.status

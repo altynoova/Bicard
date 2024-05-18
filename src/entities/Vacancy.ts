@@ -10,5 +10,4 @@ export type VacancyRequestModel = {
   position: string;
   requirements: string;
   description: string;
-  timestamp: Date
  }

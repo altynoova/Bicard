@@ -21,6 +21,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
+import router from 'next/router'
 
 
 const Article = () => {
@@ -36,6 +37,7 @@ const Article = () => {
     const status = await DeleteArticle(id);
     if (status == 200) {
       SuccessAlert('Successfully deleted');
+      router.push('/admin/articles');
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -152,7 +154,7 @@ const Article = () => {
                     <TableRow>
                       <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
                         <Collapse in={openArticle[index]} timeout="auto" unmountOnExit>
-                        <embed src={`https://localhost:7120/TempFileStorage/${Article.filePath}#toolbar=0`} className="w-100" height={400} />
+                        <embed src={`https://localhost:7120/TempFileStorage/${Article.filePath}#toolbar=0`} className="w-100" height={300} />
                         </Collapse>
                       </TableCell>
                     </TableRow>

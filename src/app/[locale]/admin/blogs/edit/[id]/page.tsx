@@ -55,11 +55,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
       <div className="Blog-details-area pb-70">
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-12 d-flex justify-content-center mb-3">
-              <div className="image">
-               
-              </div>
-            </div>
             <div className="Blog-details-right col-md-8 col-12">
               <div className="container pb-1 mb-5">
                 <form id="contactForm" onSubmit={handleSubmit}>
@@ -102,15 +97,17 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     >
                       Text is required.
                     </div>
-                    </div>
+                  </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
-                    <img
-                    src={`data:image/png;base64, ${currentBlog.photoPath}`}
-                    alt=""
-                  />
+                    <div>
+                      <img
+                        src={`data:image/png;base64, ${currentBlog.photoPath}`} height={400} width={500}
+                        alt=""
+                      />
+                    </div>
                     <input
                       className="form-control"
                       id="photo"

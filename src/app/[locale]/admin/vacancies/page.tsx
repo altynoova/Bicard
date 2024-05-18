@@ -21,6 +21,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
+import router from 'next/router'
 
 
 const Vacancys = () => {
@@ -35,6 +36,7 @@ const Vacancys = () => {
     const status = await DeleteVacancy(id);
     if (status == 200) {
       SuccessAlert('Successfully deleted');
+      router.push('/admin/vacancies');
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -55,7 +57,7 @@ const Vacancys = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="Vacancys/create">Добавить блог</Link>
+        <Link href="vacancies/create">Добавить вакансию</Link>
       </div>
       <DashboardCard title="Vacancies">
         <Box sx={{ overflow: 'auto' }}>
@@ -80,17 +82,17 @@ const Vacancys = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Requirements
+                    Timestamp
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Description
+                      Edit
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Timestamp
+                      Delete
                     </Typography>
                   </TableCell>
                 </TableRow>

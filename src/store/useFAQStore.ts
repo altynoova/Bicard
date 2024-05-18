@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { FAQ, FAQList, FAQRequestModel } from '@/entities/FAQ';
 import {
   CreateFAQ,
+  DeleteFAQ,
   EditFAQ,
   FetchFAQs
 } from '@/libs/requests/FAQRequest';
@@ -13,6 +14,8 @@ interface IFAQStore {
   fetchFAQs: () => void;
   createFAQ: (data: FAQRequestModel) => Promise<number>;
   editFAQ: (data: FAQRequestModel, id: number) => Promise<number>;
+  DeleteFAQ: (id: number) => Promise<number>;
+
 }
 
 const useFAQStore = create<IFAQStore>((set) => ({
@@ -53,6 +56,13 @@ const useFAQStore = create<IFAQStore>((set) => ({
     }
   },
 
-
+  async DeleteFAQ(id: number) {
+    const response = await DeleteFAQ(id)
+    console.log(response)
+    if (response.status == 200) {
+      set((state) => ({ FAQList: state.FAQList.filter(d => d.id != id) }))
+    }
+    return response.status
+  },
 }))
 export default useFAQStore;
