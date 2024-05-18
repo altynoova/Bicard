@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@devexpress/dx-react-core": "^4.0.8",
+    "@devexpress/dx-react-grid": "^4.0.8",
+    "@devexpress/dx-react-grid-bootstrap4": "^4.0.8",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.6",
@@ -20,6 +23,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/material-ui": "^0.21.17",
     "axios": "^1.6.5",
+    "bootstrap": "^5.3.3",
     "datatables.net-dt": "^1.13.8",
     "dayjs": "^1.11.10",
     "i18next": "^23.11.2",
@@ -33,6 +37,7 @@
     "nodemailer-sendgrid-transport": "^0.2.0",
     "react": "^18",
     "react-accessible-accordion": "^5.0.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18",
     "react-helmet-async": "^2.0.4",
     "react-i18next": "^14.1.1",

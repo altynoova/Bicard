@@ -102,12 +102,8 @@ const Doctors = () => {
               <div key={doctor.id} className="col-sm-6 col-lg-4">
                 <div className="doctor-item">
                   <div className="doctor-top">
-                    <Image
-                      width={100}
-                      height={300}
-                      src={`data:image/png;base64, ${doctor.photoBase64}`}
-                      alt="Doctor"
-                    />
+                  <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Blog" />
+
                   </div>
                   <div className="doctor-bottom">
                     <h3>
