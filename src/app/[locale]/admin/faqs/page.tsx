@@ -4,8 +4,6 @@ import Link from 'next/link'
 import {
   Box,
   Button,
-  Collapse,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -18,9 +16,6 @@ import useFAQsStore from '@/store/useFAQStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import router from 'next/router'
 
 const FAQss = () => {
   const { fetchFAQs, DeleteFAQ, FAQList } = useFAQsStore();
@@ -39,7 +34,7 @@ const FAQss = () => {
     const status = await DeleteFAQ(id);
     if (status === 200) {
       SuccessAlert('Successfully deleted');
-      fetchFAQs();  // Refresh the FAQs after deletion
+      fetchFAQs();  
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -56,7 +51,7 @@ const FAQss = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="/vacancies/create">Добавить FAQ</Link>
+        <Link href="faqs/create">Добавить FAQ</Link>
       </div>
       <DashboardCard title="FAQs">
         <Box sx={{ overflow: 'auto' }}>
@@ -64,10 +59,14 @@ const FAQss = () => {
             <Table sx={{ whiteSpace: 'nowrap' }}>
               <TableHead>
                 <TableRow>
-                  <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                    №
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                      Type
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -95,39 +94,39 @@ const FAQss = () => {
               <TableBody>
                 {FAQList.map((FAQCategory, index) => (
                   <React.Fragment key={FAQCategory.type}>
-                    {FAQCategory.faqs.map((FAQ) => (
+                    {FAQCategory.faqs.map((FAQ, FAQIndex) => (
                       <React.Fragment key={FAQ.id}>
                         <TableRow>
                           <TableCell>
-                            <IconButton
-                              aria-label="expand FAQ"
-                              size="small"
-                              onClick={() => toggleOpen(index)}
-                            >
-                              {openFAQss[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                            </IconButton>
+                            <Typography variant="subtitle2" fontWeight={600}>
+                              {index * FAQCategory.faqs.length + FAQIndex + 1}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="subtitle2" fontWeight={600}>
+                              {FAQ.type}
+                            </Typography>
                           </TableCell>
                           <TableCell>
                             <Typography
-                              color="textSecondary"
                               variant="subtitle2"
-                              fontWeight={400}
+                              fontWeight={600}
+                              style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}
                             >
-                              {FAQ.id}
+                              {FAQ.question == null ? <i>null</i> : FAQ.question}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
-                              {FAQ.question}
+                            <Typography
+                              variant="subtitle2"
+                              fontWeight={600}
+                              style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}
+                            >
+                              {FAQ.answer == null ? <i>null</i> : FAQ.answer}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
-                              {FAQ.answer}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Link href={`/admin/vacancies/edit/${FAQ.id}`}>
+                            <Link href={`/admin/faqs/edit/${FAQ.id}`}>
                               <EditIcon color={'warning'} />
                             </Link>
                           </TableCell>
@@ -137,22 +136,12 @@ const FAQss = () => {
                             </Button>
                           </TableCell>
                         </TableRow>
-                        <TableRow>
-                          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                            <Collapse in={openFAQss[index]} timeout="auto" unmountOnExit>
-                              <Box sx={{ padding: 2 }}>
-                                <Typography variant="subtitle2" fontWeight={600}>
-                                  {FAQ.type}
-                                </Typography>
-                              </Box>
-                            </Collapse>
-                          </TableCell>
-                        </TableRow>
                       </React.Fragment>
                     ))}
                   </React.Fragment>
                 ))}
               </TableBody>
+
             </Table>
           </Box>
         </Box>

@@ -83,7 +83,7 @@ const Users = ({ ...props }: Config) => {
                 <TableRow>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                      №
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -111,11 +111,11 @@ const Users = ({ ...props }: Config) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {userReferences.map((user) => (
+                {userReferences.map((user,index) => (
                   <TableRow key={user.id}>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        {user.id}
+                        {index+1}
                       </Typography>
                     </TableCell>
                     <TableCell>

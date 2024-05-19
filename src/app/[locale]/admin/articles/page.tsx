@@ -73,7 +73,7 @@ const Article = () => {
                   <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                    №
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -122,7 +122,7 @@ const Article = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {Article.id}
+                          {index+1}
                         </Typography>
                       </TableCell>
                       <TableCell>

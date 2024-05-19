@@ -27,7 +27,7 @@ export const CreateArticle = async (data: ArticleRequestModel) => {
   }
 }
 
-export const EditArticle = async (data: ArticleRequestModel, id: number) => {
+export const EditArticle = async (id: number, data: ArticleRequestModel) => {
   try {
     return await $http({
       method: 'put',
@@ -36,11 +36,11 @@ export const EditArticle = async (data: ArticleRequestModel, id: number) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    })
+    });
   } catch (error: any) {
-    return error.status
+    return error.status;
   }
-}
+};
 
 export const DeleteArticle = async (id: number) => {
   return await $http.delete(`/Articles/delete?id=${id}`)

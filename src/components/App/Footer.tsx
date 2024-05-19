@@ -25,15 +25,13 @@ const Footer = () => {
     };
 
     const responseStatus = await methodFeedbackCreate(feedbackData);
+    console.log("responseStatus", responseStatus)
     if (responseStatus === 200) {
       SuccessAlert('Успешно!')
       setPhone('');
       setMessage('');
     }
-    else if (responseStatus === 500) {
-      router.push('/signin');
-    }
-    else if (responseStatus === 401) {
+    if (responseStatus === 401) {
       router.push('/signin');
     }
     else {

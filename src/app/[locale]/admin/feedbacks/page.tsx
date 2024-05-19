@@ -76,7 +76,7 @@ const Doctors = () => {
                   <TableRow>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        Id
+                      №
                       </Typography>
                     </TableCell>
                     <TableCell>
@@ -102,7 +102,7 @@ const Doctors = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {filteredFeedbacks.map((f) => (
+                  {filteredFeedbacks.map((f, index) => (
                     <TableRow key={f.id}>
                       <TableCell>
                         <Typography
@@ -110,7 +110,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {f.id}
+                          {index+1}
                         </Typography>
                       </TableCell>
                       <TableCell>

@@ -80,7 +80,7 @@ const Services = () => {
                   <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                    №
                     </Typography>
                   </TableCell>
                   <TableCell>

@@ -71,7 +71,7 @@ const Blogs = () => {
                   <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                    №
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -110,7 +110,7 @@ const Blogs = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {Blog.id}
+                          {index+1}
                         </Typography>
                       </TableCell>
                       <TableCell>

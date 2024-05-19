@@ -32,7 +32,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
     const status = await EditBlog(data, currentBlog?.id || 0)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
-      router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }

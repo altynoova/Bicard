@@ -13,22 +13,25 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
   const [title, setTitle] = useState<string>('');
   const [File, setFile] = useState<File | null>(null);
-  const [authorName, setAuthorName] = useState<string>(''); 
+  const [authorName, setAuthorName] = useState<string>('');
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
+    if (!File) {
+      // Display an error message and prevent form submission
+      SuccessAlert('File is required.');
+    }
     const data: ArticleRequestModel = {
       title,
       File,
-      authorName, 
+      authorName,
     };
 
 
-    const status = await EditArticle(data, currentArticle?.id || 0)
-    console.log("editactionarticle",data )
+    const status = await EditArticle(currentArticle?.id || 0, data)
+    console.log("editactionarticle", data)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
-      router.push('/admin/articles')
+
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -92,17 +95,17 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     >
                       AuthorName is required.
                     </div>
-                    </div>
+                  </div>
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="photo">
+                    <label className="form-label" htmlFor="file">
                       File
                     </label>
                     <embed src={`https://localhost:7120/TempFileStorage/${currentArticle.filePath}#toolbar=0`} className="w-100" height={400} />
                     <input
                       className="form-control"
-                      id="photo"
+                      id="file"
                       type="file"
-                      placeholder="Фото"
+                      placeholder="file"
                       data-sb-validations="required"
                       accept="application/pdf"
                       onChange={(event) =>
@@ -111,7 +114,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="номерТелефона:required"
+                      data-sb-feedback="file:required"
                     >
                       File is required.
                     </div>
@@ -151,3 +154,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
 }
 
 export default Edit
+function setError(arg0: string) {
+  throw new Error('Function not implemented.')
+}
+

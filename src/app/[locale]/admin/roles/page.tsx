@@ -49,6 +49,11 @@ const Page = () => {
                 <TableRow>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
+                      №
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
                       Name
                     </Typography>
                   </TableCell>
@@ -60,8 +65,17 @@ const Page = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {roles.map((role) => (
+                {roles.map((role, index) => (
                   <TableRow key={role.name}>
+                    <TableCell>
+                      <Typography
+                        color="textSecondary"
+                        variant="subtitle2"
+                        fontWeight={400}
+                      >
+                        {index+1}
+                      </Typography>
+                    </TableCell>
                     <TableCell>
                       <Typography
                         color="textSecondary"

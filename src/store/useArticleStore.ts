@@ -17,7 +17,7 @@ interface IArticleStore {
   LatestArticles: (authorName: string) => void;
   GetArticle: (id: number) => Promise<any>;
   CreateArticle: (data: ArticleRequestModel) => Promise<number>;
-  EditArticle: (data: ArticleRequestModel, id: number) => Promise<number>;
+  EditArticle: (id: number, data: ArticleRequestModel) => Promise<number>;
   DeleteArticle: (id: number) => Promise<number>;
 }
 const date = new Date();
@@ -58,9 +58,8 @@ const useArticleStore = create<IArticleStore>()((set) => ({
     return response.status
   },
 
-  async EditArticle(data, id) {
-    const response = await EditArticle(data, id)
-    console.log(response)
+  async EditArticle(id, data) {
+    const response = await EditArticle(id, data)
     set(() => ({ currentArticle: response.data }))
     return response.status
   },

@@ -4,6 +4,8 @@ import useDoctorStore from '@/store/useDoctorStore'
 import { DoctorRequestModel } from '@/entities/Doctor'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image';
+
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
@@ -60,6 +62,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     GetUsersByRole('Doctor')
     setName(response.name)
     setSpeciality(response.speciality)
+    setPhoto(response.photoBase64)
     setBio(response.bio)
     setEducation(response.education)
     setExperience(response.experience)
@@ -77,14 +80,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
       <div className="doctor-details-area pb-70">
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-12 d-flex justify-content-center mb-3">
-              <div className="image">
-                <img
-                  src={`data:image/png;base64, ${currentDoctor.photoBase64}`}
-                  alt=""
-                />
-              </div>
-            </div>
             <div className="doctor-details-right col-md-8 col-12">
               <div className="container pb-1 mb-5">
                 <form id="contactForm" onSubmit={handleSubmit}>
@@ -192,6 +187,12 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
+                    <div style={{marginBottom:20}}>
+                      <img
+                        src={`data:image/png;base64, ${photo}`} height={300} width={400}
+                        alt=""
+                      />
+                    </div>
                     <input
                       className="form-control"
                       id="photo"

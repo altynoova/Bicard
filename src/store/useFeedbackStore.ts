@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { CreateFeedbackModel, Feedback } from '@/entities/Feedback'
 import { $http } from '@/libs/axios'
+import router from 'next/router'
 
 interface IFeedbackStore {
   feedbacks: Feedback[]
@@ -17,6 +18,9 @@ const useFeedbackStore = create<IFeedbackStore>()((set) => ({
 
   async CreateFeedback(data) {
     const response = await $http.post('/feedbacks/create', data)
+    if(response.status == 401){
+      router.push('/signin');
+    }
     // set((state) => ({ feedbacks: state.feedbacks.push({message}) }))
     return response.status
   },

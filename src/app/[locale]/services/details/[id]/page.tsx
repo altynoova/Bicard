@@ -85,9 +85,7 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
                     <h3>Амбулаторно-поликлиническая помощь</h3>
                   </Link>
                   <ul>
-                    <li>
-                      {lastService.name}-{lastService.price}
-                    </li>
+                   
                   </ul>
                 </div>
               </div>

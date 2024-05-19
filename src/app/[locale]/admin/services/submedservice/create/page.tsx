@@ -50,47 +50,53 @@ const CreateService = () => {
     <div>
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
         <h3>Add sub med service</h3>
-        <div className="mb-1">
-          <Select
-            size="small"
-            value={medServiceId}
-            onChange={handleChangeSelect}
-          >
-            {medServices.map((service) => (
-              <MenuItem key={service.name} value={service.id}>
-                {service.name}
-              </MenuItem>
-            ))}
-          </Select>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Select medService
+          </label>
+          <div>
+            <Select
+              size="small"
+              value={medServiceId}
+              onChange={handleChangeSelect}
+              style={{ width: '200px' }}
+            >
+              {medServices.map((service) => (
+                <MenuItem key={service.name} value={service.id}>
+                  {service.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
         </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputRole"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Price
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputRole"
+            value={price}
+            onChange={(event) => setPrice(event.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary" onClick={handleCreate}>
+          Add
+        </button>
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleInputRole"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Price
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleInputRole"
-          value={price}
-          onChange={(event) => setPrice(event.target.value)}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary" onClick={handleCreate}>
-        Add
-      </button>
     </div>
   )
 }

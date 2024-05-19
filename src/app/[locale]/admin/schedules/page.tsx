@@ -82,6 +82,11 @@ const Schedules = () => {
             >
               <TableHead>
                 <TableRow>
+                <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                    №
+                    </Typography>
+                  </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
                       day of week
@@ -110,8 +115,17 @@ const Schedules = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {schedules.map((s) => (
+                {schedules.map((s, index) => (
                   <TableRow key={s.name}>
+                     <TableCell>
+                      <Typography
+                        color="textSecondary"
+                        variant="subtitle2"
+                        fontWeight={400}
+                      >
+                        {index+1}
+                      </Typography>
+                    </TableCell>
                     <TableCell>
                       <Typography
                         color="textSecondary"

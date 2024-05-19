@@ -72,7 +72,7 @@ const Vacancys = () => {
                   <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Id
+                    №
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -116,7 +116,7 @@ const Vacancys = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {Vacancy.id}
+                          {index+1}
                         </Typography>
                       </TableCell>
                       <TableCell>
