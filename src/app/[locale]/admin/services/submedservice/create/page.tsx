@@ -5,9 +5,12 @@ import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
 import { MenuItem, Select } from '@mui/material'
 import { SelectChangeEvent } from '@mui/material/Select'
+import { useTranslations } from 'next-intl'
 
 const CreateService = () => {
   const router = useRouter()
+  const t = useTranslations('Services')
+
   const {
     GetListOfMedServices,
     CreateSubMedService,
@@ -49,17 +52,17 @@ const CreateService = () => {
   return (
     <div>
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
-        <h3>Add sub med service</h3>
+        <h3>{t('Create')}</h3>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Select medService
+          {t('Select Service')}
           </label>
           <div>
             <Select
               size="small"
               value={medServiceId}
               onChange={handleChangeSelect}
-              style={{ width: '200px' }}
+              style={{ width: '700px' }}
             >
               {medServices.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
@@ -71,7 +74,7 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Name
+          {t('Name')}
           </label>
           <input
             type="text"
@@ -83,7 +86,7 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Price
+          {t('Price')}
           </label>
           <input
             type="text"
@@ -94,7 +97,7 @@ const CreateService = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary" onClick={handleCreate}>
-          Add
+          {t('Save')}
         </button>
       </div>
     </div>

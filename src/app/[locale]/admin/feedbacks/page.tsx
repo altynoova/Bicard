@@ -20,9 +20,12 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import useFeedbackStore from '@/store/useFeedbackStore'
 import SearchIcon from '@mui/icons-material/Search'
+import { useTranslations } from 'next-intl'
 
 const Doctors = () => {
   const { feedbacks, GetAllFeedbacks, DeleteFeedback } = useFeedbackStore()
+  const t = useTranslations('Services')
+
   const [filter, setFilter] = useState<string>('')
 
   const filteredFeedbacks = feedbacks.filter((f) => f.userName.includes(filter))
@@ -30,7 +33,8 @@ const Doctors = () => {
   const handleDelete = async (id: number) => {
     const status = await DeleteFeedback(id)
     if (status == 200) {
-      SuccessAlert('Successfully deleted')
+      SuccessAlert('Успешно')
+      GetAllFeedbacks()
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -44,7 +48,7 @@ const Doctors = () => {
     <div>
       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">
-        Поиск по имени пользователя
+        {t('Search')}
         </InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
@@ -62,7 +66,7 @@ const Doctors = () => {
         />
       </FormControl>
       {filteredFeedbacks.length < 1 ? (
-        <div>Нет результатов</div>
+        <div>{t('No result')}</div>
       ) : (
         <DashboardCard title="Отзывы">
           <Box sx={{ overflow: 'auto' }}>
@@ -81,22 +85,22 @@ const Doctors = () => {
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                      Имя пользователя
+                      {t('User')}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                      Сообщение
+                      {t('Feedback')}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={600}>
-                      Дата
+                      {t('Date')}
                       </Typography>
                     </TableCell>
                     <TableCell align="right">
                       <Typography variant="subtitle2" fontWeight={600}>
-                      Удалить
+                      {t('Delete')}
                       </Typography>
                     </TableCell>
                   </TableRow>

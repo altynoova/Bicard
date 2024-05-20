@@ -47,7 +47,6 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
 
   async GetDoctor(id) {
     const response = await GetDoctor(id)
-    console.log('current doctor in state', response)
     set(() => ({ currentDoctor: response.data }))
     return response.data
   },

@@ -78,7 +78,8 @@ const TopHeader = () => {
                     <li>
                       <a href="https://2gis.kg/bishkek/firm/70000001022019440?m=74.604169%2C42.838768%2F16" target="_blank">
                         <i className="icofont-location-pin"></i>
-                        улица Тыныстанова2, г. Бишкек
+                        {t('Street')}
+                        
                       </a>
                     </li>
                   </ul>

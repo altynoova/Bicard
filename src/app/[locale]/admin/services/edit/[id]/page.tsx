@@ -4,6 +4,7 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
 import { TextField } from '@mui/material'
+import { useTranslations } from 'next-intl'
 
 const EditService = ({ params }: { params: { id: number } }) => {
   const {
@@ -13,6 +14,8 @@ const EditService = ({ params }: { params: { id: number } }) => {
   } = useMedServicesStore()
 
   const router = useRouter()
+  const t = useTranslations('Services')
+  
   const [name, setName] = useState(currentMedService.name)
   const [shortDescription, setShortDescription] = useState(
     currentMedService.shortDescription
@@ -24,11 +27,14 @@ const EditService = ({ params }: { params: { id: number } }) => {
 
   const handleUpdate = async () => {
     const response = await EditMedService(
-      { name, shortDescription, longDescription },
+      {
+        name, shortDescription, longDescription,
+        files: null
+      },
       currentMedService.id
     )
     if (response === 200) {
-      SuccessAlert('Сервис успешно обновлен')
+      SuccessAlert('Успешно')
       router.push('/admin/services')
     } else {
       ErrorAlert('Произошла ошибка')
@@ -51,7 +57,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
   }, [loading])
 
   return loading ? (
-    <div>Loading...</div>
+    <div>{t('Loading...')}</div>
   ) : (
     <div>
       <div className="doctors-area doctors-area-two pt-100 pb-70">
@@ -66,10 +72,10 @@ const EditService = ({ params }: { params: { id: number } }) => {
                   marginBottom: '20px',
                 }}
               >
-                <h3>Update med service</h3>
+                <h3>{t('Edit')}</h3>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                    Name
+                    {t('Name')}
                   </label>
                   <input
                     type="text"
@@ -81,7 +87,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                    Short Description
+                  {t('Short Description')}
                   </label>
                   <input
                     type="text"
@@ -95,7 +101,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                    Long Description
+                  {t('Detailed Description')}
                   </label>
                   <TextField
                     type="text"
@@ -111,7 +117,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                   className="btn btn-primary"
                   onClick={handleUpdate}
                 >
-                  Update
+                  {t('Save')}
                 </button>
               </div>
             </div>

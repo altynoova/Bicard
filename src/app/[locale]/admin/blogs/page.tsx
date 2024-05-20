@@ -21,10 +21,13 @@ import EditIcon from '@mui/icons-material/Edit'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 
 const Blogs = () => {
   const { FetchBlogs, DeleteBlog, Blogs, pagenumber, pagesize } = useBlogStore();
+  const t = useTranslations('Blogs')
+
   const [search, setSearch] = useState<string>('');
   const [openBlogs, setOpenBlogs] = useState<boolean[]>(Array(Blogs.length).fill(false)); // Array to track the collapse/expand state of each blog
 
@@ -35,7 +38,8 @@ const Blogs = () => {
   const handleDelete = async (id: number) => {
     const status = await DeleteBlog(id);
     if (status == 200) {
-      SuccessAlert('Successfully deleted');
+      SuccessAlert('Успешно');
+      FetchBlogs(pagesize, pagenumber)
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -56,9 +60,9 @@ const Blogs = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="blogs/create">Добавить блог</Link>
+        <Link href="blogs/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title="Blogs">
+      <DashboardCard title={t('Blogs')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -76,17 +80,17 @@ const Blogs = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Title
+                    {t('Title')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                    {t('Edit')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>
@@ -132,15 +136,16 @@ const Blogs = () => {
                     <TableRow>
                       <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
                         <Collapse in={openBlogs[index]} timeout="auto" unmountOnExit>
-                          <Image width={50} height={50} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
+                          <div style={{display:"flex", justifyContent:"center"}}>
+                          <Image width={150} height={150} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
                           <Typography
-                            sx={{ marginY: 2 }}
-                            variant="h6"
-                            gutterBottom
-                            component="div"
+                            variant="subtitle2"
+                            fontWeight={600}
+                            style={{ wordWrap: 'break-word', whiteSpace: 'pre-line'}}
                           >
                             {Blog.text}
                           </Typography>
+                          </div>
                         </Collapse>
                       </TableCell>
                     </TableRow>

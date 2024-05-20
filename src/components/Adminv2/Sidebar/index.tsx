@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper'
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
 import Home from '@mui/icons-material/Home'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const data = [
   { link: '/admin/appointments', label: 'Appointments', icon: '' },
@@ -24,7 +25,7 @@ const data = [
   { link: '/admin/blogs', label: 'Blogs', icon: '' },
   { link: '/admin/articles', label: 'Articles', icon: '' },
   { link: '/admin/vacancies', label: 'Vacancies', icon: '' },
-  { link: '/admin/faqs', label: "FAQ's", icon: '' },
+  { link: '/admin/faqs', label: "FAQs", icon: '' },
 
 
 ]
@@ -44,6 +45,8 @@ const Nav = styled(List)<{ component?: React.ElementType }>({
 })
 
 export default function CustomizedList() {
+  const t = useTranslations('Navbar')
+
   return (
     <Box
       sx={{
@@ -123,7 +126,7 @@ export default function CustomizedList() {
                     {item.icon}
                   </ListItemIcon>
                   <ListItemText
-                    primary={item.label}
+                    primary={t(item.label)}
                     primaryTypographyProps={{
                       fontSize: 14,
                       fontWeight: 'medium',

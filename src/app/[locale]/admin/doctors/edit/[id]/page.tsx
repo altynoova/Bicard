@@ -5,10 +5,13 @@ import { DoctorRequestModel } from '@/entities/Doctor'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
+import { useTranslations } from 'next-intl'
 
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
+  const t = useTranslations('Doctors')
+
   const GetCurrentDoctor = useDoctorStore((state) => state.GetDoctor)
   const EditDoctor = useDoctorStore((state) => state.EditDoctor)
   const GetUsersByRole = useDoctorStore((state) => state.GetUsersByRole)
@@ -50,7 +53,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
     const status = await EditDoctor(data, currentDoctor?.id || 0)
     if (status == 200) {
-      SuccessAlert('Данные успешно обновлены.')
+      SuccessAlert('Успешно')
       router.push('/admin/doctors')
     } else {
       ErrorAlert('Произошла ошибка!')
@@ -85,13 +88,13 @@ const Edit = ({ params }: { params: { id: number } }) => {
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                      Имя
+                    {t('DoctorsName')}
                     </label>
                     <input
                       className="form-control"
                       id="name"
                       type="text"
-                      placeholder="Имя"
+                      placeholder={t('DoctorsName')}
                       data-sb-validations="required"
                       value={name}
                       onChange={(event) => setName(event.target.value)}
@@ -100,18 +103,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="имя:required"
                     >
-                      Имя is required.
+                      Name is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="speciality">
-                      Специальность
+                    {t('Speciality')}
                     </label>
                     <input
                       className="form-control"
                       id="speciality"
                       type="text"
-                      placeholder="Специальность"
+                      placeholder={t('Speciality')}
                       data-sb-validations="required"
                       value={speciality}
                       onChange={(event) => setSpeciality(event.target.value)}
@@ -120,17 +123,17 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="специальность:required"
                     >
-                      Специальность is required.
+                      Speciality is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="bio">
-                      Биография
+                    {t('Biography')}
                     </label>
                     <textarea
                       className="form-control"
                       id="bio"
-                      placeholder="Биография"
+                      placeholder={t('Biography')}
                       style={{ height: '10rem' }}
                       data-sb-validations="required"
                       value={bio}
@@ -140,18 +143,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="биография:required"
                     >
-                      Биография is required.
+                      Biography is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="education">
-                      Образование
+                    {t('Education')}
                     </label>
                     <input
                       className="form-control"
                       id="education"
                       type="text"
-                      placeholder="Образование"
+                      placeholder={t('Education')}
                       data-sb-validations="required"
                       value={education}
                       onChange={(event) => setEducation(event.target.value)}
@@ -160,18 +163,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="образование:required"
                     >
-                      Образование is required.
+                      Education is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="experience">
-                      Опыт
+                    {t('Experience')}
                     </label>
                     <input
                       className="form-control"
                       id="experience"
                       type="text"
-                      placeholder="Опыт"
+                      placeholder={t('Experience')}
                       data-sb-validations="required"
                       value={experience}
                       onChange={(event) => setExperience(event.target.value)}
@@ -180,12 +183,12 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="опыт:required"
                     >
-                      Опыт is required.
+                      Experience is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                      Фото
+                    {t('IMG')}
                     </label>
                     <div style={{marginBottom:20}}>
                       <img
@@ -197,7 +200,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="form-control"
                       id="photo"
                       type="file"
-                      placeholder="Фото"
+                      placeholder={t('IMG')}
                       data-sb-validations="required"
                       onChange={(event) =>
                         setPhoto(event.target.files && event.target.files[0])
@@ -205,20 +208,20 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="номерТелефона:required"
+                      data-sb-feedback="Photo is required"
                     >
-                      Номер телефона is required.
+                     Photo is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="phoneNumber">
-                      Номер телефона
+                    {t('PhoneNumber')}
                     </label>
                     <input
                       className="form-control"
                       id="phoneNumber"
                       type="text"
-                      placeholder="Номер телефона"
+                      placeholder={t('PhoneNumber')}
                       data-sb-validations="required"
                       value={phoneNumber}
                       onChange={(event) => setPhoneNumber(event.target.value)}
@@ -227,18 +230,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="номерТелефона:required"
                     >
-                      Номер телефона is required.
+                      Phone number is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="email">
-                      Email
+                    {t('Email')}
                     </label>
                     <input
                       className="form-control"
                       id="email"
                       type="email"
-                      placeholder="Email"
+                      placeholder={t('Email')}
                       data-sb-validations="required,email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
@@ -253,18 +256,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="email:email"
                     >
-                      Email Email is not valid.
+                      Email is not valid.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="address">
-                      Адрес
+                    {t('Address')}
                     </label>
                     <input
                       className="form-control"
                       id="address"
                       type="text"
-                      placeholder="Адрес"
+                      placeholder={t('Address')}
                       data-sb-validations="required"
                       value={address}
                       onChange={(event) => setAddress(event.target.value)}
@@ -273,7 +276,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="адрес:required"
                     >
-                      Адрес is required.
+                      Address is required.
                     </div>
                   </div>
                   <div className="d-none" id="submitSuccessMessage">
@@ -296,7 +299,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     <input
                       className="btn btn-primary"
                       type="submit"
-                      value={'Сохранить'}
+                      value={t('Save')}
                     />
                   </div>
                 </form>

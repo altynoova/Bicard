@@ -3,9 +3,12 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const CreateService = () => {
   const router = useRouter()
+  const t = useTranslations('Services')
+
   const { CreateMedService } = useMedServicesStore()
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
@@ -17,20 +20,20 @@ const CreateService = () => {
       ErrorAlert('Добавьте фотографии!')
       return
     }
-  
+
     const data = new FormData()
     data.append('name', name)
     data.append('shortDescription', shortDescription)
     data.append('longDescription', longDescription)
-  
+
     files.forEach((file, index) => {
       data.append(`Files`, file)
     })
-  
+
     const response = await CreateMedService(data)
-  
+
     if (response === 200) {
-      SuccessAlert('Успешно добавлен');
+      SuccessAlert('Успешно');
       router.push('/admin/services');
     } else {
       ErrorAlert('Произошла ошибка')
@@ -40,18 +43,18 @@ const CreateService = () => {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files
-  
+
     if (fileList) {
       setFiles(Array.from(fileList))
     }
   }
   return (
-    <div className="d-flex justify-content-center mb-5">
+    <div className="d-flex justify-content-center mb-6">
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
-        <h3>Create med service</h3>
+        <h3>{t('Create')}</h3>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Name
+            {t('Name')}
           </label>
           <input
             type="text"
@@ -63,7 +66,7 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Short Description
+            {t('Short Description')}
           </label>
           <input
             type="text"
@@ -75,11 +78,12 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Long Description
+            {t('Detailed  Description')}
           </label>
           <input
             type="text"
             className="form-control"
+            style={{ height: '10rem' }}
             id="exampleInputRole"
             value={longDescription}
             onChange={(event) => setLongDescription(event.target.value)}
@@ -87,13 +91,13 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputRole" className="form-label">
-            Files
+            {t('IMG')}
           </label>
           <input
             type="file"
             className="form-control"
             id="exampleInputRole"
-            multiple 
+            multiple
             onChange={handleFileChange} />
         </div>
         <button
@@ -101,7 +105,7 @@ const CreateService = () => {
           className="btn btn-primary"
           onClick={handleSubmit}
         >
-          Создать
+          {t('Create')}
         </button>
       </div>
     </div>

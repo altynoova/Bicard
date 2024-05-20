@@ -15,14 +15,28 @@ import {
   TableHead,
   TableRow,
   Typography,
+  styled,
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { MedService, SubMedService } from '@/entities/Service'
-
+import { useTranslations } from 'next-intl'
+import { t } from 'i18next'
+import { blue300 } from 'material-ui/styles/colors'
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 const Services = () => {
+  const t = useTranslations('Services')
+
   const {
     medServices,
     allSubMedServices,
@@ -36,7 +50,9 @@ const Services = () => {
     const response = await RemoveMedService(id)
 
     if (response === 200) {
-      SuccessAlert('Service удалена')
+      SuccessAlert('Успешно')
+      GetListOfMedServices()
+      GetAllSubMedServices()
     } else {
       ErrorAlert('Произошла ошибка')
     }
@@ -46,11 +62,14 @@ const Services = () => {
     const response = await RemoveSubMedService(id)
 
     if (response === 200) {
-      SuccessAlert('Sub service удалена')
+      SuccessAlert('Успешно')
+      GetListOfMedServices()
+      GetAllSubMedServices()
     } else {
       ErrorAlert('Произошла ошибка')
     }
   }
+
 
   useEffect(() => {
     GetListOfMedServices()
@@ -61,13 +80,13 @@ const Services = () => {
     <div>
       <div className="d-flex justify-content-center mb-5 gap-5">
         <div>
-          <Link href="services/create">Добавить service</Link>
+          <Link href="services/create">{t('Add Service')}</Link>
         </div>
         <div>
-          <Link href="services/submedservice/create">Добавить sub service</Link>
+          <Link href="services/submedservice/create">{t('Add Subservice')}</Link>
         </div>
       </div>
-      <DashboardCard title="Services">
+      <DashboardCard title={t('Services')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -85,17 +104,17 @@ const Services = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Name
+                    {t('Name')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                    {t('Edit')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>
@@ -174,31 +193,33 @@ function Row({
                 gutterBottom
                 component="div"
               >
-                No sub services
+                Кошумча кызматтар жок
               </Typography>
             ) : (
               <Box sx={{ margin: 1 }}>
                 <Typography variant="h6" gutterBottom component="div">
-                  Sub med services
+                Кошумча кызматтар
                 </Typography>
                 <Table size="small" aria-label="purchases">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Id</TableCell>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="right">Edit this subservice</TableCell>
+                      <TableCell>№</TableCell>
+                      <TableCell>{t('Name')}</TableCell>
+                      <TableCell>{t('Price')}</TableCell>
+                      <TableCell align="right">{t('Edit')}</TableCell>
                       <TableCell align="right">
-                        Delete this subservice
+                      {t('Delete')}
                       </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {subMedServices.map((sms) => (
-                      <TableRow key={sms.id}>
+                    {subMedServices.map((sms, index) => (
+                      <StyledTableRow key={sms.id}>
                         <TableCell component="th" scope="service">
-                          {sms.id}
+                          {index+1}
                         </TableCell>
                         <TableCell>{sms.name}</TableCell>
+                        <TableCell>{sms.price}</TableCell>
                         <TableCell align="right">
                           <Link
                             href={`/admin/services/submedservice/edit/${sms.id}`}
@@ -211,7 +232,7 @@ function Row({
                             <DeleteOutlineIcon color={'error'} />
                           </Button>
                         </TableCell>
-                      </TableRow>
+                      </StyledTableRow>
                     ))}
                   </TableBody>
                 </Table>

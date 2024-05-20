@@ -4,9 +4,12 @@ import useDoctorStore from '@/store/useDoctorStore'
 import { DoctorRequestModel } from '@/entities/Doctor'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const Create = () => {
   const router = useRouter()
+  const t = useTranslations('Doctors')
+  
   const { CreateDoctor, GetUsersByRole, userReferences } = useDoctorStore()
 
   const [name, setName] = useState<string>('')
@@ -20,8 +23,24 @@ const Create = () => {
   const [address, setAddress] = useState<string>('')
   const [userId, setUserId] = useState<number>(0)
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    const validationErrors: { [key: string]: string } = {}
+
+    if (!name) validationErrors.name = 'Name is required.'
+    if (!speciality) validationErrors.speciality = 'Speciality is required.'
+    if (!bio) validationErrors.bio = 'Bio is required.'
+    if (!education) validationErrors.education = 'Education is required.'
+    if (!experience) validationErrors.experience = 'Experience is required.'
+    if (!photo) validationErrors.photo = 'Photo is required.'
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
 
     const data: DoctorRequestModel = {
       name,
@@ -38,7 +57,7 @@ const Create = () => {
 
     const status = await CreateDoctor(data)
     if (status == 200) {
-      SuccessAlert('Данные успешно обновлены.')
+      SuccessAlert('Успешно')
       router.push('/admin/doctors')
     } else {
       ErrorAlert('Произошла ошибка!')
@@ -60,232 +79,193 @@ const Create = () => {
                   <form id="contactForm" onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="name">
-                        Имя
+                      {t('DoctorsName')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                         id="name"
                         type="text"
-                        placeholder="Имя"
-                        data-sb-validations="required"
+                        placeholder={t('DoctorsName')}
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="имя:required"
-                      >
-                        Имя is required.
-                      </div>
+                      {errors.name && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.name}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="speciality">
-                        Специальность
+                      {t('Speciality')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.speciality ? 'is-invalid' : ''}`}
                         id="speciality"
                         type="text"
-                        placeholder="Специальность"
-                        data-sb-validations="required"
+                        placeholder={t('Speciality')}
                         value={speciality}
                         onChange={(event) => setSpeciality(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="специальность:required"
-                      >
-                        Специальность is required.
-                      </div>
+                      {errors.speciality && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.speciality}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="bio">
-                        Биография
+                      {t('Biography')}
                       </label>
                       <textarea
-                        className="form-control"
+                        className={`form-control ${errors.bio ? 'is-invalid' : ''}`}
                         id="bio"
-                        placeholder="Биография"
+                        placeholder={t('Biography')}
                         style={{ height: '10rem' }}
-                        data-sb-validations="required"
                         value={bio}
                         onChange={(event) => setBio(event.target.value)}
                       ></textarea>
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="биография:required"
-                      >
-                        Биография is required.
-                      </div>
+                      {errors.bio && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.bio}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="education">
-                        Образование
+                      {t('Education')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.education ? 'is-invalid' : ''}`}
                         id="education"
                         type="text"
-                        placeholder="Образование"
-                        data-sb-validations="required"
+                        placeholder={t('Education')}
                         value={education}
                         onChange={(event) => setEducation(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="образование:required"
-                      >
-                        Образование is required.
-                      </div>
+                      {errors.education && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.education}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="experience">
-                        Опыт
+                      {t('Experience')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.experience ? 'is-invalid' : ''}`}
                         id="experience"
                         type="text"
-                        placeholder="Опыт"
-                        data-sb-validations="required"
+                        placeholder={t('Experience')}
                         value={experience}
                         onChange={(event) => setExperience(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="опыт:required"
-                      >
-                        Опыт is required.
-                      </div>
+                      {errors.experience && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.experience}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="photo">
-                        Фото
+                      {t('IMG')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                         id="photo"
                         type="file"
-                        placeholder="Фото"
-                        data-sb-validations="required"
+                        placeholder={t('IMG')}
                         onChange={(event) =>
                           setPhoto(event.target.files && event.target.files[0])
                         }
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="номерТелефона:required"
-                      >
-                        Номер телефона is required.
-                      </div>
+                      {errors.photo && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.photo}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="phoneNumber">
-                        Номер телефона
+                      {t('PhoneNumber')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.phoneNumber ? 'is-invalid' : ''}`}
                         id="phoneNumber"
                         type="text"
-                        placeholder="Номер телефона"
-                        data-sb-validations="required"
+                        placeholder={t('PhoneNumber')}
                         value={phoneNumber}
                         onChange={(event) => setPhoneNumber(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="номерТелефона:required"
-                      >
-                        Номер телефона is required.
-                      </div>
+                      {errors.phoneNumber && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.phoneNumber}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="email">
-                        Email
+                      {t('Email')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                         id="email"
                         type="email"
-                        placeholder="Email"
-                        data-sb-validations="required,email"
+                        placeholder={t('Email')}
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="email:required"
-                      >
-                        Email is required.
-                      </div>
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="email:email"
-                      >
-                        Email Email is not valid.
-                      </div>
+                      {errors.email && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.email}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="address">
-                        Адрес
+                      {t('Address')}
                       </label>
                       <input
-                        className="form-control"
+                        className={`form-control ${errors.address ? 'is-invalid' : ''}`}
                         id="address"
                         type="text"
-                        placeholder="Адрес"
-                        data-sb-validations="required"
+                        placeholder={t('Address')}
                         value={address}
                         onChange={(event) => setAddress(event.target.value)}
                       />
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="адрес:required"
-                      >
-                        Адрес is required.
-                      </div>
+                      {errors.address && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.address}
+                        </div>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="users">
-                        Пользователь
+                      {t('User')}
                       </label>
-
                       <select
+                        className={`form-select ${errors.userId ? 'is-invalid' : ''}`}
                         id="users"
-                        className="form-select"
                         aria-label="Default select example"
                         onChange={(event) => setUserId(+event.target.value)}
                       >
+                        <option value={0}>{t('Select user')}</option>
                         {userReferences.map((user) => (
                           <option key={user.id} value={user.id}>
                             {user.userName}
                           </option>
                         ))}
                       </select>
-                    </div>
-                    <div className="d-none" id="submitSuccessMessage">
-                      <div className="text-center mb-3">
-                        <div className="fw-bolder">
-                          Form submission successful!
+                      {errors.userId && (
+                        <div className="invalid-feedback" style={{ display: 'block' }}>
+                          {errors.userId}
                         </div>
-                        <p>To activate this form, sign up at</p>
-                        <a href="https://startbootstrap.com/solution/contact-forms">
-                          https://startbootstrap.com/solution/contact-forms
-                        </a>
-                      </div>
+                      )}
                     </div>
-                    <div className="d-none" id="submitErrorMessage">
-                      <div className="text-center text-danger mb-3">
-                        Error sending message!
-                      </div>
-                    </div>
-                    <div className="d-grid">
-                      <input
-                        className="btn btn-primary"
-                        type="submit"
-                        value={'Сохранить'}
-                      />
-                    </div>
+                    <button type="submit" className="btn btn-primary">
+                    {t('Save')}
+                    </button>
                   </form>
                 </div>
               </div>

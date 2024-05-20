@@ -15,9 +15,11 @@ import {
   Typography,
 } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import { useTranslations } from 'next-intl'
 
 const Page = () => {
   const { roles, GetRoles, RemoveRole } = useRoleStore()
+  const t = useTranslations('Services')
 
   const deleteRole = async (roleName: string) => {
     const response = await RemoveRole(roleName)
@@ -35,9 +37,9 @@ const Page = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="roles/create">Добавить роль</Link>
+        <Link href="roles/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title="Roles">
+      <DashboardCard title={t('Roles')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -54,12 +56,12 @@ const Page = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Name
+                      {t('Name')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>

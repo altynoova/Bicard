@@ -17,7 +17,7 @@ const ServicesList = () => {
           <div className="row justify-content-center">
             {medServices.map((s) => (
               <div key={s.id} className="col-sm-6 col-lg-4">
-                <ServiceCard id={s.id} name={s.name} shortDescription={s.shortDescription} />
+                <ServiceCard id={s.id} name={s.name} shortDescription={s.shortDescription} subMedservice={[]} />
               </div>
             ))}
           </div>

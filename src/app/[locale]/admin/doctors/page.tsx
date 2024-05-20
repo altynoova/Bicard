@@ -21,8 +21,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const Doctors = () => {
+  const t = useTranslations('Doctors')
+  
   const { FetchDoctors, DeleteDoctor } = useDoctorStore();
   const { doctors } = useDoctorStore();
 
@@ -36,7 +39,8 @@ const Doctors = () => {
   const handleDelete = async (id: number) => {
     const status = await DeleteDoctor(id);
     if (status == 200) {
-      SuccessAlert('Successfully deleted');
+      SuccessAlert('Удалено');
+      FetchDoctors()
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -53,9 +57,9 @@ const Doctors = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="doctors/create">Добавить доктора</Link>
+        <Link href="doctors/create">{t('Add doctor')}</Link>
       </div>
-      <DashboardCard title="Doctors">
+      <DashboardCard title={t('Doctors')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -73,52 +77,52 @@ const Doctors = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      IMG
+                    {t('IMG')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Name
+                    {t('DoctorsName')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Speciality
+                    {t('Speciality')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Education
+                    {t('Education')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Experience
+                    {t('Experience')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      PhoneNumber
+                    {t('PhoneNumber')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Email
+                    {t('Email')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Address
+                    {t('Address')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                    {t('Edit')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>
@@ -161,7 +165,7 @@ const Doctors = () => {
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={600}>
-                          {doctor.name == null ? <i>null</i> : doctor.name}
+                          {doctor.name == null ? <i></i> : doctor.name}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -170,7 +174,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.speciality == null ? <i>null</i> : doctor.speciality}
+                          {doctor.speciality == null ? <i></i> : doctor.speciality}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -179,7 +183,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.education == null ? <i>null</i> : doctor.education}
+                          {doctor.education == null ? <i></i> : doctor.education}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -188,7 +192,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.experience == null ? <i>null</i> : doctor.experience}
+                          {doctor.experience == null ? <i></i> : doctor.experience}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -197,7 +201,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.phoneNumber == null ? <i>null</i> : doctor.phoneNumber}
+                          {doctor.phoneNumber == null ? <i></i> : doctor.phoneNumber}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -206,7 +210,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.email == null ? <i>null</i> : doctor.email}
+                          {doctor.email == null ? <i></i> : doctor.email}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -215,7 +219,7 @@ const Doctors = () => {
                           variant="subtitle2"
                           fontWeight={400}
                         >
-                          {doctor.address == null ? <i>null</i> : doctor.address}
+                          {doctor.address == null ? <i></i> : doctor.address}
                         </Typography>
                       </TableCell>
                       <TableCell>

@@ -327,7 +327,7 @@ const Navbar = () => {
                     type="text"
                     className="form-control"
                     id="search"
-                    placeholder="Search..."
+                    placeholder={t('Search')}
                   />
 
                   <button className="search-icon icon-search">

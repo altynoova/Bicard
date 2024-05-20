@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 import useRoleStore from '@/store/useRoleStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const CreateRole = () => {
   const { CreateRole } = useRoleStore()
+  const t = useTranslations('Services')
+
   const router = useRouter()
   const [role, setRole] = useState<string>('')
 
@@ -13,7 +16,7 @@ const CreateRole = () => {
     const response = await CreateRole(role)
 
     if (response === 200) {
-      SuccessAlert('Роль успешно создана')
+      SuccessAlert('Успешно')
       router.push('/admin/roles')
     } else {
       ErrorAlert('Произошла ошибка')
@@ -25,7 +28,7 @@ const CreateRole = () => {
       <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Введите название роли
+            {t('Name')}
           </label>
           <input
             type="text"
@@ -40,7 +43,7 @@ const CreateRole = () => {
           className="btn btn-primary"
           onClick={handleCreate}
         >
-          Создать
+          {t('Save')}
         </button>
       </div>
     </div>
