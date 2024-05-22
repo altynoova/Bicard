@@ -4,9 +4,12 @@ import useVacancyStore from '@/store/useVacancyStore'
 import { VacancyRequestModel } from '@/entities/Vacancy'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const Create = () => {
   const router = useRouter()
+  const t = useTranslations('Services')
+
   const { CreateVacancy } = useVacancyStore()
 
   const [position, setPosition] = useState<string>('')
@@ -41,13 +44,13 @@ const Create = () => {
                   <form id="contactForm" onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="name">
-                        Position
+                        {t('Position')}
                       </label>
                       <input
                         className="form-control"
                         id="name"
                         type="text"
-                        placeholder="Имя"
+                        placeholder={t('Position')}
                         data-sb-validations="required"
                         value={position}
                         onChange={(event) => setPosition(event.target.value)}
@@ -61,12 +64,12 @@ const Create = () => {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="bio">
-                        Requirements
+                      {t('Requirements')}
                       </label>
                       <textarea
                         className="form-control"
                         id="bio"
-                        placeholder="Описание"
+                        placeholder={t('Requirements')}
                         style={{ height: '10rem' }}
                         data-sb-validations="required"
                         value={requirements}
@@ -81,12 +84,12 @@ const Create = () => {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="bio">
-                        Description
+                      {t('Description')}
                       </label>
                       <textarea
                         className="form-control"
                         id="bio"
-                        placeholder="Описание"
+                        placeholder={t('Description')}
                         style={{ height: '10rem' }}
                         data-sb-validations="required"
                         value={description}
@@ -119,7 +122,7 @@ const Create = () => {
                       <input
                         className="btn btn-primary"
                         type="submit"
-                        value={'Сохранить'}
+                        value={t('Save')}
                       />
                     </div>
                   </form>

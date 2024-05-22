@@ -22,9 +22,11 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
 import router from 'next/router'
+import { useTranslations } from 'next-intl'
 
 
 const Article = () => {
+  const t = useTranslations('Services')
   const { FetchArticles,  Articles, DeleteArticle} = useArticletore();
   const [search, setSearch] = useState<string>('');
   const [openArticle, setOpenArticle] = useState<boolean[]>(Array(Article.length).fill(false)); 
@@ -36,8 +38,8 @@ const Article = () => {
   const handleDelete = async (id: number) => {
     const status = await DeleteArticle(id);
     if (status == 200) {
-      SuccessAlert('Successfully deleted');
-      router.push('/admin/articles');
+      SuccessAlert('Успешно');
+      FetchArticles();
     } else {
       ErrorAlert('Произошла ошибка!');
     }
@@ -58,9 +60,9 @@ const Article = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="articles/create">Добавить статью</Link>
+        <Link href="articles/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title="Article">
+      <DashboardCard title={t('Articles')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -78,27 +80,27 @@ const Article = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Title
+                    {t('Title')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Author
+                      {t('Author')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Date
+                    {t('Date')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                    {t('Edit')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>
@@ -126,17 +128,17 @@ const Article = () => {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="subtitle2" fontWeight={600}>
+                        <Typography variant="subtitle2" fontWeight={400}>
                           {Article.title == null ? <i>null</i> : Article.title}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="subtitle2" fontWeight={600}>
+                        <Typography variant="subtitle2" fontWeight={400}>
                           {Article.authorName == null ? <i>null</i> : Article.authorName}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="subtitle2" fontWeight={600}>
+                        <Typography variant="subtitle2" fontWeight={400}>
                         {new Date(Article.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                         </Typography> 
                       </TableCell>

@@ -27,15 +27,12 @@ export const CreateFAQ = async (data: FAQRequestModel) => {
   }
 }
 
-export const EditFAQ = async (data: FAQRequestModel, id: number) => {
+export const EditFAQ = async (id: number, data: FAQRequestModel) => {
   try {
     return await $http({
       method: 'put',
       url: `/Faqs/update?id=${id}`,
-      data,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      data
     })
   } catch (error: any) {
     return error.status

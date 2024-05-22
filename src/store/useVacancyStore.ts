@@ -15,7 +15,7 @@ interface IVacancyStore {
   FetchVacancies: () => void;
   GetVacancy: (id: number) => Promise<any>;
   CreateVacancy: (data: VacancyRequestModel) => Promise<number>;
-  EditVacancy: (data: VacancyRequestModel, id: number) => Promise<number>;
+  EditVacancy: ( id: number, data: VacancyRequestModel) => Promise<number>;
   DeleteVacancy: (id: number) => Promise<number>;
 }
 const date = new Date();
@@ -50,8 +50,8 @@ const useVacancyStore = create<IVacancyStore>()((set) => ({
     return response.status
   },
 
-  async EditVacancy(data, id) {
-    const response = await EditVacancy(data, id)
+  async EditVacancy(id, data) {
+    const response = await EditVacancy(id, data)
     console.log(response)
     set(() => ({ currentVacancy: response.data }))
     return response.status

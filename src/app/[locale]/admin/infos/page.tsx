@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Collapse,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -14,53 +13,52 @@ import {
   Typography,
 } from '@mui/material'
 import DashboardCard from '@/components/Adminv2/Shared/DashboardCard'
-import useVacancyStore from '@/store/useVacancyStore'
+import useInfoStore from '@/store/useInfoStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import router from 'next/router'
 import { useTranslations } from 'next-intl'
+import { info } from 'console'
 
 
-const Vacancys = () => {
-  const { FetchVacancies, DeleteVacancy, Vacancies } = useVacancyStore();
+const Infos = () => {
+  const { FetchInfos, DeleteInfo, Infos } = useInfoStore();
   const t = useTranslations('Services')
 
-  const [openVacancys, setOpenVacancys] = useState<boolean[]>(Array(Vacancys.length).fill(false)); // Array to track the collapse/expand state of each Vacancy
+  const [openInfos, setOpenInfos] = useState<boolean[]>(Array(Infos.length).fill(false)); // Array to track the collapse/expand state of each Info
 
-  const filteredVacancys = Vacancies.filter(
-    (Vacancies) => Vacancies?.id);
+  const filteredInfos = Infos.filter(
+    (Infos) => Infos?.id);
 
   const handleDelete = async (id: number) => {
-    const status = await DeleteVacancy(id);
+    const status = await DeleteInfo(id);
     if (status == 200) {
       SuccessAlert('Успешно');
-      router.push('/admin/vacancies');
+      router.push('/admin/infos');
     } else {
       ErrorAlert('Произошла ошибка!');
     }
   };
 
   useEffect(() => {
-    FetchVacancies();
+    FetchInfos();
   }, []);
 
   const toggleOpen = (index: number) => {
-    setOpenVacancys((prevOpenVacancys) => {
-      const newOpenVacancys = [...prevOpenVacancys];
-      newOpenVacancys[index] = !newOpenVacancys[index]; // Toggle the collapse/expand state of the clicked Vacancy
-      return newOpenVacancys;
+    setOpenInfos((prevOpenInfos) => {
+      const newOpenInfos = [...prevOpenInfos];
+      newOpenInfos[index] = !newOpenInfos[index]; // Toggle the collapse/expand state of the clicked Info
+      return newOpenInfos;
     });
   };
 
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="vacancies/create">{t('Create')}</Link>
+        <Link href="infos/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title={t('Vacancies')}>
+      <DashboardCard title={t('Infos')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -70,7 +68,6 @@ const Vacancys = () => {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell />
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
                     №
@@ -78,7 +75,12 @@ const Vacancys = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                    {t('Position')}
+                    {t('Title')}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                    {t('Content')}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -99,18 +101,9 @@ const Vacancys = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredVacancys.map((Vacancy, index) => (
-                  <React.Fragment key={Vacancy.id}>
+                {filteredInfos.map((Info, index) => (
+                  <React.Fragment key={Info.id}>
                     <TableRow>
-                      <TableCell>
-                        <IconButton
-                          aria-label="expand service"
-                          size="small"
-                          onClick={() => toggleOpen(index)}
-                        >
-                          {openVacancys[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                        </IconButton>
-                      </TableCell>
                       <TableCell>
                         <Typography
                           color="textSecondary"
@@ -122,55 +115,30 @@ const Vacancys = () => {
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={400}>
-                          {Vacancy.position == null ? <i>null</i> : Vacancy.position}
+                          {Info.title == null ? <i>null</i> : Info.title}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="subtitle2"
+                              fontWeight={400}
+                              style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}>
+                          <div dangerouslySetInnerHTML={{ __html: Info.content}}></div>
                         </Typography>
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={400}>
-                          {new Date(Vacancy.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                          {new Date(Info.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/vacancies/edit/${Vacancy.id}`}>
+                        <Link href={`/admin/vacancies/edit/${Info.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>
                       <TableCell align="right">
-                        <Button onClick={() => handleDelete(Vacancy.id)}>
+                        <Button onClick={() => handleDelete(Info.id)}>
                           <DeleteOutlineIcon color={'error'} />
                         </Button>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display: "flex", justifyContent: "space-between" }} colSpan={6} >
-                        <Collapse in={openVacancys[index]} timeout="auto" unmountOnExit>
-                          <Table>
-                            <TableHead>
-                              <TableCell>
-                                <Typography variant="subtitle2" fontWeight={400}>
-                                  <b>{t('Requirements')}</b>  :  {Vacancy.requirements}
-                                </Typography>
-                              </TableCell>
-                            </TableHead>
-                            <TableHead>
-                              <TableCell>
-                                <Typography variant="subtitle2" fontWeight={400}>
-                                <b>{t('Description')}</b>  :  {Vacancy.description}
-                                </Typography>
-                              </TableCell>
-                            </TableHead>
-                            <TableHead>
-                              <TableCell>
-
-                              </TableCell>
-                            </TableHead>
-                            <TableHead>
-                              <TableCell>
-
-                              </TableCell>
-                            </TableHead>
-                          </Table>
-                        </Collapse>
                       </TableCell>
                     </TableRow>
                   </React.Fragment>
@@ -184,5 +152,5 @@ const Vacancys = () => {
   );
 };
 
-export default Vacancys;
+export default Infos;
 

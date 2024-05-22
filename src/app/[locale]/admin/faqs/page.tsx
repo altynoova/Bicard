@@ -16,10 +16,12 @@ import useFAQsStore from '@/store/useFAQStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
+import { useTranslations } from 'next-intl'
 
 const FAQss = () => {
   const { fetchFAQs, DeleteFAQ, FAQList } = useFAQsStore();
-  const [search, setSearch] = useState<string>('');
+  const t = useTranslations('Services')
+
   const [openFAQss, setOpenFAQss] = useState<boolean[]>([]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const FAQss = () => {
   const handleDelete = async (id: number) => {
     const status = await DeleteFAQ(id);
     if (status === 200) {
-      SuccessAlert('Successfully deleted');
+      SuccessAlert('Успешно');
       fetchFAQs();  
     } else {
       ErrorAlert('Произошла ошибка!');
@@ -51,9 +53,9 @@ const FAQss = () => {
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">
-        <Link href="faqs/create">Добавить FAQ</Link>
+        <Link href="faqs/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title="FAQs">
+      <DashboardCard title={t('FAQ')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table sx={{ whiteSpace: 'nowrap' }}>
@@ -66,27 +68,27 @@ const FAQss = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Type
+                    {t('Type')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Question
+                    {t('Question')}
+                     </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
+                    {t('Answer')}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Answer
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="subtitle2" fontWeight={600}>
-                      Edit
+                    {t('Edit')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Delete
+                    {t('Delete')}
                     </Typography>
                   </TableCell>
                 </TableRow>
@@ -98,19 +100,19 @@ const FAQss = () => {
                       <React.Fragment key={FAQ.id}>
                         <TableRow>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
+                            <Typography variant="subtitle2" fontWeight={400}>
                               {index * FAQCategory.faqs.length + FAQIndex + 1}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
+                            <Typography variant="subtitle2" fontWeight={400}>
                               {FAQ.type}
                             </Typography>
                           </TableCell>
                           <TableCell>
                             <Typography
                               variant="subtitle2"
-                              fontWeight={600}
+                              fontWeight={400}
                               style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}
                             >
                               {FAQ.question == null ? <i>null</i> : FAQ.question}
@@ -119,7 +121,7 @@ const FAQss = () => {
                           <TableCell>
                             <Typography
                               variant="subtitle2"
-                              fontWeight={600}
+                              fontWeight={400}
                               style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}
                             >
                               {FAQ.answer == null ? <i>null</i> : FAQ.answer}

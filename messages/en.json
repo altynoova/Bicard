@@ -36,7 +36,8 @@
     "Articles": "Articles",
     "Vacancies": "Vacancies",
     "FAQs": "FAQs",
-    "Search": "Search"
+    "Search": "Search",
+    "Info":"For patients"
   },
   "Doctors": {
     "OurDoctors": "Meet our qualified doctors",
@@ -118,8 +119,7 @@
   "Services": {
     "Add Service": "Add Service",
     "Add Subservice": "Add Subservice",
-    "Services": "Services",
-    "Name": "Name",
+    "Articles": "Articles",
     "Edit": "Edit",
     "Delete": "Delete",
     "No subservices": "No subservices",
@@ -132,6 +132,8 @@
     "Loading...": "Loading...",
     "Save": "Save",
     "Select Service": "Select Service",
+    "Select author": "Select author",
+    "Vacancies": "Vacancies",
     "Roles": "Roles",
     "No result": "No result",
     "User": "User",
@@ -141,20 +143,24 @@
     "Services": "Services",
     "Feedback": "Feedback",
     "Name": "Name",
-    "Have you registered yet": "Have you registered yet?",
-    "Register here": "Register here",
-    "Your login": "Your login",
-    "Password": "Password",
-    "Remember me": "Remember me",
-    "Forgot your password?": "Forgot your password?",
-    "Registration": "Registration",
-    "Already have an account?": "Already have an account?",
-    "Confirm the password": "Confirm the password",
+    "Author": "Author",
+    "File": "File",
+    "Position": "Position",
+    "Info":"For patients",
+    "Content":"Content",
+    "Requirements": "Requirements",
+    "Description": "Description",
+    "FAQ": "Frequently asked Questions",
+    "Type": "Type",
+    "Question": "Question",
+    "Answer": "Answer",
     "Password mismatch": "Password mismatch",
     "Yes, I agree": "Yes, I agree",
     "Terms of Use": "Terms of Use",
     "Sign Up": "Sign Up",
     "Our Latest Blogs": "Our Latest Blogs",
-    "Latest Articles": "Latest Articles"
+    "Latest Articles": "Latest Articles",
+    "Title": "Title"
+
   }
 }

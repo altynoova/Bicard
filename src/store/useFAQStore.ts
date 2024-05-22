@@ -4,7 +4,8 @@ import {
   CreateFAQ,
   DeleteFAQ,
   EditFAQ,
-  FetchFAQs
+  FetchFAQs,
+  GetFAQ
 } from '@/libs/requests/FAQRequest';
 
 interface IFAQStore {
@@ -12,8 +13,9 @@ interface IFAQStore {
   currentFAQ: FAQ;
 
   fetchFAQs: () => void;
+  GetFAQ: (id: number) => Promise<any>;
   createFAQ: (data: FAQRequestModel) => Promise<number>;
-  editFAQ: (data: FAQRequestModel, id: number) => Promise<number>;
+  editFAQ: (id: number, data: FAQRequestModel) => Promise<number>;
   DeleteFAQ: (id: number) => Promise<number>;
 
 }
@@ -33,6 +35,11 @@ const useFAQStore = create<IFAQStore>((set) => ({
     set(() => ({ FAQList: response.data }))
     return response.status
   },
+  async GetFAQ(id) {
+    const response = await GetFAQ(id)
+    set(() => ({ currentFAQ: response.data }))
+    return response.data
+  },
 
   createFAQ: async (data: FAQRequestModel) => {
     try {
@@ -45,9 +52,9 @@ const useFAQStore = create<IFAQStore>((set) => ({
     }
   },
 
-  editFAQ: async (data: FAQRequestModel, id: number) => {
+  editFAQ: async (id: number, data: FAQRequestModel) => {
     try {
-      const response = await EditFAQ(data, id);
+      const response = await EditFAQ(id, data);
       set({ currentFAQ: response.data });
       return response.status;
     } catch (error) {

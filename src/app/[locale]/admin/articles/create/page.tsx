@@ -5,9 +5,12 @@ import useDoctorStore from '@/store/useDoctorStore';
 import { ArticleRequestModel } from '@/entities/Article';
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const Create = () => {
   const router = useRouter();
+  const t = useTranslations('Services')
+
   const { CreateArticle } = useArticleStore();
   const { doctors, FetchDoctors } = useDoctorStore();
 
@@ -32,7 +35,7 @@ const Create = () => {
     const status = await CreateArticle(data);
 
     if (status === 200) {
-      SuccessAlert('Данные успешно обновлены.');
+      SuccessAlert('Успешно');
       router.push('/admin/articles');
     } else {
       ErrorAlert('Произошла ошибка!');
@@ -54,26 +57,26 @@ const Create = () => {
                   <form id="contactForm" onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="name">
-                        Название
+                        {t('Name')}
                       </label>
                       <input
                         className="form-control"
                         id="name"
                         type="text"
-                        placeholder="Имя"
+                        placeholder={t('Name')}
                         value={title}
                         onChange={(event) => setTitle(event.target.value)}
                       />
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="File">
-                        File
+                      {t('File')}
                       </label>
                       <input
                         className="form-control"
                         id="File"
                         type="file"
-                        placeholder="Фото"
+                        placeholder={t('File')}
                         accept="application/pdf"
                         onChange={(event) =>
                           setFile(
@@ -84,7 +87,7 @@ const Create = () => {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="author">
-                        Автор
+                      {t('Author')}
                       </label>
                       <select
                         className="form-select"
@@ -94,7 +97,7 @@ const Create = () => {
                           setAuthorName(event.target.value)
                         }
                       >
-                        <option value="">Выберите автора</option>
+                        <option value="">{t('Select author')}</option>
                         {doctors.map((doctor) => (
                           <option key={doctor.id} value={doctor.name}>
                             {doctor.name}
@@ -106,7 +109,7 @@ const Create = () => {
                       <input
                         className="btn btn-primary"
                         type="submit"
-                        value={'Сохранить'}
+                        value={t('Save')}
                       />
                     </div>
                   </form>

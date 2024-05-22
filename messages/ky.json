@@ -35,7 +35,8 @@
     "Articles": "Макалалар",
     "Vacancies": "Вакансиялар",
     "FAQs": "Көп берилүүчү суроолор",
-    "Search": "Издөө"
+    "Search": "Издөө",
+    "Info":"Бейтаптар үчүн"
   },
   "Doctors": {
     "OurDoctors": "Биздин квалификациялуу дарыгерлер менен таанышыңыз",
@@ -58,12 +59,7 @@
     "Delete": "Өчүрүү",
     "User": "Колдонуучу",
     "Select user": "Колдонуучуну тандаңыз",
-    "Save": "Сактоо",
-    "Experience": "Тажрыйбасы",
-    "Add doctor": "Дарыгер кошуу",
-    "IMG": "Сүрөтү",
-    "Name": "Аты"
-
+    "Save": "Сактоо"
   },
   "Blogs": {
     "Blogs": "Блогдор",
@@ -122,7 +118,7 @@
   "Services": {
     "Add Service": "Кызмат кошуу",
     "Add Subservice": "Кошумча кызмат кошуу",
-    "Services": "Кызматтар",
+    "Articles": "Макалалар",
     "Name": "Аталышы",
     "Edit": "Өзгөртүү",
     "Delete": "Өчүрүү",
@@ -136,7 +132,11 @@
     "Loading...": "Жүктөлүүдө...",
     "Save": "Сактоо",
     "Select Service": "Кызматты тандаңыз",
+    "Select author": "Авторду тандаңыз",
+    "Vacancies": "Вакансиялар",
     "Roles": "Ролдор",
+    "Info":"Бейтаптар үчүн",
+    "Content":"Мазмуну",
     "No result": "Жыйынтык жок",
     "User": "Колдонуучу",
     "Online registration": "Онлайн катталуу",
@@ -147,19 +147,21 @@
     "Date": "Дата",
     "Message": "Сообщение",
     "Login": "Кирүү",
-    "Have you registered yet": "Каттала элексизби?",
-    "Register here": "Бул жерден катталыңыз",
-    "Your login": "Сиздин логиниңиз",
-    "Password": "Сырсөз",
-    "Remember me": "Эстеп кал",
-    "Forgot your password?": "Сыр сөзүңүздү унуттуңузбу?",
-    "Registration": "Катталуу",
-    "Already have an account?": "Катталган аккаунтуңуз барбы?",
-    "Confirm the password": "Confirm the password",
+    "Author": "Автор",
+    "File": "Файл",
+    "Position": "Позиция",
+    "Requirements": "Талаптар",
+    "Description": "Кошумча маалымат",
+    "FAQ": "Көп берилүүчү суроолор",
+    "Type": "Түрү",
+    "Question": "Суроо",
+    "Answer": "Жооп",
     "Password mismatch": "Сырсөз дал келбей калды",
     "Yes, I agree": "Ооба, мен макулмун",
     "Terms of Use": "Пайдалануу шарттары",
     "Sign Up": "Катталуу",
-    "Latest Articles": "Акыркы макалалар"
+    "Latest Articles": "Акыркы макалалар",
+    "Title": "Аталышы"
+
   }
 }

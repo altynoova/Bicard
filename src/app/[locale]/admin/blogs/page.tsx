@@ -118,7 +118,7 @@ const Blogs = () => {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="subtitle2" fontWeight={600}>
+                        <Typography variant="subtitle2" fontWeight={400}>
                           {Blog.title == null ? <i>null</i> : Blog.title}
                         </Typography>
                       </TableCell>
@@ -140,7 +140,7 @@ const Blogs = () => {
                           <Image width={150} height={150} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
                           <Typography
                             variant="subtitle2"
-                            fontWeight={600}
+                            fontWeight={400}
                             style={{ wordWrap: 'break-word', whiteSpace: 'pre-line'}}
                           >
                             {Blog.text}

@@ -4,10 +4,12 @@ import useFAQsStore from '@/store/useFAQStore'
 import { FAQRequestModel } from '@/entities/FAQ'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const Create = () => {
   const router = useRouter()
   const { createFAQ} = useFAQsStore()
+  const t = useTranslations('Services')
 
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('')
@@ -25,7 +27,7 @@ const Create = () => {
     const status = await createFAQ(data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/vacancies')
+      router.push('/admin/faqs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -41,33 +43,33 @@ const Create = () => {
                   <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                       <label className="form-label" htmlFor="name">
-                        Question
+                        {t('Type')}
                       </label>
                       <input
                         className="form-control"
                         id="name"
                         type="text"
-                        placeholder="Имя"
+                        placeholder={t('Type')}
                         data-sb-validations="required"
-                        value={question}
-                        onChange={(event) => setQuestion(event.target.value)}
+                        value={type}
+                        onChange={(event) => setType(event.target.value)}
                       />
                       <div
                         className="invalid-feedback"
                         data-sb-feedback="имя:required"
                       >
-                        Question is required.
+                        Type is required.
                       </div>
                     </div>
-                    <div className="mb-3">
+                  <div className="mb-3">
                       <label className="form-label" htmlFor="name">
-                        Question
+                        {t('Question')}
                       </label>
                       <input
                         className="form-control"
                         id="name"
                         type="text"
-                        placeholder="Имя"
+                        placeholder={t('Question')}
                         data-sb-validations="required"
                         value={question}
                         onChange={(event) => setQuestion(event.target.value)}
@@ -81,12 +83,12 @@ const Create = () => {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="bio">
-                        Answer
+                      {t('Answer')}
                       </label>
                       <textarea
                         className="form-control"
                         id="bio"
-                        placeholder="Описание"
+                        placeholder={t('Answer')}
                         style={{ height: '10rem' }}
                         data-sb-validations="required"
                         value={answer}
@@ -96,7 +98,7 @@ const Create = () => {
                         className="invalid-feedback"
                         data-sb-feedback="Описание:required"
                       >
-                        Requirements are required.
+                        Answer are required.
                       </div>
                     </div>
                     <div className="d-none" id="submitSuccessMessage">
@@ -119,7 +121,7 @@ const Create = () => {
                       <input
                         className="btn btn-primary"
                         type="submit"
-                        value={'Сохранить'}
+                        value={t('Save')}
                       />
                     </div>
                   </form>

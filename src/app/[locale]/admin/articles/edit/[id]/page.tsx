@@ -4,9 +4,12 @@ import useArticleStore from '@/store/useArticleStore'
 import { ArticleRequestModel } from '@/entities/Article'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
+  const t = useTranslations('Services')
+
   const GetCurrentArticle = useArticleStore((state) => state.GetArticle)
   const EditArticle = useArticleStore((state) => state.EditArticle)
   const currentArticle = useArticleStore((state) => state.currentArticle)
@@ -17,7 +20,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!File) {
-      // Display an error message and prevent form submission
       SuccessAlert('File is required.');
     }
     const data: ArticleRequestModel = {
@@ -30,8 +32,8 @@ const Edit = ({ params }: { params: { id: number } }) => {
     const status = await EditArticle(currentArticle?.id || 0, data)
     console.log("editactionarticle", data)
     if (status == 200) {
-      SuccessAlert('Данные успешно обновлены.')
-
+      SuccessAlert('Успешно')
+      GetCurrentArticle(params.id)
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -58,7 +60,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                      Title
+                      {t('Title')}
                     </label>
                     <input
                       className="form-control"
@@ -78,7 +80,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="bio">
-                      AuthorName
+                    {t('Author')}
                     </label>
                     <textarea
                       className="form-control"
@@ -93,14 +95,14 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="invalid-feedback"
                       data-sb-feedback="биография:required"
                     >
-                      AuthorName is required.
+                      Author is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="file">
-                      File
+                    {t('File')}
                     </label>
-                    <embed src={`https://localhost:7120/TempFileStorage/${currentArticle.filePath}#toolbar=0`} className="w-100" height={400} />
+                    <embed src={`https://localhost:7120/TempFileStorage/${File}#toolbar=0`} className="w-100" height={400} />
                     <input
                       className="form-control"
                       id="file"
@@ -139,7 +141,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     <input
                       className="btn btn-primary"
                       type="submit"
-                      value={'Сохранить'}
+                      value={t('Save')}
                     />
                   </div>
                 </form>

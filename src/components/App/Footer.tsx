@@ -5,7 +5,8 @@ import useFeedbackStore from '@/store/useFeedbackStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useTranslations } from 'next-intl'
 import useMedServicesStore from '@/store/useMedServicesStore'
-import router from 'next/router'
+import { useRouter } from 'next/navigation'
+import { GetCookie } from '@/libs/cookie'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -15,6 +16,9 @@ const Footer = () => {
   const t = useTranslations('Contact');
   const zzz = useMedServicesStore().GetAllSubMedServices
   const { allSubMedServices } = useMedServicesStore()
+  const router = useRouter()
+
+  const signed = GetCookie('Bicard-Web-API-Access-Token')
 
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,16 +27,16 @@ const Footer = () => {
       phone,
       message
     };
-
+    if (!signed) {
+      router.push('/signin');
+    }
     const responseStatus = await methodFeedbackCreate(feedbackData);
+
     console.log("responseStatus", responseStatus)
     if (responseStatus === 200) {
       SuccessAlert('Успешно!')
       setPhone('');
       setMessage('');
-    }
-    if (responseStatus === 401) {
-      router.push('/signin');
     }
     else {
       router.push('/signin');
@@ -102,11 +106,11 @@ const Footer = () => {
                 <div className="footer-quick">
                   <h3>{t('Services')}</h3>
                   <ul>
-                  {allSubMedServices.map((subservice) => (
-                    <li>
-                      <Link href="/service-details">{subservice.name}</Link>
-                    </li>
-                  ))}
+                    {allSubMedServices.map((subservice) => (
+                      <li>
+                        <Link href="/service-details">{subservice.name}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -149,7 +153,7 @@ const Footer = () => {
                     </div>
                     <div className="text-left">
                       <button type="submit" className="btn feedback-btn">
-                      {t('Send')}
+                        {t('Send')}
                       </button>
                     </div>
                   </form>

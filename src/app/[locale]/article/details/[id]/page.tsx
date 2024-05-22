@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import useArticleStore from '@/store/useArticleStore';
 import ArticleSidebar from '@/components/Blog/ArticleSideBar';
+import { url } from '@/config';
 
 const ArticleDetails = ({ params }: { params: { id: number } }) => {
   const { GetArticle, currentArticle, Articles, LatestArticles } = useArticleStore();
@@ -44,7 +45,7 @@ const ArticleDetails = ({ params }: { params: { id: number } }) => {
               <div className="blog-details-item">
                 <div className="blog-details-img">
                   <div style={{ margin: 20 }}>
-                    <embed src={`https://localhost:7120/TempFileStorage/${currentArticle.filePath}#toolbar=0`} className="w-100" height={700} />
+                    <embed src={`${url}/TempFileStorage/${currentArticle.filePath}#toolbar=0`} className="w-100" height={700} />
                   </div>
                   <h2>{currentArticle?.title}</h2>
                   <ul>

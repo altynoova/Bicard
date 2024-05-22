@@ -21,15 +21,13 @@ export const CreateVacancy = async (data: VacancyRequestModel) => {
   }
 }
 
-export const EditVacancy = async (data: VacancyRequestModel, id: number) => {
+export const EditVacancy = async (id: number, data: VacancyRequestModel) => {
+  console.log("VacancyRequest", data)
   try {
     return await $http({
       method: 'put',
       url: `/vacancies/update?id=${id}`,
-      data,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      data
     })
   } catch (error: any) {
     return error.status

@@ -4,12 +4,15 @@ import useUserStore from '@/store/useUserStore'
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { SelectChangeEvent } from '@mui/material';
+import { GetCookie, RemoveCookie } from '@/libs/cookie';
 
 const TopHeader = () => {
   const { user } = useUserStore();
+
+  const userName = GetCookie('userName')
+  const signed = GetCookie('Bicard-Web-API-Access-Token')
+
   const t = useTranslations('TopHeader');
-  const [signed, setSigned] = useState(false);
-  const [username, setUsername] = useState(user.userName);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
@@ -22,24 +25,22 @@ const TopHeader = () => {
     })
   };
 
-  useEffect(() => {
-    setSigned(!!user.accessToken);
-  }, [user.accessToken]);
-
-  useEffect(() => {
-    setUsername(user.userName);
-  }, [user.userName]);
-
-  const handleAuthentication = () => {
-    if (!signed) {
-      setUsername("");
-    }
+  const handleSignOut = () => {
+    RemoveCookie('Bicard-Web-API-Access-Token')
+    RemoveCookie('userId')
+    RemoveCookie('userRole')
+    RemoveCookie('userName')
+    router.push('/signin')
   }
 
   // Function to handle language change
   // const changeLanguage = (locale: string) => {
   //   setLocale(locale); // Call setLocale with the desired locale
   // }
+
+  useEffect(() => {
+    console.log(signed);
+  }, [])
 
   return (
     <>
@@ -51,13 +52,13 @@ const TopHeader = () => {
                 <div className="header-top-left">
                   <ul>
                     <li>
-                      {signed ? (
-                        <a href="/signout" onClick={handleAuthentication}>
+                      {!!signed ? (
+                        <a href="#" onClick={handleSignOut}>
                           <i className="icofont-user"></i>
-                          {username}
+                          {userName}
                         </a>
                       ) : (
-                        <a href="/signin" onClick={handleAuthentication}>
+                        <a href="/signin">
                           <i className="icofont-user"></i>
                           {t('Login')}
                         </a>
@@ -79,7 +80,6 @@ const TopHeader = () => {
                       <a href="https://2gis.kg/bishkek/firm/70000001022019440?m=74.604169%2C42.838768%2F16" target="_blank">
                         <i className="icofont-location-pin"></i>
                         {t('Street')}
-                        
                       </a>
                     </li>
                   </ul>

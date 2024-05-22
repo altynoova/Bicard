@@ -26,7 +26,7 @@ const data = [
   { link: '/admin/articles', label: 'Articles', icon: '' },
   { link: '/admin/vacancies', label: 'Vacancies', icon: '' },
   { link: '/admin/faqs', label: "FAQs", icon: '' },
-
+  { link: '/admin/infos', label: "Info", icon: '' }
 
 ]
 

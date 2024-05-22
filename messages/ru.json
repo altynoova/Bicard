@@ -34,7 +34,8 @@
     "Latest Articles": "Статьи",
     "Vacancies": "Вакансии",
     "FAQs": "Часто задаваемые вопросы",
-    "Search": "Поиск"
+    "Search": "Поиск",
+    "Info":"Пациентам"
   },
   "Doctors": {
     "OurDoctors": "Познакомьтесь с нашими квалифицированными врачами",
@@ -57,14 +58,7 @@
     "Delete": "Удалить",
     "User": "Пользователь",
     "Select user": "Выберите пользователя",
-    "Save": "Сохранить",
-    "Education": "Образование",
-    "Experience": "Опыт",
-    "Add doctor": "Добавить доктора",
-    "IMG": "Фото",
-    "Name": "Имя"
-
-    
+    "Save": "Сохранить"   
   },
   "Blogs": {
     "Blogs": "Блоги",
@@ -122,7 +116,7 @@
   "Services": {
     "Add Service": "Добавить услугу",
     "Add Subservice": "Добавить подуслугу",
-    "Services": "Услуги",
+    "Articles": "Статьи",
     "Name": "Название",
     "Edit": "Изменить",
     "Delete": "Удалить",
@@ -135,7 +129,11 @@
     "IMG": "Фото",
     "Loading...": "Загрузка...",
     "Save": "Сохранить",
+    "Info":"Пациентам",
+    "Content":"Содержание",
     "Select Service": "Выберите услугу",
+    "Select author": "Выберите автора",
+    "Vacancies": "Вакансии",
     "Roles": "Роли",
     "No result": "Нет результата",
     "User": "Пользователь",
@@ -147,19 +145,20 @@
     "Date": "Дата",
     "Message": "Сообщение",
     "Login": "Войти",
-    "Have you registered yet": "Вы еще не зарегистрировались?",
-    "Register here": "Зарегистрируйтесь здесь",
-    "Your login": "Ваш логин",
-    "Password": "Пароль",
-    "Remember me": "Запомнить меня",
-    "Forgot your password?": "Забыли пароль?",
-    "Registration": "Регистрация",
-    "Already have an account?": "Уже есть аккаунт?",
-    "Confirm the password": "Confirm the password",
+    "Author": "Автор",
+    "File": "Файл",
+    "Position": "Позиция",
+    "Requirements": "Требования",
+    "Description": "Описание",
+    "FAQ": "Часто задаваемые вопросы",
+    "Type": "Тип",
+    "Question": "Вопрос",
+    "Answer": "Ответ",
     "Password mismatch": "Пароли не совпадают",
     "Yes, I agree": "Да, я согласен",
     "Terms of Use": "Условия использования",
     "Sign Up": "Зарегистрироваться",
-    "Latest Articles": "Последние статьи"
+    "Latest Articles": "Последние статьи", 
+    "Title": "Заголовок"
   }
 }

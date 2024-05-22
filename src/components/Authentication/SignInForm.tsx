@@ -36,13 +36,16 @@ const SignInForm = () => {
 
     console.log(data)
 
-    const responseStatus = await methodSignIn(data)
+    const response = await methodSignIn(data)
 
-    if (responseStatus === 200) {
+    if (response.status === 200 && response.data.roleName !== 'admin') {
       SuccessAlert('Вы вошли в свой аккаунт!')
       router.push('/about');
+    } else if (response.status === 200 && response.data.roleName === 'admin') {
+      SuccessAlert('Поздравляем. Вы админ!')
+      router.push('/admin');
     }
-    else if (responseStatus === 500) {
+    else if (response.status === 500) {
       ErrorAlert('Ошибка на стороне сервера')
     }
     else {
@@ -70,8 +73,8 @@ const SignInForm = () => {
                 <div className="signup-head">
                   <h2>{t('Login')}</h2>
                   <p>
-                  {t('Have you registered yet')}
-                   {' '}
+                    {t('Have you registered yet')}
+                    {' '}
                     <Link href="/signup">{t('Register here')}</Link>
                   </p>
                 </div>
@@ -154,7 +157,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="text-center">
                           <button type="submit" className="btn signup-btn">
-                          {t('Login')}
+                            {t('Login')}
                           </button>
                         </div>
                       </div>
