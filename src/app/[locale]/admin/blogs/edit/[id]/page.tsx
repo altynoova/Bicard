@@ -4,6 +4,9 @@ import useBlogStore from '@/store/useBlogStore'
 import { BlogRequestModel } from '@/entities/Blog'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import { url } from '@/config'
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
@@ -11,27 +14,27 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const EditBlog = useBlogStore((state) => state.EditBlog)
   const currentBlog = useBlogStore((state) => state.currentBlog)
 
-  const [title, setTitle] = useState<string>(currentBlog?.title || '')
-  const [id, setId] = useState<number>(currentBlog?.id || 0)
-  const [text, setText] = useState<string>(
-    currentBlog?.text || ''
-  )
-  const [authorId, setAuthorId] = useState<string>(currentBlog?.authorId || '1')
+  const [title, setTitle] = useState<string>('')
+  const [id, setId] = useState<number>(0)
+  const [text, setText] = useState<string>('')
+  const [authorId, setAuthorId] = useState<string>('1')
   const [photo, setPhoto] = useState<File | null>(null)
+  const [photoPath, setPhotoPath] = useState<string>('')
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
-      id,
       title,
       text,
       authorId,
       photo
     }
 
-    const status = await EditBlog(data, currentBlog?.id || 0)
+    const status = await EditBlog(data, id)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
+      router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -43,6 +46,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     setTitle(response.title)
     setText(response.text)
     setAuthorId(response.authorId)
+    setPhotoPath(response.photoPath)
   }
 
   useEffect(() => {
@@ -78,34 +82,15 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="bio">
-                      Text
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="bio"
-                      placeholder="Text"
-                      style={{ height: '10rem' }}
-                      data-sb-validations="required"
-                      value={text}
-                      onChange={(event) => setText(event.target.value)}
-                    ></textarea>
-                    <div
-                      className="invalid-feedback"
-                      data-sb-feedback="биография:required"
-                    >
-                      Text is required.
-                    </div>
-                  </div>
-                  <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
-                    <div>
-                      <img
-                        src={`data:image/png;base64, ${currentBlog.photoPath}`} height={400} width={500}
-                        alt=""
-                      />
+                    <div style={{margin:20}}>
+                      {photo ? (
+                        <img src={URL.createObjectURL(photo)} height={400} width={500} alt="New Photo" />
+                      ) : (
+                        photoPath && <img src={`${url}/TempFileStorage/${photoPath}`} height={400} width={500} alt="Current Photo" />
+                      )}
                     </div>
                     <input
                       className="form-control"
@@ -113,15 +98,29 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       type="file"
                       placeholder="Фото"
                       data-sb-validations="required"
-                      onChange={(event) =>
-                        setPhoto(event.target.files && event.target.files[0])
-                      }
+                      onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
                     />
                     <div
                       className="invalid-feedback"
                       data-sb-feedback="номерТелефона:required"
                     >
                       Номер телефона is required.
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="text">
+                      Text
+                    </label>
+                    <ReactQuill
+                      value={text}
+                      onChange={setText}
+                      style={{ height: '20rem' }}
+                    />
+                    <div
+                      className="invalid-feedback"
+                      data-sb-feedback="Text is required"
+                    >
+                      Text is required.
                     </div>
                   </div>
                   <div className="d-none" id="submitSuccessMessage">

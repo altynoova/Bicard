@@ -6,6 +6,7 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl'
+import { url } from '@/config'
 
 
 const Edit = ({ params }: { params: { id: number } }) => {
@@ -29,6 +30,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     currentDoctor?.experience || ''
   )
   const [photo, setPhoto] = useState<File | null>(null)
+  const [photoPath, setPhotoPath] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>(
     currentDoctor?.phoneNumber || ''
   )
@@ -65,7 +67,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     GetUsersByRole('Doctor')
     setName(response.name)
     setSpeciality(response.speciality)
-    setPhoto(response.photoBase64)
+    setPhotoPath(response.pathToPhoto)
     setBio(response.bio)
     setEducation(response.education)
     setExperience(response.experience)
@@ -88,7 +90,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                    {t('DoctorsName')}
+                      {t('DoctorsName')}
                     </label>
                     <input
                       className="form-control"
@@ -108,7 +110,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="speciality">
-                    {t('Speciality')}
+                      {t('Speciality')}
                     </label>
                     <input
                       className="form-control"
@@ -128,7 +130,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="bio">
-                    {t('Biography')}
+                      {t('Biography')}
                     </label>
                     <textarea
                       className="form-control"
@@ -148,7 +150,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="education">
-                    {t('Education')}
+                      {t('Education')}
                     </label>
                     <input
                       className="form-control"
@@ -168,7 +170,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="experience">
-                    {t('Experience')}
+                      {t('Experience')}
                     </label>
                     <input
                       className="form-control"
@@ -188,13 +190,14 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                    {t('IMG')}
+                      {t('IMG')}
                     </label>
-                    <div style={{marginBottom:20}}>
-                      <img
-                        src={`data:image/png;base64, ${photo}`} height={300} width={400}
-                        alt=""
-                      />
+                    <div style={{margin:20}}>
+                      {photo ? (
+                        <img src={URL.createObjectURL(photo)} height={400} width={500} alt="New Photo" />
+                      ) : (
+                        photoPath && <img src={`${url}/TempFileStorage/${photoPath}`} height={400} width={500} alt="Current Photo" />
+                      )}
                     </div>
                     <input
                       className="form-control"
@@ -202,20 +205,18 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       type="file"
                       placeholder={t('IMG')}
                       data-sb-validations="required"
-                      onChange={(event) =>
-                        setPhoto(event.target.files && event.target.files[0])
-                      }
+                      onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
                     />
                     <div
                       className="invalid-feedback"
                       data-sb-feedback="Photo is required"
                     >
-                     Photo is required.
+                      Photo is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="phoneNumber">
-                    {t('PhoneNumber')}
+                      {t('PhoneNumber')}
                     </label>
                     <input
                       className="form-control"
@@ -235,7 +236,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="email">
-                    {t('Email')}
+                      {t('Email')}
                     </label>
                     <input
                       className="form-control"
@@ -261,7 +262,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="address">
-                    {t('Address')}
+                      {t('Address')}
                     </label>
                     <input
                       className="form-control"

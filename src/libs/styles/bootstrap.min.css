@@ -7165,6 +7165,7 @@ fieldset:disabled .btn {
 }
 .d-grid {
   display: grid !important;
+  margin-top: 50px;
 }
 .d-table {
   display: table !important;

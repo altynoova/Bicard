@@ -30,7 +30,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     speciality: '',
     education: '',
     experience: '',
-    photoBase64: '',
+    pathToPhoto: '',
     phoneNumber: '',
     email: '',
     address: '',
@@ -47,6 +47,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
 
   async GetDoctor(id) {
     const response = await GetDoctor(id)
+    console.log("Doctor", response.data)
     set(() => ({ currentDoctor: response.data }))
     return response.data
   },

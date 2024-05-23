@@ -25,8 +25,8 @@ const testimonials = () => {
 
       <div className="privacy-area ptb-100">
         <div className="container">
-        {filteredInfos.map((info) => (
-          <><h2>{info.id} {info.title}</h2><div dangerouslySetInnerHTML={{ __html: info.content }}></div></>
+        {filteredInfos.map((info, index) => (
+          <div style={{margin:20}}><h2>{index+1}. {info.title}</h2><div dangerouslySetInnerHTML={{ __html: info.content }}></div></div>
         ))}
         </div>
       </div>

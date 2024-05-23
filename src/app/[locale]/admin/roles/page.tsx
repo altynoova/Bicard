@@ -24,7 +24,8 @@ const Page = () => {
   const deleteRole = async (roleName: string) => {
     const response = await RemoveRole(roleName)
     if (response === 200) {
-      SuccessAlert('Роль удалена')
+      SuccessAlert('Успешно')
+      GetRoles();
     } else {
       ErrorAlert('Произошла ошибка')
     }

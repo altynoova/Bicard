@@ -9,6 +9,7 @@ import CommentForm from '@/components/Blog/CommentForm'
 import BlogSidebar from '@/components/Blog/BlogSidebar'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl'
+import { url } from '@/config'
 
 const BlogDetails = ({ params }: { params: { id: number } }) => {
   const { GetBlog, currentBlog } = useBlogStore()
@@ -34,7 +35,7 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
             <div className="col-lg-8">
               <div className="blog-details-item">
                 <div className="blog-details-img">
-                <Image width={100} height={300} src={`data:image/png;base64, ${currentBlog.photoPath}`} alt="Blog" />
+                <img width={150} height={400} src={`${url}/TempFileStorage/${currentBlog.photoPath}`} alt={currentBlog.title}/>
                   <h2>
                     {currentBlog?.title}
                   </h2>

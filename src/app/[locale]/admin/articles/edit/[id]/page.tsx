@@ -5,6 +5,7 @@ import { ArticleRequestModel } from '@/entities/Article'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { url } from '@/config'
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
@@ -16,6 +17,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
   const [title, setTitle] = useState<string>('');
   const [File, setFile] = useState<File | null>(null);
+  const [FilePath, setFilePath] = useState<File | null>(null);
   const [authorName, setAuthorName] = useState<string>('');
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -33,7 +35,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     console.log("editactionarticle", data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      GetCurrentArticle(params.id)
+      router.push('/admin/articles')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -42,7 +44,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
   async function init() {
     const response = await GetCurrentArticle(params.id)
     setTitle(response.title)
-    setFile(response.filePath)
+    setFilePath(response.filePath)
     setAuthorName(response.authorName)
   }
 
@@ -79,30 +81,36 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="bio">
-                    {t('Author')}
+                    <label className="form-label" htmlFor="author">
+                      {t('Author')}
                     </label>
-                    <textarea
+                    <input
                       className="form-control"
-                      id="bio"
-                      placeholder="Text"
-                      style={{ height: '10rem' }}
+                      id="author"
+                      type="text"
+                      placeholder="title"
                       data-sb-validations="required"
                       value={authorName}
                       onChange={(event) => setAuthorName(event.target.value)}
-                    ></textarea>
+                    />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="биография:required"
+                      data-sb-feedback="Author is required"
                     >
                       Author is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="file">
-                    {t('File')}
+                      {t('File')}
                     </label>
-                    <embed src={`https://localhost:7120/TempFileStorage/${File}#toolbar=0`} className="w-100" height={400} />
+                    <div style={{margin:20}}>
+                      {File ? (
+                        <embed src={URL.createObjectURL(File)+ `#toolbar=0`} className="w-100" height={400}  />
+                      ) : (
+                        FilePath && <embed src={`${url}/TempFileStorage/${FilePath}#toolbar=0`} className="w-100" height={400} />
+                      )}
+                    </div>
                     <input
                       className="form-control"
                       id="file"

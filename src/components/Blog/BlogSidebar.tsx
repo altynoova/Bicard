@@ -4,6 +4,7 @@ import useBlogStore from '@/store/useBlogStore'
 import Image from 'next/image';
 import useMedServicesStore from '@/store/useMedServicesStore';
 import { useTranslations } from 'next-intl';
+import { url } from '@/config';
 const BlogSidebar = () => {
   const LatestBlogs = useBlogStore().LatestBlogs
   const zzz = useMedServicesStore().GetAllSubMedServices
@@ -36,8 +37,7 @@ const BlogSidebar = () => {
           <ul>
             {filteredBlogs.map((blog) => (
               <li>
-
-                <Image width={100} height={300} src={`data:image/png;base64, ${blog.photoPath}`} alt="Blog" />
+                <img width={100} height={300} src={`${url}/TempFileStorage/${blog.photoPath}`} alt={blog.title} />
                 <Link href={`/blog/details/${blog.id}`}>{blog.title}</Link>
                 <ul>
                   <li>
@@ -91,11 +91,11 @@ const BlogSidebar = () => {
         <div className="blog-details-tags">
           <h3>{t('Tags')}</h3>
           <ul>
-          {allSubMedServices.map((subservice) => (
-            <li>
-              <Link href="/services/">{subservice.name}</Link>
-            </li>
-          ))}
+            {allSubMedServices.map((subservice) => (
+              <li>
+                <Link href="/services/">{subservice.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

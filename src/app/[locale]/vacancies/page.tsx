@@ -23,8 +23,8 @@ const PrivacyPolicy = () => {
       <div className="blog-area-two pt-100 pb-70">
         <div className="container">
           <div className="row justify-content-center"></div>
-          <h2>Вакансии</h2>
-          <p>В настоящий момент мы рассматриваем кандидатов на следующие вакансии:</p>
+          <h2>{t('Vacancies')}</h2>
+          <p>{t('VacanciesWeNeed')}</p>
           {Vacancies.map((vacancy) => (
             <div className="col-md-6 col-lg-8">
               <div className="vacancy-card">
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                   <p><strong> {t('Description:')}  </strong> {vacancy.description}</p>
                 </div>
                 <div style={{display:'flex', justifyContent:'space-between', margin:20 }}>
-                  <p><strong>{t('Date:')} </strong></p>
+                  <p><strong>{t('Date')} </strong></p>
                   <div>
                     {new Date(vacancy.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                   </div>

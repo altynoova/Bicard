@@ -7,6 +7,7 @@ import useDoctorStore from '@/store/useDoctorStore'
 import useUserStore from '@/store/useUserStore'
 import { useTranslations } from 'next-intl'
 import LatestArticles from '@/components/Common/LatestArticles'
+import { url } from '@/config'
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
   const { GetDoctor, currentDoctor } = useDoctorStore()
   const t = useTranslations('Doctors');
@@ -30,12 +31,8 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-lg-5">
               <div className="doctor-details-item doctor-details-left">
-                <Image
-                  width={250}
-                  height={400}
-                  src={`data:image/png;base64, ${currentDoctor?.photoBase64}`}
-                  alt="Doctor"
-                />
+              <img width={250} height={400} src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`} alt={currentDoctor.name}/>
+
                 <div className="doctor-details-contact">
                   <h3>{t('Contacts')}</h3>
                   <ul>

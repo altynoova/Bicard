@@ -2,7 +2,7 @@ import { $http } from '../axios'
 import { ForPatientsRequestModel } from '@/entities/ForPatients'
 
 export const FetchForPatientss = async () => {
-  return await $http.get(`/Infos/get`)
+  return await $http.get(`/Infos/getall`)
 }
 
 export const CreateForPatients = async (data: ForPatientsRequestModel) => {

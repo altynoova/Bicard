@@ -15,7 +15,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
 
   const router = useRouter()
   const t = useTranslations('Services')
-  
+
   const [name, setName] = useState(currentMedService.name)
   const [shortDescription, setShortDescription] = useState(
     currentMedService.shortDescription
@@ -35,7 +35,8 @@ const EditService = ({ params }: { params: { id: number } }) => {
     )
     if (response === 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/services')
+      GetMedServiceById(params.id);
+      setLoading(false)
     } else {
       ErrorAlert('Произошла ошибка')
     }
@@ -87,7 +88,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                  {t('Short Description')}
+                    {t('Short Description')}
                   </label>
                   <input
                     type="text"
@@ -101,7 +102,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                  {t('Detailed Description')}
+                    {t('Detailed Description')}
                   </label>
                   <TextField
                     type="text"

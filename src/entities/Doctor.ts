@@ -5,7 +5,7 @@ export type Doctor = {
   speciality: string;
   education: string;
   experience: string;
-  photoBase64: string;
+  pathToPhoto: string;
   phoneNumber: string;
   email: string;
   address: string;

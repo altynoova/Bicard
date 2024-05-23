@@ -22,6 +22,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { url } from '@/config';
 
 const Doctors = () => {
   const t = useTranslations('Doctors')
@@ -155,12 +156,7 @@ const Doctors = () => {
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={600}>
-                          <Image
-                            width={50}
-                            height={50}
-                            src={`data:image/png;base64, ${doctor.photoBase64}`}
-                            alt={doctor.name}
-                          />
+                        <img width={150} height={100} src={`${url}/TempFileStorage/${doctor.pathToPhoto}`} alt={doctor.name} />
                         </Typography>
                       </TableCell>
                       <TableCell>

@@ -4,16 +4,24 @@ import useBlogStore from '@/store/useBlogStore'
 import { BlogRequestModel } from '@/entities/Blog'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import { GetCookie } from '@/libs/cookie'
+
 
 const Create = () => {
   const router = useRouter()
+  const signed = GetCookie('Bicard-Web-API-Access-Token')
+  const userid = GetCookie('userId')|| ''
   const { CreateBlog } = useBlogStore()
 
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
-  const [authorId, setAuthorId] = useState<string>('1')
+  const [authorId, setAuthorId] = useState<string>(userid)
   const [photo, setPhoto] = useState<File | null>(null)
-
+  if (!signed) {
+    router.push('/signin')
+  }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -21,13 +29,12 @@ const Create = () => {
       title,
       text,
       photo,
-      authorId 
+      authorId,
     }
 
     const status = await CreateBlog(data)
-    console.log("In view ",data)
     if (status == 200) {
-      SuccessAlert('Данные успешно обновлены.')
+      SuccessAlert('Успешно')
       router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
@@ -42,7 +49,7 @@ const Create = () => {
               <div className="Blog-details-right">
                 <div className="container pb-1 my-5">
                   <form id="contactForm" onSubmit={handleSubmit}>
-                    <div className="mb-3">
+                    <div className="mb-4">
                       <label className="form-label" htmlFor="name">
                         Название
                       </label>
@@ -62,27 +69,7 @@ const Create = () => {
                         Title is required.
                       </div>
                     </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="bio">
-                        Текст
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="bio"
-                        placeholder="Описание"
-                        style={{ height: '10rem' }}
-                        data-sb-validations="required"
-                        value={text}
-                        onChange={(event) => setText(event.target.value)}
-                      ></textarea>
-                      <div
-                        className="invalid-feedback"
-                        data-sb-feedback="Описание:required"
-                      >
-                        Text is required.
-                      </div>
-                    </div>
-                    <div className="mb-3">
+                    <div className="mb-4">
                       <label className="form-label" htmlFor="photo">
                         Фото
                       </label>
@@ -97,6 +84,23 @@ const Create = () => {
                         }
                       />
                     </div>
+                    <div className="mb-4">
+                      <label className="form-label" htmlFor="bio">
+                        Текст
+                      </label>
+                      <ReactQuill
+                        value={text}
+                        onChange={setText}
+                        style={{ height: '20rem' }}
+                      />
+                      <div
+                        className="invalid-feedback"
+                        data-sb-feedback="Описание:required"
+                      >
+                        Text is required.
+                      </div>
+                    </div>
+
                     <div className="d-none" id="submitSuccessMessage">
                       <div className="text-center mb-3">
                         <div className="fw-bolder">

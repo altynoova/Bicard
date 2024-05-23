@@ -4,6 +4,7 @@ import Link from 'next/link'
 import useBlogStore from '@/store/useBlogStore'
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { url } from '@/config';
 const LatestBlogPost = () => {
   const LatestBlogs = useBlogStore().LatestBlogs
   const { Blogs } = useBlogStore()
@@ -28,7 +29,7 @@ const LatestBlogPost = () => {
               <div className="blog-item">
                 <div className="blog-top">
                  <Link href={`/blog/details/${blog.id}`}>
-                 <Image width={100} height={300} src={`data:image/png;base64, ${blog.photoPath}`} alt="Blog" />
+                 <img width={100} height={300} src={`${url}/TempFileStorage/${blog.photoPath}`} alt={blog.title}/>
                   </Link>
                 </div>
                 <div className="blog-bottom">

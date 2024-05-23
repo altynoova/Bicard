@@ -7,6 +7,7 @@ import useDoctorStore from '@/store/useDoctorStore'
 import useUserStore from '@/store/useUserStore'
 import { useTranslations } from 'next-intl'
 import useSpecialityStore from '@/store/useSpecialityStore'
+import { url } from '@/config'
 
 const Doctors = () => {
   const FetchDoctors = useDoctorStore().FetchDoctors
@@ -74,7 +75,7 @@ const Doctors = () => {
                 <div className="doctor-search-item">
                   <div className="form-group">
                     <i className="icofont-hospital"></i>
-                    <label>{t('Specialty')}</label>
+                    <label>{t('Speciality')}</label>
                     <select
                       className="form-control"
                       value={selectedSpeciality}
@@ -102,8 +103,7 @@ const Doctors = () => {
               <div key={doctor.id} className="col-sm-6 col-lg-4">
                 <div className="doctor-item">
                   <div className="doctor-top">
-                  <Image width={100} height={300} src={`data:image/png;base64, ${doctor.photoBase64}`} alt="Blog" />
-
+                  <img width={100} height={300} src={`${url}/TempFileStorage/${doctor.pathToPhoto}`} alt={doctor.name}/>
                   </div>
                   <div className="doctor-bottom">
                     <h3>

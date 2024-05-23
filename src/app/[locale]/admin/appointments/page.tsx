@@ -54,6 +54,7 @@ const Appointments = () => {
     const status = await ConfirmAppointment(id, data)
     if (status == 200) {
       SuccessAlert('Successfully deleted')
+      GetAllAppointments();
     } else {
       ErrorAlert('Произошла ошибка!')
     }

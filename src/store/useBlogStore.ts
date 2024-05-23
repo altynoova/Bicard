@@ -49,7 +49,7 @@ const useBlogStore = create<IBlogStore>()((set) => ({
 
   async FetchBlogs(pagesize, pagenumber ) {
     const response = await FetchBlogs(pagesize, pagenumber )
-    console.log(response)
+    console.log("Blogs", response.data)
     set(() => ({ Blogs: response.data }))
     return response.status
   },
@@ -60,27 +60,25 @@ const useBlogStore = create<IBlogStore>()((set) => ({
   },
   async GetBlog(id) {
     const response = await GetBlog(id)
+    console.log("Blog", response.data)
     set(() => ({ currentBlog: response.data }))
     return response.data
   },
 
   async CreateBlog(data) {
     const response = await CreateBlog(data)
-    console.log("data in create blog", response)
     set(() => ({ currentBlog: response.data }))
     return response.status
   },
 
   async EditBlog(data, id) {
     const response = await EditBlog(data, id)
-    console.log(response)
     set(() => ({ currentBlog: response.data }))
     return response.status
   },
 
   async DeleteBlog(id) {
     const response = await DeleteBlog(id)
-    console.log(response)
     if (response.status == 200) {
       set((state) => ({ Blogs: state.Blogs.filter(d => d.id != id) }))
     }

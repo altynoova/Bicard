@@ -43,7 +43,7 @@ const SignInForm = () => {
       router.push('/about');
     } else if (response.status === 200 && response.data.roleName === 'admin') {
       SuccessAlert('Поздравляем. Вы админ!')
-      router.push('/admin');
+      router.push('/admin/appointments');
     }
     else if (response.status === 500) {
       ErrorAlert('Ошибка на стороне сервера')

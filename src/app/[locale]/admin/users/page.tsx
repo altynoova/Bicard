@@ -29,7 +29,8 @@ const Users = ({ ...props }: Config) => {
   const handleAssignRole = async (userName: string) => {
     const response = await AssignRole({ roleName, userName })
     if (response.status === 200) {
-      SuccessAlert('Роль успешно задана')
+      SuccessAlert('Успешно')
+      GetRoles()
     } else {
       ErrorAlert('Произошла ошибка')
     }

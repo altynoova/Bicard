@@ -28,7 +28,8 @@ const EditService = ({ params }: { params: { id: number } }) => {
     )
     if (response === 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/services')
+      GetSubMedServiceById(params.id)
+      setLoading(false)
     } else {
       ErrorAlert('Произошла ошибка')
     }
@@ -67,7 +68,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 <h3>{t('Edit')}</h3>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                  {t('Name')}
+                    {t('Name')}
                   </label>
                   <input
                     type="text"
@@ -79,7 +80,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                  {t('Price')}
+                    {t('Price')}
                   </label>
                   <input
                     type="text"

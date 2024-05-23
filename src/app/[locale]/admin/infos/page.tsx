@@ -17,7 +17,7 @@ import useInfoStore from '@/store/useInfoStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import EditIcon from '@mui/icons-material/Edit'
-import router from 'next/router'
+import router, { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { info } from 'console'
 
@@ -25,7 +25,7 @@ import { info } from 'console'
 const Infos = () => {
   const { FetchInfos, DeleteInfo, Infos } = useInfoStore();
   const t = useTranslations('Services')
-
+  const router = useRouter()
   const [openInfos, setOpenInfos] = useState<boolean[]>(Array(Infos.length).fill(false)); // Array to track the collapse/expand state of each Info
 
   const filteredInfos = Infos.filter(
@@ -131,7 +131,7 @@ const Infos = () => {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/vacancies/edit/${Info.id}`}>
+                        <Link href={`/admin/infos/edit/${Info.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>

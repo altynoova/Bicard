@@ -22,6 +22,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { url } from '@/config';
+
 
 
 const Blogs = () => {
@@ -134,16 +136,16 @@ const Blogs = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
+                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between", maxWidth:200 }} colSpan={6} >
                         <Collapse in={openBlogs[index]} timeout="auto" unmountOnExit>
-                          <div style={{display:"flex", justifyContent:"center"}}>
-                          <Image width={150} height={150} src={`data:image/png;base64, ${Blog.photoPath}`} alt="Блог" />
+                          <div style={{display:"flex", justifyContent:"center", margin:'0 100px'}}>
+                          <img width={200} height={200} src={`${url}/TempFileStorage/${Blog.photoPath}`} alt="Блог" />
                           <Typography
                             variant="subtitle2"
                             fontWeight={400}
-                            style={{ wordWrap: 'break-word', whiteSpace: 'pre-line'}}
+                            style={{margin: '0 70px'}}
                           >
-                            {Blog.text}
+                            <div dangerouslySetInnerHTML={{ __html: Blog.text }}></div>
                           </Typography>
                           </div>
                         </Collapse>

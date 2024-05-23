@@ -72,7 +72,7 @@ const Article = () => {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell />
+                <TableCell style={{ width: 50 }}></TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
                     №
@@ -154,9 +154,11 @@ const Article = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell style={{ paddingBottom: 0, paddingTop: 0, display:"flex", justifyContent:"space-between" }} colSpan={6} >
+                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
                         <Collapse in={openArticle[index]} timeout="auto" unmountOnExit>
-                        <embed src={`https://localhost:7120/TempFileStorage/${Article.filePath}#toolbar=0`} className="w-100" height={300} />
+                          <Box sx={{ margin: 1 }}>
+                            <embed src={`https://localhost:7120/TempFileStorage/${Article.filePath}#toolbar=0`} width="100%" height={500} />
+                          </Box>
                         </Collapse>
                       </TableCell>
                     </TableRow>

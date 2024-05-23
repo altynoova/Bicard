@@ -46,6 +46,7 @@
     "DoctorsName": "Doctor's name",
     "Doctors": "Doctors",
     "Speciality": "Speciality",
+    "AllSpecialities": "All Specialities",
     "Contacts": "Contacts",
     "WorkHours": "Working hours",
     "Biography": "Biography",
@@ -60,6 +61,7 @@
     "Delete": "Delete",
     "User": "User",
     "Select user": "Select user",
+    "Latest Articles": "Latest Articles",
     "Save": "Save"
     
   },
@@ -77,6 +79,9 @@
     "Edit": "Edit",
     "Delete": "Delete",
     "Latest Articles": "Latest Articles",
+    "Date": "Date",
+    "Vacancies": "Vacancies",
+    "VacanciesWeNeed":"We are currently considering candidates for the following vacancies:",
     "Title": "Title"
 
   },
@@ -146,7 +151,7 @@
     "Author": "Author",
     "File": "File",
     "Position": "Position",
-    "Info":"For patients",
+    "Infos":"For patients",
     "Content":"Content",
     "Requirements": "Requirements",
     "Description": "Description",
