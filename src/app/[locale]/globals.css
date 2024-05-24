@@ -28,6 +28,14 @@ body {
    text-overflow: ellipsis;
    max-height: 3em;
 }
+.service-wrap {
+  display: -webkit-box;
+ -webkit-line-clamp: 10;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ max-height: 18em;
+}
 #gridContainer {
     height: 450px;
   }

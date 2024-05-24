@@ -311,10 +311,6 @@
         top: -40px;
     }
 
-    .video-item .video-content {
-        margin-top: 30px;
-        padding-left: 25px;
-    }
 
     .video-item .video-content:before {
         top: 5px;
@@ -325,8 +321,8 @@
     .video-item .video-content h3 {
         font-size: 22px;
         margin-bottom: 16px;
+        z-index: 1000;
     }
-
     .video-wrap .nav-pills .nav-link.active,
     .video-wrap .nav-pills .show > .nav-link {
         border-top: 2px solid #4d93e9;
@@ -2090,7 +2086,8 @@
 
     .video-item .video-content h3 {
         font-size: 26px;
-        margin-bottom: 20px;
+        margin-bottom: 60px;
+        z-index: 1000;
     }
 
     .video-wrap .video-nav .video-nav-item {

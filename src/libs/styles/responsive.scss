@@ -338,22 +338,7 @@ $black-color: #111111;
       position: relative;
       top: -40px;
     }
-
-    .video-content {
-      margin-top: 30px;
-      padding-left: 25px;
-
-      &:before {
-        top: 5px;
-        width: 4px;
-        height: 65px;
-      }
-
-      h3 {
-        font-size: 22px;
-        margin-bottom: 16px;
-      }
-    }
+    margin-top: 100;
   }
   .video-wrap .nav-pills .nav-link.active,
   .video-wrap .nav-pills .show > .nav-link {

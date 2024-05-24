@@ -8,10 +8,14 @@
     "Select a service": "Select a service",
     "Send a message": "Send a message",
     "Beds": "Beds",
-    "Patients": "Happy patients",
+    "Happy Patients": "Happy patients",
     "Employees": "Employees",
-    "Years of experience": "Years of experience"
-    
+    "Years of experience": "Years of experience",
+    "Hospital Introduction":"Hospital Introduction",
+    "Reception":"Reception",
+    "Treatment":"Treatment",
+    "Patients": "Patients",
+    "Apparatuses": "Apparatuses"
   },
   "TopHeader": {
     "Login": "Login",
@@ -82,7 +86,8 @@
     "Date": "Date",
     "Vacancies": "Vacancies",
     "VacanciesWeNeed":"We are currently considering candidates for the following vacancies:",
-    "Title": "Title"
+    "Title": "Title",
+    "Articles": "Articles"
 
   },
   "Contact": {

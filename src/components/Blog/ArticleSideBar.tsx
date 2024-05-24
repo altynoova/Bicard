@@ -16,7 +16,7 @@ const ArticleSidebar = () => {
     <>
       <div className="blog-details-item">
         <div className="blog-details-recent">
-          <h3>{t('Recent Articles')}</h3>
+          <h3>{t('Latest Articles')}</h3>
           <ul>
             {filteredArticles.map((article) => (
               <li>

@@ -90,22 +90,14 @@ const TopHeader = () => {
             <div className="col-sm-4 col-lg-3">
               <div className="header-top-item">
                 <div className="header-top-right">
-                  <select value={locale} onChange={handleChange}>
-                    <option value="en"> {t('English')}</option>
-                    <option value="ru">{t('Russian')}</option>
-                    <option value="ky">{t('Kyrgyz')}</option>
-                  </select>
-                  {/* <ul className="lang-list">
-                    <li>
-                      <button onClick={() => changeLanguage('ru')}>RU</button>
-                    </li>
-                    <li>
-                      <button onClick={() => changeLanguage('kg')}>KG</button>
-                    </li>
-                    <li>
-                      <button onClick={() => changeLanguage('en')}>EN</button>
-                    </li>
-                  </ul> */}
+                  <div className="select-container">
+                    <select value={locale} onChange={handleChange}>
+                      <option value="en">{t('English')}</option>
+                      <option value="ru">{t('Russian')}</option>
+                      <option value="ky">{t('Kyrgyz')}</option>
+                    </select>
+                  </div>
+
 
                   <ul>
                     <li>

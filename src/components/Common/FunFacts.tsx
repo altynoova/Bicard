@@ -3,6 +3,8 @@ import React from 'react'
 
 const FunFacts = () => {
   const t = useTranslations('About');
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience = currentYear - 2016;
   return (
     <>
       <div className="counter-area counter-bg counter-area-four">
@@ -22,7 +24,7 @@ const FunFacts = () => {
                 <h3>
                   <span className="counter">25000</span>+
                 </h3>
-                <p>{t('Patients')}</p>
+                <p>{t('Happy Patients')}</p>
               </div>
             </div>
 
@@ -37,7 +39,7 @@ const FunFacts = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-badge"></i>
-                <h3 className="counter">7</h3>
+                <h3 className="counter">{yearsOfExperience}</h3>
                 <p>{t('Years of experience')} </p>
               </div>
             </div>

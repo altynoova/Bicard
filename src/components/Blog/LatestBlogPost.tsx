@@ -38,9 +38,7 @@ const LatestBlogPost = () => {
                       {blog.title}
                     </Link>
                   </h3>
-                  <p className='text-wrap'>
-                    {blog.text}
-                  </p>
+                  <div className='text-wrap' dangerouslySetInnerHTML={{ __html: blog.text }}></div>
                   <ul>
                     <li>
                       <Link href={`/blog/details/${blog.id}`}>

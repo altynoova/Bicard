@@ -8,10 +8,14 @@
     "Select a service": "Кызматты тандаңыз",
     "Send a message": "Билдирүү жөнөтүңүз",
     "Beds": "Орун",
-    "Patients": "Бактылуу бейтаптар",
+    "Happy Patients": "Бактылуу бейтаптар",
     "Employees": "Кызматкерлер",
-    "Years of experience": "Жылдык тажрыйба"
-
+    "Years of experience": "Жылдык тажрыйба",
+    "Hospital Introduction":"Биздин клиника",
+    "Reception":"Кабыл алуу",
+    "Treatment":"Дарылоо", 
+    "Patients": "Бейтаптар",
+    "Apparatuses": "Аппараттар"
   },
   "TopHeader": {
     "Login": "Кирүү",
@@ -77,6 +81,7 @@
     "Edit": "Өзгөртүү",
     "Delete": "Өчүрүү",
     "Latest Articles": "Акыркы макалалар",
+    "Articles": "Макалалар",
     "Date": "Дата",
     "Vacancies": "Вакансиялар",
     "VacanciesWeNeed":"Төмөнкү вакансияларга талапкерлерди карап жатабыз:",

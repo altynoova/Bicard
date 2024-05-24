@@ -43,7 +43,9 @@ const Blog = () => {
                       <i className="icofont-calendar"></i> {new Date(article.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                     </li>
                   </ul>
+                  <hr></hr>
                 </li>
+                
               ))
               }
             </ul>

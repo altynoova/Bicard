@@ -1,10 +1,13 @@
 'use client'
+import { url } from '@/config'
+import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 const VideoIntro = () => {
   const [isOpen, setOpen] = useState(false)
+  const t = useTranslations('About');
 
   const openModal = () => {
     setOpen(true)
@@ -20,46 +23,11 @@ const VideoIntro = () => {
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="video-item">
-                      <div
-                        onClick={() => setOpen(true)}
-                        className="popup-youtube"
-                      >
-                        <i className="icofont-ui-play"></i>
+                      <div className="video-wrapper">
+                        <video controls autoPlay loop muted
+                          src={`${url}/TempFileStorage/video/1.mov`}
+                        />
                       </div>
-
-                      <div className="video-content">
-                        <h3>Hospital Introduction</h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Quis ipsum suspendisse ultrices
-                          gravida. Risus commodo viverra maecenas accumsan lacus
-                          vel facilisis.{' '}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-
-          <TabPanel>
-            <div className="video-area">
-              <div className="d-table">
-                <div className="d-table-cell">
-                  <div className="container">
-                    <div className="video-item">
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault()
-                          openModal()
-                        }}
-                        className="popup-youtube"
-                      >
-                        <i className="icofont-ui-play"></i>
-                      </div>
-
                       <div className="video-content">
                         <h3>About Our Pharmacy</h3>
                         <p>
@@ -83,23 +51,19 @@ const VideoIntro = () => {
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="video-item">
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault()
-                          openModal()
-                        }}
-                        className="popup-youtube"
-                      >
-                        <i className="icofont-ui-play"></i>
+                      <div className="video-wrapper">
+                        <video controls autoPlay loop muted
+                          src={`${url}/TempFileStorage/video/2.mov`}
+                        />
                       </div>
                       <div className="video-content">
-                        <h3>Our reasearch center and lab</h3>
+                        <h3>About Our Pharmacy</h3>
                         <p>
-                          But I must explain to you how all this mistaken idea
-                          of denouncing pleasure and praising pain was born and
-                          I will give you a complete account of the system, and
-                          expound the actual teachings of the great explorer of
-                          the truth, the master
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, totam
+                          rem aperiam, eaque ipsa quae ab illo inventore
+                          veritatis et quasi architecto beatae vitae dicta sunt
+                          explicabo. Nemo enim ipsam voluptatem.
                         </p>
                       </div>
                     </div>
@@ -115,23 +79,19 @@ const VideoIntro = () => {
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="video-item">
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault()
-                          openModal()
-                        }}
-                        className="popup-youtube"
-                      >
-                        <i className="icofont-ui-play"></i>
+                      <div className="video-wrapper">
+                        <video controls autoPlay loop muted
+                          src={`${url}/TempFileStorage/video/3.mov`}
+                        />
                       </div>
                       <div className="video-content">
-                        <h3>CCU & ICU</h3>
+                        <h3>About Our Pharmacy</h3>
                         <p>
-                          At vero eos et accusamus et iusto odio dignissimos
-                          ducimus qui blanditiis praesentium voluptatum deleniti
-                          atque corrupti quos dolores et quas molestias
-                          excepturi sint occaecati cupiditate non provident,
-                          similique sunt in culpa qui officia.
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, totam
+                          rem aperiam, eaque ipsa quae ab illo inventore
+                          veritatis et quasi architecto beatae vitae dicta sunt
+                          explicabo. Nemo enim ipsam voluptatem.
                         </p>
                       </div>
                     </div>
@@ -147,23 +107,47 @@ const VideoIntro = () => {
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="video-item">
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault()
-                          openModal()
-                        }}
-                        className="popup-youtube"
-                      >
-                        <i className="icofont-ui-play"></i>
+                      <div className="video-wrapper">
+                        <video controls autoPlay loop muted
+                          src={`${url}/TempFileStorage/video/4.mov`}
+                        />
                       </div>
                       <div className="video-content">
-                        <h3>Our Doctors</h3>
+                        <h3>About Our Pharmacy</h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Quis ipsum suspendisse ultrices
-                          gravida. Risus commodo viverra maecenas accumsan lacus
-                          vel facilisis.{' '}
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, totam
+                          rem aperiam, eaque ipsa quae ab illo inventore
+                          veritatis et quasi architecto beatae vitae dicta sunt
+                          explicabo. Nemo enim ipsam voluptatem.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabPanel>
+
+          <TabPanel>
+            <div className="video-area">
+              <div className="d-table">
+                <div className="d-table-cell">
+                  <div className="container">
+                    <div className="video-item">
+                      <div className="video-wrapper">
+                        <video controls autoPlay loop muted
+                          src={`${url}/TempFileStorage/video/5.mov`}
+                        />
+                      </div>
+                      <div className="video-content">
+                        <h3>About Our Pharmacy</h3>
+                        <p>
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, totam
+                          rem aperiam, eaque ipsa quae ab illo inventore
+                          veritatis et quasi architecto beatae vitae dicta sunt
+                          explicabo. Nemo enim ipsam voluptatem.
                         </p>
                       </div>
                     </div>
@@ -174,11 +158,11 @@ const VideoIntro = () => {
           </TabPanel>
 
           <TabList>
-            <Tab>Hospital Introduction</Tab>
-            <Tab>Pharmacy</Tab>
-            <Tab>Reasearch & Lab</Tab>
-            <Tab>CCU & ICU</Tab>
-            <Tab>Doctors</Tab>
+            <Tab>{t('Hospital Introduction')}</Tab>
+            <Tab>{t('Reception')}</Tab>
+            <Tab>{t('Treatment')}</Tab>
+            <Tab>{t('Patients')}</Tab>
+            <Tab>{t('Apparatuses')}</Tab>
           </TabList>
         </Tabs>
       </div>

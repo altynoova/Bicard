@@ -4607,32 +4607,55 @@ li:first-child {
   .vacancy-card-content p strong {
     font-weight: bold;
   }
-  .header-top .dropdown-menu {
-    display: none; /* Hide the dropdown by default */
+  /* Style for the select element */
+/* Style for the select element */
+select {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a6f8a;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    text-decoration:solid;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the select dropdown arrow */
+select::after {
+    content: '▼';
     position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-  }
-  
-  .header-top li:hover .dropdown-menu {
-    display: block; /* Show the dropdown on hover */
-  }
-  
-  .header-top .dropdown-menu li {
-    padding: 12px 16px;
-    text-align: left;
-  }
-  
-  .header-top .dropdown-menu li a {
-    color: black;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .header-top .dropdown-menu li a:hover {
-    background-color: #ddd;
-  }
-  
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #4a6f8a;
+}
+
+/* Container for select to ensure the arrow appears */
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.video-wrapper video {
+    max-width: 70%;
+    max-height: 80%;
+    object-fit: cover;
+}
+
+
 /*# sourceMappingURL=style.css.map */

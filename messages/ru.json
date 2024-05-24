@@ -8,9 +8,14 @@
     "Select a service": "Выберите услугу",
     "Send a message": "Отправьте сообщение",
     "Beds": "Коек",
-    "Patients": "Счастливых пациентов",
+    "Happy Patients": "Счастливых пациентов",
     "Employees": "Сотрудников",
-    "Years of experience": "Лет опыта"
+    "Years of experience": "Лет опыта",
+    "Hospital Introduction":"Наша клиника",
+    "Reception":"Приемная",
+    "Treatment":"Лечение",
+    "Patients": "Пациенты",
+    "Apparatuses": "Аппараты"
   },
   "TopHeader": {
     "Login": "Войти",
@@ -76,6 +81,7 @@
     "Edit": "Изменить",
     "Delete": "Удалить",
     "Latest Articles": "Последние статьи",
+    "Articles": "Статьи",
     "Date": "Дата",
     "Vacancies": "Вакансии",
     "VacanciesWeNeed":"В настоящий момент мы рассматриваем кандидатов на следующие вакансии:",
