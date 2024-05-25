@@ -4,7 +4,7 @@ import { $http } from '@/libs/axios'
 
 interface IScheduleStore {
   schedules: Schedule[]
-  daysOfWeek: { name: string }[]
+  daysOfWeek: { name: string, id:number, time:string }[]
   GetEmployeeScheduleById: (id: number) => Promise<number>
   CreateSchedule: (data: ScheduleModel) => Promise<number>
   UpdateSchedule: (data: ScheduleModel, id: number) => Promise<number>
@@ -15,13 +15,13 @@ interface IScheduleStore {
 const useScheduleStore = create<IScheduleStore>()((set) => ({
   schedules: [],
   daysOfWeek: [
-    { name: 'Понедельник' },
-    { name: 'Вторник' },
-    { name: 'Среда' },
-    { name: 'Четверг' },
-    { name: 'Пятница' },
-    { name: 'Суббота' },
-    { name: 'Воскресенье' },
+    { name: 'Monday', id:1, time: "08:30 - 17:00" },
+    { name: 'Tuesday', id:2, time: "08:30 - 17:00" },
+    { name: 'Wednesday', id:2 , time: "08:30 - 17:00"},
+    { name: 'Thursday', id:3 , time: "08:30 - 17:00"},
+    { name: 'Friday', id:4, time: "08:30 - 17:00" },
+    { name: 'Saturday', id:5, time: "08:30 - 13:00"},
+    { name: 'Sunday' , id:0, time: "- "},
   ],
 
   ResetSchedules() {
@@ -29,13 +29,14 @@ const useScheduleStore = create<IScheduleStore>()((set) => ({
   },
 
   async GetEmployeeScheduleById(id) {
-    const response = await $http.get(`/schedules/getemployeeschedulebyid/${id}`)
+    console.log("GetEmployeeScheduleById:", id)
+    const response = await $http.get(`/doctors/GetWorkingHours?id=${id}`)
     set(() => ({ schedules: response.data }))
     return response.status
   },
 
   async CreateSchedule(data) {
-    const response = await $http.post('/schedules/create/', data)
+    const response = await $http.post('/appointments/createschedule/', data)
     // set((state) => ({ roles: response.data }))
     return response.status
   },

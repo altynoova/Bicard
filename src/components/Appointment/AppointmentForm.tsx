@@ -9,6 +9,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import useAppointmentsStore from '@/store/useAppointmentsStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import { useTranslations } from 'next-intl'
+import useScheduleStore from '@/store/useSchedulesStore'
 
 interface IAppointmentForm {
   doctorId: number
@@ -17,13 +19,15 @@ interface IAppointmentForm {
 const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
   const { CreateAppointment } = useAppointmentsStore()
   const { GetAllSubMedServices, allSubMedServices } = useMedServicesStore()
-
+  const t = useTranslations('Doctors');
+  const { daysOfWeek } = useScheduleStore()
   const [name, setName] = useState<string>('')
   const [age, setAge] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [subMedServiceId, setSubMedServiceId] = useState(0)
   const [timeAtSchedule, setTimeAtSchedule] = useState<Dayjs | null>(dayjs('2022-04-17T15:30'))
+  const filtereddays = daysOfWeek.filter(day=>day.id)
 
   const handleSubmit = async () => {
     const data: CreateAppointmentModel = {
@@ -137,29 +141,15 @@ const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
         <div className="col-lg-5">
           <div className="appointment-item-two-right">
             <div className="appointment-item-content">
-              <h2>Часы работы</h2>
+              <h2>{t('WorkHours')}</h2>
               <ul>
-                <li>
-                  Понедельник <span>9:00 AM - 8:00 PM</span>
-                </li>
-                <li>
-                  Вторние <span>9:00 AM - 8:00 PM</span>
-                </li>
-                <li>
-                  Среда <span>9:00 AM - 8:00 PM</span>
-                </li>
-                <li>
-                  Четверг <span>9:00 AM - 8:00 PM</span>
-                </li>
-                <li>
-                  Пятница <span>9:00 AM - 8:00 PM</span>
-                </li>
-                <li>
-                  Суббота <span>9:00 AM - 5:00 PM</span>
-                </li>
-                <li>
-                  Воскресенье <span>9:00 AM - 5:00 PM</span>
-                </li>
+                {filtereddays.map((day) => (
+                  <>
+                    <li>
+                      {t(day.name)} <span>{day.time}</span>
+                    </li>
+                  </>
+                ))}
               </ul>
             </div>
           </div>

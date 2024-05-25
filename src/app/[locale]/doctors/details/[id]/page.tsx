@@ -8,13 +8,16 @@ import useUserStore from '@/store/useUserStore'
 import { useTranslations } from 'next-intl'
 import LatestArticles from '@/components/Common/LatestArticles'
 import { url } from '@/config'
+import useScheduleStore from '@/store/useSchedulesStore'
 const DoctorsDetails = ({ params }: { params: { id: number } }) => {
   const { GetDoctor, currentDoctor } = useDoctorStore()
   const t = useTranslations('Doctors');
   const { user } = useUserStore()
-
+  const { daysOfWeek, schedules, GetEmployeeScheduleById } = useScheduleStore()
   useEffect(() => {
     GetDoctor(params.id)
+    GetEmployeeScheduleById(params.id)
+    daysOfWeek
   }, [])
 
   return (
@@ -31,7 +34,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-lg-5">
               <div className="doctor-details-item doctor-details-left">
-              <img width={250} height={400} src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`} alt={currentDoctor.name}/>
+                <img width={250} height={400} src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`} alt={currentDoctor.name} />
 
                 <div className="doctor-details-contact">
                   <h3>{t('Contacts')}</h3>
@@ -52,18 +55,17 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                   <div className="appointment-item-two-right">
                     <div className="appointment-item-content">
                       <ul>
-                        <li>
-                          Monday <span>9:00 AM - 8:00 PM</span>
-                        </li>
-                        <li>
-                          Tuesday <span>9:00 AM - 8:00 PM</span>
-                        </li>
-                        <li>
-                          Wednesday <span>9:00 AM - 8:00 PM</span>
-                        </li>
-                        <li>
-                          Sunday <span>9:00 AM - 8:00 PM</span>
-                        </li>
+                        {schedules.map((d) => {
+                          const day = daysOfWeek.find(day => day.id == d.dayOfWeek);
+                          if (day) {
+                            return (
+                              <li key={d.id}>
+                                {t(day.name)} <span>{d.startTime} - {d.endTime}</span>
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
                       </ul>
                     </div>
                   </div>
@@ -103,10 +105,6 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="pb-100">
-        <AppointmentForm doctorId={params.id} />
       </div>
       <LatestArticles />
     </div>

@@ -8,37 +8,40 @@ import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { LocalizationProvider, TimePicker } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { useTranslations } from 'next-intl'
 
 const CreateSchedule = () => {
   const router = useRouter()
+  const t = useTranslations('Services')
+
 
   const { daysOfWeek, CreateSchedule } = useScheduleStore()
   const { FetchDoctors, doctors } = useDoctorStore()
 
-  const [name, setName] = useState<string>()
+  const [dayOfWeek, setDayOfWeek] = useState<number | undefined>(undefined)
   const [startTime, setStartTime] = useState<Dayjs | null>(null)
   const [endTime, setEndTime] = useState<Dayjs | null>(null)
-  const [employeeId, setEmployeeId] = useState<number | undefined>(undefined)
+  const [doctorId, setDoctorId] = useState<number | undefined>(undefined)
 
   const handleCreate = async () => {
-    if (name == undefined || startTime == null || endTime == null || employeeId == undefined) return
+    if (dayOfWeek == undefined || startTime == null || endTime == null || doctorId == undefined) return
 
     const response = await CreateSchedule({
-      name,
+      dayOfWeek,
       startTime: dayjs(startTime).format('HH:mm'),
       endTime: dayjs(endTime).format('HH:mm'),
-      employeeId,
+      doctorId,
     })
 
     console.log({
-      name,
+      dayOfWeek,
       startTime: startTime.format('HH:mm'),
       endTime: endTime.format('HH:mm'),
-      employeeId,
+      doctorId,
     })
 
     if (response === 200) {
-      SuccessAlert('Schedule успешно создана')
+      SuccessAlert('Успешно')
       router.push('/admin/schedules')
     } else {
       ErrorAlert('Произошла ошибка')
@@ -55,34 +58,34 @@ const CreateSchedule = () => {
         <div style={{ maxWidth: '700px', minWidth: '400px', minHeight: '300px' }}>
           <div className="mb-3">
             <InputLabel id="service-simple-select-label">
-              Select day of week
+              {t('Day of week')}
             </InputLabel>
             <Select
               labelId="service-simple-select-label"
               size="medium"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              value={dayOfWeek}
+              onChange={(event) => setDayOfWeek(event.target.value as number)}
               sx={{ width: '100%' }}
             >
               <MenuItem disabled value={undefined}>
                 None
               </MenuItem>
               {daysOfWeek.map((d) => (
-                <MenuItem key={d.name} value={d.name}>
-                  {d.name}
+                <MenuItem key={d.name} value={d.id}>
+                  {t(d.name)}
                 </MenuItem>
               ))}
             </Select>
           </div>
           <div className="mb-3">
             <InputLabel id="service-simple-select-label">
-              Select doctor
+              {t('DoctorsName')}
             </InputLabel>
             <Select
               labelId="service-simple-select-label"
               size="medium"
-              value={employeeId}
-              onChange={(event) => setEmployeeId(event.target.value as number)}
+              value={doctorId}
+              onChange={(event) => setDoctorId(event.target.value as number)}
               sx={{ width: '100%' }}
             >
               <MenuItem disabled value={undefined}>
@@ -97,7 +100,7 @@ const CreateSchedule = () => {
           </div>
           <div className="mb-3">
             <InputLabel id="doctor-simple-select-label">
-              Select schedule startTime
+              {t('Start time')}
             </InputLabel>
             <TimePicker
               sx={{ width: '100%' }}
@@ -108,7 +111,7 @@ const CreateSchedule = () => {
           </div>
           <div className="mb-3">
             <InputLabel id="doctor-simple-select-label">
-              Select schedule endTime
+              {t('End time')}
             </InputLabel>
             <TimePicker
               sx={{ width: '100%' }}
@@ -123,7 +126,7 @@ const CreateSchedule = () => {
             className="btn btn-primary"
             onClick={handleCreate}
           >
-            Создать
+            {t('Save')}
           </button>
         </div>
       </div>

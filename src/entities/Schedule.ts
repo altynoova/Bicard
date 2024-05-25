@@ -1,9 +1,9 @@
 export type Schedule = {
   id: number
-  name: string
+  dayOfWeek: number
   startTime: string
   endTime: string
-  employeeId: number
+  doctorId: number
 }
 
 export type ScheduleModel = Omit<Schedule, 'id'>

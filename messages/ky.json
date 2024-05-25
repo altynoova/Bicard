@@ -33,7 +33,7 @@
     "Contacts": "Байланышуу",
     "Appointments":"Катталуулар",
     "Roles": "Ролдор",
-    "Users": "Пользователи",
+    "Users": "Колдонуучулар",
     "Feedbacks": "Пикирлер",
     "Schedule": "Дарыгерлердин графиги",
     "Articles": "Макалалар",
@@ -52,6 +52,7 @@
     "AllSpecialities": "Бардык адистиктер",
     "Contacts": "Байланышуу",
     "WorkHours": "Жумуш убактысы",
+    "WorkHours clinic": "Клиниканын жумуш убактысы",
     "Biography": "Өмүр баяны",
     "Education": "Билими",
     "Experience": "Тажрыйбасы",
@@ -65,7 +66,15 @@
     "User": "Колдонуучу",
     "Select user": "Колдонуучуну тандаңыз",
     "Latest Articles": "Акыркы макалалар",
-    "Save": "Сактоо"
+    "Save": "Сактоо",
+    "Monday": "Дүйшөмбү",
+    "Tuesday": "Шейшемби",
+    "Wednesday": "Шаршемби",
+    "Thursday":"Бейшемби",
+    "Friday":"Жума",
+    "Saturday": "Ишемби",
+    "Sunday":"Жекшемби",
+    "Make an appointment":"Жазылуу"
   },
   "Blogs": {
     "Blogs": "Блогдор",
@@ -143,6 +152,7 @@
     "Save": "Сактоо",
     "Select Service": "Кызматты тандаңыз",
     "Select author": "Авторду тандаңыз",
+    "Select doctor": "Докторду тандаңыз",
     "Vacancies": "Вакансиялар",
     "Roles": "Ролдор",
     "Infos":"Бейтаптар үчүн",
@@ -171,7 +181,18 @@
     "Terms of Use": "Пайдалануу шарттары",
     "Sign Up": "Катталуу",
     "Latest Articles": "Акыркы макалалар",
-    "Title": "Аталышы"
+    "Title": "Аталышы",
+    "Day of week":"Аптанын күнү",
+    "Start time":"Башталышы",
+    "DoctorsName": "Дарыгердин аты",
+    "End time":"Аякташы",
+    "Monday": "Дүйшөмбү",
+    "Tuesday": "Шейшемби",
+    "Wednesday": "Шаршемби",
+    "Thursday":"Бейшемби",
+    "Friday":"Жума",
+    "Saturday": "Ишемби",
+    "Sunday":"Жекшемби"
 
   }
 }

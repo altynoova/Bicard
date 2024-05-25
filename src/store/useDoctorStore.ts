@@ -15,6 +15,7 @@ interface IDoctorStore {
   userReferences: { id: number, userName: string }[]
   FetchDoctors: () => void;
   GetDoctor: (id: number) => Promise<any>;
+  
   CreateDoctor: (data: DoctorRequestModel) => Promise<number>;
   EditDoctor: (data: DoctorRequestModel, id: number) => Promise<number>;
   DeleteDoctor: (id: number) => Promise<number>;

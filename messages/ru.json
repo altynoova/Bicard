@@ -52,7 +52,7 @@
     "AllSpecialities": "Все специальности",
     "Contacts": "Контакты",
     "WorkHours": "Рабочие часы",
-    "Biography": "Биография",
+    "WorkHours clinic": "Рабочие часы клиники",
     "Education": "Образование",
     "Experience": "Опыт",
     "Add doctor": "Добавить доктора",
@@ -65,7 +65,15 @@
     "User": "Пользователь",
     "Select user": "Выберите пользователя",
     "Latest Articles": "Последние статьи",
-    "Save": "Сохранить"   
+    "Save": "Сохранить",
+    "Monday": "Понедельник",
+    "Tuesday": "Вторник",
+    "Wednesday": "Среда",
+    "Thursday":"Четверг",
+    "Friday ":"Пятница",
+    "Saturday": "Суббота",
+    "Sunday":"Воскресенье",
+    "Make an appointment":"Записаться на приём"   
   },
   "Blogs": {
     "Blogs": "Блоги",
@@ -144,6 +152,7 @@
     "Content":"Содержание",
     "Select Service": "Выберите услугу",
     "Select author": "Выберите автора",
+    "Select doctor": "Выберите доктора",
     "Vacancies": "Вакансии",
     "Roles": "Роли",
     "No result": "Нет результата",
@@ -170,6 +179,17 @@
     "Terms of Use": "Условия использования",
     "Sign Up": "Зарегистрироваться",
     "Latest Articles": "Последние статьи", 
-    "Title": "Заголовок"
+    "Title": "Заголовок",
+    "Day of week":"День недели",
+    "Start time":"Время начала",
+    "DoctorsName": "Имя доктора",
+    "End time":"Время окончания",
+    "Monday": "Понедельник",
+    "Tuesday": "Вторник",
+    "Wednesday": "Среда",
+    "Thursday":"Четверг",
+    "Friday ":"Пятница",
+    "Saturday": "Суббота",
+    "Sunday":"Воскресенье"
   }
 }

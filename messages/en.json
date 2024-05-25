@@ -53,6 +53,7 @@
     "AllSpecialities": "All Specialities",
     "Contacts": "Contacts",
     "WorkHours": "Working hours",
+    "WorkHours clinic": "Clinic working hours",
     "Biography": "Biography",
     "Education": "Education",
     "Experience": "Experience",
@@ -66,7 +67,15 @@
     "User": "User",
     "Select user": "Select user",
     "Latest Articles": "Latest Articles",
-    "Save": "Save"
+    "Save": "Save",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday":"Thursday",
+    "Friday ":"Friday",
+    "Saturday": "Saturday",
+    "Sunday":"Sunday",
+    "Make an appointment":"Make an appointment"
     
   },
   "Blogs": {
@@ -143,6 +152,7 @@
     "Save": "Save",
     "Select Service": "Select Service",
     "Select author": "Select author",
+    "Select doctor": "Select doctor",
     "Vacancies": "Vacancies",
     "Roles": "Roles",
     "No result": "No result",
@@ -170,7 +180,18 @@
     "Sign Up": "Sign Up",
     "Our Latest Blogs": "Our Latest Blogs",
     "Latest Articles": "Latest Articles",
-    "Title": "Title"
+    "Title": "Title",
+    "Day of week":"Day of week",
+    "Start time":"Start time",
+    "DoctorsName": "Doctor's name",
+    "End time":"End time",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday":"Thursday",
+    "Friday ":"Friday",
+    "Saturday": "Saturday",
+    "Sunday":"Sunday"
 
   }
 }
