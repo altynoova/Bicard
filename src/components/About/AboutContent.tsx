@@ -18,7 +18,7 @@ useEffect(() => {
             <div className="col-lg-6">
               <div className="about-item">
                 <div className="about-left">
-                  <img src="/images/about1.png" alt="About" />
+                  <img src="/images/about41.png" alt="About" />
                 </div>
               </div>
             </div>
