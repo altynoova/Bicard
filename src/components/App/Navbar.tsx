@@ -172,17 +172,7 @@ const Navbar = () => {
                           className={`nav-link ${currentPath == '/privacy-policy/' && 'active'
                             }`}
                         >
-                          Privacy Policy
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/terms-condition/"
-                          className={`nav-link ${currentPath == '/terms-condition/' && 'active'
-                            }`}
-                        >
-                          Terms & Conditions
+                          Certificates
                         </Link>
                       </li>
                     </ul>

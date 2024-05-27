@@ -4656,6 +4656,29 @@ select::after {
     max-height: 80%;
     object-fit: cover;
 }
-
+.certificate-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .certificate-card img {
+    border-radius: 8px;
+  }
+  
+  .certificate-card-title {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .certificates-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
 /*# sourceMappingURL=style.css.map */

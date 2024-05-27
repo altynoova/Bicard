@@ -9,6 +9,9 @@ import Services from '@/components/HomeOne/Services'
 import { useTranslations } from 'next-intl'
 import VideoIntro from '@/components/Common/VideoIntro'
 import NewsletterForm from '@/components/Common/NewsletterForm'
+import Page from '../admin/roles/page'
+import DepartmentsCard from '@/components/Departments/DepartmentsCard'
+import CertificatesGallery from '@/components/Common/CertificatesGallery'
 
 const About = () => {
   const t = useTranslations('About');
@@ -27,6 +30,7 @@ const About = () => {
       <OurExpertise />
       <Services />
       <LatestBlogPost />
+      <CertificatesGallery />
       <TestimonialSlider />
     </div>
   )

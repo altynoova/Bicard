@@ -28,16 +28,6 @@ const VideoIntro = () => {
                           src={`${url}/TempFileStorage/video/1.mov`}
                         />
                       </div>
-                      <div className="video-content">
-                        <h3>About Our Pharmacy</h3>
-                        <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo. Nemo enim ipsam voluptatem.
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -55,16 +45,6 @@ const VideoIntro = () => {
                         <video controls autoPlay loop muted
                           src={`${url}/TempFileStorage/video/2.mov`}
                         />
-                      </div>
-                      <div className="video-content">
-                        <h3>About Our Pharmacy</h3>
-                        <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo. Nemo enim ipsam voluptatem.
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -84,16 +64,6 @@ const VideoIntro = () => {
                           src={`${url}/TempFileStorage/video/3.mov`}
                         />
                       </div>
-                      <div className="video-content">
-                        <h3>About Our Pharmacy</h3>
-                        <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo. Nemo enim ipsam voluptatem.
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -112,16 +82,6 @@ const VideoIntro = () => {
                           src={`${url}/TempFileStorage/video/4.mov`}
                         />
                       </div>
-                      <div className="video-content">
-                        <h3>About Our Pharmacy</h3>
-                        <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo. Nemo enim ipsam voluptatem.
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -139,16 +99,6 @@ const VideoIntro = () => {
                         <video controls autoPlay loop muted
                           src={`${url}/TempFileStorage/video/5.mov`}
                         />
-                      </div>
-                      <div className="video-content">
-                        <h3>About Our Pharmacy</h3>
-                        <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo. Nemo enim ipsam voluptatem.
-                        </p>
                       </div>
                     </div>
                   </div>

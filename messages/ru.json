@@ -15,6 +15,7 @@
     "Reception":"Приемная",
     "Treatment":"Лечение",
     "Patients": "Пациенты",
+    "Certificates": "Сертификаты",
     "Apparatuses": "Аппараты"
   },
   "TopHeader": {
@@ -39,7 +40,9 @@
     "Latest Articles": "Статьи",
     "Vacancies": "Вакансии",
     "FAQs": "Часто задаваемые вопросы",
+    "Certificates": "Сертификаты",
     "Search": "Поиск",
+    "IMG": "Фото",
     "Info":"Пациентам"
   },
   "Doctors": {
