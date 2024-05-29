@@ -25,6 +25,7 @@ const useAppointmentsStore = create<IAppointmentsStore>()((set) => ({
 
   async CreateAppointment(data) {
     const response = await $http.post('/appointments/create', data)
+    console.log(response)
     return response.status
   },
 

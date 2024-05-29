@@ -13,7 +13,6 @@ export type CreateAppointmentModel = {
   name: string
   email: string
   phoneNumber: string
-  subMedServiceId: number
   doctorId: number
   age: string
   timeAtSchedule: string

@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import {
   Box,
   Button,
@@ -23,66 +23,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import useDoctorStore from '@/store/useDoctorStore'
 import { styled } from '@mui/system'
-
-const hours = Array.from(
-  { length: 24 },
-  (_, i) => `${i < 10 ? '0' : ''}${i}:00`
-)
-
-const doctorData = {
-  doctorId: 1,
-  doctorName: 'Dr. John Doe',
-  doctorSpecialty: 'Cardiology',
-  days: [
-    {
-      date: '2024-05-27T00:00:00+06:00',
-      dayOfWeek: 'Monday',
-      startTime: '09:30',
-      endTime: '17:00',
-      timeslots: [
-        { Time: '09:30', Status: 'available' },
-        { Time: '10:00', Status: 'available' },
-        { Time: '10:30', Status: 'available' },
-        { Time: '11:00', Status: 'available' },
-        { Time: '11:30', Status: 'available' },
-        { Time: '12:00', Status: 'available' },
-        { Time: '12:30', Status: 'available' },
-        { Time: '13:00', Status: 'available' },
-        { Time: '13:30', Status: 'available' },
-        { Time: '14:00', Status: 'available' },
-        { Time: '14:30', Status: 'available' },
-        { Time: '15:00', Status: 'available' },
-        { Time: '15:30', Status: 'available' },
-        { Time: '16:00', Status: 'available' },
-        { Time: '16:30', Status: 'available' },
-      ],
-    },
-    {
-      date: '2024-05-27T00:00:00+06:00',
-      dayOfWeek: 'Tuesday',
-      startTime: '09:30',
-      endTime: '17:00',
-      timeslots: [
-        { Time: '09:30', Status: 'not available' },
-        { Time: '10:00', Status: 'available' },
-        { Time: '10:30', Status: 'available' },
-        { Time: '11:00', Status: 'available' },
-        { Time: '11:30', Status: 'available' },
-        { Time: '12:00', Status: 'available' },
-        { Time: '12:30', Status: 'available' },
-        { Time: '13:00', Status: 'available' },
-        { Time: '13:30', Status: 'available' },
-        { Time: '14:00', Status: 'available' },
-        { Time: '14:30', Status: 'available' },
-        { Time: '15:00', Status: 'available' },
-        { Time: '15:30', Status: 'available' },
-        { Time: '16:00', Status: 'available' },
-        { Time: '16:30', Status: 'available' },
-      ],
-    },
-    // Add other days here...
-  ],
-}
+import AppointmentModalWindow from '@/components/Appointment/AppointmentModalWindow'
 
 const TimeButton = styled(Button)(({ theme }) => ({
   margin: theme.spacing(0.5),
@@ -90,8 +31,18 @@ const TimeButton = styled(Button)(({ theme }) => ({
 
 const Scheduler = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const [selectedDoctor, setSelectedDoctor] = useState(doctorData)
+  const [selectedTime, setSelectedTime] = useState('')
   const [doctorId, setDoctorId] = useState<number | undefined>()
+  const [openModal, setOpenModal] = useState(false)
+  const [, forceUpdate] = useReducer((x) => x + 1, 0)
+
+  const handleOpen = () => {
+    setOpenModal(true)
+  }
+
+  const handleClose = () => {
+    setOpenModal(false)
+  }
   const {
     doctors,
     currentDoctor,
@@ -100,19 +51,6 @@ const Scheduler = () => {
     GetDoctor,
     GetTimetableByDoctor,
   } = useDoctorStore()
-
-  const startOfWeekDate = startOfWeek(selectedDate)
-  const endOfWeekDate = endOfWeek(selectedDate)
-  const daysOfWeek = eachDayOfInterval({
-    start: startOfWeekDate,
-    end: endOfWeekDate,
-  })
-
-  const handleDoctorChange = (event: any) => {
-    // Update selectedDoctor with the appropriate data based on event.target.value
-    // For simplicity, we're using static data
-    setSelectedDoctor(doctorData)
-  }
 
   useEffect(() => {
     FetchDoctors()
@@ -189,7 +127,7 @@ const Scheduler = () => {
             </FormControl>
           </Grid>
         </Grid>
-        {doctorTimetable && (
+        {doctorTimetable.length > 0 && (
           <Paper
             elevation={3}
             sx={{ padding: 2, maxWidth: 600, margin: 'auto' }}
@@ -244,14 +182,31 @@ const Scheduler = () => {
                         disabled={slot.Status === 'booked'}
                         variant="contained"
                         color="primary"
+                        key={index}
+                        onClick={() => {
+                          setSelectedDate(new Date(day.date))
+                          setSelectedTime(slot.Time)
+                          handleOpen()
+                          forceUpdate()
+                        }}
                       >
                         {slot.Time}
+                        {/*Мээрим ойгон*/}
                       </TimeButton>
                     ))}
                   </Grid>
                 ))}
               </Grid>
             </Box>
+            {doctorId && selectedTime && selectedDate && (
+              <AppointmentModalWindow
+                open={openModal}
+                handleClose={handleClose}
+                time={selectedTime}
+                date={selectedDate}
+                doctorId={doctorId}
+              />
+            )}
           </Paper>
         )}
       </Box>
