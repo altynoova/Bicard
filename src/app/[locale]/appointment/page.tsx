@@ -2,6 +2,7 @@ import React from 'react'
 import AppointmentForm from '@/components/Appointment/AppointmentForm'
 import PageBanner from '@/components/Common/PageBanner'
 import { useTranslations } from 'next-intl';
+import Calendar from '@/components/Calendar/Calendar'
 
 const Appointment = () => {
   const t = useTranslations('Doctors');
@@ -16,6 +17,7 @@ const Appointment = () => {
         bgImage="page-title-one"
       />
       <AppointmentForm doctorId={0} />
+      <Calendar />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import useCertificateStore from '@/store/useCertificateStore'
-import { CertificateRequestModel } from '@/entities/Certificate'
+import { CertificateRequestModel, Certificate } from '@/entities/Certificate'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 import { url } from '@/config'
@@ -10,13 +10,12 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
   const GetCurrentCertificate = useCertificateStore((state) => state.GetCertificateById)
   const EditCertificate = useCertificateStore((state) => state.EditCertificate)
-  const currentCertificate = useCertificateStore((state) => state.GetCertificateById)
+  const currentCertificate = useCertificateStore((state) => state.currentCertificate)
 
   const [Description, setDescription] = useState<string>('')
   const [Photo, setPhoto] = useState<File | null>(null)
   const [photoPath, setPhotoPath] = useState<string>('')
   const [id, setId] = useState<number>(0)
-
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -37,9 +36,9 @@ const Edit = ({ params }: { params: { id: number } }) => {
   }
 
   async function init() {
-    const response = await GetCurrentCertificate(params.id)
+    const response: Certificate = await GetCurrentCertificate(params.id)
     setId(response.id)
-    setPhoto(response.photoPath)
+    setPhotoPath(response.photoPath)
     setDescription(response.description)
   }
 
@@ -66,22 +65,22 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       placeholder="title"
                       data-sb-validations="required"
                       value={Description}
-                      onChange={(event) => setTitle(event.target.value)}
+                      onChange={(event) => setDescription(event.target.value)}
                     />
                     <div
                       className="invalid-feedback"
                       data-sb-feedback="имя:required"
                     >
-                      Title is required.
+                      Description is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
-                    <div style={{margin:20}}>
-                      {photo ? (
-                        <img src={URL.createObjectURL(photo)} height={400} width={500} alt="New Photo" />
+                    <div style={{ margin: 20 }}>
+                      {Photo ? (
+                        <img src={URL.createObjectURL(Photo)} height={400} width={500} alt="New Photo" />
                       ) : (
                         photoPath && <img src={`${url}/TempFileStorage/${photoPath}`} height={400} width={500} alt="Current Photo" />
                       )}
@@ -99,22 +98,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       data-sb-feedback="номерТелефона:required"
                     >
                       Номер телефона is required.
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label" htmlFor="text">
-                      Text
-                    </label>
-                    <ReactQuill
-                      value={text}
-                      onChange={setText}
-                      style={{ height: '20rem' }}
-                    />
-                    <div
-                      className="invalid-feedback"
-                      data-sb-feedback="Text is required"
-                    >
-                      Text is required.
                     </div>
                   </div>
                   <div className="d-none" id="submitSuccessMessage">

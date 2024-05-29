@@ -24,3 +24,14 @@ export type DoctorRequestModel = {
   address: string;
   userId: number;
 }
+export type DoctorSchedule = {
+  doctorId: number;
+  doctorName: string;
+  doctorSpecialty: string;
+  days: {
+    date: string,
+    dayOfWeek: string
+    startTime: string
+    endTime: string
+  }[]
+};
