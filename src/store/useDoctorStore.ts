@@ -1,5 +1,11 @@
 import { create } from 'zustand'
-import { Doctor, DoctorRequestModel, DoctorSchedule } from '@/entities/Doctor'
+import {
+  Doctor,
+  DoctorRequestModel,
+  DoctorTimetable,
+  TimeSlots,
+  TimeTable,
+} from '@/entities/Doctor'
 import {
   CreateDoctor,
   DeleteDoctor,
@@ -7,22 +13,29 @@ import {
   FetchDoctors,
   GetDoctor,
   GetUsersByRole,
-  FetchDoctorsSchedules
 } from '@/libs/requests/DoctorRequests'
+import { $http } from '@/libs/axios'
 
 interface IDoctorStore {
-  doctors: Doctor[];
-  currentDoctor: Doctor;
-  doctorSchedule:DoctorSchedule[];
-  userReferences: { id: number, userName: string }[]
-  FetchDoctors: () => void;
-  FetchDoctorsSchedule: (currentDay:string, doctorId:number) => void;
-  GetDoctor: (id: number) => Promise<any>;
-  
-  CreateDoctor: (data: DoctorRequestModel) => Promise<number>;
-  EditDoctor: (data: DoctorRequestModel, id: number) => Promise<number>;
-  DeleteDoctor: (id: number) => Promise<number>;
-  GetUsersByRole: (role: string) => Promise<number>;
+  doctors: Doctor[]
+  currentDoctor: Doctor
+  timetable: TimeTable[]
+  timeslots: TimeSlots[]
+  doctorTimetable: DoctorTimetable
+  userReferences: { id: number; userName: string }[]
+
+  FetchDoctors: () => void
+
+  GetDoctor: (id: number) => Promise<any>
+  GetScheduleByDoctorId: (doctorId: number) => Promise<any>
+  GetTimetable: () => Promise<any>
+  GetTimeSlots: (currentDay: string, doctorId: number) => Promise<any>
+  GetTimetableByDoctor: (day: string, doctorId: number) => Promise<any>
+
+  CreateDoctor: (data: DoctorRequestModel) => Promise<number>
+  EditDoctor: (data: DoctorRequestModel, id: number) => Promise<number>
+  DeleteDoctor: (id: number) => Promise<number>
+  GetUsersByRole: (role: string) => Promise<number>
 }
 
 const useDoctorStore = create<IDoctorStore>()((set) => ({
@@ -40,24 +53,21 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     address: '',
     userId: 0,
   },
-  doctorSchedule:[],
   userReferences: [],
+
+  timetable: [],
+  timeslots: [],
+  doctorTimetable: [],
+  doctorTimeslots: [],
 
   async FetchDoctors() {
     const response = await FetchDoctors()
-    console.log(response)
     set(() => ({ doctors: response.data }))
-    return response.status
-  },
-  async FetchDoctorsSchedule(currentDay, doctorId) {
-    const response = await FetchDoctorsSchedules(currentDay, doctorId)
-    console.log(response)
-    set(() => ({ doctorSchedule: response.data }))
     return response.status
   },
   async GetDoctor(id) {
     const response = await GetDoctor(id)
-    console.log("Doctor", response.data)
+    console.log('Doctor', response.data)
     set(() => ({ currentDoctor: response.data }))
     return response.data
   },
@@ -80,7 +90,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     const response = await DeleteDoctor(id)
     console.log(response)
     if (response.status == 200) {
-      set((state) => ({ doctors: state.doctors.filter(d => d.id != id) }))
+      set((state) => ({ doctors: state.doctors.filter((d) => d.id != id) }))
     }
     return response.status
   },
@@ -88,6 +98,34 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
   async GetUsersByRole(role) {
     const response = await GetUsersByRole(role)
     set(() => ({ userReferences: response.data }))
+    return response.status
+  },
+
+  async GetScheduleByDoctorId(doctorId) {
+    const response = await $http.get(`/Schedules/GetByDoctorId?id=${doctorId}`)
+    set(() => ({ userReferences: response.data }))
+    return response.status
+  },
+
+  async GetTimetable() {
+    const response = await $http.post('/Schedules/GetTimetable')
+    set(() => ({ timetable: response.data }))
+    return response.status
+  },
+
+  async GetTimetableByDoctor(day, doctorId) {
+    const response = await $http.post(
+      `/Schedules/GetTimetableByDoctor?day=${day}&doctorId=${doctorId}`
+    )
+    set(() => ({ doctorTimetable: response.data }))
+    return response.status
+  },
+
+  async GetTimeSlots(currentDay: string, doctorId: number) {
+    const response = await $http.post(
+      `/Schedules/GetTimeSlots?currentDay=${currentDay}&doctorId=${doctorId}`
+    )
+    set(() => ({ timeslots: response.data }))
     return response.status
   },
 }))
