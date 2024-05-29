@@ -4,6 +4,9 @@ import { DoctorRequestModel } from '@/entities/Doctor'
 export const FetchDoctors = async () => {
   return await $http.get('/doctors/getlistofdoctors')
 }
+export const FetchDoctorsSchedules = async (currentDay:string, doctorId:number) => {
+  return await $http.get(`/doctors/getlistofdoctors?currentDay=${currentDay}&doctorId=${doctorId}`)
+}
 
 export const GetDoctor = async (id: number) => {
   return await $http.get(`/doctors/getdoctorbyid?id=${id}`)

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Doctor, DoctorRequestModel } from '@/entities/Doctor'
+import { Doctor, DoctorRequestModel, DoctorSchedule } from '@/entities/Doctor'
 import {
   CreateDoctor,
   DeleteDoctor,
@@ -7,13 +7,16 @@ import {
   FetchDoctors,
   GetDoctor,
   GetUsersByRole,
+  FetchDoctorsSchedules
 } from '@/libs/requests/DoctorRequests'
 
 interface IDoctorStore {
   doctors: Doctor[];
   currentDoctor: Doctor;
+  doctorSchedule:DoctorSchedule[];
   userReferences: { id: number, userName: string }[]
   FetchDoctors: () => void;
+  FetchDoctorsSchedule: (currentDay:string, doctorId:number) => void;
   GetDoctor: (id: number) => Promise<any>;
   
   CreateDoctor: (data: DoctorRequestModel) => Promise<number>;
@@ -37,6 +40,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     address: '',
     userId: 0,
   },
+  doctorSchedule:[],
   userReferences: [],
 
   async FetchDoctors() {
@@ -45,7 +49,12 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
     set(() => ({ doctors: response.data }))
     return response.status
   },
-
+  async FetchDoctorsSchedule(currentDay, doctorId) {
+    const response = await FetchDoctorsSchedules(currentDay, doctorId)
+    console.log(response)
+    set(() => ({ doctorSchedule: response.data }))
+    return response.status
+  },
   async GetDoctor(id) {
     const response = await GetDoctor(id)
     console.log("Doctor", response.data)
