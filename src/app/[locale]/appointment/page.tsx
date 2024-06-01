@@ -16,7 +16,6 @@ const Appointment = () => {
         activePageText={t('Make an appointment')}
         bgImage="page-title-one"
       />
-      <AppointmentForm doctorId={0} />
       <Calendar />
     </div>
   )

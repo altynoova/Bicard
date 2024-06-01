@@ -10,6 +10,9 @@ import {
 import { CreateAppointmentModel } from '@/entities/Appoinment'
 import useAppointmentsStore from '@/store/useAppointmentsStore'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
+import useDoctorStore from '@/store/useDoctorStore'
+import { url } from '@/config'
+import { useRouter } from 'next/navigation'
 
 interface IAppointmentModalProps {
   open: boolean
@@ -29,11 +32,11 @@ const AppointmentModalWindow = ({
   const CreateAppointment = useAppointmentsStore(
     (state) => state.CreateAppointment
   )
-
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [age, setAge] = useState('')
+  const { GetDoctor, currentDoctor } = useDoctorStore()
 
   const [appointmentDateTime, setAppointmentDateTime] = useState<string>(
     new Date().toJSON()
@@ -48,20 +51,22 @@ const AppointmentModalWindow = ({
       phoneNumber: phoneNumber,
       doctorId: doctorId,
       age: age,
-      timeAtSchedule: `${date.toISOString().substring(0, 10)}T${time}:00.000Z`,
+      date: `${date.toISOString().substring(0, 10)}T${time}:00.000Z`,
     }
 
-    console.log(data)
+    console.log("data", data)
 
     const responseStatus = await CreateAppointment(data)
     if (responseStatus === 200) {
       SuccessAlert('Заявка успешпо отправлена')
+      handleClose();
     } else {
       ErrorAlert('Произошла ошибка')
     }
   }
 
   useEffect(() => {
+    GetDoctor(doctorId)
     setAppointmentDateTime(time)
   }, [])
 
@@ -87,35 +92,19 @@ const AppointmentModalWindow = ({
         </Typography>
         <Box mt={2} display="flex" alignItems="center">
           <Avatar
-            alt="Татьяна Антоновна"
-            src="path/to/image.jpg" // Use the path to the actual image
+            alt={currentDoctor.name}
+            src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`}
             sx={{ width: 80, height: 80, marginRight: 2 }}
           />
           <Box>
             <Typography variant="subtitle1">
-              Балгазарова Татьяна Антоновна
+              {currentDoctor.name}
             </Typography>
             <Typography variant="body2" color="textSecondary">
-              Акушер-гинеколог
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              ул. Туркестан, 28/2, Есильский район, Левый берег, Астана
+             {currentDoctor.speciality}
             </Typography>
           </Box>
         </Box>
-        <Typography variant="body2" color="error" mt={2}>
-          Врач принимает только взрослых пациентов
-        </Typography>
-        <Typography variant="body2" mt={2}>
-          Прием <span style={{ color: 'red' }}>10000 тг.</span>
-        </Typography>
-        <Typography>doctorId: {doctorId}</Typography>
-        <Typography>time: {time}</Typography>
-        <Typography>date: {date.toJSON()}</Typography>
-        <Typography>
-          Akyrky date time:{' '}
-          {`${date.toISOString().substring(0, 10)}T${time}:00.000Z`}
-        </Typography>
         <TextField
           fullWidth
           type={'text'}

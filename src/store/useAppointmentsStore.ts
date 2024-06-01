@@ -18,7 +18,7 @@ const useAppointmentsStore = create<IAppointmentsStore>()((set) => ({
   appointments: [],
 
   async GetAllAppointments() {
-    const response = await $http.get('/appointments/getlistofappointments')
+    const response = await $http.get('/appointments/GetUnconfirmedAppointments')
     set(() => ({ appointments: response.data }))
     return response.status
   },

@@ -158,6 +158,7 @@
     "Vacancies": "Vacancies",
     "Roles": "Roles",
     "No result": "No result",
+    "WorkHours clinic": "Clinic working hours",
     "User": "User",
     "Date": "Date",
     "Doctors": "Doctors",
@@ -193,6 +194,8 @@
     "Thursday":"Thursday",
     "Friday ":"Friday",
     "Saturday": "Saturday",
+    "Back": "Previous week",
+    "Next": "Next week",
     "Sunday":"Sunday"
 
   }

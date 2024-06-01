@@ -146,6 +146,7 @@
     "Subservices": "Подуслуги",
     "Price": "Цена",
     "Create": "Создать",
+    "WorkHours clinic": "Рабочие часы клиники",
     "Short Description": "Краткое описание",
     "Detailed Description": "Подробное описание",
     "IMG": "Фото",
@@ -193,6 +194,8 @@
     "Thursday":"Четверг",
     "Friday ":"Пятница",
     "Saturday": "Суббота",
+    "Back": "Предыдущая неделя",
+    "Next": "Следующая неделя",
     "Sunday":"Воскресенье"
   }
 }

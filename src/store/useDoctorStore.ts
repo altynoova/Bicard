@@ -114,6 +114,7 @@ const useDoctorStore = create<IDoctorStore>()((set) => ({
   },
 
   async GetTimetableByDoctor(day, doctorId) {
+    console.log("day", day)
     const response = await $http.post(
       `/Schedules/GetTimetableByDoctor?day=${day}&doctorId=${doctorId}`
     )

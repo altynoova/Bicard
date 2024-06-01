@@ -27,7 +27,7 @@ const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [subMedServiceId, setSubMedServiceId] = useState(0)
   const [timeAtSchedule, setTimeAtSchedule] = useState<Dayjs | null>(dayjs('2022-04-17T15:30'))
-  const filtereddays = daysOfWeek.filter(day=>day.id)
+ 
 
   const handleSubmit = async () => {
     const data: CreateAppointmentModel = {
@@ -137,23 +137,6 @@ const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
           </Grid>
           <Button sx={{ marginTop: 5 }} variant="contained" onClick={() => handleSubmit()}>Submit</Button>
         </Box>
-
-        <div className="col-lg-5">
-          <div className="appointment-item-two-right">
-            <div className="appointment-item-content">
-              <h2>{t('WorkHours')}</h2>
-              <ul>
-                {filtereddays.map((day) => (
-                  <>
-                    <li>
-                      {t(day.name)} <span>{day.time}</span>
-                    </li>
-                  </>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
       </Box>
     </LocalizationProvider>
   )

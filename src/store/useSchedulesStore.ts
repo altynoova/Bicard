@@ -30,13 +30,13 @@ const useScheduleStore = create<IScheduleStore>()((set) => ({
 
   async GetEmployeeScheduleById(id) {
     console.log("GetEmployeeScheduleById:", id)
-    const response = await $http.get(`/doctors/GetWorkingHours?id=${id}`)
+    const response = await $http.get(`/schedules/GetByDoctorId?id=${id}`)
     set(() => ({ schedules: response.data }))
     return response.status
   },
 
   async CreateSchedule(data) {
-    const response = await $http.post('/appointments/createschedule/', data)
+    const response = await $http.post('/schedules/create/', data)
     // set((state) => ({ roles: response.data }))
     return response.status
   },
@@ -48,7 +48,8 @@ const useScheduleStore = create<IScheduleStore>()((set) => ({
   },
 
   async RemoveSchedule(id) {
-    const response = await $http.delete(`/schedules/delete/${id}`)
+    console.log("id", id)
+    const response = await $http.post(`/schedules/delete?id=${id}`)
     set((state) => ({ schedules: state.schedules.filter(s => s.id != id) }))
     return response.status
   },

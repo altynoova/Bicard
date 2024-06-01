@@ -68,7 +68,6 @@ const Appointments = () => {
       ErrorAlert('Произошла ошибка!')
     }
   }
-
   useEffect(() => {
     GetAllAppointments()
     GetAllSubMedServices()
@@ -134,17 +133,12 @@ const Appointments = () => {
                       </TableCell>
                       <TableCell align="left">
                         <Typography variant="subtitle2" fontWeight={600}>
-                          Med service
-                        </Typography>
-                      </TableCell>
-                      <TableCell align="left">
-                        <Typography variant="subtitle2" fontWeight={600}>
                           Doctor
                         </Typography>
                       </TableCell>
                       <TableCell align="left">
                         <Typography variant="subtitle2" fontWeight={600}>
-                          Time
+                          Date and time 
                         </Typography>
                       </TableCell>
                       <TableCell align="right">
@@ -189,25 +183,6 @@ const Appointments = () => {
                           <Typography variant="subtitle2" fontWeight={600}>
                             {f.phoneNumber == null ? <i>null</i> : f.phoneNumber}
                           </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <InputLabel id="service-simple-select-label">
-                            Select service
-                          </InputLabel>
-                          <Select
-                            labelId="service-simple-select-label"
-                            label={'Select service'}
-                            size="medium"
-                            value={subMedServiceId}
-                            onChange={(event) => setSubMedServiceId(event.target.value as number)}
-                            sx={{ width: '150px' }}
-                          >
-                            {allSubMedServices.map((s) => (
-                              <MenuItem key={s.id} value={s.id}>
-                                {s.name}
-                              </MenuItem>
-                            ))}
-                          </Select>
                         </TableCell>
                         <TableCell>
                           <InputLabel id="doctor-simple-select-label">

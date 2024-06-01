@@ -1,11 +1,12 @@
 export type Appointment = {
   id: number
   name: string
-  age: string
   email: string
   phoneNumber: string
-  subMedServiceId: string
-  doctorName: string
+  age: string
+  isConfirmed: boolean
+  date: string
+  doctorId: number
   timeStamp: string
 }
 
@@ -15,5 +16,5 @@ export type CreateAppointmentModel = {
   phoneNumber: string
   doctorId: number
   age: string
-  timeAtSchedule: string
+  date: string
 }
