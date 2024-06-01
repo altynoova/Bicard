@@ -4,8 +4,10 @@ import { $http } from '@/libs/axios'
 
 interface IAppointmentsStore {
   appointments: Appointment[]
+  confirmedappointments: Appointment[]
 
   GetAllAppointments: () => Promise<number>
+  GetAllConfirmedAppointments: () => Promise<number>
   CreateAppointment: (data: CreateAppointmentModel) => Promise<number>
   ConfirmAppointment: (
     id: number,
@@ -16,10 +18,17 @@ interface IAppointmentsStore {
 
 const useAppointmentsStore = create<IAppointmentsStore>()((set) => ({
   appointments: [],
+  confirmedappointments: [],
 
   async GetAllAppointments() {
-    const response = await $http.get('/appointments/GetUnconfirmedAppointments')
+    const response = await $http.get('/appointments/GetListOfAppointments')
     set(() => ({ appointments: response.data }))
+    return response.status
+  },
+  async GetAllConfirmedAppointments() {
+    const response = await $http.get('/appointments/GetconfirmedAppointments')
+    console.log("GetAllConfirmedAppointments", response.data)
+    set(() => ({ confirmedappointments: response.data }))
     return response.status
   },
 
