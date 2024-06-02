@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl'
 
 const PasswordReset = () => {
   const methodReset = useUserStore().Reset
+  const router = useRouter()
   const t = useTranslations('Contact');
 
   const [email, setEmail] = useState<string>('')
@@ -21,6 +22,7 @@ const PasswordReset = () => {
     console.log("response", response)
     if (response.status == 200) {
       SuccessAlert('Проверьте свою почту')
+      router.push('/signin')
     }
     else {
       ErrorAlert('Проверьте корректность ваших данных')

@@ -11,7 +11,7 @@ export const Register = async (data: UserRegister) => {
 }
 export const ResetPassword = async (data: NewPassword) => {
   try {
-    return await $http.post(`/users/ResetPassword?email=${data.email}token=${data.token}password, data`)
+    return await $http.post(`/users/ResetPassword?email=${data.email}&token=${data.token}&password=${data.password}&confirmPassword=${data.confirmPassword}`);
   } catch (error: any) {
     return error.response
   }
