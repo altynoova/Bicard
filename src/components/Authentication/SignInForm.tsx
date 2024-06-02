@@ -149,7 +149,7 @@ const SignInForm = () => {
                       <div className="col-lg-12">
                         <div className="form-group">
                           <div className="forgot-pass">
-                            <Link href="#">{t('Forgot your password?')}</Link>
+                            <Link href="/passwordreset">{t('Forgot your password?')}</Link>
                           </div>
                         </div>
                       </div>

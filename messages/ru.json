@@ -76,6 +76,8 @@
     "Friday ":"Пятница",
     "Saturday": "Суббота",
     "Sunday":"Воскресенье",
+    "Back": "Предыдущая неделя",
+    "Next": "Следующая неделя",
     "Make an appointment":"Записаться на приём"   
   },
   "Blogs": {
@@ -154,9 +156,11 @@
     "Save": "Сохранить",
     "Infos":"Пациентам",
     "Content":"Содержание",
+    "Email": "Электронная почта",
     "Select Service": "Выберите услугу",
     "Select author": "Выберите автора",
     "Select doctor": "Выберите доктора",
+    "PhoneNumber": "Номер телефона",
     "Vacancies": "Вакансии",
     "Roles": "Роли",
     "No result": "Нет результата",
@@ -196,6 +200,12 @@
     "Saturday": "Суббота",
     "Back": "Предыдущая неделя",
     "Next": "Следующая неделя",
+    "Unconfirmed appointments": "Неподтвержденные записи",
+    "Сonfirmed appointments": "Подтвержденные записи",
+    "Confirm": "Принять",
+    "Cancel": "Отменить",
+    "Select schedule": "Выберите дату",
+    "Make an appointment": "Запись на прием",
     "Sunday":"Воскресенье"
   }
 }

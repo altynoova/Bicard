@@ -77,6 +77,8 @@
     "Friday":"Жума",
     "Saturday": "Ишемби",
     "Sunday":"Жекшемби",
+    "Back": "Мурунку жума",
+    "Next": "Кийинки жума",
     "Make an appointment":"Жазылуу"
   },
   "Blogs": {
@@ -163,9 +165,11 @@
     "No result": "Жыйынтык жок",
     "User": "Колдонуучу",
     "Online registration": "Онлайн катталуу",
+    "Email": "Электрондук почта",
     "Doctors": "Дарыгерлер",
     "WorkHours clinic": "Клиниканын жумуш убактысы",
     "Contacts": "Байланышуу",
+    "PhoneNumber": "Телефон номери",
     "Services": "Кызматтар",
     "Feedback": "Пикир",
     "Date": "Дата",
@@ -198,6 +202,12 @@
     "Saturday": "Ишемби",
     "Back": "Мурунку жума",
     "Next": "Кийинки жума",
+    "Unconfirmed appointments": "Катталуулар",
+    "Сonfirmed appointments": "Кабыл алынган катталуулар",
+    "Confirm": "Кабыл алуу",
+    "Cancel": "Өчүрүү",
+    "Select schedule": "Датаны тандаңыз",
+    "Make an appointment": "Катталуу",
     "Sunday":"Жекшемби"
 
   }

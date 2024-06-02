@@ -77,6 +77,8 @@
     "Friday ":"Friday",
     "Saturday": "Saturday",
     "Sunday":"Sunday",
+    "Back": "Previous week",
+    "Next": "Next week",
     "Make an appointment":"Make an appointment"
     
   },
@@ -156,6 +158,7 @@
     "Select author": "Select author",
     "Select doctor": "Select doctor",
     "Vacancies": "Vacancies",
+    "PhoneNumber": "Phone number",
     "Roles": "Roles",
     "No result": "No result",
     "WorkHours clinic": "Clinic working hours",
@@ -176,6 +179,7 @@
     "FAQ": "Frequently asked Questions",
     "Type": "Type",
     "Question": "Question",
+    "Email": "Email",
     "Answer": "Answer",
     "Password mismatch": "Password mismatch",
     "Yes, I agree": "Yes, I agree",
@@ -196,6 +200,12 @@
     "Saturday": "Saturday",
     "Back": "Previous week",
     "Next": "Next week",
+    "Unconfirmed appointments": "Unconfirmed appointments",
+    "Сonfirmed appointments": "Сonfirmed appointments",
+    "Confirm": "Confirm",
+    "Cancel": "Cancel",
+    "Select schedule": "Select schedule",
+    "Make an appointment": "Make an appointment",
     "Sunday":"Sunday"
 
   }

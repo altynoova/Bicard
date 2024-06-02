@@ -13,6 +13,7 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useDoctorStore from '@/store/useDoctorStore'
 import { url } from '@/config'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 interface IAppointmentModalProps {
   open: boolean
@@ -37,6 +38,8 @@ const AppointmentModalWindow = ({
   const [phoneNumber, setPhoneNumber] = useState('')
   const [age, setAge] = useState('')
   const { GetDoctor, currentDoctor } = useDoctorStore()
+  const t = useTranslations('Services');
+
 
   const [appointmentDateTime, setAppointmentDateTime] = useState<string>(
     new Date().toJSON()
@@ -58,7 +61,7 @@ const AppointmentModalWindow = ({
 
     const responseStatus = await CreateAppointment(data)
     if (responseStatus === 200) {
-      SuccessAlert('Заявка успешпо отправлена')
+      SuccessAlert("Успешно")
       handleClose();
     } else {
       ErrorAlert('Произошла ошибка')
@@ -88,7 +91,7 @@ const AppointmentModalWindow = ({
         onSubmit={handleSubmit}
       >
         <Typography variant="h6" component="h2">
-          Запись на прием
+          {('Make an appointment')}
         </Typography>
         <Box mt={2} display="flex" alignItems="center">
           <Avatar
@@ -108,7 +111,7 @@ const AppointmentModalWindow = ({
         <TextField
           fullWidth
           type={'text'}
-          label="Дата и время приема"
+          label={('Date')}
           value={`${new Date(date).toLocaleDateString()} ${time}`}
           margin="normal"
         />
@@ -116,7 +119,7 @@ const AppointmentModalWindow = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           fullWidth
-          label="Ваше имя"
+          label={('Name')}
           margin="normal"
         />
         <TextField
@@ -124,14 +127,14 @@ const AppointmentModalWindow = ({
           onChange={(e) => setEmail(e.target.value)}
           fullWidth
           type={'email'}
-          label="Email"
+          label={('Email')}
           margin="normal"
         />
         <TextField
           fullWidth
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          label="Ваш телефон"
+          label={('Phone Number')}
           margin="normal"
           placeholder="+996 (___) ___-___"
         />
@@ -139,7 +142,7 @@ const AppointmentModalWindow = ({
           value={age}
           onChange={(e) => setAge(e.target.value)}
           fullWidth
-          label="Age"
+          label={('Age')}
           type={'number'}
           margin="normal"
         />
@@ -150,12 +153,9 @@ const AppointmentModalWindow = ({
           sx={{ mt: 2 }}
           type={'submit'}
         >
-          Записаться
+          {t('Save')}
         </Button>
         <Typography variant="caption" display="block" mt={2}>
-          Нажимая Записаться, я принимаю условия пользовательского соглашения,
-          положения о защите персональных данных и даю свое согласие на
-          обработку персональных данных.
         </Typography>
       </Box>
     </Modal>

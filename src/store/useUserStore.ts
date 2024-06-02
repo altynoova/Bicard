@@ -1,13 +1,15 @@
 import { create } from 'zustand'
-import { User } from '@/entities/User'
-import { Login } from '@/libs/requests/AuthRequests'
+import { User, UserReset } from '@/entities/User'
+import { Login, Reset } from '@/libs/requests/AuthRequests'
 import { UserLogin } from '@/entities/User'
 import { RemoveCookie, SetCookie } from '@/libs/cookie'
 import { AxiosResponse } from 'axios'
+import email from 'material-ui/svg-icons/communication/email'
 
 interface IUserStore {
   user: User
   SignIn: (data: UserLogin) => Promise<AxiosResponse>
+  Reset: (email: string) => Promise<AxiosResponse>
   SignOut: () => void;
 }
 
@@ -28,6 +30,10 @@ const useUserStore = create<IUserStore>()((set) => ({
     SetCookie('userName', response?.data?.userName)
     set(() => ({ user: response?.data }))
     return response
+  },
+  async Reset(email) {
+    const response = await Reset(email)
+    return response.status
   },
   SignOut() {
     RemoveCookie('Bicard-Web-API-Access-Token')

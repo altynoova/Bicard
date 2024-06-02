@@ -13,11 +13,7 @@ import {
   Avatar,
 } from '@mui/material'
 import {
-  format,
   addDays,
-  startOfWeek,
-  endOfWeek,
-  eachDayOfInterval,
 } from 'date-fns'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers'
@@ -68,8 +64,8 @@ const Scheduler = () => {
 
   useEffect(() => {
     GetDoctor(Number(doctorId))
-    GetTimetableByDoctor(new Date().toJSON(), Number(doctorId))
-  }, [doctorId])
+    GetTimetableByDoctor(selectedDate.toJSON(), Number(doctorId))
+  }, [doctorId,selectedDate])
 
   useEffect(() => {
     console.log(doctorTimetable)

@@ -32,6 +32,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 import dayjs, { Dayjs } from 'dayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { useTranslations } from 'next-intl'
 
 const Appointments = () => {
   const {
@@ -44,6 +45,7 @@ const Appointments = () => {
   } = useAppointmentsStore()
   const { FetchDoctors, doctors } = useDoctorStore()
   const { GetAllSubMedServices, allSubMedServices } = useMedServicesStore()
+  const t = useTranslations('Services')
 
   const [filter, setFilter] = useState<string>('')
   const [selectedDoctorIds, setSelectedDoctorIds] = useState<{ [key: number]: number }>({})
@@ -57,7 +59,7 @@ const Appointments = () => {
   const handleConfirm = async (id: number, data: CreateAppointmentModel) => {
     const status = await ConfirmAppointment(id, data)
     if (status == 200) {
-      SuccessAlert('Successfully updated')
+      SuccessAlert('Успешно')
       GetAllAppointments();
       GetAllConfirmedAppointments();
     } else {
@@ -109,14 +111,14 @@ const Appointments = () => {
           />
         </FormControl>
         <Tabs value={tabIndex} onChange={handleTabChange}>
-          <Tab label="Manage Appointments" />
-          <Tab label="View Appointments" />
+          <Tab label={t('Unconfirmed appointments')}/>
+          <Tab label={t('Сonfirmed appointments')} />
         </Tabs>
         <TabPanel value={tabIndex} index={0}>
           {filteredAppointments.length < 1 ? (
-            <div>No results</div>
+            <div>None</div>
           ) : (
-            <DashboardCard title="Appointments">
+            <DashboardCard title={t('Unconfirmed appointments')}>
               <Box sx={{ overflow: 'auto' ,  overflowY: 'auto'}}>
                 <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
                   <Table sx={{ whiteSpace: 'nowrap' }}>
@@ -129,37 +131,37 @@ const Appointments = () => {
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Name
+                            {t('Name')}
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Email
+                          {t('Email')} 
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Phone Number
+                          {t('PhoneNumber')}  
                           </Typography>
                         </TableCell>
                         <TableCell align="left">
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Doctor
+                          {t('DoctorsName')}  
                           </Typography>
                         </TableCell>
                         <TableCell align="left">
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Date and time 
+                          {t('Date')}  
                           </Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Confirm
+                          {t('Confirm')} 
                           </Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Cancel
+                          {t('Cancel')}
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -186,12 +188,12 @@ const Appointments = () => {
                               </Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography variant="subtitle2" fontWeight={600}>
+                              <Typography variant="subtitle2" fontWeight={400}>
                                 {f.phoneNumber == null ? <i>null</i> : f.phoneNumber}
                               </Typography>
                             </TableCell>
                             <TableCell>
-                              <InputLabel id="doctor-select-label">Select doctor</InputLabel>
+                              <InputLabel id="doctor-select-label">{t('Select doctor')} </InputLabel>
                               <Select
                                 labelId="doctor-select-label"
                                 value={selectedDoctorId}
@@ -208,7 +210,7 @@ const Appointments = () => {
                               </Select>
                             </TableCell>
                             <TableCell>
-                              <InputLabel id="schedule-select-label">Select schedule</InputLabel>
+                              <InputLabel id="schedule-select-label">{t('Select schedule')}</InputLabel>
                               <DateTimePicker
                                 sx={{ width: '200px' }}
                                 value={selectedTimeAtSchedule}
@@ -253,7 +255,7 @@ const Appointments = () => {
           {confirmedappointments.length < 1 ? (
             <div>No results</div>
           ) : (
-            <DashboardCard title="Appointments">
+            <DashboardCard title={t('Сonfirmed appointments')}>
               <Box sx={{ overflow: 'auto',  overflowY: 'auto'  }}>
                 <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
                   <Table sx={{ whiteSpace: 'nowrap' }}>
@@ -266,17 +268,17 @@ const Appointments = () => {
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Name
+                            {t('Name')}
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Doctor
+                          {t('DoctorsName')} 
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                            Date and time
+                          {t('Date')}
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -290,17 +292,17 @@ const Appointments = () => {
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
+                            <Typography variant="subtitle2" fontWeight={400}>
                               {f.name == null ? <i>null</i> : f.name}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
+                            <Typography variant="subtitle2" fontWeight={400}>
                               {doctors.find(d => d.id === f.doctorId)?.name || 'N/A'}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="subtitle2" fontWeight={600}>
+                            <Typography variant="subtitle2" fontWeight={400}>
                               {dayjs(f.date).format('DD.MM.YYYY HH:mm')}
                             </Typography>
                           </TableCell>
