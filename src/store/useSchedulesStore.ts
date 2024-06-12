@@ -17,10 +17,10 @@ const useScheduleStore = create<IScheduleStore>()((set) => ({
   daysOfWeek: [
     { name: 'Monday', id:1, time: "08:30 - 17:00" },
     { name: 'Tuesday', id:2, time: "08:30 - 17:00" },
-    { name: 'Wednesday', id:2 , time: "08:30 - 17:00"},
-    { name: 'Thursday', id:3 , time: "08:30 - 17:00"},
-    { name: 'Friday', id:4, time: "08:30 - 17:00" },
-    { name: 'Saturday', id:5, time: "08:30 - 13:00"},
+    { name: 'Wednesday', id:3 , time: "08:30 - 17:00"},
+    { name: 'Thursday', id:4 , time: "08:30 - 17:00"},
+    { name: 'Friday', id:5, time: "08:30 - 17:00" },
+    { name: 'Saturday', id:6, time: "08:30 - 13:00"},
     { name: 'Sunday' , id:0, time: "- "},
   ],
 
