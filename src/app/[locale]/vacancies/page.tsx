@@ -31,10 +31,10 @@ const PrivacyPolicy = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Privacy Policy"
+        pageTitle={t('Vacancies')}
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Privacy Policy"
+        homePageText={t('Home')}
+        activePageText={t('Vacancies')}
         bgImage="page-title-one"
       />
       <div className="blog-area-two pt-100 pb-70">
@@ -52,14 +52,14 @@ const PrivacyPolicy = () => {
                   <p><strong>{t('Requirements:')}  </strong> {vacancy.requirements}</p>
                   <p><strong>{t('Description:')}  </strong> {vacancy.description}</p>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', margin: 20 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', padding: 20 }}>
                   <p><strong>{t('Date')}</strong></p>
                   <div>
                     {new Date(vacancy.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                   </div>
                   <Button variant="contained" color="primary" onClick={() => handleShowModal(vacancy)}>
-                  Apply
-                </Button>
+                    {t('Apply')}
+                  </Button>
                 </div>
               </div>
             </div>

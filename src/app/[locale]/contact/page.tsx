@@ -5,6 +5,7 @@ import GoogleMap from '@/components/Contact/GoogleMap'
 import ContactInfo from '@/components/Contact/ContactInfo'
 import ContactForm from '@/components/Contact/ContactForm'
 import { useTranslations } from 'next-intl'
+import FeedbackForm from '@/components/Doctors/FeedbackForm'
 
 const Contact = () => {
   const t = useTranslations('Contact');
@@ -19,9 +20,6 @@ const Contact = () => {
       />
 
       <ContactInfo />
-
-      <ContactForm />
-
       <GoogleMap />
     </div>
   )

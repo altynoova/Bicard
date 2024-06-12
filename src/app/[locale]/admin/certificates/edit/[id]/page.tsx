@@ -10,7 +10,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
   const GetCurrentCertificate = useCertificateStore((state) => state.GetCertificateById)
   const EditCertificate = useCertificateStore((state) => state.EditCertificate)
-  const currentCertificate = useCertificateStore((state) => state.currentCertificate)
+  const currentCertificate = useCertificateStore((state) => state.CurrentCertificate)
 
   const [Description, setDescription] = useState<string>('')
   const [Photo, setPhoto] = useState<File | null>(null)

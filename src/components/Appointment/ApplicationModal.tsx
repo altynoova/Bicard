@@ -34,12 +34,12 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({ show, handleClose, 
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Apply for {vacancy.position}</Modal.Title>
+        <Modal.Title>{t('Apply for: ')}{vacancy.position}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{padding:20}}>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label>{t('File')}</Form.Label>
+            <Form.Label>{t('Upload file')}</Form.Label>
             <Form.Control
               type="file"
               accept="application/pdf"
@@ -47,8 +47,8 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({ show, handleClose, 
               required
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            {t('Save')}
+          <Button style={{marginTop:20}} variant="primary" type="submit">
+            {t('Send')}
           </Button>
         </Form>
       </Modal.Body>

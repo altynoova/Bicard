@@ -18,9 +18,6 @@ export const CreateFAQ = async (data: FAQRequestModel) => {
       method: 'post',
       url: `/Faqs/create`,
       data,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
     })
   } catch (error: any) {
     return error.status

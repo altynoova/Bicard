@@ -642,7 +642,7 @@
 
     .speciality-right .speciality-emergency {
         left: 15px;
-        padding: 25px 210px 20px 30px;
+        padding: 25px 150px 20px 30px;
     }
 
     .speciality-right .speciality-emergency .speciality-icon {
@@ -2407,7 +2407,7 @@
         margin-bottom: 0;
         color: #fff;
         position: absolute;
-        right: 142px;
+        right: 62px;
         top: 56px;
     }
 

@@ -27,7 +27,7 @@ const Services = () => {
                     {(index + 1) % 4 === 2 && <i className="icofont-prescription"></i>}
                     {(index + 1) % 4 === 3 && <i className="icofont-patient-file"></i>}
                     {(index + 1) % 4 === 0 && <i className="icofont-dna-alt-1"></i>}
-                    <Link href="/service-details">
+                    <Link href={`/services/details/${service.id}`}>
                       <h3>{service.name}</h3>
                     </Link>
                     <div className='service-wrap'>

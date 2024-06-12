@@ -34,12 +34,16 @@ const SignInForm = () => {
 
     const response = await methodSignIn(data)
 
-    if (response.status === 200 && response.data.roleName !== 'admin') {
+    if (response.status === 200 && response.data.roleName !== 'Admin') {
       SuccessAlert('Вы вошли в свой аккаунт!')
       router.push('/about');
-    } else if (response.status === 200 && response.data.roleName === 'admin') {
+    } else if (response.status === 200 && response.data.roleName === 'Admin') {
       SuccessAlert('Поздравляем. Вы админ!')
       router.push('/admin/appointments');
+    }
+    else if (response.status === 200 && response.data.roleName === 'Doctor') {
+      SuccessAlert('Поздравляем. Вы админ!')
+      router.push('/doctor/appointments');
     }
     else if (response.status === 500) {
       ErrorAlert('Ошибка на стороне сервера')
@@ -77,15 +81,6 @@ const SignInForm = () => {
                 <div className="signup-form">
                   <form onSubmit={handleSubmit}>
                     <div className="row">
-                      {/*<div className="col-lg-6">*/}
-                      {/*  <div className="form-group">*/}
-                      {/*    <input*/}
-                      {/*      type="text"*/}
-                      {/*      className="form-control"*/}
-                      {/*      placeholder="First Name"*/}
-                      {/*    />*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
                       <div className="col-lg-12">
                         <div className="form-group">
                           <input
@@ -110,35 +105,6 @@ const SignInForm = () => {
                               setPassword(event.target.value)
                             }
                           />
-                        </div>
-                      </div>
-                      {/*<div className="col-lg-6">*/}
-                      {/*  <div className="form-group">*/}
-                      {/*    <input*/}
-                      {/*      type="password"*/}
-                      {/*      className="form-control"*/}
-                      {/*      placeholder="Confirm Password"*/}
-                      {/*    />*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
-
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id="gridCheck"
-                              defaultChecked={false}
-                              onChange={toggleRememberMe}
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="gridCheck"
-                            >
-                              {t('Remember me')}
-                            </label>
-                          </div>
                         </div>
                       </div>
 

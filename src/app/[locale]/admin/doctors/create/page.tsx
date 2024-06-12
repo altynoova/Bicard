@@ -14,13 +14,9 @@ const Create = () => {
 
   const [name, setName] = useState<string>('')
   const [speciality, setSpeciality] = useState<string>('')
-  const [bio, setBio] = useState<string>('')
   const [education, setEducation] = useState<string>('')
   const [experience, setExperience] = useState<string>('')
   const [photo, setPhoto] = useState<File | null>(null)
-  const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [address, setAddress] = useState<string>('')
   const [userId, setUserId] = useState<number>(0)
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
@@ -32,7 +28,6 @@ const Create = () => {
 
     if (!name) validationErrors.name = 'Name is required.'
     if (!speciality) validationErrors.speciality = 'Speciality is required.'
-    if (!bio) validationErrors.bio = 'Bio is required.'
     if (!education) validationErrors.education = 'Education is required.'
     if (!experience) validationErrors.experience = 'Experience is required.'
     if (!photo) validationErrors.photo = 'Photo is required.'
@@ -45,13 +40,9 @@ const Create = () => {
     const data: DoctorRequestModel = {
       name,
       speciality,
-      bio,
       education,
       experience,
       photo,
-      phoneNumber,
-      email,
-      address,
       userId,
     }
 
@@ -114,24 +105,6 @@ const Create = () => {
                       )}
                     </div>
                     <div className="mb-3">
-                      <label className="form-label" htmlFor="bio">
-                      {t('Biography')}
-                      </label>
-                      <textarea
-                        className={`form-control ${errors.bio ? 'is-invalid' : ''}`}
-                        id="bio"
-                        placeholder={t('Biography')}
-                        style={{ height: '10rem' }}
-                        value={bio}
-                        onChange={(event) => setBio(event.target.value)}
-                      ></textarea>
-                      {errors.bio && (
-                        <div className="invalid-feedback" style={{ display: 'block' }}>
-                          {errors.bio}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-3">
                       <label className="form-label" htmlFor="education">
                       {t('Education')}
                       </label>
@@ -183,60 +156,6 @@ const Create = () => {
                       {errors.photo && (
                         <div className="invalid-feedback" style={{ display: 'block' }}>
                           {errors.photo}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="phoneNumber">
-                      {t('PhoneNumber')}
-                      </label>
-                      <input
-                        className={`form-control ${errors.phoneNumber ? 'is-invalid' : ''}`}
-                        id="phoneNumber"
-                        type="text"
-                        placeholder={t('PhoneNumber')}
-                        value={phoneNumber}
-                        onChange={(event) => setPhoneNumber(event.target.value)}
-                      />
-                      {errors.phoneNumber && (
-                        <div className="invalid-feedback" style={{ display: 'block' }}>
-                          {errors.phoneNumber}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="email">
-                      {t('Email')}
-                      </label>
-                      <input
-                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                        id="email"
-                        type="email"
-                        placeholder={t('Email')}
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                      />
-                      {errors.email && (
-                        <div className="invalid-feedback" style={{ display: 'block' }}>
-                          {errors.email}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="address">
-                      {t('Address')}
-                      </label>
-                      <input
-                        className={`form-control ${errors.address ? 'is-invalid' : ''}`}
-                        id="address"
-                        type="text"
-                        placeholder={t('Address')}
-                        value={address}
-                        onChange={(event) => setAddress(event.target.value)}
-                      />
-                      {errors.address && (
-                        <div className="invalid-feedback" style={{ display: 'block' }}>
-                          {errors.address}
                         </div>
                       )}
                     </div>

@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import ServiceCard from '@/components/Services/ServiceCard'
+import { useTranslations } from 'next-intl'
 
 const ServicesList = () => {
   const { GetListOfMedServices, medServices } = useMedServicesStore()

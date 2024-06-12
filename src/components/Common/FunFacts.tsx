@@ -1,10 +1,25 @@
+'use client'
+import { Testimonial } from '@/entities/Testimonials';
+import useTestimonialstore from '@/store/useTestimonialstore';
 import { useTranslations } from 'next-intl';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const FunFacts = () => {
   const t = useTranslations('About');
   const currentYear = new Date().getFullYear();
   const yearsOfExperience = currentYear - 2016;
+  const { FetchTestimonials, Testimonials } = useTestimonialstore();
+  const [firstTestimonial, setFirstTestimonial] = useState<Testimonial | null>(null);
+  useEffect(() => {
+    // Fetch testimonials when the component mounts
+    FetchTestimonials();
+  }, [FetchTestimonials]);
+  useEffect(() => {
+    // Set the first testimonial after fetching
+    if (Testimonials && Testimonials.length > 0) {
+      setFirstTestimonial(Testimonials[0]);
+    }
+  })
   return (
     <>
       <div className="counter-area counter-bg counter-area-four">
@@ -13,7 +28,7 @@ const FunFacts = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-patient-bed"></i>
-                <h3 className="counter">60</h3>
+                <h3 className="counter">{firstTestimonial?.numberOfBeds}</h3>
                 <p>{t('Beds')}</p>
               </div>
             </div>
@@ -22,7 +37,7 @@ const FunFacts = () => {
               <div className="counter-item">
                 <i className="icofont-people"></i>
                 <h3>
-                  <span className="counter">25000</span>+
+                  <span className="counter">{firstTestimonial?.numberOfPatients}</span>+
                 </h3>
                 <p>{t('Happy Patients')}</p>
               </div>
@@ -31,7 +46,7 @@ const FunFacts = () => {
             <div className="col-sm-6 col-lg-3">
               <div className="counter-item">
                 <i className="icofont-doctor-alt"></i>
-                <h3 className="counter">75</h3>
+                <h3 className="counter">{firstTestimonial?.numberOfEmployees}</h3>
                 <p>{t('Employees')}</p>
               </div>
             </div>

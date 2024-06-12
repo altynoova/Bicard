@@ -85,7 +85,7 @@ const Footer = () => {
                       <Link href="/blog">{t('Blogs')}</Link>
                     </li>
                     <li>
-                      <Link href="/blog-details">{t('Online registration')}</Link>
+                      <Link href="/appointment">{t('Online registration')}</Link>
                     </li>
                     <li>
                       <Link href="/faq">{t('FAQ')}</Link>

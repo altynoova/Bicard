@@ -4,8 +4,10 @@ import ServiceDetailsContent from '@/components/Services/ServiceDetailsContent'
 import PageBanner from '@/components/Common/PageBanner'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const ServiceDetails = ({ params }: { params: { id: number } }) => {
+  const t = useTranslations('Services');
   const {
     GetMedServiceById,
     GetListOfSubMedServices,
@@ -53,7 +55,6 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
             </div>
             <div className="col-lg-7">
               <div className="service-details-inner">
-                <h2>We Always Take Care Our Patient</h2>
                 <p>
                   {currentMedService.longDescription}
                 </p>
@@ -74,19 +75,6 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
                       <li>{subservice.name} - {subservice.price}</li>
                     </ul>
                   ))}
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6 col-lg-3">
-              <div className="service-item">
-                <div className="service-front">
-                  <i className="icofont-patient-file"></i>
-                  <Link href="/service-details">
-                    <h3>Амбулаторно-поликлиническая помощь</h3>
-                  </Link>
-                  <ul>
-                   
-                  </ul>
                 </div>
               </div>
             </div>

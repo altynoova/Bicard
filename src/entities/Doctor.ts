@@ -15,13 +15,9 @@ export type Doctor = {
 export type DoctorRequestModel = {
   name: string
   speciality: string
-  bio: string
   education: string
   experience: string
   photo: File | null
-  phoneNumber: string
-  email: string
-  address: string
   userId: number
 }
 export type TimeTable = {

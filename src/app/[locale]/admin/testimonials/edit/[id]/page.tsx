@@ -1,64 +1,57 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import useDoctorStore from '@/store/useDoctorStore'
-import { DoctorRequestModel } from '@/entities/Doctor'
+import useTestimonialStore from '@/store/useTestimonialstore'
+import { TestimonialRequestModel } from '@/entities/Testimonials'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image';
 import { useTranslations } from 'next-intl'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 import { url } from '@/config'
-
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
-  const t = useTranslations('Doctors')
+  const t = useTranslations('Services')
 
-  const GetCurrentDoctor = useDoctorStore((state) => state.GetDoctor)
-  const EditDoctor = useDoctorStore((state) => state.EditDoctor)
-  const GetUsersByRole = useDoctorStore((state) => state.GetUsersByRole)
-  const currentDoctor = useDoctorStore((state) => state.currentDoctor)
+  const GetCurrentTestimonial = useTestimonialStore((state) => state.GetTestimonial)
+  const EditTestimonial = useTestimonialStore((state) => state.EditTestimonial)
+  const currentTestimonial = useTestimonialStore((state) => state.currentTestimonial)
 
-  const [name, setName] = useState<string>(currentDoctor?.name || '')
-  const [speciality, setSpeciality] = useState<string>(
-    currentDoctor?.speciality || ''
-  )
-  const [education, setEducation] = useState<string>(
-    currentDoctor?.education || ''
-  )
-  const [experience, setExperience] = useState<string>(
-    currentDoctor?.experience || ''
-  )
-  const [photo, setPhoto] = useState<File | null>(null)
+  const [intro, setIntro] = useState<string>('')
+  const [id, setId] = useState<number>(0)
+  const [numberOfBeds, setNumberOfBeds] = useState<string>('')
+  const [numberOfPatients, setNumberOfPatients] = useState<string>('')
+  const [numberOfEmployees, setNumberOfEmployees] = useState<string>('')
+  const [Photo, setPhoto] = useState<File | null>(null)
   const [photoPath, setPhotoPath] = useState<string>('')
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const data: DoctorRequestModel = {
-      name,
-      speciality,
-      education,
-      experience,
-      photo,
-      userId: currentDoctor.userId,
+    const data: TestimonialRequestModel = {
+      id,
+      intro,
+      numberOfBeds,
+      numberOfPatients,
+      numberOfEmployees,
+      Photo
     }
-
-    const status = await EditDoctor(data, currentDoctor?.id || 0)
+    const status = await EditTestimonial(currentTestimonial?.id || 0, data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/doctors')
+      router.push('/admin/testimonials')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
   }
 
   async function init() {
-    const response = await GetCurrentDoctor(params.id)
-    GetUsersByRole('Doctor')
-    setName(response.name)
-    setSpeciality(response.speciality)
-    setPhotoPath(response.pathToPhoto)
-    setEducation(response.education)
-    setExperience(response.experience)
+    const response = await GetCurrentTestimonial(params.id)
+    setIntro(response.intro)
+    setNumberOfBeds(response.numberOfBeds)
+    setNumberOfPatients(response.numberOfPatients)
+    setNumberOfEmployees(response.numberOfEmployees)
+    setPhotoPath(response.photoPath)
   }
 
   useEffect(() => {
@@ -67,99 +60,96 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
   return (
     <div>
-      <div className="doctor-details-area pb-70">
+      <div className="Testimonial-details-area pb-70">
         <div className="container">
           <div className="row">
-            <div className="doctor-details-right col-md-8 col-12">
+            <div className="Testimonial-details-right col-md-8 col-12">
               <div className="container pb-1 mb-5">
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                      {t('DoctorsName')}
+                      {t('numberOfBeds')}
                     </label>
                     <input
                       className="form-control"
                       id="name"
                       type="text"
-                      placeholder={t('DoctorsName')}
+                      placeholder={t('numberOfBeds')}
                       data-sb-validations="required"
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
+                      value={numberOfBeds}
+                      onChange={(event) => setNumberOfBeds(event.target.value)}
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="имя:required"
+                      data-sb-feedback="Title is required"
                     >
-                      Name is required.
+                      NumberOfBeds is required.
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="speciality">
-                      {t('Speciality')}
+                    <label className="form-label" htmlFor="name">
+                      {t('numberOfPatients')}
                     </label>
                     <input
                       className="form-control"
-                      id="speciality"
+                      id="name"
                       type="text"
-                      placeholder={t('Speciality')}
+                      placeholder={t('numberOfPatients')}
                       data-sb-validations="required"
-                      value={speciality}
-                      onChange={(event) => setSpeciality(event.target.value)}
+                      value={numberOfPatients}
+                      onChange={(event) => setNumberOfPatients(event.target.value)}
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="специальность:required"
+                      data-sb-feedback="Title is required"
                     >
-                      Speciality is required.
+                      numberOfPatients is required.
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="education">
-                      {t('Education')}
+                    <label className="form-label" htmlFor="name">
+                      {t('numberOfEmployees')}
                     </label>
                     <input
                       className="form-control"
-                      id="education"
+                      id="name"
                       type="text"
-                      placeholder={t('Education')}
+                      placeholder={t('numberOfEmployees')}
                       data-sb-validations="required"
-                      value={education}
-                      onChange={(event) => setEducation(event.target.value)}
+                      value={numberOfEmployees}
+                      onChange={(event) => setNumberOfEmployees(event.target.value)}
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="образование:required"
+                      data-sb-feedback="Title is required"
                     >
-                      Education is required.
+                      numberOfEmployees is required.
                     </div>
                   </div>
+
                   <div className="mb-3">
-                    <label className="form-label" htmlFor="experience">
-                      {t('Experience')}
+                    <label className="form-label" htmlFor="content">
+                      {t('Intro')}
                     </label>
-                    <input
-                      className="form-control"
-                      id="experience"
-                      type="text"
-                      placeholder={t('Experience')}
-                      data-sb-validations="required"
-                      value={experience}
-                      onChange={(event) => setExperience(event.target.value)}
+                    <ReactQuill
+                      value={intro}
+                      onChange={setIntro}
+                      style={{ height: '20rem' }}
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="опыт:required"
+                      data-sb-feedback="Content is required"
                     >
-                      Experience is required.
+                      Intro is required.
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                      {t('IMG')}
+                      Фото
                     </label>
                     <div style={{ margin: 20 }}>
-                      {photo ? (
-                        <img src={URL.createObjectURL(photo)} height={400} width={500} alt="New Photo" />
+                      {Photo ? (
+                        <img src={URL.createObjectURL(Photo)} height={400} width={500} alt="New Photo" />
                       ) : (
                         photoPath && <img src={`${url}/TempFileStorage/${photoPath}`} height={400} width={500} alt="Current Photo" />
                       )}
@@ -168,15 +158,15 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       className="form-control"
                       id="photo"
                       type="file"
-                      placeholder={t('IMG')}
+                      placeholder="Фото"
                       data-sb-validations="required"
                       onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
                     />
                     <div
                       className="invalid-feedback"
-                      data-sb-feedback="Photo is required"
+                      data-sb-feedback="номерТелефона:required"
                     >
-                      Photo is required.
+                      Номер телефона is required.
                     </div>
                   </div>
                   <div className="d-none" id="submitSuccessMessage">
@@ -195,12 +185,14 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       Error sending message!
                     </div>
                   </div>
-                  <div className="d-grid">
-                    <input
-                      className="btn btn-primary"
-                      type="submit"
-                      value={t('Save')}
-                    />
+                  <div className="mb-3">
+                    <div className="d-grid">
+                      <input
+                        className="btn btn-primary"
+                        type="submit"
+                        value={t('Save')}
+                      />
+                    </div>
                   </div>
                 </form>
               </div>

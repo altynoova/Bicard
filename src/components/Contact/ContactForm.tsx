@@ -129,20 +129,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <div className="col-lg-5 p-0">
-              <div className="speciality-item speciality-right speciality-right-two speciality-right-three">
-                <img src="/images/about4.jpg" alt="Contact" />
-
-                <div className="speciality-emergency">
-                  <div className="speciality-icon">
-                    <i className="icofont-ui-call"></i>
-                  </div>
-
-                  <h3>{t('Emergency call')}</h3>
-                  <p>+996 554 332 322</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

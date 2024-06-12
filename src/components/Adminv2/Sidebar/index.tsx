@@ -27,8 +27,8 @@ const data = [
   { link: '/admin/vacancies', label: 'Vacancies', icon: '' },
   { link: '/admin/faqs', label: "FAQs", icon: '' },
   { link: '/admin/infos', label: "Info", icon: '' },
-  { link: '/admin/certificates', label: "Certificates", icon: '' }
-
+  { link: '/admin/certificates', label: "Certificates", icon: '' },
+  { link: '/admin/testimonials', label: "Testimonials", icon: '' }
 
 ]
 

@@ -33,7 +33,7 @@ export const EditService = async (data: MedServiceModel, id: number) => {
 }
 
 export const EditSubService = async (data: SubMedServiceModel, id: number) => {
-  return await $http.put(`/medservices/updatesubmedservice?id=${id}`, data)
+  return await $http.put(`/medservices/UpdateMedService?id=${id}`, data)
 }
 
 export const DeleteService = async (id: number) => {

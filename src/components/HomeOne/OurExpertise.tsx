@@ -1,13 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const OurExpertise = () => {
+  const t = useTranslations('About')
   return (
     <>
       <div className="expertise-area pb-70">
         <div className="container">
           <div className="section-title">
-            <h2>Наши эксперты</h2>
+            <h2>{t('Our experts')}</h2>
           </div>
 
           <div className="row align-items-center">
@@ -18,51 +20,36 @@ const OurExpertise = () => {
                     <div className="expertise-inner">
                       <i className="icofont-doctor-alt"></i>
                       <h3>
-                        <Link href="/doctors/details">Специалисты клиники</Link>
+                        <Link href="/doctors/details">{t('experts')}</Link>
                       </h3>
-                      <p>
-                        Кардиологи Кардиологи-аритмологи Кардиохирурги
-                        Сосудистые хирурги (ангиологи)
-                      </p>
+                      <p>{t('expertsDesc')}</p>
                     </div>
                   </div>
                   <div className="col-sm-6 col-lg-6">
                     <div className="expertise-inner">
                       <i className="icofont-stretcher"></i>
                       <h3>
-                        <Link href="/doctors/details">Скорая помощь</Link>
+                        <Link href="/doctors/details">{t('emergency')}</Link>
                       </h3>
-                      <p>
-                        Клиника работает 24 часа в сутки, 7 дней в неделю и
-                        оказывает экстренную высокотехнологичную помощь вне
-                        зависимости от времени суток
-                      </p>
+                      <p>{t('emergencyDesc')}</p>
                     </div>
                   </div>
                   <div className="col-sm-6 col-lg-6">
                     <div className="expertise-inner">
                       <i className="icofont-network"></i>
                       <h3>
-                        <Link href="/doctors/details">Технологии</Link>
+                        <Link href="/doctors/details">{t('tech')}</Link>
                       </h3>
-                      <p>
-                        В кардиоклинике имеется самый современный ангиограф, с
-                        помощью чего проводят диагностику и лечение заболеваний
-                        рентгенэндоваскулярными методами.
-                      </p>
+                      <p>{t('techDesc')}</p>
                     </div>
                   </div>
                   <div className="col-sm-6 col-lg-6">
                     <div className="expertise-inner">
                       <i className="icofont-ambulance-cross"></i>
                       <h3>
-                        <Link href="/doctors/details">Диагностика </Link>
+                        <Link href="/doctors/details">{t('diagnostics')}</Link>
                       </h3>
-                      <p>
-                        В отделении лучевой и функциональной диагностики
-                        проводятся все виды УЗИ исследований, допплерография,
-                        эхокардиография, чреспищеводная эхокардиография и т.д.
-                      </p>
+                      <p>{t('diagnosticsDesc')}</p>
                     </div>
                   </div>
                 </div>

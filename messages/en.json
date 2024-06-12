@@ -1,6 +1,6 @@
 {
   "About": {
-    "AboutCompany": "About Company",
+    "AboutCompany": "About clinic",
     "Home": "Home page",
     "AboutUs": "About us",
     "AboutBicard": "International standard clinic Bicard - the latest treatment methods and highly qualified specialists, friendly and caring staff, reasonable prices.",
@@ -16,6 +16,15 @@
     "Treatment":"Treatment",
     "Patients": "Patients",
     "Certificates": "Certificates",
+    "Our experts": "Our experts",
+    "experts": "Our experts",
+    "emergency": "Emergency Services",
+    "tech": "Technologies",
+    "diagnostics": "Diagnostics",
+    "expertsDesc": "Cardiologists, Arrhythmologists, Cardiac Surgeons, Vascular Surgeons",
+    "emergencyDesc": "The clinic operates 24 hours a day, 7 days a week, providing high-tech emergency assistance regardless of the time of day",
+    "techDesc": "The cardiology clinic has the most modern angiograph, which is used for diagnosing and treating diseases using X-ray endovascular methods.",
+    "diagnosticsDesc": "In the department of radiation and functional diagnostics, all types of ultrasound examinations, dopplerography, echocardiography, transesophageal echocardiography, etc. are performed.",
     "Apparatuses": "Apparatuses"
   },
   "TopHeader": {
@@ -41,9 +50,12 @@
     "Articles": "Articles",
     "Vacancies": "Vacancies",
     "Certificates": "Certificates",
-    "FAQs": "FAQs",
+    "FAQ": "FAQs",
     "Search": "Search",
-    "Info":"For patients"
+    "Online registration": "Appointment",
+    "Testimonials": "Clinic information",
+    "Admin": "Admin",
+    "Info":"Patients"
   },
   "Doctors": {
     "OurDoctors": "Meet our qualified doctors",
@@ -100,6 +112,12 @@
     "Vacancies": "Vacancies",
     "VacanciesWeNeed":"We are currently considering candidates for the following vacancies:",
     "Title": "Title",
+    "Apply": "Apply",
+    "Apply for: ": "Apply for: ",
+    "Requirements:": "Requirements:",
+    "Description:": "Description:",
+    "Upload file": "Your uploaded cv will send to Bicard team ",
+    "Send": "Send",
     "Articles": "Articles"
 
   },
@@ -144,6 +162,7 @@
     "Add Subservice": "Add Subservice",
     "Articles": "Articles",
     "Edit": "Edit",
+    "Home": "Home",
     "Delete": "Delete",
     "No subservices": "No subservices",
     "Subservices": "Subservices",
@@ -206,6 +225,11 @@
     "Cancel": "Cancel",
     "Select schedule": "Select schedule",
     "Make an appointment": "Make an appointment",
+    "Testimonials": "Clinic information",
+    "Intro": "Information",
+    "numberOfBeds": "Beds",
+    "numberOfPatients": "Happy patients",
+    "numberOfEmployees": "Employees",
     "Sunday":"Sunday"
 
   }

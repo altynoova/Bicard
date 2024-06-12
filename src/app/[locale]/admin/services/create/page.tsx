@@ -78,7 +78,7 @@ const CreateService = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            {t('Detailed  Description')}
+            {t('Detailed Description')}
           </label>
           <input
             type="text"

@@ -77,172 +77,47 @@ const Navbar = () => {
                     </Link>
                   </li>
 
-                  <li className="nav-item">
-                    <Link
-                      href="#"
-                      onClick={(e) => e.preventDefault()}
-                      className="nav-link dropdown-toggle"
-                    >
-                      Pages
-                    </Link>
-
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link
-                          href="/appointment/"
-                          className={`nav-link ${currentPath == '/appointment/' && 'active'
-                            }`}
-                        >
-                          Онлайн запись
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/departments/"
-                          className={`nav-link ${currentPath == '/departments/' && 'active'
-                            }`}
-                        >
-                          Отделения
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/testimonials/"
-                          className={`nav-link ${currentPath == '/testimonials/' && 'active'
-                            }`}
-                        >
-                          Пациентам
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link
-                          href="/vacancies/"
-                          className={`nav-link ${currentPath == '/vacancies/' && 'active'
-                            }`}
-                        >
-                          Вакансии
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/signup/"
-                          className={`nav-link ${currentPath == '/sign-up/' && 'active'
-                            }`}
-                        >
-                          Регистрация
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/signin/"
-                          className={`nav-link ${currentPath == '/sign-in/' && 'active'
-                            }`}
-                        >
-                          Вход
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/faq/"
-                          className={`nav-link ${currentPath == '/faq/' && 'active'
-                            }`}
-                        >
-                          FAQ&apos;s
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/coming-soon/"
-                          className={`nav-link ${currentPath == '/coming-soon/' && 'active'
-                            }`}
-                        >
-                          Новинки
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/privacy-policy/"
-                          className={`nav-link ${currentPath == '/privacy-policy/' && 'active'
-                            }`}
-                        >
-                          Certificates
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
 
                   <li className="nav-item">
                     <Link
-                      href="#"
-                      onClick={(e) => e.preventDefault()}
-                      className="nav-link dropdown-toggle"
+                      href="/services"
+                      className={`nav-link ${currentPath == '/services/' && 'active'
+                        }`}
                     >
                       {t('Services')}
+
                     </Link>
-
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link
-                          href="/services/"
-                          className={`nav-link ${currentPath == '/services/' && 'active'
-                            }`}
-                        >
-                          {t('Services')}
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/service-details/"
-                          className={`nav-link ${currentPath == '/service-details/' && 'active'
-                            }`}
-                        >
-                          {t('Learn More')}
-                        </Link>
-                      </li>
-                    </ul>
                   </li>
-
                   <li className="nav-item">
                     <Link
-                      href="#"
-                      onClick={(e) => e.preventDefault()}
-                      className="nav-link dropdown-toggle"
+                      href="/doctors"
+                      className={`nav-link ${currentPath == '/doctors/' && 'active'
+                        }`}
                     >
                       {t('Doctors')}
 
                     </Link>
-
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <Link
-                          href="/doctors/"
-                          className={`nav-link ${currentPath == '/doctors/' && 'active'
-                            }`}
-                        >
-                          {t('Doctors')}
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link
-                          href="/doctors/details/"
-                          className={`nav-link ${currentPath == '/doctor-details/' && 'active'
-                            }`}
-                        >
-                          {t('Learn More')}
-                        </Link>
-                      </li>
-                    </ul>
                   </li>
 
+                  <li className="nav-item">
+                    <Link
+                      href="/appointment/"
+                      className={`nav-link ${currentPath == '/appointment/' && 'active'
+                        }`}
+                    >
+                      {t('Online registration')}
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link
+                      href="/testimonials/"
+                      className={`nav-link ${currentPath == '/testimonials/' && 'active'
+                        }`}
+                    >
+                      {t('Info')}
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link
                       href="#"
@@ -276,11 +151,11 @@ const Navbar = () => {
                       </li>
                       <li className="nav-item">
                         <Link
-                          href="/blog/details/"
-                          className={`nav-link ${currentPath == '/blog-details/' && 'active'
+                          href="/privacy-policy/"
+                          className={`nav-link ${currentPath == '/privacy-policy/' && 'active'
                             }`}
                         >
-                            {t('Learn More')}
+                          {t('Certificates')}
                         </Link>
                       </li>
                     </ul>
@@ -288,23 +163,53 @@ const Navbar = () => {
 
                   <li className="nav-item">
                     <Link
+                      href="/faq"
+                      className={`nav-link ${currentPath == '/faq/' && 'active'
+                        }`}
+                    >
+                      {t('FAQ')}
+
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      href="/vacancies/"
+                      className={`nav-link ${currentPath == '/vacancies/' && 'active'
+                        }`}
+                    >
+                      {t('Vacancies')}
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
                       href="/contact"
                       className={`nav-link ${currentPath == '/blog/' && 'active'
                         }`}
                     >
-                        {t('Contacts')}
-                      
+                      {t('Contacts')}
+
                     </Link>
                   </li>
 
                   {GetCookie('userRole') === 'Admin' &&
                     <li className="nav-item">
                       <Link
-                        href="/admin"
-                        className={`nav-link ${currentPath == '/blog/' && 'active'
+                        href="/admin/appointments"
+                        className={`nav-link ${currentPath == '/admin/appointments/' && 'active'
                           }`}
                       >
-                        Admin
+                         {t('Admin')} 
+                      </Link>
+                    </li>
+                  }
+                  {GetCookie('userRole') === 'Doctor' &&
+                    <li className="nav-item">
+                      <Link
+                        href="/doctor/appointments"
+                        className={`nav-link ${currentPath == '/doctor/appointments/' && 'active'
+                          }`}
+                      >
+                         {t('Doctor')} 
                       </Link>
                     </li>
                   }
@@ -324,6 +229,9 @@ const Navbar = () => {
                     <i className="icofont-search-1"></i>
                   </button>
                 </form>
+                <div className="WhatsAppButton1">
+                  <a href="/appointment/" className="appointment-button"><i className="icofont-pencil">{t('Online registration')}</i></a>
+                </div>
                 <div className="WhatsAppButton">
                   <a href="https://wa.me/996501880688" target="_blank">
                     <img src="/images/wa.png" alt="WhatsApp Button"></img>

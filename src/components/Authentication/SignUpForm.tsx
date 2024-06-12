@@ -67,36 +67,6 @@ const SignUpForm = () => {
                 <div className="signup-form">
                   <form onSubmit={handleSubmit}>
                     <div className="row">
-                      {/*<div className="col-lg-6">*/}
-                      {/*  <div className="form-group">*/}
-                      {/*    <input*/}
-                      {/*      type="text"*/}
-                      {/*      className="form-control"*/}
-                      {/*      placeholder="First Name"*/}
-                      {/*    />*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
-
-                      {/*<div className="col-lg-6">*/}
-                      {/*  <div className="form-group">*/}
-                      {/*    <input*/}
-                      {/*      type="text"*/}
-                      {/*      className="form-control"*/}
-                      {/*      placeholder="Last Name"*/}
-                      {/*    />*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
-
-                      {/*<div className="col-lg-6">*/}
-                      {/*  <div className="form-group">*/}
-                      {/*    <input*/}
-                      {/*      type="text"*/}
-                      {/*      className="form-control"*/}
-                      {/*      placeholder="Phone Number"*/}
-                      {/*    />*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
-
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
