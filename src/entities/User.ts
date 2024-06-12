@@ -12,7 +12,6 @@ export type NewPassword = {
 export type UserLogin = {
   userName: string
   password: string
-  rememberMe: boolean
 }
 export type UserReset = {
   email: string

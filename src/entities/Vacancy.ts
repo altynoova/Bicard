@@ -11,3 +11,6 @@ export type VacancyRequestModel = {
   requirements: string;
   description: string;
  }
+ export type Formdata = {
+  File: File | null;
+ }

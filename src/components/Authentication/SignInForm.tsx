@@ -19,11 +19,8 @@ const SignInForm = () => {
 
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [rememberMe, setRememeberMe] = useState<boolean>(false)
 
-  const toggleRememberMe = () => {
-    setRememeberMe((prev) => !prev)
-  }
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -31,7 +28,6 @@ const SignInForm = () => {
     const data: UserLogin = {
       userName: username,
       password,
-      rememberMe,
     }
 
     console.log(data)

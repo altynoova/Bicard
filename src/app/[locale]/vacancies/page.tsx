@@ -1,16 +1,33 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import { useTranslations } from 'next-intl';
 import useVacancyStore from '@/store/useVacancyStore';
+import { Button } from '@mui/material';
+import { Vacancy } from '@/entities/Vacancy';
+import ApplicationModal from '@/components/Appointment/ApplicationModal';
 
 const PrivacyPolicy = () => {
   const t = useTranslations('Blogs');
   const FetchVacancies = useVacancyStore().FetchVacancies
   const { Vacancies } = useVacancyStore()
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
+
   useEffect(() => {
     FetchVacancies()
   }, [])
+
+  const handleShowModal = (vacancy: Vacancy) => {
+    setSelectedVacancy(vacancy);
+    setShowModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedVacancy(null);
+  }
+
   return (
     <div>
       <PageBanner
@@ -26,28 +43,34 @@ const PrivacyPolicy = () => {
           <h2>{t('Vacancies')}</h2>
           <p>{t('VacanciesWeNeed')}</p>
           {Vacancies.map((vacancy) => (
-            <div className="col-md-6 col-lg-8">
+            <div className="col-md-6 col-lg-8" key={vacancy.id}>
               <div className="vacancy-card">
                 <div className="vacancy-card-header">
-                  <h4>{vacancy.position} </h4>
+                  <h4>{vacancy.position}</h4>
                 </div>
                 <div className="vacancy-card-content">
                   <p><strong>{t('Requirements:')}  </strong> {vacancy.requirements}</p>
-                  <p><strong> {t('Description:')}  </strong> {vacancy.description}</p>
+                  <p><strong>{t('Description:')}  </strong> {vacancy.description}</p>
                 </div>
-                <div style={{display:'flex', justifyContent:'space-between', margin:20 }}>
-                  <p><strong>{t('Date')} </strong></p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', margin: 20 }}>
+                  <p><strong>{t('Date')}</strong></p>
                   <div>
                     {new Date(vacancy.timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                   </div>
+                  <Button variant="contained" color="primary" onClick={() => handleShowModal(vacancy)}>
+                  Apply
+                </Button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        {selectedVacancy && (
+          <ApplicationModal show={showModal} handleClose={handleCloseModal} vacancy={selectedVacancy} />
+        )}
       </div>
     </div>
   )
 }
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

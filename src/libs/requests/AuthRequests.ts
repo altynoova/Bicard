@@ -18,7 +18,7 @@ export const ResetPassword = async (data: NewPassword) => {
 }
 export const Login = async (data: UserLogin) => {
   try {
-    return await $http.post('/users/login', data)
+    return await $http.post('/users/loginweb', data)
   } catch (error: any) {
     return error.response
   }

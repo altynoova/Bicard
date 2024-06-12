@@ -12,9 +12,7 @@ import {
   InputLabel,
   Avatar,
 } from '@mui/material'
-import {
-  addDays,
-} from 'date-fns'
+import { addDays} from 'date-fns'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import useDoctorStore from '@/store/useDoctorStore'

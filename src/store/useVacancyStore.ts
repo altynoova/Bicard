@@ -1,11 +1,12 @@
 import { create } from 'zustand'
-import { Vacancy, VacancyRequestModel } from '@/entities/Vacancy'
+import { Formdata, Vacancy, VacancyRequestModel } from '@/entities/Vacancy'
 import {
   CreateVacancy,
   DeleteVacancy,
   EditVacancy,
   FetchVacancies,
   GetVacancy,
+  VacancyResponse,
 } from '@/libs/requests/VacancyRequest'
 
 interface IVacancyStore {
@@ -15,6 +16,7 @@ interface IVacancyStore {
   FetchVacancies: () => void;
   GetVacancy: (id: number) => Promise<any>;
   CreateVacancy: (data: VacancyRequestModel) => Promise<number>;
+  VacancyResponse: (id: number, data: Formdata) => Promise<number>;
   EditVacancy: ( id: number, data: VacancyRequestModel) => Promise<number>;
   DeleteVacancy: (id: number) => Promise<number>;
 }
@@ -48,6 +50,11 @@ const useVacancyStore = create<IVacancyStore>()((set) => ({
     console.log("data in create Vacancy", response)
     set(() => ({ currentVacancy: response.data }))
     return response.status
+  },
+  async VacancyResponse(id, data) {
+    const response = await VacancyResponse(id, data)
+    console.log("data in create Vacancy", response)
+    return response
   },
 
   async EditVacancy(id, data) {

@@ -1,5 +1,5 @@
 import { $http } from '../axios'
-import { VacancyRequestModel } from '@/entities/Vacancy'
+import { VacancyRequestModel, Formdata } from '@/entities/Vacancy'
 
 export const FetchVacancies = async () => {
   return await $http.get(`/vacancies/getall`)
@@ -15,6 +15,20 @@ export const CreateVacancy = async (data: VacancyRequestModel) => {
       method: 'post',
       url: `/vacancies/create`,
       data,
+    })
+  } catch (error: any) {
+    return error.status
+  }
+}
+export const VacancyResponse = async (id: number, data: Formdata) => {
+  try {
+    return await $http({
+      method: 'post',
+      url: `/vacancies/response?vacancyId=${id}`,
+      data,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     })
   } catch (error: any) {
     return error.status
