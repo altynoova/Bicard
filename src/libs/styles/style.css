@@ -2457,6 +2457,11 @@ footer {
     height: 90px;
     margin: auto;
 }
+.feedback-item .client-img1 img {
+    width: 200px !important;
+    height: 200px;
+    margin: auto;
+}
 
 .feedback-item .client-img h3 {
     margin-top: 20px;
@@ -2470,6 +2475,38 @@ footer {
 }
 
 .feedback-item p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.feedback-item1 {
+    max-width: 770px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.feedback-item1 .client-img img {
+    width: 300px !important;
+    height: 300px;
+    margin: auto;
+}
+
+
+.feedback-item1 .client-img h3 {
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.feedback-item1 p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.feedback-item1 p:last-child {
     margin-bottom: 0;
 }
 
@@ -2676,6 +2713,7 @@ footer {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
 
 .appointment-item-two-right .appointment-item-content {
     background-color: #f6f6f6;
@@ -3995,7 +4033,6 @@ li:first-child {
 }
 
 .service-details-inner-left {
-    background-image: url("/images/signup-bg.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -4003,9 +4040,7 @@ li:first-child {
     height: 100%;
 }
 
-.service-details-inner-left img {
-    display: none;
-}
+
 
 .service-details-inner {
     max-width: 580px;

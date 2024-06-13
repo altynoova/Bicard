@@ -55,39 +55,6 @@ const BlogSidebar = () => {
           </ul>
         </div>
 
-        <div className="blog-details-category">
-          <h3>Category</h3>
-          <ul>
-            <li>
-              <Link href="/blog">Health Care</Link>
-            </li>
-            <li>
-              <Link href="/blog">Medical science</Link>
-            </li>
-            <li>
-              <Link href="/blog">Daily lifestyle</Link>
-            </li>
-            <li>
-              <Link href="/blog">Medicine</Link>
-            </li>
-            <li>
-              <Link href="/blog">Mordern Technology</Link>
-            </li>
-            <li>
-              <Link href="/blog">Cancer Research</Link>
-            </li>
-            <li>
-              <Link href="/blog">BioInformatics</Link>
-            </li>
-            <li>
-              <Link href="/blog">Hospital Events</Link>
-            </li>
-            <li>
-              <Link href="/blog">Student Succses</Link>
-            </li>
-          </ul>
-        </div>
-
         <div className="blog-details-tags">
           <h3>{t('Tags')}</h3>
           <ul>

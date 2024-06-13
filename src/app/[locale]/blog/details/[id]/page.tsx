@@ -74,7 +74,6 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
           </div>
         </div>
       </div>
-      <LatestBlogPost />
     </div>
   )
 }

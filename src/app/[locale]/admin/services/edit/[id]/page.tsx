@@ -5,6 +5,8 @@ import useMedServicesStore from '@/store/useMedServicesStore'
 import { useRouter } from 'next/navigation'
 import { TextField } from '@mui/material'
 import { useTranslations } from 'next-intl'
+import { url } from '@/config'
+import { MedServiceModel } from '@/entities/Service'
 
 const EditService = ({ params }: { params: { id: number } }) => {
   const {
@@ -17,28 +19,32 @@ const EditService = ({ params }: { params: { id: number } }) => {
   const t = useTranslations('Services')
 
   const [name, setName] = useState(currentMedService.name)
+  const [Photo, setPhoto] = useState<File | null>(null)
   const [shortDescription, setShortDescription] = useState(
     currentMedService.shortDescription
   )
   const [longDescription, setLongDescription] = useState(
     currentMedService.longDescription
   )
+  const [pathToPhoto, setPathToPhoto] = useState(
+    currentMedService.pathToPhoto
+  )
   const [loading, setLoading] = useState(true)
 
   const handleUpdate = async () => {
-    const response = await EditMedService(
-      {
-        name, shortDescription, longDescription,
-        files: null
-      },
-      currentMedService.id
-    )
-    if (response === 200) {
-      SuccessAlert('Успешно')
-      GetMedServiceById(params.id);
-      setLoading(false)
+    const data: MedServiceModel = {
+     name,
+     shortDescription,
+     longDescription,
+     Photo
+    }
+
+    const status = await EditMedService(data, currentMedService.id)
+    if (status == 200) {
+      SuccessAlert('Данные успешно обновлены.')
+      router.push('/admin/services');
     } else {
-      ErrorAlert('Произошла ошибка')
+      ErrorAlert('Произошла ошибка!')
     }
   }
 
@@ -55,6 +61,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
     setName(currentMedService.name)
     setShortDescription(currentMedService.shortDescription)
     setLongDescription(currentMedService.longDescription)
+    setPathToPhoto(currentMedService.pathToPhoto)
   }, [loading])
 
   return loading ? (
@@ -113,6 +120,32 @@ const EditService = ({ params }: { params: { id: number } }) => {
                     onChange={(event) => setLongDescription(event.target.value)}
                   />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="photo">
+                      Фото
+                    </label>
+                    <div style={{ margin: 20 }}>
+                      {Photo ? (
+                        <img src={URL.createObjectURL(Photo)} height={400} width={500} alt="New Photo" />
+                      ) : (
+                        pathToPhoto && <img src={`${url}/TempFileStorage/${pathToPhoto}`} height={400} width={500} alt="Current Photo" />
+                      )}
+                    </div>
+                    <input
+                      className="form-control"
+                      id="photo"
+                      type="file"
+                      placeholder="Фото"
+                      data-sb-validations="required"
+                      onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
+                    />
+                    <div
+                      className="invalid-feedback"
+                      data-sb-feedback="номерТелефона:required"
+                    >
+                      Номер телефона is required.
+                    </div>
+                  </div>
                 <button
                   type="submit"
                   className="btn btn-primary"

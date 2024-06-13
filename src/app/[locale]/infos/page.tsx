@@ -6,7 +6,7 @@ import useArticleStore from '@/store/useArticleStore';
 import useForPatientsStore from '@/store/ForPatients';
 
 const testimonials = () => {
-  const t = useTranslations('Blogs');
+  const t = useTranslations('Services');
   const Infos = useForPatientsStore().FetchForPatientss
   const { ForPatientss } = useForPatientsStore()
   const filteredInfos = ForPatientss.filter(d => d.title.toLowerCase())
@@ -16,10 +16,10 @@ const testimonials = () => {
   return (
     <div>
       <PageBanner
-        pageTitle="Privacy Policy"
+        pageTitle={t('Infos')}
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Privacy Policy"
+        homePageText={t('Home')}
+        activePageText={t('Infos')}
         bgImage="page-title-one"
       />
 

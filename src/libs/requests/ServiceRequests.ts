@@ -29,11 +29,22 @@ export const CreateSubService = async (data: SubMedServiceModel) => {
 }
 
 export const EditService = async (data: MedServiceModel, id: number) => {
-  return await $http.put(`/medservices/updatemedservice?id=${id}`, data)
+  try {
+    return await $http({
+      method: 'put',
+      url: `/medservices/updatemedservice?id=${id}`,
+      data,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error: any) {
+    return error.status;
+  }
 }
 
 export const EditSubService = async (data: SubMedServiceModel, id: number) => {
-  return await $http.put(`/medservices/UpdateMedService?id=${id}`, data)
+  return await $http.put(`/medservices/UpdateSubMedService?id=${id}`, data)
 }
 
 export const DeleteService = async (id: number) => {

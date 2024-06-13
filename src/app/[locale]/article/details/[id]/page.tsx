@@ -11,7 +11,7 @@ import ArticleSidebar from '@/components/Blog/ArticleSideBar';
 import { url } from '@/config';
 
 const ArticleDetails = ({ params }: { params: { id: number } }) => {
-  const { GetArticle, currentArticle, Articles, LatestArticles } = useArticleStore();
+  const { GetArticle, currentArticle, Articles,Latestarticles, LatestArticles } = useArticleStore();
   const t = useTranslations('Blogs');
   
   useEffect(() => {
@@ -23,16 +23,15 @@ const ArticleDetails = ({ params }: { params: { id: number } }) => {
     fetchData();
   }, [params.id, GetArticle, currentArticle.authorName, LatestArticles]);
 
-  const filteredArticles = Articles.filter(d => d.title.toLowerCase());
 
   return (
     <div>
       {/* Page Banner */}
       <PageBanner
-        pageTitle={t('Blogs Details')}
+        pageTitle={t('Articles Details')}
         homePageUrl="/"
         homePageText={t('Home')}
-        activePageText={t('Blogs Details')}
+        activePageText={t('Articles Details')}
         bgImage="page-title-four1"
       />
 
@@ -70,10 +69,10 @@ const ArticleDetails = ({ params }: { params: { id: number } }) => {
                   <div className="prev-next">
                     <ul>
                       <li>
-                        <a href={`/blog/details/${currentArticle.id - 1}`}>{t('Previous')}</a>
+                        <a href={`/article/details/${currentArticle.id - 1}`}>{t('Previous')}</a>
                       </li>
                       <li>
-                        <a href={`/blog/details/${currentArticle.id + 1}`}>{t('Next')}</a>
+                        <a href={`/article/details/${currentArticle.id + 1}`}>{t('Next')}</a>
                       </li>
                     </ul>
                   </div>
@@ -90,13 +89,13 @@ const ArticleDetails = ({ params }: { params: { id: number } }) => {
       </div>
 
       {/* Author Latest Posts */}
-      <div className="blog-area-two pb-70">
+      <div className="blog-area-two pb-70 pt-100">
         <div className="container">
           <div className="section-title">
-            <h2>{t('Author Latest Posts')}</h2>
+            <h2>{t('Author Latest Articles')}</h2>
           </div>
           <div className="row">
-            {filteredArticles.map((blog) => (
+            {Latestarticles.map((blog) => (
               <div className="col-md-6 col-lg-4" key={blog.id}>
                 <div className="blog-item">
                   <div className="blog-top">

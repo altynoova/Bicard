@@ -17,7 +17,7 @@ const LatestBlogPost = () => {
 
   return (
     <>
-      <div className="blog-area-two pb-70">
+      <div className="blog-area-two pb-70 pt-100">
         <div className="container">
           <div className="section-title">
             <h2>{t('Our Latest Blogs')} </h2>

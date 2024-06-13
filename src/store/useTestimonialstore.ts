@@ -39,6 +39,7 @@ const useTestimonialstore = create<ITestimonialstore>()((set) => ({
   },
   async GetTestimonial(id) {
     const response = await GetTestimonial(id)
+    console.log('data', response)
     set(() => ({ currentTestimonial: response.data }))
     return response.data
   },

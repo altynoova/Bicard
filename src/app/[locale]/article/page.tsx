@@ -16,10 +16,10 @@ const Blog = () => {
   return (
     <div>
       <PageBanner
-        pageTitle={t('Blogs')}
+        pageTitle={t('Articles')}
         homePageUrl="/"
         homePageText={t('Home')}
-        activePageText={t('Blogs')}
+        activePageText={t('Articles')}
         bgImage="page-title-four1"
       />
       <div className="article">

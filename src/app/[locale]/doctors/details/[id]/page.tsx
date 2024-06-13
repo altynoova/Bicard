@@ -60,21 +60,11 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
       <div className="doctor-details-area pt-100 pb-70">
         <div className="container">
           <div className="row">
-            <div className="col-lg-5">
+            <div className="col-lg-4">
               <div className="doctor-details-item doctor-details-left">
                 <img width={250} height={400} src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`} alt={currentDoctor.name} />
                 <div className="doctor-details-contact" style={{paddingBottom:20}}>
-                  <h3>{t('Contacts')}</h3>
-                  <ul>
-                    <li>
-                      <i className="icofont-ui-call"></i>
-                      {currentDoctor?.phoneNumber}
-                    </li>
-                    <li>
-                      <i className="icofont-ui-message"></i>
-                      {currentDoctor?.email}
-                    </li>
-                  </ul>
+                 
                 </div>
               </div>
             </div>
@@ -113,7 +103,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
             <div className='row'>
               <div className="col-lg-5">
                 <div className="doctor-details-work">
-                  <h3>{t('WorkHours')}</h3>
+                  <h3>{t('DoctorsWorkHours')}</h3>
                   <div className="appointment-item-two-right">
                     <div className="appointment-item-content">
                       <ul>
@@ -149,7 +139,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                       </Grid>
                       <Grid item>
                         <Typography variant="h6">
-                          <b>{new Date(selectedDate).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</b>
+                          <b>{new Date(selectedDate).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')}</b>
                         </Typography>
                       </Grid>
                       <Grid item>
@@ -202,7 +192,7 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                             return (
                               <Grid item xs={12} key={idx}>
                                 {day.timeslots.length > 0 ? (
-                                  <Typography>{new Date(day.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}   {t(dayy?.name)} </Typography>
+                                  <Typography>{new Date(day.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')}   {t(dayy?.name)} </Typography>
                                 ) : (
                                   <Typography></Typography>
                                 )}

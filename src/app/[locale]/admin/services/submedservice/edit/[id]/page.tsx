@@ -28,8 +28,7 @@ const EditService = ({ params }: { params: { id: number } }) => {
     )
     if (response === 200) {
       SuccessAlert('Успешно')
-      GetSubMedServiceById(params.id)
-      setLoading(false)
+      router.push('/admin/services');
     } else {
       ErrorAlert('Произошла ошибка')
     }

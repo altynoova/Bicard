@@ -1,81 +1,106 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import useCertificateStore from '@/store/useCertificateStore'
-import { CertificateRequestModel } from '@/entities/Certificate'
+import useBlogStore from '@/store/useBlogStore'
+import { BlogRequestModel } from '@/entities/Blog'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import { GetCookie } from '@/libs/cookie'
+
 
 const Create = () => {
   const router = useRouter()
-  const t = useTranslations('Services')
+  const signed = GetCookie('Bicard-Web-API-Access-Token')
+  const userid = GetCookie('userId')|| ''
+  const { CreateBlog } = useBlogStore()
 
-  const { CreateCertificate } = useCertificateStore()
-
-  const [Description, setDescription] = useState<string>('')
-  const [Photo, setPhoto] = useState<File | null>(null)
-
+  const [title, setTitle] = useState<string>('')
+  const [text, setText] = useState<string>('')
+  const [authorId, setAuthorId] = useState<string>(userid)
+  const [photo, setPhoto] = useState<File | null>(null)
+  if (!signed) {
+    router.push('/signin')
+  }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const data: CertificateRequestModel = {
-      Description,
-      Photo,
-      id: 0
+    const data: BlogRequestModel = {
+      title,
+      text,
+      photo,
+      authorId,
     }
 
-    const status = await CreateCertificate(data)
+    const status = await CreateBlog(data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/certificates')
+      router.push('/admin/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
   }
   return (
     <div>
-      <div className="Certificate-details-area pb-70">
+      <div className="Blog-details-area pb-70">
         <div className="container" style={{ maxWidth: 500 }}>
           <div className="row">
-            <div className="Certificate-details-item">
-              <div className="Certificate-details-right">
+            <div className="Blog-details-item">
+              <div className="Blog-details-right">
                 <div className="container pb-1 my-5">
                   <form id="contactForm" onSubmit={handleSubmit}>
-                    <div className="mb-3">
+                    <div className="mb-4">
                       <label className="form-label" htmlFor="name">
-                        {t('Description')}
+                        Название
                       </label>
                       <input
                         className="form-control"
                         id="name"
                         type="text"
-                        placeholder={t('Description')}
+                        placeholder="Имя"
                         data-sb-validations="required"
-                        value={Description}
-                        onChange={(event) => setDescription(event.target.value)}
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
                       />
                       <div
                         className="invalid-feedback"
                         data-sb-feedback="имя:required"
                       >
-                        Description is required.
+                        Title is required.
                       </div>
                     </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="name">
-                        {t('IMG')}
+                    <div className="mb-4">
+                      <label className="form-label" htmlFor="photo">
+                        Фото
                       </label>
                       <input
                         className="form-control"
                         id="photo"
                         type="file"
-                        placeholder={t('IMG')}
+                        placeholder="Фото"
                         data-sb-validations="required"
                         onChange={(event) =>
                           setPhoto(event.target.files && event.target.files[0])
                         }
                       />
                     </div>
+                    <div className="mb-4">
+                      <label className="form-label" htmlFor="bio">
+                        Текст
+                      </label>
+                      <ReactQuill
+                        value={text}
+                        onChange={setText}
+                        style={{ height: '20rem' }}
+                      />
+                      <div
+                        className="invalid-feedback"
+                        data-sb-feedback="Описание:required"
+                      >
+                        Text is required.
+                      </div>
+                    </div>
+
                     <div className="d-none" id="submitSuccessMessage">
                       <div className="text-center mb-3">
                         <div className="fw-bolder">
@@ -96,7 +121,7 @@ const Create = () => {
                       <input
                         className="btn btn-primary"
                         type="submit"
-                        value={t('Save')}
+                        value={'Сохранить'}
                       />
                     </div>
                   </form>

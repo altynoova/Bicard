@@ -51,7 +51,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     setNumberOfBeds(response.numberOfBeds)
     setNumberOfPatients(response.numberOfPatients)
     setNumberOfEmployees(response.numberOfEmployees)
-    setPhotoPath(response.photoPath)
+    setPhotoPath(response.pathToPhoto)
   }
 
   useEffect(() => {

@@ -105,7 +105,7 @@ const Scheduler = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="h6">
-                    <b>{new Date(selectedDate).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}</b>
+                    <b>{new Date(selectedDate).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')}</b>
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -182,7 +182,7 @@ const Scheduler = () => {
                         return (
                           <Grid item xs={12} key={idx}>
                             {day.timeslots.length > 0 ? (
-                              <Typography>{new Date(day.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}   {t(dayy?.name)} </Typography>
+                              <Typography>{new Date(day.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')}   {t(dayy?.name)} </Typography>
                             ) : (
                               <Typography></Typography>
                             )}

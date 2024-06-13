@@ -120,7 +120,7 @@ const Services = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {medServices.map((service) => (
+              {Array.isArray(medServices) && medServices.map((service) => (
                   <Row
                     key={service.id}
                     service={service}

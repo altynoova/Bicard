@@ -11,6 +11,7 @@ import {
 
 interface IArticleStore {
   Articles: Article[];
+  Latestarticles: Article[];
   currentArticle: Article;
   
   FetchArticles: () => void;
@@ -31,17 +32,18 @@ const useArticleStore = create<IArticleStore>()((set) => ({
     timestamp: '',
 
   },
-
+  Latestarticles: [],
 
   async FetchArticles() {
     const response = await FetchArticles()
-    console.log(response)
+    console.log("response",response)
     set(() => ({ Articles: response.data }))
     return response.status
   },
   async LatestArticles(authorName) {
+
     const response = await LatestArticles(authorName)
-    set(() => ({ Articles: response.data }))
+    set(() => ({ Latestarticles: response.data }))
     return response.status
   },
   async GetArticle(id) {

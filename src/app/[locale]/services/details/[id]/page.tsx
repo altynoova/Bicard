@@ -5,6 +5,7 @@ import PageBanner from '@/components/Common/PageBanner'
 import useMedServicesStore from '@/store/useMedServicesStore'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { url } from '@/config'
 
 const ServiceDetails = ({ params }: { params: { id: number } }) => {
   const t = useTranslations('Services');
@@ -25,10 +26,10 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
   return (
     <div>
       <PageBanner
-        pageTitle="Service Details"
+        pageTitle={t('Service Details')}
         homePageUrl="/"
-        homePageText="Home"
-        activePageText="Service Details"
+        homePageText={t('Home')}
+        activePageText={t('Service Details')}
         bgImage="page-title-one"
       />
 
@@ -49,8 +50,7 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
 
           <div className="row">
             <div className="col-lg-5">
-              <div className="service-details-inner-left">
-                <img src="/images/signup-bg.jpg" alt="Service" />
+              <div className="service-details-inner-left" style={{ backgroundImage: `url(${url}/TempFileStorage/${currentMedService.pathToPhoto})` }}>
               </div>
             </div>
             <div className="col-lg-7">
@@ -68,7 +68,7 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
                 <div className="service-front">
                   <i className="icofont-prescription"></i>
                   <Link href="/service-details">
-                    <h3>Диагностические услуги</h3>
+                    <h3>{t('Services')}</h3>
                   </Link>
                   {currentSubMedServices.map((subservice) => (
                     <ul>

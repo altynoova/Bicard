@@ -13,22 +13,18 @@ const CreateService = () => {
   const [name, setName] = useState('')
   const [shortDescription, setShortDescription] = useState('')
   const [longDescription, setLongDescription] = useState('')
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<File|null>(null);
 
   const handleSubmit = async () => {
-    if (files.length < 1) {
-      ErrorAlert('Добавьте фотографии!')
-      return
-    }
+
 
     const data = new FormData()
     data.append('name', name)
     data.append('shortDescription', shortDescription)
     data.append('longDescription', longDescription)
-
-    files.forEach((file, index) => {
-      data.append(`Files`, file)
-    })
+    if (files !== null) {
+      data.append(`Photo`, files);
+    }
 
     const response = await CreateMedService(data)
 
@@ -42,10 +38,11 @@ const CreateService = () => {
 
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files
-
-    if (fileList) {
-      setFiles(Array.from(fileList))
+    const fileList = event.target.files;
+    if (fileList && fileList.length > 0) {
+      // Only take the first file
+      const file = fileList[0];
+      setFiles(file);
     }
   }
   return (

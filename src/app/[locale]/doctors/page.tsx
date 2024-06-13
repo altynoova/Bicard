@@ -100,7 +100,7 @@ const Doctors = () => {
         <div className="container">
           <div className="row justify-content-center">
             {filteredDoctors.map((doctor) => (
-              <div key={doctor.id} className="col-sm-6 col-lg-4">
+              <div key={doctor.id} className="col-sm-6 col-lg-3">
                 <div className="doctor-item">
                   <div className="doctor-top">
                   <img width={100} height={300} src={`${url}/TempFileStorage/${doctor.pathToPhoto}`} alt={doctor.name}/>

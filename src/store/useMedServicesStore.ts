@@ -19,6 +19,7 @@ import {
   SubMedServiceModel,
 } from '@/entities/Service'
 import { $http } from '@/libs/axios'
+import { File } from 'buffer'
 
 interface IMedServicerStore {
   medServices: MedService[]
@@ -50,8 +51,8 @@ const useMedServicesStore = create<IMedServicerStore>()((set) => ({
     name: '',
     shortDescription: '',
     longDescription: '',
-    files: null,
-    subMedServices: [],
+    pathToPhoto:'',
+
   },
   currentSubMedService: {
     id: 0,
@@ -84,6 +85,7 @@ const useMedServicesStore = create<IMedServicerStore>()((set) => ({
 
   async GetMedServiceById(id) {
     const response = await GetMedServiceById(id)
+    console.log("response",response)
     set(() => ({ currentMedService: response.data }))
     return response.status
   },
@@ -118,6 +120,7 @@ const useMedServicesStore = create<IMedServicerStore>()((set) => ({
   },
 
   async EditSubMedService(data, id) {
+    console.log("data", data)
     const response = await EditSubService(data, id)
     // set(() => ({medServices: response.data}))
     return response.status

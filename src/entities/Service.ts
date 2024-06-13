@@ -5,7 +5,7 @@ export type MedService = {
   name: string
   shortDescription: string
   longDescription: string
-  files:  File | null;
+  pathToPhoto:string,
 }
 
 export type SubMedService = {
@@ -17,10 +17,13 @@ export type SubMedService = {
   subMedServiceDoctors: Doctor[]
 }
 
-export type MedServiceModel = Pick<
-  MedService,
-  'name' | 'shortDescription' | 'longDescription' | 'files'
->
+
+export type MedServiceModel = {
+  name: string
+  shortDescription: string
+  longDescription: string
+  Photo:File|null,
+}
 
 export type SubMedServiceModel = Pick<
   SubMedService,
