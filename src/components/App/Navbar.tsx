@@ -191,54 +191,39 @@ const Navbar = () => {
                     </Link>
                   </li>
 
-                  {GetCookie('userRole') === 'Admin' &&
+                  {GetCookie('userRole') === 'ADMIN' &&
                     <li className="nav-item">
                       <Link
                         href="/admin/appointments"
                         className={`nav-link ${currentPath == '/admin/appointments/' && 'active'
                           }`}
                       >
-                         {t('Admin')} 
+                        {t('Admin')}
                       </Link>
                     </li>
                   }
-                  {GetCookie('userRole') === 'Doctor' &&
+                  {GetCookie('userRole') === 'DOCTOR' &&
                     <li className="nav-item">
                       <Link
                         href="/doctor/appointments"
-                        className={`nav-link ${currentPath == '/doctor/appointments/' && 'active'
+                        className={`nav-link ${currentPath == '/admin/appointments/' && 'active'
                           }`}
                       >
-                         {t('Doctor')} 
+                        {t('Doctor')}
                       </Link>
                     </li>
                   }
                 </ul>
               </div>
-
-              <div className="nav-srh">
-                <form>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="search"
-                    placeholder={t('Search')}
-                  />
-
-                  <button className="search-icon icon-search">
-                    <i className="icofont-search-1"></i>
-                  </button>
-                </form>
-                <div className="WhatsAppButton1">
-                  <a href="/appointment/" className="appointment-button"><i className="icofont-pencil">{t('Online registration')}</i></a>
-                </div>
-                <div className="WhatsAppButton">
-                  <a href="https://wa.me/996501880688" target="_blank">
-                    <img src="/images/wa.png" alt="WhatsApp Button"></img>
-                  </a>
-                </div>
-
+              <div className="WhatsAppButton1">
+                <a href="/appointment/" className="appointment-button"><i className="icofont-pencil">{t('Online registration')}</i></a>
               </div>
+              <div className="WhatsAppButton">
+                <a href="https://wa.me/996501880688" target="_blank">
+                  <img src="/images/wa.png" alt="WhatsApp Button"></img>
+                </a>
+              </div>
+
             </nav>
           </div>
         </div>

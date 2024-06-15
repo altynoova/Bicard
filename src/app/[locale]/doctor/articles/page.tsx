@@ -31,7 +31,7 @@ const Article = () => {
   const { FetchArticles,  Articles, DeleteArticle} = useArticletore();
   const [search, setSearch] = useState<string>('');
   const [openArticle, setOpenArticle] = useState<boolean[]>(Array(Article.length).fill(false)); 
-  const userid = GetCookie('userId')
+  const userName = GetCookie('userName')
 
 
 
@@ -56,7 +56,7 @@ const Article = () => {
       return newOpenArticle;
     });
   };
-
+const filteredArticle = Articles.filter(t=>t.authorName == userName)
   return (
     <div>
       <div className="d-flex justify-content-center mb-5">

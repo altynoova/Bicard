@@ -56,6 +56,7 @@
     "Testimonials": "Клиника маалыматтары",
     "Intro": "Маалымат",
     "Admin": "Админ",
+    "Doctor": "Доктор",
     "Info": "Бейтаптарга"
   },
   "Doctors": {
@@ -155,9 +156,12 @@
     "Already have an account?": "Катталган аккаунтуңуз барбы?",
     "Confirm the password": "Confirm the password",
     "Password mismatch": "Сырсөз дал келбей калды",
+    "Reset": "Cырсөздү өзгөртүү",
+    "Create new password": "Жаңы сырсөз түзүңүз",
     "Yes, I agree": "Ооба, мен макулмун",
     "Terms of Use": "Пайдалануу шарттары",
     "Sign Up": "Катталуу",
+    "Email": "Электрондук почта",
     "Latest Articles": "Акыркы макалалар"
   },
   "Services": {

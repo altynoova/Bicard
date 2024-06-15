@@ -55,6 +55,7 @@
     "Online registration": "Записаться",
     "Testimonials": "О клинике",
     "Admin": "Админ",
+    "Doctor": "Доктор",
     "Info":"Пациентам"
   },
   "Doctors": {
@@ -153,9 +154,12 @@
     "Already have an account?": "Уже есть аккаунт?",
     "Confirm the password": "Confirm the password",
     "Password mismatch": "Пароли не совпадают",
+    "Reset": "Password reset",
+    "Create new password": "Создать новый пароль",
     "Yes, I agree": "Да, я согласен",
     "Terms of Use": "Условия использования",
     "Sign Up": "Зарегистрироваться",
+    "Email": "Электронная почта",
     "Latest Articles": "Последние статьи"
   },
   "Services": {

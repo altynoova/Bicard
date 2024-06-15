@@ -20,9 +20,9 @@ const PasswordReset = () => {
 
     const response = await methodReset(email)
     console.log("response", response)
-    if (response.status == 200) {
+    if (response.toString() === "200") {
       SuccessAlert('Проверьте свою почту')
-      router.push('/signin')
+      router.push('/reset-password')
     }
     else {
       ErrorAlert('Проверьте корректность ваших данных')
@@ -57,7 +57,7 @@ const PasswordReset = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder={t('Your email')}
+                            placeholder={t('Email')}
                             value={email}
                             onChange={(event) =>
                               setEmail(event.target.value)

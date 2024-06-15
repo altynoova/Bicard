@@ -34,14 +34,14 @@ const SignInForm = () => {
 
     const response = await methodSignIn(data)
 
-    if (response.status === 200 && response.data.roleName !== ('Admin' && 'doctor')) {
+    if (response.status === 200 && response.data.roleName !== ('ADMIN' && 'DOCTOR')) {
       SuccessAlert('Вы вошли в свой аккаунт!')
       router.push('/about');
-    } else if (response.status === 200 && response.data.roleName === 'Admin') {
+    } else if (response.status === 200 && response.data.roleName === 'ADMIN') {
       SuccessAlert('Поздравляем. Вы админ!')
       router.push('/admin/appointments');
     }
-    else if (response.status === 200 && response.data.roleName === 'doctor') {
+    else if (response.status === 200 && response.data.roleName === 'DOCTOR') {
       SuccessAlert('Поздравляем. Вы доктор!')
       router.push('/doctor/appointments');
     }

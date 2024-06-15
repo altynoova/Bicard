@@ -26,6 +26,7 @@ const useUserStore = create<IUserStore>()((set) => ({
     console.log(response)
     SetCookie('Bicard-Web-API-Access-Token', response?.data?.accessToken)
     SetCookie('userId', response?.data?.userId)
+    SetCookie('doctorId', response?.data?.doctorId)
     SetCookie('userRole', response?.data?.roleName)
     SetCookie('userName', response?.data?.userName)
     set(() => ({ user: response?.data }))

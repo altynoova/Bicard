@@ -22,6 +22,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { useTranslations } from 'next-intl'
 import { url } from '@/config';
+import { GetCookie } from '@/libs/cookie'
 
 
 
@@ -31,10 +32,8 @@ const Blogs = () => {
 
   const [search, setSearch] = useState<string>('');
   const [openBlogs, setOpenBlogs] = useState<boolean[]>(Array(Blogs.length).fill(false)); // Array to track the collapse/expand state of each blog
-
-  const filteredBlogs = Blogs.filter(
-    (Blog) => Blog?.title?.includes(search) || Blog.title == null
-  );
+  const userId = GetCookie('userId')
+  const filteredBlogs = Blogs.filter(t=>t.authorId == userId)
 
   const handleDelete = async (id: number) => {
     const status = await DeleteBlog(id);

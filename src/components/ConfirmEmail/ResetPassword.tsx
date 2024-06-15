@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 const ConfirmEmail = () => {
   const searchParams = useSearchParams()
-  const userEmail = searchParams.get('userEmail') || ''
+  const userEmail = searchParams.get('email') || ''
   const tokenn = searchParams.get('token') || ''
   const router = useRouter()
   const t = useTranslations('Contact');
@@ -28,15 +28,16 @@ const ConfirmEmail = () => {
     }
 
     const data: NewPassword = {
-      email:userEmail,
-      token:tokenn,
+      email: userEmail,
+      token: tokenn,
       password,
       confirmPassword
     }
     console.log("data", data)
     const response = await ResetPassword(data)
+    console.log("response", response)
     if (response.status === 200) {
-      SuccessAlert('Вы успешно зарегистрировались.')
+      SuccessAlert('Успешно')
       router.push('/signin')
     } else if (response.status === 400) {
       ErrorAlert('Неверные данные!')
@@ -49,13 +50,7 @@ const ConfirmEmail = () => {
     <div className="signup-area ptb-100">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-6 pl-0">
-            <div className="signup-left">
-              <img src="/images/signup-bg.jpg" alt="SignUp" />
-            </div>
-          </div>
-
-          <div className="col-lg-6 ptb-100">
+          <div className="col-lg-10 ptb-100">
             <div className="signup-item">
               <div className="signup-head">
                 <h2>{t('Create new password')}</h2>
@@ -107,7 +102,7 @@ const ConfirmEmail = () => {
                     <div className="col-lg-12">
                       <div className="text-center">
                         <button type="submit" className="btn signup-btn">
-                          {t('Save')}
+                          {t('Send')}
                         </button>
                       </div>
                     </div>

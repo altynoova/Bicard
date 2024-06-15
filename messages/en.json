@@ -55,6 +55,7 @@
     "Online registration": "Appointment",
     "Testimonials": "Clinic information",
     "Admin": "Admin",
+    "Doctor": "Doctor",
     "Info":"Patients"
   },
   "Doctors": {
@@ -154,10 +155,13 @@
     "Already have an account?": "Already have an account?",
     "Confirm the password": "Confirm the password",
     "Password mismatch": "Password mismatch",
+    "Reset": "Восстановление пароля",
+    "Create new password": "Create new password",
     "Yes, I agree": "Yes, I agree",
     "Terms of Use": "Terms of Use",
     "Sign Up": "Sign Up",
     "Our Latest Blogs": "Our Latest Blogs",
+    "Email": "Email",
     "Latest Articles": "Latest Articles"
   },
   "Services": {

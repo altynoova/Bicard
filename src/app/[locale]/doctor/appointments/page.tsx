@@ -47,14 +47,14 @@ const Appointments = () => {
   const { FetchDoctors, doctors } = useDoctorStore()
   const { GetAllSubMedServices, allSubMedServices } = useMedServicesStore()
   const t = useTranslations('Services')
-  const userid = GetCookie('userId')
+  const doctorId = GetCookie('doctorId')
 
   const [filter, setFilter] = useState<string>('')
   const [selectedDoctorIds, setSelectedDoctorIds] = useState<{ [key: number]: number }>({})
   const [selectedTimeAtSchedules, setSelectedTimeAtSchedules] = useState<{ [key: number]: Dayjs | null }>({})
   const [tabIndex, setTabIndex] = useState(0)
-  const doctorconfirmed = confirmedappointments.filter(t => t.doctorId.toString() == userid)
-  const doctorunconfirmed = appointments.filter(t => t.doctorId.toString() == userid)
+  const doctorconfirmed = confirmedappointments.filter(t => t.doctorId.toString() == doctorId)
+  const doctorunconfirmed = appointments.filter(t => t.doctorId.toString() == doctorId)
 
 
   const filteredAppointments = appointments.filter((a) =>
