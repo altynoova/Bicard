@@ -103,7 +103,11 @@ const Doctors = () => {
               <div key={doctor.id} className="col-sm-6 col-lg-3">
                 <div className="doctor-item">
                   <div className="doctor-top">
-                  <img width={100} height={300} src={`${url}/TempFileStorage/${doctor.pathToPhoto}`} alt={doctor.name}/>
+                    <img
+                      src={`${url}/TempFileStorage/${doctor.pathToPhoto}`}
+                      alt={doctor.name}
+                      style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+                    />
                   </div>
                   <div className="doctor-bottom">
                     <h3>

@@ -28,7 +28,7 @@ const AboutContent = () => {
             <div className="col-lg-6">
               <div className="about-item">
                 <div className="about-left">
-                  <img src={`${url}/TempFileStorage/${firstTestimonial?.pathToPhoto}`} alt="Фото клиники" />
+                  <img src={`${url}/TempFileStorage/${firstTestimonial?.pathToPhoto1}`} alt="Фото клиники" />
                 </div>
               </div>
             </div>
@@ -37,9 +37,7 @@ const AboutContent = () => {
               <div className="about-item about-right">
                 <img src="/images/about-shape1.png" alt="About" />
                 <h2>{t('AboutUs')}</h2>
-                <p>
                   <div dangerouslySetInnerHTML={{ __html: firstTestimonial?.intro || '' }}></div>
-                </p>
                 <ul>
                   <li>
                     <i className="icofont-check-circled"></i>

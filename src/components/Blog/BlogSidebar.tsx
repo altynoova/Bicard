@@ -36,7 +36,7 @@ const BlogSidebar = () => {
           <h3>{t('Recent Blogs')}</h3>
           <ul>
             {filteredBlogs.map((blog) => (
-              <li>
+              <li key={blog.id}>
                 <img width={100} height={300} src={`${url}/TempFileStorage/${blog.photoPath}`} alt={blog.title} />
                 <Link href={`/blog/details/${blog.id}`}>{blog.title}</Link>
                 <ul>

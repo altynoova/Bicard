@@ -59,6 +59,9 @@ const Scheduler = () => {
   useEffect(() => {
     FetchDoctors()
   }, [])
+  if (doctors.length > 0 && doctorId === undefined) {
+        setDoctorId(doctors[0].id)
+      }
 
   useEffect(() => {
     GetDoctor(Number(doctorId))
@@ -80,7 +83,7 @@ const Scheduler = () => {
                 <ul>
                   {filtereddays.map((day) => (
                     <>
-                      <li>
+                      <li key={day.id}>
                         {t(day.name)} <span>{day.time}</span>
                       </li>
                     </>

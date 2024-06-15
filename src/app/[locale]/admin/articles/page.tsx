@@ -107,7 +107,7 @@ const Article = () => {
               </TableHead>
               <TableBody>
                 {filteredArticle.map((Article, index) => (
-                  <React.Fragment key={Article.title}>
+                  <React.Fragment key={Article.id}>
                     <TableRow>
                       <TableCell>
                         <IconButton

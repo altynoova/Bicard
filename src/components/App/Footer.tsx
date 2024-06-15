@@ -41,10 +41,11 @@ const Footer = () => {
     else {
       router.push('/signin');
     }
-    useEffect(() => {
-      zzz()
-    }, [])
+
   }
+  useEffect(() => {
+    zzz()
+  }, [])
   return (
     <>
       <footer className="pt-100 pb-70">
@@ -107,7 +108,7 @@ const Footer = () => {
                   <h3>{t('Services')}</h3>
                   <ul>
                     {allSubMedServices.map((subservice) => (
-                      <li>
+                      <li key={subservice.id}>
                         <Link href="/service-details">{subservice.name}</Link>
                       </li>
                     ))}

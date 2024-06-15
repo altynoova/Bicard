@@ -41,7 +41,11 @@ const Certificates = () => {
                       <SwiperSlide key={index}>
                         <div className="feedback-item1">
                           <div className="client-img">
-                            <img src={`${url}/TempFileStorage/${Certificate.photoPath}`} alt="Сертификат" />
+                            <img
+                              src={`${url}/TempFileStorage/${Certificate.photoPath}`}
+                              alt="Certificate"
+                              style={{ width: '100%', height: '400px', objectFit: 'cover' }}
+                            />
                           </div>
                           <p>{Certificate.description}</p>
                         </div>

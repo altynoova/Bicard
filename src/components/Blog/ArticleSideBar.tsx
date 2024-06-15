@@ -19,7 +19,7 @@ const ArticleSidebar = () => {
           <h3>{t('Latest Articles')}</h3>
           <ul>
             {filteredArticles.map((article) => (
-              <li>
+              <li key={article.id}>
                  <img src="/images/article.png" alt="article" />
                 <Link href={`/article/details/${article.id}`}>{article.title}</Link>
                 <ul>

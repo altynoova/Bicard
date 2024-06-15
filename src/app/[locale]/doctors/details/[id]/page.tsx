@@ -62,9 +62,13 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
           <div className="row">
             <div className="col-lg-4">
               <div className="doctor-details-item doctor-details-left">
-                <img width={250} height={400} src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`} alt={currentDoctor.name} />
-                <div className="doctor-details-contact" style={{paddingBottom:20}}>
-                 
+                <img
+                  src={`${url}/TempFileStorage/${currentDoctor.pathToPhoto}`}
+                  alt={currentDoctor.name}
+                  style={{ width: '100%', height: '450px', objectFit: 'cover' }}
+                />
+                <div className="doctor-details-contact" style={{ paddingBottom: 20 }}>
+
                 </div>
               </div>
             </div>

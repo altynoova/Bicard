@@ -28,7 +28,7 @@ const Blog = () => {
             <h3>{t('Articles')}</h3>
             <ul>
             {filteredArticles.map((article) => (
-                <li>
+                <li key={article.id}>
                    <Link href={`/article/details/${article.id}`}>
                   <img src="/images/article.png" alt="article" />
                   </Link>

@@ -71,7 +71,7 @@ const ServiceDetails = ({ params }: { params: { id: number } }) => {
                     <h3>{t('Services')}</h3>
                   </Link>
                   {currentSubMedServices.map((subservice) => (
-                    <ul>
+                    <ul key={subservice.id}>
                       <li>{subservice.name} - {subservice.price}</li>
                     </ul>
                   ))}

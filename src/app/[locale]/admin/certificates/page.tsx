@@ -100,7 +100,7 @@ const Certificates = () => {
               </TableHead>
               <TableBody>
                 {filteredCertificates.map((Certificate, index) => (
-                  <TableRow>
+                  <TableRow key={Certificate.id}>
                     <TableCell>
                       <Typography
                         color="textSecondary"

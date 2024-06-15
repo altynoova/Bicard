@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import useArticleStore from '@/store/useArticleStore';
 import useForPatientsStore from '@/store/ForPatients';
 
-const testimonials = () => {
+const Testimonials = () => {
   const t = useTranslations('Services');
   const Infos = useForPatientsStore().FetchForPatientss
   const { ForPatientss } = useForPatientsStore()
@@ -26,7 +26,7 @@ const testimonials = () => {
       <div className="privacy-area ptb-100">
         <div className="container">
         {filteredInfos.map((info, index) => (
-          <div style={{margin:20}}><h2>{index+1}. {info.title}</h2><div dangerouslySetInnerHTML={{ __html: info.content }}></div></div>
+          <div key={info.id}style={{margin:20}}><h2>{index+1}. {info.title}</h2><div dangerouslySetInnerHTML={{ __html: info.content }}></div></div>
         ))}
         </div>
       </div>
@@ -34,4 +34,4 @@ const testimonials = () => {
   )
 }
 
-export default testimonials
+export default Testimonials

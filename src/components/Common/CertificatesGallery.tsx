@@ -23,8 +23,12 @@ const CertificatesGallery: React.FC = () => {
         <div className="row">
           <div className="certificates-gallery">
             {Certificates.map((certificate) => (
-              <div className="certificate-card">
-                <img width={300} height={200} src={`${url}/TempFileStorage/${certificate.photoPath}`} alt={certificate.description} />
+              <div className="certificate-card" key={certificate.id}>
+                <img
+                  src={`${url}/TempFileStorage/${certificate.photoPath}`}
+                  alt="Certificate"
+                  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                />
                 <div className="certificate-card-title">{certificate.description}</div>
               </div>
             ))}

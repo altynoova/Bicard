@@ -1,9 +1,25 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import useTestimonialstore from '@/store/useTestimonialstore'
+import { Testimonial } from '@/entities/Testimonials'
+import { url } from '@/config'
 
 const OurExpertise = () => {
   const t = useTranslations('About')
+  const { FetchTestimonials, Testimonials } = useTestimonialstore();
+  const [firstTestimonial, setFirstTestimonial] = useState<Testimonial | null>(null);
+  useEffect(() => {
+    // Fetch testimonials when the component mounts
+    FetchTestimonials();
+  }, [FetchTestimonials]);
+  useEffect(() => {
+    // Set the first testimonial after fetching
+    if (Testimonials && Testimonials.length > 0) {
+      setFirstTestimonial(Testimonials[0]);
+    }
+  })
   return (
     <>
       <div className="expertise-area pb-70">
@@ -59,7 +75,7 @@ const OurExpertise = () => {
             <div className="col-lg-6">
               <div className="expertise-item">
                 <div className="expertise-right">
-                  <img src="/images/about41.png" alt="Expertise" />
+                <img src={`${url}/TempFileStorage/${firstTestimonial?.pathToPhoto2}`} alt="Фото клиники" />
                 </div>
               </div>
             </div>

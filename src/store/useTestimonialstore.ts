@@ -27,7 +27,9 @@ const useTestimonialstore = create<ITestimonialstore>()((set) => ({
     numberOfBeds: '',
     numberOfEmployees: '',
     numberOfPatients:'',
-    pathToPhoto:''
+    pathToPhoto1:'',
+    pathToPhoto2:''
+
   },
 
 

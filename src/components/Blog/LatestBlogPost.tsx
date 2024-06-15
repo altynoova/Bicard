@@ -25,7 +25,7 @@ const LatestBlogPost = () => {
 
           <div className="row">
             {filteredBlogs.map((blog) => (
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" key={blog.id}>
               <div className="blog-item">
                 <div className="blog-top">
                  <Link href={`/blog/details/${blog.id}`}>

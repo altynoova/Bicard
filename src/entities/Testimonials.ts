@@ -4,7 +4,9 @@ export type Testimonial = {
   numberOfBeds: string;
   numberOfPatients: string;
   numberOfEmployees:string;
-  pathToPhoto: string
+  pathToPhoto1: string;
+  pathToPhoto2: string
+
 };
 
 export type TestimonialRequestModel = {

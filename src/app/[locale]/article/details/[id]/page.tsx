@@ -96,7 +96,7 @@ const ArticleDetails = ({ params }: { params: { id: number } }) => {
           </div>
           <div className="row">
             {Latestarticles.map((blog) => (
-              <div className="col-md-6 col-lg-4" key={blog.id}>
+              <div className="col-md-12 col-lg-6" key={blog.id}>
                 <div className="blog-item">
                   <div className="blog-top">
                   </div>
