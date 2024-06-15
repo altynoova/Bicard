@@ -33,6 +33,7 @@ import dayjs, { Dayjs } from 'dayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { useTranslations } from 'next-intl'
+import { GetCookie } from '@/libs/cookie'
 
 const Appointments = () => {
   const {
@@ -46,11 +47,15 @@ const Appointments = () => {
   const { FetchDoctors, doctors } = useDoctorStore()
   const { GetAllSubMedServices, allSubMedServices } = useMedServicesStore()
   const t = useTranslations('Services')
+  const userid = GetCookie('userId')
 
   const [filter, setFilter] = useState<string>('')
   const [selectedDoctorIds, setSelectedDoctorIds] = useState<{ [key: number]: number }>({})
   const [selectedTimeAtSchedules, setSelectedTimeAtSchedules] = useState<{ [key: number]: Dayjs | null }>({})
   const [tabIndex, setTabIndex] = useState(0)
+  const doctorconfirmed = confirmedappointments.filter(t => t.doctorId.toString() == userid)
+  const doctorunconfirmed = appointments.filter(t => t.doctorId.toString() == userid)
+
 
   const filteredAppointments = appointments.filter((a) =>
     a.name.includes(filter),
@@ -111,15 +116,15 @@ const Appointments = () => {
           />
         </FormControl>
         <Tabs value={tabIndex} onChange={handleTabChange}>
-          <Tab label={t('Unconfirmed appointments')}/>
           <Tab label={t('Сonfirmed appointments')} />
+          <Tab label={t('Unconfirmed appointments')} />
         </Tabs>
         <TabPanel value={tabIndex} index={0}>
-          {filteredAppointments.length < 1 ? (
-            <div>None</div>
+          {doctorconfirmed.length < 1 ? (
+            <div>No results</div>
           ) : (
-            <DashboardCard title={t('Unconfirmed appointments')}>
-              <Box sx={{ overflow: 'auto' ,  overflowY: 'auto'}}>
+            <DashboardCard title={t('Сonfirmed appointments')}>
+              <Box sx={{ overflow: 'auto', overflowY: 'auto' }}>
                 <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
                   <Table sx={{ whiteSpace: 'nowrap' }}>
                     <TableHead>
@@ -136,32 +141,96 @@ const Appointments = () => {
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('Email')} 
+                            {t('DoctorsName')}
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('PhoneNumber')}  
+                            {t('Date')}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {confirmedappointments.map((f, index) => (
+                        <TableRow key={f.id}>
+                          <TableCell>
+                            <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
+                              {index + 1}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="subtitle2" fontWeight={400}>
+                              {f.name == null ? <i>null</i> : f.name}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="subtitle2" fontWeight={400}>
+                              {doctors.find(d => d.id === f.doctorId)?.name || 'N/A'}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="subtitle2" fontWeight={400}>
+                              {dayjs(f.date).format('DD.MM.YYYY hh:mm')}
+                            </Typography>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </Box>
+              </Box>
+            </DashboardCard>
+          )}
+        </TabPanel>
+        <TabPanel value={tabIndex} index={1}>
+          {doctorunconfirmed.length < 1 ? (
+            <div>None</div>
+          ) : (
+            <DashboardCard title={t('Unconfirmed appointments')}>
+              <Box sx={{ overflow: 'auto', overflowY: 'auto' }}>
+                <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
+                  <Table sx={{ whiteSpace: 'nowrap' }}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>
+                          <Typography variant="subtitle2" fontWeight={600}>
+                            №
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="subtitle2" fontWeight={600}>
+                            {t('Name')}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="subtitle2" fontWeight={600}>
+                            {t('Email')}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="subtitle2" fontWeight={600}>
+                            {t('PhoneNumber')}
                           </Typography>
                         </TableCell>
                         <TableCell align="left">
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('DoctorsName')}  
+                            {t('DoctorsName')}
                           </Typography>
                         </TableCell>
                         <TableCell align="left">
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('Date')}  
+                            {t('Date')}
                           </Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('Confirm')} 
+                            {t('Confirm')}
                           </Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Typography variant="subtitle2" fontWeight={600}>
-                          {t('Cancel')}
+                            {t('Cancel')}
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -213,7 +282,7 @@ const Appointments = () => {
                               <InputLabel id="schedule-select-label">{t('Select schedule')}</InputLabel>
                               <DateTimePicker
                                 sx={{ width: '200px' }}
-                                value={selectedTimeAtSchedule.add(-6,'hours')}
+                                value={selectedTimeAtSchedule.add(-6, 'hours')}
                                 format="DD.MM.YYYY HH:mm"
                                 onChange={(newValue) => {
                                   setSelectedTimeAtSchedules(prev => ({ ...prev, [f.id]: newValue }))
@@ -251,70 +320,7 @@ const Appointments = () => {
             </DashboardCard>
           )}
         </TabPanel>
-        <TabPanel value={tabIndex} index={1}>
-          {confirmedappointments.length < 1 ? (
-            <div>No results</div>
-          ) : (
-            <DashboardCard title={t('Сonfirmed appointments')}>
-              <Box sx={{ overflow: 'auto',  overflowY: 'auto'  }}>
-                <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
-                  <Table sx={{ whiteSpace: 'nowrap' }}>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>
-                          <Typography variant="subtitle2" fontWeight={600}>
-                            №
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="subtitle2" fontWeight={600}>
-                            {t('Name')}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="subtitle2" fontWeight={600}>
-                          {t('DoctorsName')} 
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="subtitle2" fontWeight={600}>
-                          {t('Date')}
-                          </Typography>
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {confirmedappointments.map((f, index) => (
-                        <TableRow key={f.id}>
-                          <TableCell>
-                            <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                              {index + 1}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant="subtitle2" fontWeight={400}>
-                              {f.name == null ? <i>null</i> : f.name}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant="subtitle2" fontWeight={400}>
-                              {doctors.find(d => d.id === f.doctorId)?.name || 'N/A'}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant="subtitle2" fontWeight={400}>
-                              {dayjs(f.date).format('DD.MM.YYYY hh:mm')}
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </Box>
-              </Box>
-            </DashboardCard>
-          )}
-        </TabPanel>
+
       </div>
     </LocalizationProvider>
   )

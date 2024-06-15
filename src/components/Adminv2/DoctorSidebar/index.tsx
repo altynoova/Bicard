@@ -15,21 +15,9 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 const data = [
-  { link: '/admin/appointments', label: 'Appointments', icon: '' },
-  { link: '/admin/doctors', label: 'Doctors', icon: '' },
-  { link: '/admin/services', label: 'Services', icon: '' },
-  { link: '/admin/roles', label: 'Roles', icon: '' },
-  { link: '/admin/users', label: 'Users', icon: '' },
-  { link: '/admin/feedbacks', label: 'Feedbacks', icon: '' },
-  { link: '/admin/schedules', label: 'Schedule', icon: '' },
-  { link: '/admin/blogs', label: 'Blogs', icon: '' },
-  { link: '/admin/articles', label: 'Articles', icon: '' },
-  { link: '/admin/vacancies', label: 'Vacancies', icon: '' },
-  { link: '/admin/faqs', label: "FAQs", icon: '' },
-  { link: '/admin/infos', label: "Info", icon: '' },
-  { link: '/admin/certificates', label: "Certificates", icon: '' },
-  { link: '/admin/testimonials', label: "Testimonials", icon: '' }
-
+  { link: '/doctor/appointments', label: 'Appointments', icon: '' },
+  { link: '/doctor/blogs', label: 'Blogs', icon: '' },
+  { link: '/doctor/articles', label: 'Articles', icon: '' }
 ]
 
 const Nav = styled(List)<{ component?: React.ElementType }>({

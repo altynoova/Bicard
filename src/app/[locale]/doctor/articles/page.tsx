@@ -23,6 +23,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import Image from 'next/image'
 import router from 'next/router'
 import { useTranslations } from 'next-intl'
+import { GetCookie } from '@/libs/cookie'
 
 
 const Article = () => {
@@ -30,10 +31,9 @@ const Article = () => {
   const { FetchArticles,  Articles, DeleteArticle} = useArticletore();
   const [search, setSearch] = useState<string>('');
   const [openArticle, setOpenArticle] = useState<boolean[]>(Array(Article.length).fill(false)); 
+  const userid = GetCookie('userId')
 
-  const filteredArticle = Articles.filter(
-    (Article) => Article?.title?.includes(search) || Article.title == null
-  );
+
 
   const handleDelete = async (id: number) => {
     const status = await DeleteArticle(id);

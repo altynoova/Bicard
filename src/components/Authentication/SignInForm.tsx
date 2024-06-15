@@ -34,15 +34,15 @@ const SignInForm = () => {
 
     const response = await methodSignIn(data)
 
-    if (response.status === 200 && response.data.roleName !== 'Admin') {
+    if (response.status === 200 && response.data.roleName !== ('Admin' && 'doctor')) {
       SuccessAlert('Вы вошли в свой аккаунт!')
       router.push('/about');
     } else if (response.status === 200 && response.data.roleName === 'Admin') {
       SuccessAlert('Поздравляем. Вы админ!')
       router.push('/admin/appointments');
     }
-    else if (response.status === 200 && response.data.roleName === 'Doctor') {
-      SuccessAlert('Поздравляем. Вы админ!')
+    else if (response.status === 200 && response.data.roleName === 'doctor') {
+      SuccessAlert('Поздравляем. Вы доктор!')
       router.push('/doctor/appointments');
     }
     else if (response.status === 500) {
