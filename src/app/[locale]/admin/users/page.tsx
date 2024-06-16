@@ -1,9 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Config } from 'datatables.net-dt'
 import {
   Box,
-  Button,
   InputLabel,
   MenuItem,
   Select,
@@ -16,34 +14,15 @@ import {
 } from '@mui/material'
 import DashboardCard from '@/components/Adminv2/Shared/DashboardCard'
 import useDoctorStore from '@/store/useDoctorStore'
-import { AssignRole, UnassignRole } from '@/libs/requests/RoleRequests'
-import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import useRoleStore from '@/store/useRoleStore'
+import { useTranslations } from 'next-intl'
 
-const Users = ({ ...props }: Config) => {
+const Users = () => {
   const { GetUsersByRole, userReferences } = useDoctorStore()
   const { roles, GetRoles } = useRoleStore()
-  const [roleName, setRoleName] = useState<string>('')
   const [filter, setFilter] = useState('Patient')
+  const t = useTranslations('Services')
 
-  const handleAssignRole = async (userName: string) => {
-    const response = await AssignRole({ roleName, userName })
-    if (response.status === 200) {
-      SuccessAlert('Успешно')
-      GetRoles()
-    } else {
-      ErrorAlert('Произошла ошибка')
-    }
-  }
-
-  const handleUnassignRole = async (userName: string) => {
-    const response = await UnassignRole({ roleName, userName })
-    if (response.status === 200) {
-      SuccessAlert('Роль успешно удалена')
-    } else {
-      ErrorAlert('Произошла ошибка')
-    }
-  }
 
   useEffect(() => {
     GetUsersByRole(filter)
@@ -56,21 +35,20 @@ const Users = ({ ...props }: Config) => {
 
   return (
     <div className="m-5">
-      {/*{status == 200 || !loading ? <DataTable/> : <span>loading...</span>*/}
-      {/*}*/}
-      <DashboardCard title="Users">
+      <DashboardCard title={t('Users')}>
         <Box sx={{ overflow: 'auto' }}>
-          <InputLabel id="demo-simple-select-label">Role</InputLabel>
+          <InputLabel id="demo-simple-select-label">{t('Role')}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={filter}
-            label="Age"
+            label="Role"
+            sx={{ width: '150px' }}
             onChange={(event) => setFilter(event.target.value)}
           >
             {roles.map((role) => (
-              <MenuItem key={role.id} value={role.name}>
-                {role.name}
+              <MenuItem key={role.id} value={role.normalizedName}>
+                {t(role.normalizedName)}
               </MenuItem>
             ))}
           </Select>
@@ -89,12 +67,7 @@ const Users = ({ ...props }: Config) => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
-                      Name
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="subtitle2" fontWeight={600}>
-                      Role
+                      {t('UserName')}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
@@ -128,38 +101,7 @@ const Users = ({ ...props }: Config) => {
                         {user.userName}
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Select
-                        size="small"
-                        onChange={(event) =>
-                          setRoleName(event.target.value as string)
-                        }
-                      >
-                        {roles.map((role) => (
-                          <MenuItem key={role.name} value={role.name}>
-                            {role.name}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Button
-                        variant="contained"
-                        color="success"
-                        onClick={() => handleAssignRole(user.userName)}
-                      >
-                        Assign role
-                      </Button>
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        variant="contained"
-                        color="error"
-                        onClick={() => handleUnassignRole(user.userName)}
-                      >
-                        Unassign role
-                      </Button>
-                    </TableCell>
+                    
                   </TableRow>
                 ))}
               </TableBody>

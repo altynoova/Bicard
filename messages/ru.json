@@ -173,6 +173,7 @@
     "Service Details": "Услуги детально",
     "Articles": "Статьи",
     "Name": "Название",
+    "UserName": "Имя пользотеля",
     "Edit": "Изменить",
     "Delete": "Удалить",
     "No subservices": "Нет подуслуг",
@@ -194,6 +195,10 @@
     "PhoneNumber": "Номер телефона",
     "Vacancies": "Вакансии",
     "Roles": "Роли",
+    "Role": "Роль",
+    "ADMIN": "Админ",
+    "DOCTOR": "Доктор",
+    "PATIENT": "Пользователь",
     "No result": "Нет результата",
     "User": "Пользователь",
     "Online registration": "Онлайн запись",
@@ -243,6 +248,7 @@
     "numberOfBeds": "Коек",
     "numberOfPatients": "Счастливых пациентов",
     "Certificates": "Сертификаты",
+    "Users": "Пользователи",
     "numberOfEmployees": "Сотрудники",
     "Sunday": "Воскресенье"
   }

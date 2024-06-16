@@ -1,13 +1,13 @@
 import { create } from 'zustand'
-import { Schedule, ScheduleModel } from '@/entities/Schedule'
+import { Schedule } from '@/entities/Schedule'
 import { $http } from '@/libs/axios'
 
 interface IScheduleStore {
   schedules: Schedule[]
   daysOfWeek: { name: string, id:number, time:string }[]
   GetEmployeeScheduleById: (id: number) => Promise<number>
-  CreateSchedule: (data: ScheduleModel) => Promise<number>
-  UpdateSchedule: (data: ScheduleModel, id: number) => Promise<number>
+  CreateSchedule: (data: Schedule) => Promise<number>
+  UpdateSchedule: (data: Schedule, id: number) => Promise<number>
   RemoveSchedule: (id: number) => Promise<number>
   ResetSchedules: () => void
 }
@@ -42,9 +42,16 @@ const useScheduleStore = create<IScheduleStore>()((set) => ({
   },
 
   async UpdateSchedule(data, id) {
-    const response = await $http.put(`/schedules/update/${id}`, data)
-    // set((state) => ({ roles: response.data }))
-    return response.status
+    try {
+      const response =  await $http({
+        method: 'put',
+        url: `/schedules/update?id=${id}`,
+        data
+      })
+      return response.status
+    } catch (error: any) {
+      return error
+    }
   },
 
   async RemoveSchedule(id) {

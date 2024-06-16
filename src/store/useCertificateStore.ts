@@ -9,10 +9,10 @@ interface ICertificateStore {
 
   CreateCertificate: (data: CertificateRequestModel) => Promise<number>
   GetAllCertificates: () => Promise<number>
-  GetCertificateById: (id: number) => Promise<number>
+  GetCertificateById: (id: number) => Promise<any>
   GetCertificateByDoctorId: (id: number) => Promise<number>
   DeleteCertificate: (id: number) => Promise<number>
-  EditCertificate: (data: CertificateRequestModel, id: number) => Promise<number>;
+  EditCertificate: (data: CertificateRequestModel) => Promise<number>;
 }
 
 const useCertificateStore = create<ICertificateStore>()((set) => ({
@@ -26,7 +26,7 @@ const useCertificateStore = create<ICertificateStore>()((set) => ({
 
   async CreateCertificate(data) {
     try {
-      return await $http({
+      const response =  await $http({
         method: 'post',
         url: `/certificates/create`,
         data,
@@ -34,6 +34,7 @@ const useCertificateStore = create<ICertificateStore>()((set) => ({
           'Content-Type': 'multipart/form-data',
         },
       })
+      return response.status
     } catch (error: any) {
       return error.status
     }
@@ -47,9 +48,10 @@ const useCertificateStore = create<ICertificateStore>()((set) => ({
   },
 
   async GetCertificateById(id) {
-    const response = await $http.get(`/Certificates/getCertificatebyid/${id}`)
+    const response = await $http.get(`/Certificates/Get?id=${id}`)
+    console.log("response", response)
     set(() => ({ CurrentCertificate: response.data }))
-    return response.status
+    return response
   },
 
   async GetCertificateByDoctorId(id) {
@@ -65,16 +67,17 @@ const useCertificateStore = create<ICertificateStore>()((set) => ({
     }))
     return response.status
   },
-  async EditCertificate(data, id) {
+  async EditCertificate(data) {
     try {
-      return await $http({
+      const response = await $http({
         method: 'put',
-        url: `/certivicates/update?id=${id}`,
+        url: `/certificates/update`,
         data,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
+      return response.status
     } catch (error: any) {
       return error.status
     }

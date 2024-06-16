@@ -6,5 +6,4 @@ export type Schedule = {
   doctorId: number
 }
 
-export type ScheduleModel = Omit<Schedule, 'id'>
 

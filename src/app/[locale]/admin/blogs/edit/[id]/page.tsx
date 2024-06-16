@@ -7,12 +7,15 @@ import { useRouter } from 'next/navigation'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { url } from '@/config'
+import { useTranslations } from 'next-intl'
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
   const GetCurrentBlog = useBlogStore((state) => state.GetBlog)
   const EditBlog = useBlogStore((state) => state.EditBlog)
   const currentBlog = useBlogStore((state) => state.currentBlog)
+  const t = useTranslations('Services')
+
 
   const [title, setTitle] = useState<string>('')
   const [id, setId] = useState<number>(0)
@@ -25,6 +28,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
+      id,
       title,
       text,
       authorId,
@@ -63,7 +67,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                      Title
+                    {t('Name')}
                     </label>
                     <input
                       className="form-control"
@@ -83,7 +87,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                      Фото
+                    {t('IMG')}
                     </label>
                     <div style={{margin:20}}>
                       {photo ? (
@@ -109,7 +113,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="text">
-                      Text
+                    {t('Description')}
                     </label>
                     <ReactQuill
                       value={text}

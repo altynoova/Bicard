@@ -19,6 +19,7 @@ const CreateSchedule = () => {
   const { FetchDoctors, doctors } = useDoctorStore()
 
   const [dayOfWeek, setDayOfWeek] = useState<number | undefined>(undefined)
+  const [id, setId] = useState<number>(0)
   const [startTime, setStartTime] = useState<Dayjs | null>(null)
   const [endTime, setEndTime] = useState<Dayjs | null>(null)
   const [doctorId, setDoctorId] = useState<number | undefined>(undefined)
@@ -27,6 +28,7 @@ const CreateSchedule = () => {
     if (dayOfWeek == undefined || startTime == null || endTime == null || doctorId == undefined) return
 
     const response = await CreateSchedule({
+      id,
       dayOfWeek,
       startTime: dayjs(startTime).format('HH:mm'),
       endTime: dayjs(endTime).format('HH:mm'),

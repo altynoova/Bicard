@@ -16,6 +16,7 @@ interface IUserStore {
 const useUserStore = create<IUserStore>()((set) => ({
   user: {
     userId: -1,
+    doctorId: -1,
     userName: '',
     roleName: '',
     accessToken: '',

@@ -34,10 +34,9 @@ const AppointmentForm = ({ doctorId }: IAppointmentForm) => {
       name,
       email,
       phoneNumber,
-      subMedServiceId,
       doctorId,
       age,
-      timeAtSchedule: dayjs(timeAtSchedule).add(6, 'hours').toJSON(),
+      date: dayjs(timeAtSchedule).add(6, 'hours').toJSON(),
     }
 
     const status = await CreateAppointment(data)

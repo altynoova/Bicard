@@ -59,7 +59,7 @@ const BlogSidebar = () => {
           <h3>{t('Tags')}</h3>
           <ul>
             {allSubMedServices.map((subservice) => (
-              <li>
+              <li key={subservice.id}>
                 <Link href="/services/">{subservice.name}</Link>
               </li>
             ))}

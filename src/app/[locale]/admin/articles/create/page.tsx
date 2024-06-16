@@ -36,7 +36,7 @@ const Create = () => {
 
     if (status === 200) {
       SuccessAlert('Успешно');
-      router.push('/doctor/articles');
+      router.push('/admin/articles');
     } else {
       ErrorAlert('Произошла ошибка!');
     }

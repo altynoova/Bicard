@@ -5,6 +5,7 @@ import { CertificateRequestModel, Certificate } from '@/entities/Certificate'
 import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useRouter } from 'next/navigation'
 import { url } from '@/config'
+import { useTranslations } from 'next-intl'
 
 const Edit = ({ params }: { params: { id: number } }) => {
   const router = useRouter()
@@ -16,6 +17,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const [Photo, setPhoto] = useState<File | null>(null)
   const [photoPath, setPhotoPath] = useState<string>('')
   const [id, setId] = useState<number>(0)
+  const t = useTranslations('Services')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -26,8 +28,8 @@ const Edit = ({ params }: { params: { id: number } }) => {
       Photo
     }
 
-    const status = await EditCertificate(data, id)
-    if (status == 200) {
+    const status = await EditCertificate(data)
+    if (status === 200) {
       SuccessAlert('Данные успешно обновлены.')
       router.push('/admin/certificates')
     } else {
@@ -37,9 +39,9 @@ const Edit = ({ params }: { params: { id: number } }) => {
 
   async function init() {
     const response: Certificate = await GetCurrentCertificate(params.id)
-    setId(response.id)
-    setPhotoPath(response.photoPath)
-    setDescription(response.description)
+    setId(currentCertificate.id)
+    setPhotoPath(currentCertificate.photoPath)
+    setDescription(currentCertificate.description)
   }
 
   useEffect(() => {
@@ -56,7 +58,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                 <form id="contactForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="name">
-                      Title
+                    {t('Description')}
                     </label>
                     <input
                       className="form-control"
@@ -76,7 +78,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                      Фото
+                    {t('IMG')}
                     </label>
                     <div style={{ margin: 20 }}>
                       {Photo ? (

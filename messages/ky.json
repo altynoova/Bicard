@@ -173,6 +173,7 @@
     "Add Subservice": "Кошумча кызмат кошуу",
     "Articles": "Макалалар",
     "Name": "Аталышы",
+    "UserName": "Колдонуучу",
     "Edit": "Өзгөртүү",
     "Delete": "Өчүрүү",
     "No subservices": "Кошумча кызматтар жок",
@@ -191,6 +192,10 @@
     "Select doctor": "Докторду тандаңыз",
     "Vacancies": "Вакансиялар",
     "Roles": "Ролдор",
+    "Role": "Ролу",
+    "ADMIN": "Админ",
+    "DOCTOR": "Доктор",
+    "PATIENT": "Жөнөкөй колдонуучу",
     "Infos": "Бейтаптар үчүн",
     "Content": "Мазмуну",
     "No result": "Жыйынтык жок",
@@ -244,6 +249,7 @@
     "numberOfBeds": "Орун",
     "numberOfPatients": "Бактылуу бейтаптар",
     "Certificates": "Сертификаттар",
+    "Users": "Колдонуучулар",
     "numberOfEmployees": "Кызматкерлер",
     "Sunday": "Жекшемби"
   }

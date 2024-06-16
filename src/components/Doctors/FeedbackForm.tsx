@@ -15,9 +15,7 @@ const FeedbackForm = ({ doctorId, userId }: IFeedbackForm) => {
 
   const handleSubmit = async () => {
     const data: CreateFeedbackModel = {
-      message,
-      doctorId,
-      userId,
+      message
     }
 
     const status = await CreateFeedback(data)
@@ -47,7 +45,6 @@ const FeedbackForm = ({ doctorId, userId }: IFeedbackForm) => {
         }}
       >
         <h2>Оставьте фидбек</h2>
-        <span>Мы удалим его есть оно нам не понравится.</span>
 
         <TextField
           fullWidth

@@ -41,7 +41,7 @@ const CreateService = () => {
   }
 
   const handleChangeSelect = (event: SelectChangeEvent<number>) => {
-    const value = event.target.value;
+    const value = Number(event.target.value);
     setMedServiceId(value);
   };
 

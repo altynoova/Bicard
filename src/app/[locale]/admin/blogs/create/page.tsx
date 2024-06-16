@@ -7,15 +7,18 @@ import { useRouter } from 'next/navigation'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { GetCookie } from '@/libs/cookie'
+import { useTranslations } from 'next-intl'
 
 
 const Create = () => {
   const router = useRouter()
   const signed = GetCookie('Bicard-Web-API-Access-Token')
   const userid = GetCookie('userId')|| ''
+  const t = useTranslations('Services')
   const { CreateBlog } = useBlogStore()
 
   const [title, setTitle] = useState<string>('')
+  const [id, setId] = useState<number>(0)
   const [text, setText] = useState<string>('')
   const [authorId, setAuthorId] = useState<string>(userid)
   const [photo, setPhoto] = useState<File | null>(null)
@@ -26,6 +29,7 @@ const Create = () => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
+      id,
       title,
       text,
       photo,
@@ -51,7 +55,7 @@ const Create = () => {
                   <form id="contactForm" onSubmit={handleSubmit}>
                     <div className="mb-4">
                       <label className="form-label" htmlFor="name">
-                        Название
+                        {t('Name')}
                       </label>
                       <input
                         className="form-control"
@@ -71,7 +75,7 @@ const Create = () => {
                     </div>
                     <div className="mb-4">
                       <label className="form-label" htmlFor="photo">
-                        Фото
+                        {t('IMG')}
                       </label>
                       <input
                         className="form-control"
@@ -86,7 +90,7 @@ const Create = () => {
                     </div>
                     <div className="mb-4">
                       <label className="form-label" htmlFor="bio">
-                        Текст
+                        {t('Description')}
                       </label>
                       <ReactQuill
                         value={text}

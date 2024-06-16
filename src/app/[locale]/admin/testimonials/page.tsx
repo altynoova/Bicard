@@ -81,6 +81,11 @@ const Testimonials = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="subtitle2" fontWeight={600}>
+                    {t('IMG')}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="subtitle2" fontWeight={600}>
                     {t('Intro')}
                     </Typography>
                   </TableCell>
@@ -126,7 +131,12 @@ const Testimonials = () => {
                       </TableCell>
                       <TableCell>
                         <Typography variant="subtitle2" fontWeight={400}>
-                        <img width={200} height={200} src={`${url}/TempFileStorage/${Info.pathToPhoto}`} alt="Фото клиники" />
+                        <img width={200} height={200} src={`${url}/TempFileStorage/${Info.pathToPhoto1}`} alt="Фото клиники" />
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="subtitle2" fontWeight={400}>
+                        <img width={200} height={200} src={`${url}/TempFileStorage/${Info.pathToPhoto2}`} alt="Фото клиники" />
                         </Typography>
                       </TableCell>
                       <TableCell>
