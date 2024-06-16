@@ -15,6 +15,7 @@ const Create = () => {
   const userid = GetCookie('userId')|| ''
   const { CreateBlog } = useBlogStore()
 
+  const [id, setId] = useState<number>(0)
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
   const [authorId, setAuthorId] = useState<string>(userid)
@@ -26,6 +27,7 @@ const Create = () => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
+      id,
       title,
       text,
       photo,
@@ -35,7 +37,7 @@ const Create = () => {
     const status = await CreateBlog(data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/blogs')
+      router.push('/doctor/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }

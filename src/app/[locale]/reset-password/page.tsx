@@ -9,10 +9,10 @@ const ConfirmEmail = () => {
   return (
     <div>
         <PageBanner
-        pageTitle= {t('Registration')}
+        pageTitle= {t('Reset')}
         homePageUrl="/"
         homePageText={t('Home')}
-        activePageText={t('Registration')}
+        activePageText={t('Reset')}
         bgImage="page-title-one"
       />
       <ResetPassword />

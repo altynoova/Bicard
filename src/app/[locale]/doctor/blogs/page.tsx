@@ -123,7 +123,7 @@ const Blogs = () => {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/blogs/edit/${Blog.id}`}>
+                        <Link href={`/doctor/blogs/edit/${Blog.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>

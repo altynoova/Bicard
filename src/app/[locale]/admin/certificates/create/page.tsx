@@ -25,7 +25,7 @@ const Create = () => {
     }
 
     const status = await CreateCertificate(data)
-    if (status == 200) {
+    if (status.toString() === "200") {
       SuccessAlert('Успешно')
       router.push('/admin/certificates')
     } else {

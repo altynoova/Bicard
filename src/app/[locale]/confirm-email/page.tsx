@@ -7,13 +7,6 @@ const ConfirmEmail = () => {
   const t = useTranslations('Contact');
   return (
     <div>
-       <PageBanner
-        pageTitle= {t('Registration')}
-        homePageUrl="/"
-        homePageText={t('Home')}
-        activePageText={t('Registration')}
-        bgImage="page-title-one"
-      />
       <ComfirmEmailComponent />
     </div>
   )

@@ -60,6 +60,7 @@ const useBlogStore = create<IBlogStore>()((set) => ({
   },
   async GetBlog(id) {
     const response = await GetBlog(id)
+    console.log("Blog",response )
     set(() => ({ currentBlog: response.data }))
     return response.data
   },

@@ -1,13 +1,9 @@
 'use client'
 import React, { useEffect } from 'react'
-import LatestBlogPost from '@/components/Blog/LatestBlogPost'
 import PageBanner from '@/components/Common/PageBanner'
-import BlogDetailsContent from '@/components/Blog/BlogDetailsContent'
 import useBlogStore from '@/store/useBlogStore'
 import Link from 'next/link'
-import CommentForm from '@/components/Blog/CommentForm'
 import BlogSidebar from '@/components/Blog/BlogSidebar'
-import Image from 'next/image';
 import { useTranslations } from 'next-intl'
 import { url } from '@/config'
 

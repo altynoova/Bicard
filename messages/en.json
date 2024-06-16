@@ -162,6 +162,10 @@
     "Sign Up": "Sign Up",
     "Our Latest Blogs": "Our Latest Blogs",
     "Email": "Email",
+    "Check your email":"Check your email",
+    "Check your email and get link":"A link has been sent to your email, please check.",
+    "Minutes": "Minutes",
+    "Seconds": "Seconds",
     "Latest Articles": "Latest Articles"
   },
   "Services": {
@@ -238,6 +242,7 @@
     "numberOfBeds": "Beds",
     "numberOfPatients": "Happy patients",
     "numberOfEmployees": "Employees",
+    "Certificates": "Certificates",
     "Sunday":"Sunday"
 
   }

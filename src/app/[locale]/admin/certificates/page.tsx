@@ -61,7 +61,7 @@ const Certificates = () => {
       <div className="d-flex justify-content-center mb-5">
         <Link href="certificates/create">{t('Create')}</Link>
       </div>
-      <DashboardCard title={t('Vacancies')}>
+      <DashboardCard title={t('Certificates')}>
         <Box sx={{ overflow: 'auto' }}>
           <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
             <Table
@@ -117,7 +117,7 @@ const Certificates = () => {
                     </TableCell>
                     <TableCell>
                       <Typography variant="subtitle2" fontWeight={400}>
-                        <img width={200} height={200} src={`${url}/TempFileStorage/${Certificate.photoPath}`} alt="Блог" />
+                        <img width={200} height={200} src={`${url}/TempFileStorage/${Certificate.photoPath}`} alt="Сертификат" />
                       </Typography>
                     </TableCell>
                     <TableCell>

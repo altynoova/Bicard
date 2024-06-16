@@ -1,47 +1,29 @@
 'use client'
-import React from 'react'
+import { useTranslations } from 'next-intl';
+import React, { useState, useEffect } from 'react'
 
 const ComingSoon = () => {
-  const [days, setDays] = React.useState('')
-  const [hours, setHours] = React.useState('')
-  const [minutes, setMinutes] = React.useState('')
-  const [seconds, setSeconds] = React.useState('')
+  const t = useTranslations('Contact');
+  const [timeLeft, setTimeLeft] = useState<number>(60 * 60 * 1000) // Initial time left in milliseconds (1 hour)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      commingSoonTime()
+      setTimeLeft(prevTimeLeft => {
+        if (prevTimeLeft <= 1000) {
+          clearInterval(interval)
+          return 0
+        }
+        return prevTimeLeft - 1000
+      })
     }, 1000)
     return () => clearInterval(interval)
   }, [])
 
-  const commingSoonTime = () => {
-    let endTime = new Date('August 23, 2024 17:00:00 PDT')
-    let endTimeParse = Date.parse(endTime.toString()) / 1000
-    let now = new Date()
-    let nowParse = Date.parse(now.toString()) / 1000
-    let timeLeft = endTimeParse - nowParse
-    let days: number | string = Math.floor(timeLeft / 86400)
-    let hours: number | string = Math.floor((timeLeft - days * 86400) / 3600)
-    let minutes: number | string = Math.floor(
-      (timeLeft - days * 86400 - hours * 3600) / 60,
-    )
-    let seconds: number | string = Math.floor(
-      timeLeft - days * 86400 - hours * 3600 - minutes * 60,
-    )
-    if (hours.toString() < '10') {
-      hours = '0' + hours
-    }
-    if (minutes.toString() < '10') {
-      minutes = '0' + minutes
-    }
-    if (seconds.toString() < '10') {
-      seconds = '0' + seconds
-    }
-    setDays(days.toString())
-    setHours(hours.toString())
-    setMinutes(minutes.toString())
-    setSeconds(seconds.toString())
-  }
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
+
+  const minutesStr = minutes < 10 ? '0' + minutes : minutes.toString()
+  const secondsStr = seconds < 10 ? '0' + seconds : seconds.toString()
 
   return (
     <div>
@@ -51,67 +33,27 @@ const ComingSoon = () => {
             <div className="d-table-cell">
               <div className="container">
                 <div className="coming-text">
-                  <h1>Under Construction...</h1>
+                  <h2>{t('Check your email')}</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea
-                    deserunt beatae voluptas, animi harum dolorum totam,
-                    praesentium, dolor sint aspernatur perspiciatis iusto labore
-                    nulla rerum earum! Sit commodi quia provident!
+                  {t('Check your email and get link')}
                   </p>
 
                   <div className="row coming-wrap" id="timer">
-                    <div className="col-6 col-sm-6 col-lg-3">
-                      <div className="coming-inner">
-                        <div id="days">
-                          {days} <span>Days</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6 col-sm-6 col-lg-3">
-                      <div className="coming-inner">
-                        <div id="hours">
-                          {hours} <span>Hours</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6 col-sm-6 col-lg-3">
+                    <div className="col-6 col-sm-6 col-lg-6">
                       <div className="coming-inner">
                         <div id="minutes">
-                          {minutes} <span>Minutes</span>
+                          {minutesStr} <span>{t('Minutes')}</span>
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-6 col-lg-3">
+                    <div className="col-6 col-sm-6 col-lg-6">
                       <div className="coming-inner">
                         <div id="seconds">
-                          {seconds} <span>Seconds</span>
+                          {secondsStr} <span>{t('Seconds')}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  <ul>
-                    <li>
-                      <a href="https://www.facebook.com/" target="_blank">
-                        <i className="icofont-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://twitter.com/" target="_blank">
-                        <i className="icofont-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.linkedin.com/" target="_blank">
-                        <i className="icofont-linkedin"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.pinterest.com/" target="_blank">
-                        <i className="icofont-pinterest"></i>
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

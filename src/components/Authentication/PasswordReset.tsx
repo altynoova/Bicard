@@ -22,7 +22,6 @@ const PasswordReset = () => {
     console.log("response", response)
     if (response.toString() === "200") {
       SuccessAlert('Проверьте свою почту')
-      router.push('/reset-password')
     }
     else {
       ErrorAlert('Проверьте корректность ваших данных')

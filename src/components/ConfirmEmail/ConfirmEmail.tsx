@@ -5,6 +5,8 @@ import { ErrorAlert, SuccessAlert } from '@/libs/helpers/Alert'
 import { useTranslations } from 'next-intl'
 import PageBanner from '../Common/PageBanner'
 import SignInForm from '../Authentication/SignInForm'
+import ComingSoon from '@/app/[locale]/coming-soon/page'
+import { $http } from '@/libs/axios'
 
 const ConfirmEmail = () => {
   const searchParams = useSearchParams()
@@ -13,22 +15,24 @@ const ConfirmEmail = () => {
   const router = useRouter();
   const t = useTranslations('Contact');
   useEffect(() => {
+
     const confirmEmail = async () => {
+      console.log("id",userId )
+      console.log("token",token )
       try {
-        const response = await fetch(`/appi/Users/ConfirmEmail?userId=${userId}&token=${token}`, {
+        const response = await $http.get(`/Users/ConfirmEmail?userId=${userId}&token=${token}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           },
         })
-        if (response.ok) {
-          SuccessAlert('Вы вошли в свой аккаунт!')
-          router.push('/about');
+        if (response.status ==200) {
+          router.push('/signin');
         } else {
           ErrorAlert('Ошибка на стороне сервера, повторите попытку ')
         }
       } catch (error) {
-        alert('An error occurred while confirming your email.')
+        ErrorAlert('An error occurred while confirming your email.')
       }
     }
 
@@ -46,7 +50,7 @@ const ConfirmEmail = () => {
         activePageText={t('Login')}
         bgImage="page-title-one"
       />
-      <SignInForm />
+      <ComingSoon/>
     </div>
   )
 }

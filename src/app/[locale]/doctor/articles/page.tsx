@@ -143,7 +143,7 @@ const filteredArticle = Articles.filter(t=>t.authorName == userName)
                         </Typography> 
                       </TableCell>
                       <TableCell>
-                        <Link href={`/admin/articles/edit/${Article.id}`}>
+                        <Link href={`/doctor/articles/edit/${Article.id}`}>
                           <EditIcon color={'warning'} />
                         </Link>
                       </TableCell>

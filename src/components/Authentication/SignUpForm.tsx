@@ -34,12 +34,22 @@ const SignUpForm = () => {
 
     const response = await Register(data)
     if (response.status === 200) {
-      SuccessAlert('Вы успешно зарегистрировались.')
-      router.push('/signin')
+      SuccessAlert('Вы успешно зарегистрировались. Пожалуйста')
+      router.push('/coming-soon')
     } else if (response.status === 400) {
-      ErrorAlert('Неверные данные!')
+      const errorResponse = response.data; // Assuming response is JSON and contains data field
+      if (errorResponse.errors && errorResponse.errors.length > 0) {
+        const firstError = errorResponse.errors[0];
+        if (firstError.code === 'DuplicateUserName') {
+          ErrorAlert(firstError.description); // Custom error message for DuplicateUserName
+        } else {
+          ErrorAlert(firstError.description); // Default error message
+        }
+      } else {
+        ErrorAlert('Неизвестная ошибка.'); // Fallback error message
+      }
     } else {
-      ErrorAlert('Неизвестная ошибка.')
+      ErrorAlert('Неизвестная ошибка.'); // General server error
     }
   }
 
@@ -59,8 +69,8 @@ const SignUpForm = () => {
                 <div className="signup-head">
                   <h2>{t('Register here')}</h2>
                   <p>
-                  {t('Already have an account?')}
-                  <Link href="/signin">{t('Login')}</Link>
+                    {t('Already have an account?')}
+                    <Link href="/signin">{t('Login')}</Link>
                   </p>
                 </div>
 
@@ -147,7 +157,7 @@ const SignUpForm = () => {
                             >
                               {t('Yes, I agree')}{' '}
                               <Link href="/terms-condition">
-                              {t('Terms of Use')}
+                                {t('Terms of Use')}
                               </Link>
                             </label>
                           </div>
@@ -157,7 +167,7 @@ const SignUpForm = () => {
                       <div className="col-lg-12">
                         <div className="text-center">
                           <button type="submit" className="btn signup-btn">
-                          {t('Sign Up')} 
+                            {t('Sign Up')}
                           </button>
                         </div>
                       </div>

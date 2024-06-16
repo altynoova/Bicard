@@ -143,7 +143,7 @@
     "Contacts": "Байланышуу",
     "Services": "Кызматтар",
     "Feedbacks": "Пикирлер",
-    "Name": "Аты-жөнүнүз",
+    "Name": "Колдонуучу атыңыз",
     "Message": "Сообщение",
     "Login": "Кирүү",
     "Have you registered yet": "Каттала элексизби?",
@@ -154,7 +154,7 @@
     "Forgot your password?": "Сыр сөзүңүздү унуттуңузбу?",
     "Registration": "Катталуу",
     "Already have an account?": "Катталган аккаунтуңуз барбы?",
-    "Confirm the password": "Confirm the password",
+    "Confirm the password": "Сырсөздү кайталаңыз",
     "Password mismatch": "Сырсөз дал келбей калды",
     "Reset": "Cырсөздү өзгөртүү",
     "Create new password": "Жаңы сырсөз түзүңүз",
@@ -162,6 +162,10 @@
     "Terms of Use": "Пайдалануу шарттары",
     "Sign Up": "Катталуу",
     "Email": "Электрондук почта",
+    "Check your email":"Электрондук почтаңызды текшериңиз",
+    "Check your email and get link":"Сиздин электрондук почтаңызга шилтеме жөнөтүлдү, текшериңиз.",
+    "Minutes": "Мүнөт",
+    "Seconds": "Секунд",
     "Latest Articles": "Акыркы макалалар"
   },
   "Services": {
@@ -239,6 +243,7 @@
     "Intro": "Маалымат",
     "numberOfBeds": "Орун",
     "numberOfPatients": "Бактылуу бейтаптар",
+    "Certificates": "Сертификаттар",
     "numberOfEmployees": "Кызматкерлер",
     "Sunday": "Жекшемби"
   }

@@ -35,7 +35,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     console.log("editactionarticle", data)
     if (status == 200) {
       SuccessAlert('Успешно')
-      router.push('/admin/articles')
+      router.push('/doctor/articles')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -78,26 +78,6 @@ const Edit = ({ params }: { params: { id: number } }) => {
                       data-sb-feedback="имя:required"
                     >
                       Title is required.
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label" htmlFor="author">
-                      {t('Author')}
-                    </label>
-                    <input
-                      className="form-control"
-                      id="author"
-                      type="text"
-                      placeholder="title"
-                      data-sb-validations="required"
-                      value={authorName}
-                      onChange={(event) => setAuthorName(event.target.value)}
-                    />
-                    <div
-                      className="invalid-feedback"
-                      data-sb-feedback="Author is required"
-                    >
-                      Author is required.
                     </div>
                   </div>
                   <div className="mb-3">

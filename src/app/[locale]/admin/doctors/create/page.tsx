@@ -56,7 +56,7 @@ const Create = () => {
   }
 
   useEffect(() => {
-    GetUsersByRole('Doctor')
+    GetUsersByRole('patient')
   }, [])
 
   return (

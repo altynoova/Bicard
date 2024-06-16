@@ -25,6 +25,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     event.preventDefault()
 
     const data: BlogRequestModel = {
+      id,
       title,
       text,
       authorId,
@@ -34,7 +35,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
     const status = await EditBlog(data, id)
     if (status == 200) {
       SuccessAlert('Данные успешно обновлены.')
-      router.push('/admin/blogs')
+      router.push('/doctor/blogs')
     } else {
       ErrorAlert('Произошла ошибка!')
     }
@@ -85,7 +86,7 @@ const Edit = ({ params }: { params: { id: number } }) => {
                     <label className="form-label" htmlFor="photo">
                       Фото
                     </label>
-                    <div style={{margin:20}}>
+                    <div style={{ margin: 20 }}>
                       {photo ? (
                         <img src={URL.createObjectURL(photo)} height={400} width={500} alt="New Photo" />
                       ) : (
