@@ -5,7 +5,9 @@ export type Blog = {
   authorId: string;
   authorName: string;
   photoPath: string;
-  timestamp: Date
+  timestamp: Date;
+  previosId: number;
+  nextId: number
 };
 
 export type BlogRequestModel = {

@@ -18,7 +18,7 @@ interface IBlogStore {
   totalpages: number;
   totalelements: number;
 
-  FetchBlogs: ( pagesize: number, pagenumber: number) => void;
+  FetchBlogs: (pagesize: number, pagenumber: number) => void;
   LatestBlogs: () => void;
   GetBlog: (id: number) => Promise<any>;
   CreateBlog: (data: BlogRequestModel) => Promise<number>;
@@ -39,7 +39,8 @@ const useBlogStore = create<IBlogStore>()((set) => ({
     authorName: ' ',
     photoPath: '',
     timestamp: date,
-
+    previosId: 0,
+    nextId: 0
   },
 
   pagesize: 6,
@@ -47,8 +48,8 @@ const useBlogStore = create<IBlogStore>()((set) => ({
   totalpages: 10,
   totalelements: 0,
 
-  async FetchBlogs(pagesize, pagenumber ) {
-    const response = await FetchBlogs(pagesize, pagenumber )
+  async FetchBlogs(pagesize, pagenumber) {
+    const response = await FetchBlogs(pagesize, pagenumber)
     console.log("Blogs", response.data)
     set(() => ({ Blogs: response.data }))
     return response.status
@@ -60,7 +61,7 @@ const useBlogStore = create<IBlogStore>()((set) => ({
   },
   async GetBlog(id) {
     const response = await GetBlog(id)
-    console.log("Blog",response )
+    console.log("Blog", response)
     set(() => ({ currentBlog: response.data }))
     return response.data
   },

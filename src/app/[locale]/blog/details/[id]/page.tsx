@@ -31,7 +31,7 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
             <div className="col-lg-8">
               <div className="blog-details-item">
                 <div className="blog-details-img">
-                <img width={150} height={400} src={`${url}/TempFileStorage/${currentBlog.photoPath}`} alt={currentBlog.title}/>
+                  <img width={150} height={400} src={`${url}/TempFileStorage/${currentBlog.photoPath}`} alt={currentBlog.title} />
                   <h2>
                     {currentBlog?.title}
                   </h2>
@@ -49,14 +49,18 @@ const BlogDetails = ({ params }: { params: { id: number } }) => {
                   </ul>
                 </div>
                 <div className="blog-details-previous">
-                <div dangerouslySetInnerHTML={{ __html: currentBlog.text }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: currentBlog.text }}></div>
                   <div className="prev-next">
                     <ul>
                       <li>
-                      <a href={`/blog/details/${currentBlog.id-1}`}>{t('Previous')}</a>
+                        {currentBlog.previosId &&
+                          <a href={`/blog/details/${currentBlog.previosId}`}>{t('Previous')}</a>
+                        }
                       </li>
                       <li>
-                        <a href={`/blog/details/${currentBlog.id+1}`}>{t('Next')}</a>
+                        {currentBlog.nextId &&
+                          <a href={`/blog/details/${currentBlog.nextId}`}>{t('Next')}</a>
+                        }
                       </li>
                     </ul>
                   </div>
