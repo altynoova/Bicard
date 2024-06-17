@@ -19,7 +19,9 @@ const Create = () => {
   const [numberOfBeds, setNumberOfBeds] = useState<string>('')
   const [numberOfPatients, setNumberOfPatients] = useState<string>('')
   const [numberOfEmployees, setNumberOfEmployees] = useState<string>('')
-  const [Photo, setPhoto] = useState<File | null>(null)
+  const [Photo1, setPhoto1] = useState<File | null>(null)
+  const [Photo2, setPhoto2] = useState<File | null>(null)
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -30,7 +32,8 @@ const Create = () => {
       numberOfBeds,
       numberOfPatients,
       numberOfEmployees,
-      Photo
+      Photo1,
+      Photo2
     }
     console.log("data", data)
     const status = await CreateTestimonial(data)
@@ -139,7 +142,22 @@ const Create = () => {
                         placeholder={t('IMG')}
                         data-sb-validations="required"
                         onChange={(event) =>
-                          setPhoto(event.target.files && event.target.files[0])
+                          setPhoto1(event.target.files && event.target.files[0])
+                        }
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="form-label" htmlFor="name">
+                        {t('IMG')}
+                      </label>
+                      <input
+                        className="form-control"
+                        id="photo"
+                        type="file"
+                        placeholder={t('IMG')}
+                        data-sb-validations="required"
+                        onChange={(event) =>
+                          setPhoto2(event.target.files && event.target.files[0])
                         }
                       />
                     </div>

@@ -22,9 +22,10 @@ const Edit = ({ params }: { params: { id: number } }) => {
   const [numberOfBeds, setNumberOfBeds] = useState<string>('')
   const [numberOfPatients, setNumberOfPatients] = useState<string>('')
   const [numberOfEmployees, setNumberOfEmployees] = useState<string>('')
-  const [Photo, setPhoto] = useState<File | null>(null)
-  const [photoPath, setPhotoPath] = useState<string>('')
-
+  const [Photo1, setPhoto1] = useState<File | null>(null)
+  const [photoPath1, setPhotoPath1] = useState<string>('')
+  const [Photo2, setPhoto2] = useState<File | null>(null)
+  const [photoPath2, setPhotoPath2] = useState<string>('')
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -34,7 +35,8 @@ const Edit = ({ params }: { params: { id: number } }) => {
       numberOfBeds,
       numberOfPatients,
       numberOfEmployees,
-      Photo
+      Photo1,
+      Photo2
     }
     const status = await EditTestimonial(currentTestimonial?.id || 0, data)
     if (status == 200) {
@@ -51,7 +53,9 @@ const Edit = ({ params }: { params: { id: number } }) => {
     setNumberOfBeds(response.numberOfBeds)
     setNumberOfPatients(response.numberOfPatients)
     setNumberOfEmployees(response.numberOfEmployees)
-    setPhotoPath(response.pathToPhoto)
+    setPhotoPath1(response.pathToPhoto1)
+    setPhotoPath2(response.pathToPhoto2)
+
   }
 
   useEffect(() => {
@@ -145,28 +149,54 @@ const Edit = ({ params }: { params: { id: number } }) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="photo">
-                      Фото
+                    {t('IMG')}
                     </label>
                     <div style={{ margin: 20 }}>
-                      {Photo ? (
-                        <img src={URL.createObjectURL(Photo)} height={400} width={500} alt="New Photo" />
+                      {Photo1 ? (
+                        <img src={URL.createObjectURL(Photo1)} height={400} width={500} alt="New Photo" />
                       ) : (
-                        photoPath && <img src={`${url}/TempFileStorage/${photoPath}`} height={400} width={500} alt="Current Photo" />
+                        photoPath1 && <img src={`${url}/TempFileStorage/${photoPath1}`} height={400} width={500} alt="Current Photo" />
                       )}
                     </div>
                     <input
                       className="form-control"
                       id="photo"
                       type="file"
-                      placeholder="Фото"
+                      placeholder={t('IMG')}
                       data-sb-validations="required"
-                      onChange={(event) => setPhoto(event.target.files && event.target.files[0])}
+                      onChange={(event) => setPhoto1(event.target.files && event.target.files[0])}
                     />
                     <div
                       className="invalid-feedback"
                       data-sb-feedback="номерТелефона:required"
                     >
-                      Номер телефона is required.
+                      Photo телефона is required.
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="photo">
+                    {t('IMG')}
+                    </label>
+                    <div style={{ margin: 20 }}>
+                      {Photo2 ? (
+                        <img src={URL.createObjectURL(Photo2)} height={400} width={500} alt="New Photo" />
+                      ) : (
+                        photoPath2 && <img src={`${url}/TempFileStorage/${photoPath2}`} height={400} width={500} alt="Current Photo" />
+                      )}
+                    </div>
+                    <input
+                      className="form-control"
+                      id="photo"
+                      type="file"
+                      placeholder={t('IMG')}
+                      data-sb-validations="required"
+                      onChange={(event) => setPhoto2(event.target.files && event.target.files[0])}
+                    />
+                    <div
+                      className="invalid-feedback"
+                      data-sb-feedback="номерТелефона:required"
+                    >
+                      Photo телефона is required.
                     </div>
                   </div>
                   <div className="d-none" id="submitSuccessMessage">

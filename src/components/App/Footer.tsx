@@ -24,10 +24,10 @@ const Footer = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const feedbackData = {
-      phone,
       message
     };
     if (!signed) {
+      ErrorAlert(t('First signin'))
       router.push('/signin');
     }
     const responseStatus = await methodFeedbackCreate(feedbackData);

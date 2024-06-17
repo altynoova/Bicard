@@ -15,5 +15,7 @@ export type TestimonialRequestModel = {
   numberOfBeds: string;
   numberOfPatients: string;
   numberOfEmployees:string;
-  Photo: File | null;
+  Photo1: File | null;
+  Photo2: File | null;
+
  }

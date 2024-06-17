@@ -166,6 +166,10 @@
     "Check your email and get link":"A link has been sent to your email, please check.",
     "Minutes": "Minutes",
     "Seconds": "Seconds",
+    "First signin":"To leave a review, first log into your account on the site.",
+    "Signed":"Congratulations, you are logged into your account.",
+    "Signed. You admin":"Congratulations, you are admin!!!",
+    "Signed. You doctor":"Congratulations, you are doctor!!!",
     "Latest Articles": "Latest Articles"
   },
   "Services": {
