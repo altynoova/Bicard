@@ -80,13 +80,6 @@ const DoctorsDetails = ({ params }: { params: { id: number } }) => {
                     <p>{currentDoctor?.speciality}</p>
                   </div>
 
-                  <div className="doctor-details-biography">
-                    <h3>{t('Biography')}</h3>
-
-                    <p>{currentDoctor?.bio}</p>
-
-                    <p></p>
-                  </div>
 
                   <div className="doctor-details-biography">
                     <h3>{t('Education')}</h3>

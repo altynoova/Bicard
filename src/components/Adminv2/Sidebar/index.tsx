@@ -74,7 +74,7 @@ export default function CustomizedList() {
                 <Home color="primary" />
               </ListItemIcon>
               <ListItemText
-                primary="Bicard Doctor"
+                primary="Bicard Admin"
                 primaryTypographyProps={{
                   color: 'primary',
                   fontWeight: 'medium',
